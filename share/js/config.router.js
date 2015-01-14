@@ -12,10 +12,12 @@ angular.module('app')
       }
     ]
   )
-  .config(
+
+
+
+    .config(
     [          '$stateProvider', '$urlRouterProvider',
       function ($stateProvider,   $urlRouterProvider) {
-
 
           $urlRouterProvider
               .otherwise('/app/home');
@@ -25,13 +27,13 @@ angular.module('app')
               .state('app', {
                   abstract: true,
                   url: '/app',
-                  templateUrl: 'tpl/app.html'
+                  templateUrl: 'share/tpl/app.html'
               })
 
               //首页
               .state('app.home', {
                   url: '/home',
-                  templateUrl: 'tpl/home/home.html',
+                  templateUrl: 'boss/tpl/home/home.html',
                   controller: "HomeCtrl as home"
               })
 
@@ -39,7 +41,7 @@ angular.module('app')
               .state("app.audit",{
                   url : "/audit",
                   abstract : true,
-                  templateUrl : "tpl/audit/audit.html",
+                  templateUrl : "boss/tpl/audit/audit.html",
                   controller : "AuditCtrl"
 
 
@@ -51,7 +53,7 @@ angular.module('app')
 
                   "views" : {
                       "audit-school":{
-                          templateUrl : "tpl/audit/audio_school.html",
+                          templateUrl : "boss/tpl/audit/audio_school.html",
                           controller : "AuditSchoolCtrl"
                       }
                   }
@@ -63,7 +65,7 @@ angular.module('app')
                   url : "/class",
                   "views" : {
                       "audit-class":{
-                          templateUrl : "tpl/audit/audio_class.html",
+                          templateUrl : "boss/tpl/audit/audio_class.html",
                           controller : "AuditClassCtrl"
                       }
                   }
@@ -76,19 +78,16 @@ angular.module('app')
                   url : "/subject",
                   "views" : {
                       "audit-subject":{
-                          templateUrl : "tpl/audit/audio_subject.html",
+                          templateUrl : "boss/tpl/audit/audio_subject.html",
                           controller : "AuditSubjectCtrl"
                       }
                   }
-
-
               })
-
 
 
               .state("app.user", {
                   url: "/user",
-                  templateUrl: "tpl/user/userManager.html",
+                  templateUrl: "boss/tpl/user/userManager.html",
                   controller: "UserCtrl as test"
               })
 

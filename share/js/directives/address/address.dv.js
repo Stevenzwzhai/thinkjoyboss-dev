@@ -6,7 +6,7 @@ App.directive('selectAddress', function($http, $q, $compile,BaseService) {
     var cityURL, delay, templateURL;
 
     delay = $q.defer();
-    templateURL = 'js/directives/address/address.html';
+    templateURL = 'share/js/directives/address/address.html';
     cityURL = 'data/area.json';
 
     //获得列表

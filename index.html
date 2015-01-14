@@ -5,16 +5,14 @@
   <title>Boss 就这么任性 with AngularJS</title>
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <!-- skin -->
   <link rel="stylesheet" href="lib/css/bootstrap.css" type="text/css" />
   <link rel="stylesheet" href="lib/css/animate.css" type="text/css" />
   <link rel="stylesheet" href="lib/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="lib/css/simple-line-icons.css" type="text/css" />
   <link rel="stylesheet" href="lib/css/font.css" type="text/css" />
   <link rel="stylesheet" href="lib/css/app.css" type="text/css" />
-
-
-  <!-- 用户 -->
-  <link rel="stylesheet" href="css/user/user.css" type="text/css" />
 
 
     <!-- jQuery -->
@@ -44,55 +42,65 @@
 
 
 
+    <!-- 公用指令 -->
+
     <!-- App setting-->
-    <script src="js/app.js"></script>
-    <script src="js/config.js"></script>
-    <script src="js/config.lazyload.js"></script>
-    <script src="js/config.router.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/services/ui-load.js"></script>
-    <script src="js/directives/setnganimate.js"></script>
-    <script src="js/directives/ui-butterbar.js"></script>
-    <script src="js/directives/ui-focus.js"></script>
-    <script src="js/directives/ui-fullscreen.js"></script>
-    <script src="js/directives/ui-jq.js"></script>
-    <script src="js/directives/ui-module.js"></script>
-    <script src="js/directives/ui-nav.js"></script>
-    <script src="js/directives/ui-scroll.js"></script>
-    <script src="js/directives/ui-shift.js"></script>
-    <script src="js/directives/ui-toggleclass.js"></script>
-    <script src="js/directives/ui-validate.js"></script>
+    <script src="share/js/app.js"></script>
+    <script src="share/js/config.js"></script>
+    <script src="share/js/config.lazyload.js"></script>
+    <script src="share/js/config.router.js"></script>
+    <script src="share/js/main.js"></script>
+    <script src="share/js/services/ui-load.js"></script>
+    <script src="share/js/directives/setnganimate.js"></script>
+    <script src="share/js/directives/ui-butterbar.js"></script>
+    <script src="share/js/directives/ui-focus.js"></script>
+    <script src="share/js/directives/ui-fullscreen.js"></script>
+    <script src="share/js/directives/ui-jq.js"></script>
+    <script src="share/js/directives/ui-module.js"></script>
+    <script src="share/js/directives/ui-nav.js"></script>
+    <script src="share/js/directives/ui-scroll.js"></script>
+    <script src="share/js/directives/ui-shift.js"></script>
+    <script src="share/js/directives/ui-toggleclass.js"></script>
+    <script src="share/js/directives/ui-validate.js"></script>
 
-
-    <script src="js/directives/address/address.dv.js"></script>
-    <!-- Lazy loading -->
-
-
-    <!-- my -->
-    <script type="text/javascript" src="js/controllers/home/home.ctrl.js"></script>
-
-    <script type="text/javascript" src="js/controllers/audit/audit.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/audit/audit.class.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/audit/audit.school.ctrl.js"></script>
-    <script type="text/javascript" src="js/controllers/audit/audit.sub.ctrl.js"></script>
-
-    <script type="text/javascript" src="js/controllers/user/user.ctrl.js"></script>
-
-    <script type="text/javascript" src="js/filters/filters.js"></script>
-
-    <script type="text/javascript" src="js/services/util.sev.js"></script>
-    <script type="text/javascript" src="js/services/audit.sev.js"></script>
-    <script type="text/javascript" src="js/services/base.sev.js"></script>
-    <script type="text/javascript" src="js/services/user.sev.js"></script>
+    <script src="share/js/directives/address/address.dv.js"></script>
 
 
 
+    <!-- 公共service -->
+    <script type="text/javascript" src="share/js/filters/filters.js"></script>
+    <script type="text/javascript" src="share/js/services/util.sev.js"></script>
+
+
+
+    <!--boss 业务 -->
+    <link rel="stylesheet" href="boss/css/user/user.css" type="text/css" />
+
+    <script type="text/javascript" src="boss/js/controllers/home/home.ctrl.js"></script>
+    <script type="text/javascript" src="boss/js/controllers/audit/audit.ctrl.js"></script>
+    <script type="text/javascript" src="boss/js/controllers/audit/audit.class.ctrl.js"></script>
+    <script type="text/javascript" src="boss/js/controllers/audit/audit.school.ctrl.js"></script>
+    <script type="text/javascript" src="boss/js/controllers/audit/audit.sub.ctrl.js"></script>
+    <script type="text/javascript" src="boss/js/controllers/user/user.ctrl.js"></script>
+
+    <script type="text/javascript" src="boss/js/services/audit.sev.js"></script>
+    <script type="text/javascript" src="boss/js/services/base.sev.js"></script>
+    <script type="text/javascript" src="boss/js/services/user.sev.js"></script>
+    <!--boss 业务 -->
+
+
+    <!-- sop  业务-->
+    <!-- sop  业务 -->
+
+
+    <!-- brige 业务 -->
+    <!-- brige 业务 -->
 
 </head>
+
+
 <body ng-controller="AppCtrl">
   <div class="app" id="app"
        ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
-
-
 </body>
 </html>
