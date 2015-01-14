@@ -1,0 +1,15 @@
+{
+    "rtnCode": "0000000",
+    "msg": "错误原因",
+    "bizData":
+        [{"phone": "18091199362",
+        "userName": "张三",
+        "area": "省->市->区",
+        "schoolName": "XX学校",
+        "schoolId": 123123,
+        "className": "XX班",
+         "subjectName" : "数学",
+        "subjectId": 123123,
+        "status": 0
+    }]
+}

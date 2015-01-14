@@ -1,0 +1,15 @@
+{
+    "rtnCode": "0000000",
+    "msg": "错误原因",
+    "bizData":
+        [{"phone": "18091199362",
+        "userName": "张三",
+        "area": "陕西省>市->区",
+        "schoolName": "喜悦高中",
+        "schoolId": 123123,
+        "className": "喜悦高中一班",
+        "classId": 123123,
+        "status": 0,
+        "areaId" : 610114
+    }]
+}

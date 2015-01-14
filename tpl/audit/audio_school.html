@@ -1,0 +1,60 @@
+
+<table class="table table-hover  table-audit" ng-if="results.length > 0">
+    <thead>
+        <tr>
+            <th>
+                编号
+            </th>
+            <th>
+                手机号
+            </th>
+            <th>
+                用户名
+            </th>
+
+            <th>
+                学校名称
+            </th>
+            <th>
+                地区名称
+            </th>
+
+            <th>
+                最后修改时间
+            </th>
+
+            <th>
+                审核内容
+            </th>
+
+
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="res in results" ng-click="selectSchool(res);">
+
+            <td>{{res.schoolId}}</td>
+            <td>{{res.phone}}</td>
+
+            <td>{{res.userName}}</td>
+            <td>{{res.schoolName}}</td>
+            <td>{{res.area}}</td>
+            <td>{{res.lastModDate | date:"yyyy-MM-dd hh:mm:ss" }}</td>
+            <!--<td >{{res.status | status}}</td>-->
+
+            <td >
+                <button class="btn btn-sm btn-success" ng-if="res.status == 0" ng-click="auditContent(res.schoolId,0,1);">审核</button>
+                <button class="btn btn-sm btn-default"   ng-click="auditContent(res.schoolId,0,0);" ng-hide="res.status == 0">撤销审核</button>
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<nav ng-if="pageTotal > 1">
+    <ul class="pager">
+        <li class="previous"  ><button href="#" class="ib" ng-disabled="pageIndex <= 1"  ng-click="prev();" >&larr; 上一页</button></li>
+        <li class="next"    ><button href="#" ng-click="next();"  ng-disabled="pageIndex >= pageTotal">下一页 &rarr;</button></li>
+    </ul>
+</nav>

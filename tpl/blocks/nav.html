@@ -1,0 +1,173 @@
+<!-- list -->
+
+
+
+<ul class="nav">
+
+  <!-- 标题 -->
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.components01.COMPONENTS">xxxxxx</span>
+  </li>
+
+
+  <!-- 01 -->
+  <li>
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-book icon text-primary-dker"></i>
+      <span class="font-bold" translate="aside.nav.components01.BASE_MG.TITLE">xxxxx</span>
+    </a>
+
+    <ul class="nav nav-sub dk">
+        <li ui-sref-active="active">
+            <a ui-sref="app.user">
+                <span translate="aside.nav.components01.BASE_MG.USER_MG">xxxxxx</span>
+            </a>
+        </li>
+
+    </ul>
+  </li>
+
+
+   <!-- 02 -->
+    <li>
+        <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+            <i class="glyphicon glyphicon-list-alt icon text-primary-dker"></i>
+            <span class="font-bold" translate="aside.nav.components01.WORK_ORDER.TITLE">xxxxx</span>
+        </a>
+
+        <ul class="nav nav-sub dk">
+            <li ui-sref-active="active">
+                <a ui-sref="app.audit.school">
+                    <span translate="aside.nav.components01.WORK_ORDER.AUDIT_MG">xxxxxx</span>
+                </a>
+            </li>
+
+        </ul>
+    </li>
+
+
+
+  <li class="line dk"></li>
+
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.components02.COMPONENTS">xxxxxx</span>
+  </li>
+
+
+
+  <!-- 消息管理 -->
+  <li ng-class="{active:$state.includes('app.ui')}">
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyphicon glyphicon-envelope icon text-primary-dker"></i>
+      <span translate="aside.nav.components02.ui_kits.UI_KITS">xxxxxx</span>
+    </a>
+
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span translate="aside.nav.components02.ui_kits.UI_KITS">xxxxxx</span>
+        </a>
+      </li>
+
+
+      <li ui-sref-active="active">
+        <a ui-sref="app.ui.buttons">
+          <span translate="aside.nav.components02.ui_kits.BUTTONS">xxxxxx</span>
+        </a>
+      </li>
+
+
+      <li ui-sref-active="active">
+        <a ui-sref="app.ui.icons">
+          <b class="badge bg-info pull-right">3</b>
+          <span translate="aside.nav.components02.ui_kits.ICONS">Icons</span>
+        </a>
+      </li>
+
+
+      <li ui-sref-active="active">
+        <a ui-sref="app.ui.grid">
+          <span translate="aside.nav.components02.ui_kits.GRID">xxxxxx</span>
+        </a>
+      </li>
+
+
+
+      <li ui-sref-active="active">
+        <a ui-sref="app.ui.sortable">
+          <span translate="aside.nav.components02.ui_kits.SORTABLE">xxxxxx</span>
+        </a>
+      </li>
+
+
+    </ul>
+  </li>
+
+  <!-- 营销管理 -->
+  <li ng-class="{active:$state.includes('app.table')}">
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+
+
+      <i class="glyphicon glyphicon-credit-card text-primary-dker"></i>
+      <span translate="aside.nav.components02.table.TABLE">xxxxxx</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span translate="aside.nav.components02.table.TABLE">xxxxxx</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.table.static">
+          <span translate="aside.nav.components02.table.TABLE_STATIC">xxxxxx</span>
+        </a>
+      </li>
+
+      <li ui-sref-active="active">
+        <a ui-sref="app.table.datatable">
+          <span translate="aside.nav.components02.table.DATATABLE">xxxxxx</span>
+        </a>
+      </li>
+
+    </ul>
+  </li>
+
+
+
+
+  <li class="line dk hidden-folded"></li>
+
+  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
+    <span translate="aside.nav.your_stuff.YOUR_STUFF">xxxxxx</span>
+  </li>  
+  <li>
+    <a ui-sref="app.page.profile">
+      <i class="icon-user icon text-success-lter"></i>
+      <b class="badge bg-success pull-right">30%</b>
+      <span translate="aside.nav.your_stuff.PROFILE">xxxxxx</span>
+    </a>
+  </li>
+  <li>
+    <a ui-sref="app.docs">
+      <i class="icon-question icon"></i>
+      <span translate="aside.nav.your_stuff.DOCUMENTS">xxxxxx</span>
+    </a>
+  </li>
+</ul>
+<!-- / list -->

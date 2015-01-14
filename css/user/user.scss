@@ -1,0 +1,42 @@
+.userManagerMain{
+
+  padding: 30px;
+}
+
+.userManager{
+
+  border: 1px solid #eee;
+
+  padding: 30px 30px;
+
+    .userManagerTop{
+
+        margin-bottom: 36px;
+
+      .userManagerHead{
+        width: 40px;
+        height: 40px;
+        border-bottom: 65px;
+
+      }
+
+      .userName{
+        margin-left: 10px;
+      }
+
+      .userJob{
+        margin-left: 10px;
+        background: #5cb85c;
+        padding: 5px 8px;
+        color: #ffffff;
+        font-size: 12px;
+        border-radius: 5px;
+      }
+    }
+
+  .userManagerBottom{
+
+  }
+
+
+}

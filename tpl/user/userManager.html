@@ -1,0 +1,244 @@
+<div class="bg-light lter b-b wrapper-md ng-scope">
+    <h1 class="m-n font-thin h3">用户管理</h1>
+</div>
+
+
+<div class="userManagerMain">
+<section>
+
+    <form role="form"  class="form-horizontal" novalidate  name="form">
+        <div class="form-group">
+            <label for="phone" class="col-sm-1 control-label text-left">手机号</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="phone" placeholder="输入 手机号"  ng-model="form.phone"    value="13363922086"  required/>
+            </div>
+
+            <div class="col-sm-3">
+
+                <button type="submit"  class="btn m-b-xs  btn-primary btn-addon"    ng-click="seachUser();"    ng-disabled="form.$invalid  || form.submit" >
+                    <i class="fa fa-search"></i><span class="glyphicon glyphicon-refresh refresh" ng-show="form.submit"></span><span ng-hide="form.submit">查询</span></button>
+
+                <button type="submit" class="btn m-b-xs  btn-danger btn-addon"  ng-click="delUser();"  ng-disabled="form.$invalid || form.submit">
+                    <i class="fa fa-remove"></i>
+                    删除</button>
+
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+        </div>
+
+    </form>
+
+
+</section>
+
+
+
+<section ng-show="res">
+            <section class="userManager">
+
+                <div class="userManagerTop">
+                    <a class="ib userManagerHead">
+                       <img src="imgs/head.png" class="full-img" />
+                    </a>
+
+                    <span class="ib userName">
+                        {{res.userInfo.userName}}
+                    </span>
+
+                    <span class="ib userJob">
+                        {{res | userType}}
+                    </span>
+
+                </div>
+
+                <div class="userManagerBottom">
+
+                    <!-- 孩子信息 -->
+                    <section   ng-if="res.childInfo.length > 0"   ng-init="isCollapsedChild=true;">
+                            <button class="btn btn-primary" ng-click="isCollapsedChild = !isCollapsedChild">孩子信息&nbsp;&nbsp;<span class="badge">{{res.childInfo.length}}</span></button>
+                            <hr>
+                            <div collapse="isCollapsedChild">
+
+
+                                <table class="table table-striped  ">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            孩子编号
+                                        </th>
+                                        <th>
+                                            孩子名称
+                                        </th>
+                                        <th>
+                                            班级名称
+                                        </th>
+                                        <th>
+                                            学校名称
+                                        </th>
+                                        <th>
+                                            性别
+                                        </th>
+                                        <th>
+                                            关系
+                                        </th>
+
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr ng-repeat="obj in res.childInfo">
+                                        <td>{{obj.childId}}</td>
+                                        <td>{{obj.childName}}</td>
+                                        <td>{{obj.childClassName}}</td>
+                                        <td>{{obj.childSchoolName}}</td>
+                                        <td>{{obj.childSex}}</td>
+                                        <td>{{obj.relation}}</td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+
+
+                            </div>
+                    </section>
+
+
+                    <!-- 用户加入的班级信息 -->
+                    <section ng-init="isCollapsedClass=true;">
+                        <button class="btn btn-success"  ng-disabled="res.classInfo.length <= 0"  ng-click="isCollapsedClass = !isCollapsedClass">孩子班级&nbsp;&nbsp;<span class="badge">{{res.classInfo.length}}</span></button>
+                        <hr>
+                        <div collapse="isCollapsedClass">
+                            <table class="table table-striped  ">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        编号
+                                    </th>
+                                    <th>
+                                        班级码
+                                    </th>
+                                    <th>
+                                        班级名称
+                                    </th>
+                                    <th>
+                                        学校名称
+                                    </th>
+                                    <th>
+                                        创建时间
+                                    </th>
+
+                                    <th>
+                                        修改时间
+                                    </th>
+
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr ng-repeat="obj in res.classInfo">
+                                    <td>{{obj.classId}}</td>
+                                    <td>{{obj.classCode}}</td>
+                                    <td>{{obj.className}}</td>
+                                    <td>{{obj.schoolName}}</td>
+                                    <td>{{obj.createDate | date:"yyyy-MM-dd hh:mm:ss"}}</td>
+                                    <td>{{obj.lastModDate | date:"yyyy-MM-dd hh:mm:ss"}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                    <!-- 老师教的班级 -->
+
+
+                    <!-- 授课班级 -->
+                    <section   ng-if="res.teacherInfo.length > 0"   ng-init="isCollapsedTeacher=true;">
+                        <button class="btn btn-info" ng-click="isCollapsedTeacher = !isCollapsedTeacher">授课班级&nbsp;&nbsp;<span class="badge">{{res.teacherInfo.length}}</span></button>
+                        <hr>
+                        <div collapse="isCollapsedTeacher">
+                            <table class="table table-striped  ">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        编号
+                                    </th>
+                                    <th>
+                                        班级码
+                                    </th>
+                                    <th>
+                                        班级名称
+                                    </th>
+                                    <th>
+                                        班级老师数量
+                                    </th>
+                                    <th>
+                                        修改时间
+                                    </th>
+
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr ng-repeat="obj in res.teacherInfo">
+                                    <td>{{obj.classId}}</td>
+                                    <td>{{obj.classCode}}</td>
+                                    <td>{{obj.className}}</td>
+                                    <td>{{obj.teacherCount}}</td>
+                                    <td>{{obj.lastModDate |  date:"yyyy-MM-dd hh:mm:ss"}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+
+                    <!-- 加入的群 -->
+                    <section   ng-if="res.groupInfo.length > 0"   ng-init="isCollapsedGroup=true;">
+                        <button class="btn btn-danger" ng-click="isCollapsedGroup = !isCollapsedGroup">加入的群&nbsp;&nbsp;<span class="badge">{{res.groupInfo.length}}</span></button>
+                        <hr>
+                        <div collapse="isCollapsedGroup">
+
+                            <table class="table table-striped  ">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        编号
+                                    </th>
+                                    <th>
+                                        群名称
+                                    </th>
+
+                                    <th>
+                                        修改时间
+                                    </th>
+
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr ng-repeat="obj in res.groupInfo">
+                                    <td>{{obj.groupId}}</td>
+                                    <td>{{obj.groupName}}</td>
+                                    <td>{{obj.lastModDate |  date:"yyyy-MM-dd hh:mm:ss"}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+
+
+                        </div>
+                    </section>
+
+
+                </div>
+
+
+            </section>
+</section>
+
+</div>

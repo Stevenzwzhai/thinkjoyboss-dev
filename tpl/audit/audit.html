@@ -1,0 +1,69 @@
+
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">审核内容</h1>
+</div>
+<div class="wrapper-md" >
+
+    {{isSchool}}
+
+    <!--修改信息-->
+    <section class="changeMsg" ng-hide="isMsgShow">
+        <form class="form-horizontal" name="updateForm"   novalidate>
+            <div class="form-group">
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label  class="col-sm-3 control-label tl">选择地区</label>
+                        <div class="col-sm-9">
+                            <input select-address     ng-model="fm.address"  p="proviceName" c="cityName" a="districtName" d="d"   placeholder="请选择所在地" type="text" class="form-control"  required/>
+                            <input type="hidden"  ng-bind="fm.areaId"     id="areaId"  />
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-6" ng-hide="isSchool">
+                        <label  class="col-sm-3 control-label tl">选择学校</label>
+                        <div class="col-sm-9">
+                            <select  ng-options="m.schoolName for m in schools" class="form-control" ng-model="fm.school" required>
+                                <option value="">-- 全部学校 --</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+    </section>
+
+
+
+    <tabset class="tab-container" ng-init="steps={percent:20, step1:true, step2:false, step3:false}" >
+
+        <tab  heading="学校" active="steps.step1" select="auditJumpPage(0)" >
+
+            <ui-view name="audit-school"></ui-view>
+
+        </tab>
+        <tab heading="班级" disabled="step1.$invalid" active="steps.step2" select="auditJumpPage(1)"  >
+
+            <ui-view name="audit-class"></ui-view>
+
+        </tab>
+        <tab heading="科目" disabled="step2.$invalid" active="steps.step3" select="auditJumpPage(2)"  >
+
+            <ui-view name="audit-subject"></ui-view>
+
+        </tab>
+    </tabset>
+
+
+</div>
+
+
+
+
+

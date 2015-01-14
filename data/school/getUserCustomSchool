@@ -1,0 +1,32 @@
+{
+    "rtnCode": "0000000",
+    "msg": "错误原因",
+    "bizData":
+        [
+        {"phone": "18091199362",
+        "userName": "张三",
+        "area": "省->市->区",
+        "schoolName": "喜悦高中",
+        "schoolId": 100,
+        "status": 0,
+        "areaId" : 610114
+         },
+        {"phone": "18091199362",
+             "userName": "李四",
+             "area": "省->市->区",
+             "schoolName": "喜悦一中",
+             "schoolId": 101,
+             "status": 0,
+                 "areaId" : 610113
+        },
+         {"phone": "18091199362",
+                     "userName": "小明",
+                     "area": "省->市->区",
+                     "schoolName": "高薪一中",
+                     "schoolId": 102,
+                     "status": 0,
+                         "areaId" : 610113
+                }
+
+    ]
+}
