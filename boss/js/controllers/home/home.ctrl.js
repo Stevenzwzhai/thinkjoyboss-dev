@@ -6,6 +6,4 @@ App
         $scope.posts = [];
 
 
-
-
     });

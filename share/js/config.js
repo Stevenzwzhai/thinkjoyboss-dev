@@ -33,6 +33,8 @@ App
   }]);
 
 
+
+
 //常量配置
 App.constant("SERVER", {
     url : {

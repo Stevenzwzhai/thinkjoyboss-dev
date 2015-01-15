@@ -12,6 +12,7 @@ var App = angular.module('app', [
     'ui.bootstrap',
     'ui.load',
     'ui.jq',
+    "toaster",
     'ui.validate',
     'oc.lazyLoad',
     'pascalprecht.translate'

@@ -3,7 +3,7 @@
 /**
  * Config for the router
  */
-angular.module('app')
+App
   .run(
     [          '$rootScope', '$state', '$stateParams',
       function ($rootScope,   $state,   $stateParams) {
@@ -95,3 +95,10 @@ angular.module('app')
       }
     ]
   );
+
+
+//配置http 拦截器
+App.config(function($httpProvider){
+    $httpProvider.interceptors.push("AjaxInterceptors");
+
+});

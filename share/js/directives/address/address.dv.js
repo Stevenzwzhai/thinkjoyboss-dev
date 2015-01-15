@@ -67,12 +67,7 @@ App.directive('selectAddress', function($http, $q, $compile,BaseService) {
                         return false;
                     });
 
-                    $(window).on('click', (function(_this) {
 
-                        return function() {
-                            return _this.hide();
-                        };
-                    })(this));
                     this.element.on('click', function() {
                         return event.stopPropagation();
                     });
@@ -92,7 +87,6 @@ App.directive('selectAddress', function($http, $q, $compile,BaseService) {
                     popup.element = $($template[2]);
 
                     scope.provinces = data;
-
 
                     return popup.init();
                 });

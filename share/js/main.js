@@ -2,9 +2,9 @@
 
 //应用初始化设置
 //整体应用的配置
-angular.module('app')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window','SERVER',
-    function(              $scope,   $translate,   $localStorage,   $window ,SERVER) {
+App
+  .controller('AppCtrl', ['$scope', '$state','$translate', '$rootScope','$localStorage', '$window','toaster','SERVER',
+    function(    $scope, $state,$translate, $rootScope,  $localStorage, $window ,toaster,SERVER) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
@@ -34,7 +34,8 @@ angular.module('app')
           asideFixed: false,
           asideFolded: false,
           asideDock: false,
-          container: false
+          container: false,
+          env      : false
         }
       }
 
@@ -44,11 +45,36 @@ angular.module('app')
       } else {
         $localStorage.settings = $scope.app.settings;
       }
-      $scope.$watch('app.settings', function(){
+
+
+
+      $scope.$watch('app.settings', function(newVal,oldVal){
         if( $scope.app.settings.asideDock  &&  $scope.app.settings.asideFixed ){
           // aside dock and fixed must set the header fixed.
           $scope.app.settings.headerFixed = true;
         }
+
+
+          //地址切换
+          if(newVal.env !=  oldVal.env){
+                var msg;
+              //正式
+              if(newVal.env){
+                  SERVER.url = SERVER.formalUrl;
+                  msg = "正式环境";
+              }
+              //测试
+              else{
+                  SERVER.url = SERVER.testUrl;
+                  msg = "测试环境"
+              }
+              $rootScope.alertSuccess("已经切换到"+ msg);
+
+            var stateName = $state.current.name;
+            $state.go(stateName);
+          }
+
+
         // save to local storage
         $localStorage.settings = $scope.app.settings;
       }, true);
@@ -80,7 +106,58 @@ angular.module('app')
       }
 
 
-        //默认测试连接
-        SERVER.url = SERVER.formalUrl;
 
-  }]);
+        //全局提示框
+        $rootScope.$watch("httpError",function(temp){
+            if(temp){
+                var type = temp.type || "info";
+                toaster.pop(type, temp.title, temp.content);
+            }
+        });
+
+
+        $rootScope.alertSuccess = function(content,title){
+            var title = title || "成功";
+
+            var httpError = {
+                content : content,
+                title : "success",
+                status : 200,
+                type : "success"
+            }
+            $rootScope.httpError = httpError;
+        }
+
+        $rootScope.alertInfo = function(content){
+            var httpError = {
+                content : content,
+                title : "info",
+                status : 200,
+                type : "info"
+            }
+            $rootScope.httpError = httpError;
+        }
+
+        $rootScope.alertWarn = function(content){
+            var httpError = {
+                content : content,
+                title : "warning",
+                status : 200,
+                type : "warning"
+            }
+            $rootScope.httpError = httpError;
+        }
+
+        $rootScope.alertError = function(content){
+            var httpError = {
+                content : content,
+                title : "error",
+                status : 200,
+                type : "danger"
+            }
+            $rootScope.httpError = httpError;
+        }
+
+
+
+    }]);

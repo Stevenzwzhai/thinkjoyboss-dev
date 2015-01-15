@@ -16,26 +16,22 @@
     "aside" : {
         "nav" : {
             "components01":{
-
-                "COMPONENTS" : "boss 就这么任性",
-
-                "BASE_MG" :{
-                    "TITLE" : "基础信息管理",
-                    "USER_MG"  : "用户管理"
+                "components" : "boss 就这么任性",
+                "base_mg" :{
+                    "title" : "基础信息管理",
+                    "user_mg"  : "用户管理"
                 },
 
-                "WORK_ORDER" :{
-                    "TITLE" : "工单管理",
+                "work_order" :{
+                    "title" : "工单管理",
 
-                    "AUDIT_MG" :  "审核内容"
+                    "audit_mg" :  "审核内容"
                 }
             },
 
 
             "components02" : {
-
-                "COMPONENTS" : "boss 提供一站服务",
-
+                "components" : "boss 提供一站服务",
                 "ui_kits" : {
                     "UI_KITS" : "消息管理",
                     "BUTTONS" : "消息推送",
