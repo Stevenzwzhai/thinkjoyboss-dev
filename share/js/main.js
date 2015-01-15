@@ -54,7 +54,6 @@ App
           $scope.app.settings.headerFixed = true;
         }
 
-
           //地址切换
           if(newVal.env !=  oldVal.env){
                 var msg;
