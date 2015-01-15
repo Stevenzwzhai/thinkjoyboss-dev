@@ -4,8 +4,9 @@ App
 
         console.log("school...")
 
-        //$scope.$parent.isSchool = true;
-        console.log($scope.$parent.isSchool);
+        $scope.$parent.$parent.$parent.isSchool = true;
+
+
 
 
         //查询学校

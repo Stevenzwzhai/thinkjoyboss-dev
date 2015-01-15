@@ -13,7 +13,6 @@ App
         }
 
 
-
         //分页数据
         $scope.pageIndex = 1;
         $scope.pageSize = 8;

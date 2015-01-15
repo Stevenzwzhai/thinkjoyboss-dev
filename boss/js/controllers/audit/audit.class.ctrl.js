@@ -2,12 +2,8 @@ App
 
     .controller("AuditClassCtrl", function ($rootScope,$scope, $window, $log, $q, $timeout, AuditService,Util) {
 
-        console.log("class..");
 
-
-        $scope.$parent.isSchool = false;
-
-        console.log($scope.$parent.isSchool);
+        $scope.$parent.$parent.$parent.isSchool = false
 
 
         //查询班级
@@ -44,13 +40,14 @@ App
         //接受来自audit的事件
         $scope.$on("audit-child",function(event,data){
             console.log("子id : ",data);
+
             loadList(getParams(),data.isFirst);
         });
 
         var getParams = function(){
             return  {
-                areaId : $scope.$parent.fm.areaId,
-                schoolId : $scope.$parent.fm.schoolId,
+                areaId :  $scope.$parent.$parent.$parent.fm.areaId,
+                schoolId :  $scope.$parent.$parent.$parent.fm.schoolId,
                 pageIndex : $scope.pageIndex-1,
                 pageSize  :  $scope.pageSize,
                 status    :  ""

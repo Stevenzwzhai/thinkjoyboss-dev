@@ -15,8 +15,9 @@
 
             <div class="col-sm-3">
 
-                <button type="submit"  class="btn m-b-xs  btn-primary btn-addon"    ng-click="seachUser();"    ng-disabled="form.$invalid  || form.submit" >
-                    <i class="fa fa-search"></i><span class="glyphicon glyphicon-refresh refresh" ng-show="form.submit"></span><span ng-hide="form.submit">查询</span></button>
+                <button type="submit"  class="btn m-b-xs  btn-primary "  ng-click="seachUser();"    ng-disabled="form.$invalid  || form.submit" >
+                   <span class="glyphicon glyphicon-refresh refresh" ng-show="form.submit"></span>
+                    <span ng-hide="form.submit">查询</span></button>
 
                 <button type="submit" class="btn m-b-xs  btn-danger btn-addon"  ng-click="delUser();"  ng-disabled="form.$invalid || form.submit">
                     <i class="fa fa-remove"></i>

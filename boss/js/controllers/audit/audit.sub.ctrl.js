@@ -3,7 +3,7 @@ App
     .controller("AuditSubjectCtrl", function ($rootScope,$scope, $window, $log, $q, $timeout, AuditService,Util) {
 
 
-        $scope.$parent.isSchool = false;
+        $scope.$parent.$parent.$parent.isSchool = false
 
 
         //查询班级
@@ -64,8 +64,8 @@ App
 
         var getParams = function(){
             return  {
-                areaId : $scope.$parent.$parent.fm.areaId,
-                schoolId : $scope.$parent.$parent.fm.schoolId,
+                areaId :  $scope.$parent.$parent.$parent.fm.areaId,
+                schoolId :  $scope.$parent.$parent.$parent.fm.schoolId,
                 pageIndex : $scope.pageIndex-1,
                 pageSize  :  $scope.pageSize,
                 status    :  ""
