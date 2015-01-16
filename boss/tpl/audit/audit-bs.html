@@ -1,0 +1,36 @@
+
+<div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">审核内容</h1>
+</div>
+<div class="wrapper-md" >
+
+
+
+
+
+    <tabset class="tab-container" ng-init="steps={percent:20, step1:true, step2:false, step3:false}" >
+
+        <tab  heading="学校" active="steps.step1" select="auditJumpPage(0)" >
+
+            <ui-view name="audit-school"></ui-view>
+
+        </tab>
+        <tab heading="班级" disabled="step1.$invalid" active="steps.step2" select="auditJumpPage(1)"  >
+
+            <ui-view name="audit-class"></ui-view>
+
+        </tab>
+        <tab heading="科目" disabled="step2.$invalid" active="steps.step3" select="auditJumpPage(2)"  >
+
+            <ui-view name="audit-subject"></ui-view>
+
+        </tab>
+    </tabset>
+
+
+</div>
+
+
+
+
+
