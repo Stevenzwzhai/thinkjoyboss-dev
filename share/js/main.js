@@ -66,6 +66,12 @@ App
         }
 
 
+        //跳转帮助页面
+        $rootScope.openDoc = function(){
+            $window.open("../cgular/src/index.html");
+        }
+
+
 
       //应用设置参数
       $scope.app = {
