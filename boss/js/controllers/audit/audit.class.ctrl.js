@@ -24,7 +24,7 @@ App
                 }
 
             }, function (err) {
-                alert("网络出错!");
+                $rootScope.alertError("网络出错!");
             });
         }
 

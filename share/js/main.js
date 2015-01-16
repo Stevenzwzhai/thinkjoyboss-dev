@@ -10,10 +10,67 @@ App
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice( $window ) && angular.element($window.document.body).addClass('smart');
 
+
+        //全局提示框
+        $rootScope.$watch("httpError",function(temp){
+            if(temp){
+                var type = temp.type || "info";
+                toaster.pop(type, temp.title, temp.content);
+            }
+        });
+
+
+        $rootScope.alertSuccess = function(content,title){
+            var title = title || "成功";
+
+            var httpError = {
+                content : content,
+                title : title,
+                status : 200,
+                type : "success"
+            }
+            $rootScope.httpError = httpError;
+        }
+
+        $rootScope.alertInfo = function(content,title){
+            var title = title || "提示";
+            var httpError = {
+                content : content,
+                title : title,
+                status : 200,
+                type : "info"
+            }
+            $rootScope.httpError = httpError;
+        }
+
+        $rootScope.alertWarn = function(content,title){
+            var title = title || "警告";
+            var httpError = {
+                content : content,
+                title : title,
+                status : 200,
+                type : "warning"
+            }
+            $rootScope.httpError = httpError;
+        }
+
+        $rootScope.alertError = function(content,title){
+            var title = title || "错误";
+            var httpError = {
+                content : content,
+                title : title,
+                status : 200,
+                type : "danger"
+            }
+            $rootScope.httpError = httpError;
+        }
+
+
+
       //应用设置参数
       $scope.app = {
         name: 'Boss',
-        version: '1.3.3',
+        version: '0.0.1',
         // for chart colors
         color: {
           primary: '#7266ba',
@@ -26,10 +83,10 @@ App
           black:   '#1c2b36'
         },
         settings: {
-          themeID: 1,
+          themeID: 7,
           navbarHeaderColor: 'bg-black',
-          navbarCollapseColor: 'bg-white-only',
-          asideColor: 'bg-black',
+          navbarCollapseColor: 'bg-black',
+          asideColor: 'bg-white b-r',
           headerFixed: true,
           asideFixed: false,
           asideFolded: false,
@@ -48,11 +105,23 @@ App
 
 
 
+      //默认环境
+      if($localStorage.settings.env){
+          SERVER.url = SERVER.formalUrl;
+      }
+      else{
+          SERVER.url = SERVER.testUrl;
+      }
+
+
+
       $scope.$watch('app.settings', function(newVal,oldVal){
         if( $scope.app.settings.asideDock  &&  $scope.app.settings.asideFixed ){
           // aside dock and fixed must set the header fixed.
           $scope.app.settings.headerFixed = true;
         }
+
+
 
           //地址切换
           if(newVal.env !=  oldVal.env){
@@ -72,7 +141,6 @@ App
             var stateName = $state.current.name;
             $state.go(stateName);
           }
-
 
         // save to local storage
         $localStorage.settings = $scope.app.settings;
@@ -106,56 +174,7 @@ App
 
 
 
-        //全局提示框
-        $rootScope.$watch("httpError",function(temp){
-            if(temp){
-                var type = temp.type || "info";
-                toaster.pop(type, temp.title, temp.content);
-            }
-        });
 
-
-        $rootScope.alertSuccess = function(content,title){
-            var title = title || "成功";
-
-            var httpError = {
-                content : content,
-                title : "success",
-                status : 200,
-                type : "success"
-            }
-            $rootScope.httpError = httpError;
-        }
-
-        $rootScope.alertInfo = function(content){
-            var httpError = {
-                content : content,
-                title : "info",
-                status : 200,
-                type : "info"
-            }
-            $rootScope.httpError = httpError;
-        }
-
-        $rootScope.alertWarn = function(content){
-            var httpError = {
-                content : content,
-                title : "warning",
-                status : 200,
-                type : "warning"
-            }
-            $rootScope.httpError = httpError;
-        }
-
-        $rootScope.alertError = function(content){
-            var httpError = {
-                content : content,
-                title : "error",
-                status : 200,
-                type : "danger"
-            }
-            $rootScope.httpError = httpError;
-        }
 
 
 

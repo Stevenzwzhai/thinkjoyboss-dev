@@ -28,7 +28,7 @@ App
                 }
 
             }, function (err) {
-                alert("服务器连接失败!");
+                $rootScope.alertError("服务器连接失败!");
             });
 
         }

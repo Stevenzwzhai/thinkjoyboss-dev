@@ -33,7 +33,7 @@ App
                     alert(result.msg);
                     $scope.form.submit = false;
                 },function(err){
-                    alert("网络错误！");
+                    $rootScope.alertError("网络错误！");
                     $scope.form.submit = false;
                 });
 
@@ -55,7 +55,7 @@ App
                     res = res.bizData;
                 }
                 else if(res.rtnCode == "1000003"){
-                    alert("该用户不存在 或 手机号码错误！");
+                    $rootScope.alertError("该用户不存在 或 手机号码错误！");
                     res = "";
                 }
 
@@ -63,7 +63,7 @@ App
 
                 $scope.form.submit = false;
             },function(err){
-                alert("网络错误！");
+                $rootScope.alertError("网络错误！");
                 $scope.form.submit = false;
             });
 

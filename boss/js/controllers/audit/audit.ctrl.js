@@ -114,7 +114,7 @@ App
                 }
 
             }, function (err) {
-                alert("网络错误!");
+                $rootScope.alertError("服务器连接失败!");
             });
         }
 
