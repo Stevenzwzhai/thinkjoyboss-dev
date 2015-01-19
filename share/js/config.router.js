@@ -37,6 +37,18 @@ App
                   controller: "HomeCtrl as home"
               })
 
+
+
+              //学校管理
+              .state("app.school",{
+                  url : "/school",
+                  templateUrl : "boss/tpl/school/schoolManager.html",
+                  controller : "SchoolCtrl"
+
+              })
+
+
+
               //基础审核
               .state("app.audit",{
                   url : "/audit",
@@ -59,6 +71,8 @@ App
                   }
 
               })
+
+
 
               //审核班级
               .state("app.audit.class",{
