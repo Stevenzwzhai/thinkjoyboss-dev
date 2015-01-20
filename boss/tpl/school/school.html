@@ -1,3 +1,79 @@
 <div class="bg-light lter b-b wrapper-md ng-scope">
     <h1 class="m-n font-thin h3">学校管理</h1>
 </div>
+
+
+
+<div class="wrapper-md">
+
+<div class="panel panel-default">
+
+    <div class="row wrapper">
+
+        <div class="col-sm-6">
+
+            <form name="schoolForm">
+
+                <div class="input-group">
+                    <input type="search" class="input-sm   form-control" placeholder="例: 西安市*小学"  ng-model="params.schoolName"   />
+              <span class="input-group-btn">
+
+                <button class="btn btn-sm btn-primary" type="button" ng-click="search();">查询</button>
+                <button class="btn btn-sm btn-default" type="reset" >清空</button>
+
+              </span>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+    <table-paging   refresh="refresh"  pageIndex="1"  pageSize="10"  params="params"  url="schoolUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total">
+
+        <div class="table-responsive">
+
+            <table class="table table-striped b-t b-light">
+                <thead>
+                <tr>
+                    <th>学校编号</th>
+                    <th>学校名称</th>
+                    <th>创建时间</th>
+                    <th>修改时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                        <tr ng-repeat="sco in posts">
+                            <td>{{sco.id}}</td>
+                            <td>{{sco.schoolName}}</td>
+                            <td>{{sco.createDate | date:"yyyy-MM-dd hh:mm:ss"}}</td>
+                            <td>{{sco.lastModDate | date:"yyyy-MM-dd hh:mm:ss"}}</td>
+                            <td >
+                                <a href class="active" ui-toggle-class>
+                                    <i class="fa fa-pencil-square-o text-primary text-active"></i>
+                                    <i class="fa fa-floppy-o text-primary text"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </table-paging>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>

@@ -1,10 +1,14 @@
 @charset "UTF-8";
-/** 分页按钮 **/
-.pager .next > button, .pager .next > span {
-  float: right; }
+/** 表格 **/
+.table {
+  margin-bottom: 0px; }
 
-.pager .previous > button, .pager .previous > span {
-  float: left; }
+.table > tbody > tr > td, .table > tfoot > tr > td {
+  vertical-align: middle; }
+
+/** 分页按钮 **/
+.pager {
+  margin: 6px 0; }
 
 .pager li > button, .pager li > span {
   display: inline-block;

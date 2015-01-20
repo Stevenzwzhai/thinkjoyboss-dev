@@ -92,6 +92,12 @@ App
               })
 
 
+              //学校管理
+              .state("app.school", {
+                  url: "/school",
+                  templateUrl: "boss/tpl/school/school.html",
+                  controller: "SchoolCtrl"
+              })
 
 
 

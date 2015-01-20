@@ -1,0 +1,26 @@
+
+<div ng-transclude></div>
+
+
+
+<footer class="panel-footer">
+    <div class="row">
+
+        <div class="col-sm-12 ">
+            <nav>
+                <ul class="pager">
+                    <li class="previous col-sm-4 text-left"  >
+                        <button href="#" class="ib" ng-disabled="pageIndex <= 1"   >&larr; 上一页</button>
+                    </li>
+                    <li class="col-sm-4 text-center">
+                        <span class="pageShow">{{pageIndex}}/{{pageTotal}}</span>
+                    </li>
+                    <li class="next col-sm-4 text-right"    >
+                        <button href="#"   ng-disabled="pageIndex >= pageTotal">下一页 &rarr;</button>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</footer>

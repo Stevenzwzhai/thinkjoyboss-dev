@@ -2,14 +2,15 @@
 
 App
 
-    .factory("Util", function ($http, $q, SERVER) {
+    .factory("Util", function () {
 
 
         var Util = {
 
             caclTotal : function($scope){
-                var size   = $scope.pageSize;
-                var total  = $scope.pageTotal;
+                console.log("ddd");
+                var size   = parseInt($scope.pageSize);
+                var total  = parseInt($scope.pageTotal);
                 var  currentPage;
                 if( total %  size   == 0){
                     currentPage = total / size;
@@ -21,8 +22,8 @@ App
             },
 
             calcPage : function($scope,opear){
-                var index   = $scope.pageIndex;
-                var total  = $scope.pageTotal;
+                var index   = parseInt($scope.pageIndex);
+                var total  = parseInt($scope.pageTotal);
 
                 if(opear == "next"){
                     index++;
