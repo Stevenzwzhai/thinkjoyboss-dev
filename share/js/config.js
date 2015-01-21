@@ -51,9 +51,14 @@ App.constant("SERVER", {
 //        uc  : "http://172.16.130.34:8080/v1",
 //        message : "http://172.16.130.34:8080/v1"
 //    },
-    //正式
+//    //正式
+//    formalUrl : {
+//        uc  : "http://imzhiliao.com:10012/v1",
+//        message : "http://imzhiliao.com:10011/v1"
+//    }
+    //预发布
     formalUrl : {
-        uc  : "http://imzhiliao.com:10012/v1",
-        message : "http://imzhiliao.com:10011/v1"
+        uc  : "http://imzhiliao.com:10000/uc",
+        message : "http://imzhiliao.com:10000/message"
     }
 });
