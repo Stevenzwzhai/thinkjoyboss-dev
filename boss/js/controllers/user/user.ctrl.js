@@ -45,6 +45,25 @@ App
 
         }
 
+        $scope.delChild = function(child){
+            var ques=window.confirm("确实要删除孩子  "+child.childName+"  吗？")
+            if(ques){
+                UserService.deleteChild(child.childId).then(function(result){
+                    $rootScope.alertSuccess(result.msg);
+                    $scope.seachUser();
+                },function(err){
+                    $rootScope.alertError("网络错误！");
+                });
+
+            }
+            else{
+            }
+
+        }
+
+
+
+
         $scope.seachUser = function(){
 
             $scope.form.submit = true;

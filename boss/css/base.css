@@ -1,10 +1,29 @@
 @charset "UTF-8";
+.loading-am.ng-hide-add, .loading-am.ng-hide-remove {
+  -webkit-transition: all linear 0.5s;
+  -moz-transition: all linear 0.5s;
+  -o-transition: all linear 0.5s;
+  -ms-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+  display: block !important; }
+
+.loading-am.ng-hide-add.ng-hide-add-active,
+.loading-am.ng-hide-remove {
+  opacity: 0; }
+
+.loading-am.ng-hide-add,
+.loading-am.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1; }
+
 /** 表格 **/
 .table {
   margin-bottom: 0px; }
 
 .table > tbody > tr > td, .table > tfoot > tr > td {
   vertical-align: middle; }
+
+.table-responsive {
+  overflow: inherit; }
 
 /** 分页按钮 **/
 .pager {
@@ -30,10 +49,7 @@
 /** loading图片 **/
 .glyphicon-refresh {
   -webkit-animation: spin 1s  linear both  infinite;
-  animation: spin 1s  linear both  infinite;
-  display: none; }
-  .glyphicon-refresh.refresh {
-    display: inline-block; }
+  animation: spin 1s  linear both  infinite; }
 
 @-webkit-keyframes spin {
   0% {
@@ -100,5 +116,9 @@
 .spin.inverse {
   -webkit-animation-name: spin-inverse;
   animation-name: spin-inverse; }
+
+/** 常用 **/
+.mb15 {
+  margin-bottom: 15px !important; }
 
 /*# sourceMappingURL=base.css.map */

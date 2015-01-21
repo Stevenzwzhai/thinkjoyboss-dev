@@ -40,6 +40,24 @@ App
                     });
 
                 return  defer.promise;
+            },
+
+            deleteChild : function(childId){
+                var defer =  $q.defer();
+                $http.post(SERVER.url.uc+"/childBoss/deleteChild",{
+                    childId : childId
+                })
+                    .success(function(res){
+                        defer.resolve(res);
+                    })
+                    .error(function(err){
+                        defer.reject(err);
+
+                    });
+
+                return  defer.promise;
+
+
             }
 
 

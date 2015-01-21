@@ -18,8 +18,14 @@
                     <input type="search" class="input-sm   form-control" placeholder="例: 西安市*小学"  ng-model="params.schoolName"   />
               <span class="input-group-btn">
 
-                <button class="btn btn-sm btn-primary" type="button" ng-click="search();">查询</button>
-                <button class="btn btn-sm btn-default" type="reset" >清空</button>
+
+                <button class="btn btn-sm btn-primary" type="button" ng-click="search();" ng-disabled="isSubmit">
+                    <span ng-show="isSubmit" class="">
+                             <i class=" fa fa-refresh glyphicon-refresh"  ></i>
+                    </span>
+                    <span class=""  ng-hide="isSubmit">查询</span>
+                </button>
+
 
               </span>
                 </div>
@@ -29,7 +35,7 @@
     </div>
 
 
-    <table-paging   refresh="refresh"  pageIndex="1"  pageSize="10"  params="params"  url="schoolUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total">
+    <table-paging   is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="10"  params="params"  url="schoolUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total">
 
         <div class="table-responsive">
 
@@ -47,13 +53,18 @@
                 <tbody>
                         <tr ng-repeat="sco in posts">
                             <td>{{sco.id}}</td>
-                            <td>{{sco.schoolName}}</td>
+                            <td>
+                                <div ng-hide="sco.edit">{{sco.schoolName}}</div>
+                                <div ng-show="sco.edit"><input type="text"     class="input-sm form-control"  ng-model="sco.schoolName"  name="schoolName"  /></div>
+                            </td>
                             <td>{{sco.createDate | date:"yyyy-MM-dd hh:mm:ss"}}</td>
                             <td>{{sco.lastModDate | date:"yyyy-MM-dd hh:mm:ss"}}</td>
                             <td >
-                                <a href class="active" ui-toggle-class>
-                                    <i class="fa fa-pencil-square-o text-primary text-active"></i>
-                                    <i class="fa fa-floppy-o text-primary text"></i>
+
+
+                                <a href  ui-toggle-class  ng-click="edit(sco)">
+                                    <i class="fa fa-floppy-o text-primary  text-active "></i>
+                                    <i class="fa fa-pencil-square-o text-primary  text"></i>
                                 </a>
                             </td>
                         </tr>

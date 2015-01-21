@@ -40,11 +40,10 @@ App
 
 
               //学校管理
-              .state("app.school",{
-                  url : "/school",
-                  templateUrl : "boss/tpl/school/schoolManager.html",
-                  controller : "SchoolCtrl"
-
+              .state("app.school", {
+                  url: "/school",
+                  templateUrl: "boss/tpl/school/school.html",
+                  controller: "SchoolCtrl"
               })
 
 
@@ -106,12 +105,6 @@ App
               })
 
 
-              //学校管理
-              .state("app.school", {
-                  url: "/school",
-                  templateUrl: "boss/tpl/school/school.html",
-                  controller: "SchoolCtrl"
-              })
 
 
 

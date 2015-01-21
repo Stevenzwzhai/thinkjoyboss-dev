@@ -87,7 +87,24 @@ App
                        defer.reject(err);
                    });
                return defer.promise;
-           }
+           },
+
+
+           updateSchool : function(id,schoolName){
+                   var defer = $q.defer();
+                   $http.post(SERVER.url.uc+"/schoolBoss/updateSchoolInfo", {
+                       schoolName: schoolName,
+                       id  : id
+                   })
+                       .success(function (res) {
+                           defer.resolve(res);
+                       })
+                       .error(function (err) {
+                           defer.reject(err);
+                       });
+
+                   return defer.promise;
+               }
 
        }
 

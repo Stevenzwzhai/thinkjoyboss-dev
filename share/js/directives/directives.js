@@ -9,7 +9,8 @@ App
                 params: "=",
                 url: "=",
                 results : "=",
-                refresh : "="
+                refresh : "=",
+                isSubmit : "="
             },
             link: function (scope, element, attrs) {
 
@@ -36,11 +37,11 @@ App
 
 
 
-
                 scope.$watch("refresh",function(newD,oldD){
 
                     if(newD){
                         loadList(true);
+                        scope.pageIndex = 1;
                     }
 
                 });
@@ -51,6 +52,8 @@ App
                     var index = (scope.pageIndex-1) * scope.pageSize;
 
                     var  params = angular.extend([],{pageIndex:index,pageSize:scope.pageSize},scope.params);
+
+                    scope.isSubmit = true;
 
                     $http.get(scope.url, {
                         params:  params
@@ -67,10 +70,13 @@ App
                            Util.caclTotal(scope);
                         }
 
+                            scope.isSubmit = false;
+
 
                     })
                     .error(function () {
                           $rootScope.alertError("网络错误！");
+                            scope.isSubmit = false;
                     });
 
 

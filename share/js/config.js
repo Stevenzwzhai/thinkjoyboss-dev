@@ -46,6 +46,11 @@ App.constant("SERVER", {
         uc  : "http://10.10.68.11:8080/v1",
         message : "http://10.10.68.12:8080/v1"
     },
+//    //测试
+//    testUrl : {
+//        uc  : "http://172.16.130.34:8080/v1",
+//        message : "http://172.16.130.34:8080/v1"
+//    },
     //正式
     formalUrl : {
         uc  : "http://imzhiliao.com:10012/v1",
