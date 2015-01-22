@@ -49,8 +49,8 @@ App
 
                 var loadList = function (isFirst) {
 
-                    var index = (scope.pageIndex-1) * scope.pageSize;
-
+//                    var index = (scope.pageIndex-1) * scope.pageSize;
+                    var index = scope.pageIndex - 1;
                     var  params = angular.extend([],{pageIndex:index,pageSize:scope.pageSize},scope.params);
 
                     scope.isSubmit = true;

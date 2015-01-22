@@ -39,12 +39,14 @@ App
 App.constant("SERVER", {
     url : {
         uc  : "",
-        message : ""
+        message : "",
+        push : ""
     },
     //测试
     testUrl : {
         uc  : "http://10.10.68.11:8080/v1",
-        message : "http://10.10.68.12:8080/v1"
+        message : "http://10.10.68.12:8080/v1",
+        push : "http://127.0.0.1:8080/"
     },
 //    //测试
 //    testUrl : {
@@ -59,6 +61,7 @@ App.constant("SERVER", {
     //预发布
     formalUrl : {
         uc  : "http://imzhiliao.com:10000/uc",
-        message : "http://imzhiliao.com:10000/message"
+        message : "http://imzhiliao.com:10000/message",
+        push : "http://127.0.0.1:8080/"
     }
 });

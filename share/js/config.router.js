@@ -104,6 +104,11 @@ App
                   controller: "UserCtrl as test"
               })
 
+              .state("app.sms", {
+                  url: "/sms",
+                  templateUrl: "boss/tpl/message/sms/smsQuery.html",
+                  controller: "SMSCtrl"
+              })
 
 
 

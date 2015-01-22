@@ -1,0 +1,69 @@
+<div class="bg-light lter b-b wrapper-md ng-scope">
+    <h1 class="m-n font-thin h3">短信列表</h1>
+</div>
+
+
+
+<div class="wrapper-md">
+    <div class="row wrapper">
+
+        <div class="col-sm-6">
+
+            <form name="smsForm">
+
+                <div class="input-group">
+                    <input type="search" class="input-sm   form-control" placeholder="例: 15399098793"  ng-model="params.phone"   />
+              <span class="input-group-btn">
+
+
+                <button class="btn btn-sm btn-primary" type="button" ng-click="search();" ng-disabled="isSubmit">
+                    <span ng-show="isSubmit" class="">
+                             <i class=" fa fa-refresh glyphicon-refresh"  ></i>
+                    </span>
+                    <span class=""  ng-hide="isSubmit">查询</span>
+                </button>
+
+
+              </span>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <table-paging   is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="10"  params="params"  url="smsUrl"  results="posts"  resultsName="pageList"  total="total">
+
+            <div class="table-responsive">
+
+                <table class="table table-striped b-t b-light">
+                    <thead>
+                    <tr>
+                        <th>发送号码</th>
+                        <th>短信内容</th>
+                        <th>短信类型</th>
+                        <th>发送渠道</th>
+                        <th>发送来源</th>
+                        <th>发送结果</th>
+                        <th>发送时间</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr ng-repeat="sco in posts">
+                        <td>{{sco.toSendPhone}}</td>
+                        <td>{{sco.sendContent}} </td>
+                        <td>{{sco.smsType}}</td>
+                        <td>{{sco.channelDesc}}</td>
+                        <th>{{sco.bizTarget}}</th>
+                        <td>{{sco.sendResult | smsResult}}</td>
+                        <td>{{sco.sendTime}}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </table-paging>
+    </div>
+</div>

@@ -11,6 +11,18 @@ App
         };
     })
 
+    .filter("smsResult", function() {
+        return function(status) {
+            if (status == "success") {
+                return "提交成功";
+            } else if (status == "fail") {
+                return "提交失败";
+            }
+
+            return status;
+        }
+    })
+
 .filter("userType",function(){
     return function(res) {
 
