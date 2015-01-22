@@ -75,8 +75,8 @@ App
 
       //应用设置参数
       $scope.app = {
-        name: 'Boss',
-        version: '0.0.1',
+        name: 'BOSS',
+        version: '0.0.3',
         // for chart colors
         color: {
           primary: '#7266ba',
