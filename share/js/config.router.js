@@ -113,18 +113,6 @@ App
 
 
 
-//            //客服聊天
-//              .state("app.chat",{
-//                  url : "/chat",
-//                  views : {
-//                      "chat":{
-//                          templateUrl : "cs/tpl/chat/chat.html",
-//                          controller : "ChatCtrl"
-//                      }
-//                  }
-//              })
-
-
              //sop 路由部分
 
 

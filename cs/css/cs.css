@@ -1,10 +1,31 @@
 @charset "UTF-8";
 /** 客服系统 cs**/
+.indent .chat-left {
+  display: none; }
+.indent .chat-right {
+  padding-left: 0;
+  padding-right: 0;
+  position: fixed;
+  right: 0px;
+  background: #ffffff;
+  width: 68px; }
+.indent .nav-tabs-alt .wrapper-md {
+  padding: 0px 15px; }
+  .indent .nav-tabs-alt .wrapper-md .list-group {
+    overflow: hidden; }
+  .indent .nav-tabs-alt .wrapper-md .list-group-item {
+    padding: 0px 15px;
+    padding-bottom: 8px;
+    padding-top: 5px;
+    overflow: hidden; }
+    .indent .nav-tabs-alt .wrapper-md .list-group-item .clear {
+      display: none; }
+
 .chatMain {
   display: inline-block;
   position: fixed;
   right: 0px;
-  top: 55px;
+  top: 70px;
   z-index: 9999; }
   .chatMain .badge.up {
     position: relative;
@@ -12,9 +33,12 @@
     padding: 3px 6px;
     margin-left: -13px; }
 
+.tab-content .tab-pane {
+  height: 320px;
+  overflow-y: scroll; }
+
 .chatContent {
-  background: #ffffff;
-  min-height: 200px; }
+  background: #ffffff; }
   .chatContent .chatContentHeader {
     padding: 10px 20px;
     border-bottom: 1px solid #dee5e7; }
