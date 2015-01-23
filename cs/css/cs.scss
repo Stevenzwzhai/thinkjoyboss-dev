@@ -5,12 +5,53 @@
 /** 客服系统 cs**/
 
 
+//缩进
+.indent{
+
+  .chat-left{
+    display: none;
+  }
+  .chat-right{
+    padding-left: 0;
+    padding-right: 0;
+
+    position: fixed;
+    right: 0px;
+    background: #ffffff;
+    width: 68px;
+  }
+
+  .nav-tabs-alt{
+    .wrapper-md{
+      padding: 0px 15px;
+      .list-group{
+        overflow: hidden;
+      }
+      .list-group-item{
+          padding: 0px 15px;
+          padding-bottom: 8px;
+        padding-top: 5px;
+        overflow: hidden;
+
+
+        .clear{
+          display: none;
+        }
+      }
+    }
+
+  }
+
+
+}
+
+
 
 .chatMain{
   display: inline-block;
   position: fixed;
   right: 0px;
-  top: 55px;
+  top: 70px;
   z-index: 9999;
 
 
@@ -24,14 +65,15 @@
 }
 
 
-
-
+.tab-content{
+  .tab-pane{
+    height: 320px;
+    overflow-y: scroll;
+  }
+}
 
 .chatContent{
   background: #ffffff;
-  min-height: 200px;
-
-
 
 
   .chatContentHeader{

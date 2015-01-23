@@ -15,6 +15,13 @@
 .loading-am.ng-hide-remove.ng-hide-remove-active {
   opacity: 1; }
 
+.tani {
+  -webkit-transition: all linear 0.5s;
+  -moz-transition: all linear 0.5s;
+  -o-transition: all linear 0.5s;
+  -ms-transition: all linear 0.5s;
+  transition: all linear 0.5s; }
+
 /** 表格 **/
 .table {
   margin-bottom: 0px; }
