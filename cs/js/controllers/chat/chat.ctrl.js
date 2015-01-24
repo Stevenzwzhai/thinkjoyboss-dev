@@ -37,10 +37,8 @@ App
                 }
             ];
 
-
             //用户列表
             $scope.userList = [];
-
 
             //切换聊天
             $scope.toggleChat = function(toggle){
@@ -63,17 +61,16 @@ App
                 //清空
             }
 
-
-
             //接受消息
             var  onMessage = function(event){
-                console.log(event.data);
-
-                //添加新用户
-                switch (event.data.type){
-                    case  "broadcast" :
-                        $scope.userList.unshift(event.data.userInfo);
+                var data = JSON.parse(event.data);
+                switch (data.type){
+                    case "broadcast" :  //获取广播到的新用户
+                        $scope.userList.unshift(data.userInfo);
                         console.log($scope.userList);
+                        break;
+                    case "userList" :   //获取历史聊天用户列表
+
                         break;
                     default :
                         break;

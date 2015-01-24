@@ -96,102 +96,14 @@
                 <div class="wrapper-md">
                     <div class="m-b-sm text-md"></div>
                     <ul class="list-group no-bg no-borders pull-in">
-                        <li class="list-group-item">
+                        <li class="list-group-item" ng-repeat="user in userList">
                             <a herf class="pull-left thumb-sm avatar m-r" ng-dblclick="toggleChat(false)">
-                                <img src="lib/img/a0.jpg" alt="..." class="img-circle">
-                                <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
+                                <img ng-src="{{user.userIcon}}" alt="..." class="img-circle">
+                                <span class="badge badge-sm up bg-danger pull-right-xs">1</span>
                                 <i class="on b-white bottom"></i>
                             </a>
                             <div class="clear">
-                                <div><a href>Chris Fox</a></div>
-                                <small class="text-muted">Designer, Blogger</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a herf class="pull-left thumb-sm avatar m-r">
-                                <img src="lib/img/a0.jpg" alt="..." class="img-circle">
-                                <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-                                <i class="on b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>Chris Fox</a></div>
-                                <small class="text-muted">Designer, Blogger</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a herf class="pull-left thumb-sm avatar m-r">
-                                <img src="lib/img/a0.jpg" alt="..." class="img-circle">
-                                <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-                                <i class="on b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>Chris Fox</a></div>
-                                <small class="text-muted">Designer, Blogger</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a herf class="pull-left thumb-sm avatar m-r">
-                                <img src="lib/img/a0.jpg" alt="..." class="img-circle">
-                                <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-                                <i class="on b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>Chris Fox</a></div>
-                                <small class="text-muted">Designer, Blogger</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a herf class="pull-left thumb-sm avatar m-r">
-                                <img src="lib/img/a0.jpg" alt="..." class="img-circle">
-                                <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-                                <i class="on b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>Chris Fox</a></div>
-                                <small class="text-muted">Designer, Blogger</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a herf class="pull-left thumb-sm avatar m-r">
-                                <img src="lib/img/a0.jpg" alt="..." class="img-circle">
-                                <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-                                <i class="on b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>Chris Fox</a></div>
-                                <small class="text-muted">Designer, Blogger</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a herf class="pull-left thumb-sm avatar m-r">
-                                <img src="lib/img/a0.jpg" alt="..." class="img-circle">
-                                <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-                                <i class="on b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>Chris Fox</a></div>
-                                <small class="text-muted">Designer, Blogger</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a herf class="pull-left thumb-sm avatar m-r">
-                                <img src="lib/img/a0.jpg" alt="..." class="img-circle">
-                                <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-                                <i class="on b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>Chris Fox</a></div>
-                                <small class="text-muted">Designer, Blogger</small>
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <a herf class="pull-left thumb-sm avatar m-r">
-                                <img src="lib/img/a0.jpg" alt="..." class="img-circle">
-                                <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-                                <i class="on b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>Chris Fox</a></div>
+                                <div><a href>ng-bind="user.userName"</a></div>
                                 <small class="text-muted">Designer, Blogger</small>
                             </div>
                         </li>
