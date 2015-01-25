@@ -71,8 +71,6 @@ App
 
               })
 
-
-
               //审核班级
               .state("app.audit.class",{
                   url : "/class",
@@ -114,7 +112,14 @@ App
 
 
              //sop 路由部分
-
+              .state("sop", {
+                  url : ""
+              })
+              .state("sop.report", {
+                  url : "/report",
+                  templateUrl : "sop/tpl/report.html",
+                  controller : "ReportCtrl"
+              })
 
              //sop 路由部分
 
