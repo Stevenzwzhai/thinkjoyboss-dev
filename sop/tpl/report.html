@@ -4,13 +4,67 @@
 </div>
 
 <div class="wrapper-md">
-    <div class="panel panel-default">
-        <div class="row wrapper">
-            <div class="col-sm-6">
-
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    家长详情报表
+                </div>
+                <div class="panel-body">
+                    姓名 学校 年级 班级 孩子姓名 关系 注册时间 加班时间 电话
+                </div>
+                <div class="panel-footer">
+                    <form action="/report/registerHomeDetail" method="post">
+                        <button type="submit" class="btn btn-success btn-sm">下载</button>
+                    </form>
+                </div>
             </div>
         </div>
-        </table-paging>
+        <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    教师详情报表
+                </div>
+                <div class="panel-body">
+                    姓名 学校 年级 班级 科目 注册时间 加班时间 电话
+                </div>
+                <div class="panel-footer">
+                    <form action="/report/registerTeacherDetail" method="post">
+                        <button type="submit" class="btn btn-success btn-sm">下载</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    发布消息数目报表
+                </div>
+                <div class="panel-body">
+                    省份 城市 区域 学校名称 班级名称 知了消息数
+                </div>
+                <div class="panel-footer">
+                    <form action="/report/sendMsg" method="post">
+                        <button type="submit" class="btn btn-success btn-sm">下载</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    发布消息详情报表
+                </div>
+                <div class="panel-body">
+                    省份 城市 地区 用户编号 角色	用户姓名	电话	性别	学校名字	班级名字	消息	消息图片	班级码 时间 messageId
+                </div>
+                <div class="panel-footer">
+                    <form action="/report/msg/detail" method="post">
+                        <button type="submit" class="btn btn-success btn-sm">下载</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
