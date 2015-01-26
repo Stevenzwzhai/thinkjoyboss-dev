@@ -45,7 +45,8 @@ App.constant("SERVER", {
     //测试
     testUrl : {
         uc  : "http://10.10.68.11:8080/v1",
-        message : "http://10.10.68.12:8080/v1",
+        //message : "http://10.10.68.12:8080/v1",
+        message : "http://127.0.0.1:8080",
         push : "http://172.16.130.174:8080",
         im   : "ws://172.16.130.174:8080/customerIM"
 

@@ -39,7 +39,7 @@
                     "BUTTONS" : "消息推送",
                     "ICONS" : "消息处理",
                     "SMS" : "短信查询",
-                    "SORTABLE" : "用户反馈"
+                    "FEEDBACK" : "用户反馈"
                 },
 
 

@@ -1,65 +1,50 @@
 <div class="bg-light lter b-b wrapper-md ng-scope">
-    <h1 class="m-n font-thin h3">短信列表</h1>
+    <h1 class="m-n font-thin h3">反馈信息列表</h1>
 </div>
 
 
 
 <div class="wrapper-md">
-    <div class="row wrapper">
-
-        <div class="col-sm-6">
-
-            <form name="smsForm">
-
-                <div class="input-group">
-                    <input type="search" class="input-sm   form-control" placeholder="例: 15399098793"  ng-model="params.phone"   />
-              <span class="input-group-btn">
-
-
-                <button class="btn btn-sm btn-primary" type="button" ng-click="search();" ng-disabled="isSubmit">
-                    <span ng-show="isSubmit" class="">
-                             <i class=" fa fa-refresh glyphicon-refresh"  ></i>
-                    </span>
-                    <span class=""  ng-hide="isSubmit">查询</span>
-                </button>
-
-
-              </span>
-                </div>
-
-            </form>
-        </div>
-    </div>
 
     <div class="panel panel-default">
-        <table-paging   is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="10"  params="params"  url="smsUrl"  results="posts"  resultsName="pageList"  total="total">
+        <table-paging   is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="10"  params="params"  url="feedbackUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total">
 
             <div class="table-responsive">
 
-                <table class="table table-striped b-t b-light">
+                <table class=" table table-striped b-t b-light">
                     <thead>
                     <tr>
-                        <th>发送号码</th>
-                        <th>短信内容</th>
-                        <th>短信类型</th>
-                        <th>发送渠道</th>
-                        <th>发送来源</th>
-                        <th>发送结果</th>
+                        <th>用户</th>
+                        <th>用户类型</th>
+                        <th>用户城市</th>
+                        <th>用户电话</th>
                         <th>发送时间</th>
+                        <th>反馈内容</th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <tr ng-repeat="sco in posts">
-                        <td>{{sco.toSendPhone}}</td>
-                        <td>{{sco.sendContent}} </td>
-                        <td>{{sco.smsType}}</td>
-                        <td>{{sco.channelDesc}}</td>
-                        <th>{{sco.bizTarget}}</th>
-                        <td>{{sco.sendResult | smsResult}}</td>
-                        <td>{{sco.sendTime}}</td>
-                    </tr>
 
+                        <tr>
+                            <td class="col-md-1">sco.userName </td>
+                            <td class="col-md-1">sco.userType</td>
+                            <td class="col-md-1">sco.userCity</td>
+                            <td class="col-md-1">sco.phone</td>
+                            <td class="col-md-2">sco.time</td>
+                            <td class="col-md-7">
+                                <span popover="I apdakfljdffffffon mouse enter!" popover-trigger="mouseenter">
+                                    sco.contensadfffffffjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjdfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjt
+                                </span>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="sco in posts" class="row">
+                            <td class="col-md-1"> {{sco.userName}} </td>
+                            <td class="col-md-1">{{sco.userType | feedbackUserType}} </td>
+                            <td class="col-md-1">{{sco.userCity}}</td>
+                            <td class="col-md-1">{{sco.phone}}</td>
+                            <td class="col-md-1">{{sco.time | date: 'yyyy-MM-dd'}}</td>
+                            <td>{{sco.content}}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

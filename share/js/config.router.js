@@ -108,6 +108,12 @@ App
                   controller: "SMSCtrl"
               })
 
+              .state("app.feedback", {
+                  url: "/feedback",
+                  templateUrl: "boss/tpl/message/feedback/feedbackQuery.html",
+                  controller: "FeedbackCtrl"
+              })
+
 
 
 

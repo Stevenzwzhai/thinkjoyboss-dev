@@ -44,6 +44,27 @@ App
     };
 
 })
+    .filter("feedbackUserType", function() {
+        return function(status) {
+            if (status == 0) {
+                return "家长";
+            }
+            else {
+                return "老师";
+            }
+        }
+
+    })
+
+    .filter("limitContent", function() {
+        return function(content) {
+            if (content.length > 20) {
+                content = content.sub(0, 20) + "...";
+            }
+
+            return content;
+        }
+    })
 
     .filter('fromNow', function() {
         return function(date) {

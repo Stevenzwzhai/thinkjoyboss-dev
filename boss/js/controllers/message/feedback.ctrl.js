@@ -3,14 +3,14 @@
  */
 App
 
-    .controller("SMSCtrl", function ($rootScope, $scope, $state, $window, $log, $q, $timeout, Util, SERVER) {
+    .controller("FeedbackCtrl", function ($rootScope, $scope, $state, $window, $log, $q, $timeout, Util, SERVER) {
 
-        console.log("sms....");
+        console.log("feedback....");
 
-        //短信地址
-        $scope.smsUrl = SERVER.url.push + "/sms/nglist";
+        //用户反馈地址
+        $scope.feedbackUrl = SERVER.url.message + "/feedbackBoss/getFeedbacks";
 
-        //短信列表
+        //用户反馈列表
         $scope.posts = [];
 
         //刷新列表
@@ -18,22 +18,7 @@ App
 
         //参数
         $scope.params = {
-            phone: ""
         };
 
         $scope.isSubmit = false;
-
-        //监听完成
-        $scope.$watch("params.phone",function(newV){
-            if(newV == ""){
-                $scope.refresh = true;
-            }
-        });
-
-        //查询
-        $scope.search = function () {
-            $scope.refresh = true;
-        }
-
-
     });
