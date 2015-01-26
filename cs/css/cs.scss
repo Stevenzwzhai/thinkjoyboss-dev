@@ -7,7 +7,6 @@
 
 //缩进
 .indent{
-
   .chat-left{
     display: none;
   }
@@ -20,7 +19,6 @@
     background: #ffffff;
     width: 68px;
   }
-
   .nav-tabs-alt{
     .wrapper-md{
       padding: 0px 15px;
@@ -41,9 +39,9 @@
     }
 
   }
-
-
 }
+
+
 
 
 .chatMain{
@@ -64,12 +62,14 @@
 }
 
 
-.tab-content{
-  .tab-pane{
-    height: 320px;
-    overflow-y: scroll;
-  }
-}
+//.tab-content{
+//  .tab-pane{
+//    height: 320px;
+//    overflow-y: scroll;
+//  }
+//}
+
+
 
 .chatContent{
   background: #ffffff;

@@ -118,17 +118,19 @@ App
 
 
              //sop 路由部分
-              .state("sop", {
+              .state("app.sop", {
                   abstract: true,
                   url : "/sop",
-                  templateUrl : "sop/tpl/report.html"
+                  templateUrl : "sop/tpl/sop.html"
+
               })
-              .state("sop.report", {
+
+              //报表
+              .state("app.sop.report", {
                   url : "/report",
                   templateUrl : "sop/tpl/report.html",
                   controller : "ReportCtrl"
               })
-
              //sop 路由部分
 
 

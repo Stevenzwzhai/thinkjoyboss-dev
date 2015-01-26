@@ -4,7 +4,6 @@ App
   .config(
     [        '$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
     function ($controllerProvider,   $compileProvider,   $filterProvider,   $provide) {
-        
         // lazy controller, directive and service
         app.controller = $controllerProvider.register;
         app.directive  = $compileProvider.directive;
@@ -24,7 +23,6 @@ App
       prefix: 'l10n/',
       suffix: '.json'
     });
-
     // Tell the module what language to use by default
     $translateProvider.preferredLanguage('cn');
 
@@ -40,7 +38,8 @@ App.constant("SERVER", {
     url : {
         uc  : "",
         message : "",
-        push : ""
+        push : "",
+        sop  : "http://172.16.130.82:8080"
     },
     //测试
     testUrl : {
@@ -48,8 +47,8 @@ App.constant("SERVER", {
         //message : "http://10.10.68.12:8080/v1",
         message : "http://127.0.0.1:8080",
         push : "http://172.16.130.174:8080",
-        im   : "ws://172.16.130.174:8080/customerIM"
-
+        im   : "ws://172.16.130.174:8080/customerIM",
+        sop  : "http://121.41.61.218:9003"
     },
 //    //测试
 //    testUrl : {
@@ -65,6 +64,7 @@ App.constant("SERVER", {
     formalUrl : {
         uc  : "http://imzhiliao.com:10000/uc",
         message : "http://imzhiliao.com:10000/message",
-        push : "http://127.0.0.1:8080/"
+        push : "http://127.0.0.1:8080/",
+        sop  : "http://172.16.130.82:8080"
     }
 });
