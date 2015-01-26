@@ -25,7 +25,6 @@ App.directive('echart', function factory($q, Map) {
 
 
                 scope.$on("parent-resize",function(){
-
                     var w = $("#echart").width();
                     var h = $("#echart").height();
 
@@ -34,7 +33,6 @@ App.directive('echart', function factory($q, Map) {
 
                     myChart.resize();
                 });
-
 
                 var promise = Map.getEchartData();
                 promise.then(function(data) {
