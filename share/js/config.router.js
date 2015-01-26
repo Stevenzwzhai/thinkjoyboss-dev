@@ -71,8 +71,6 @@ App
 
               })
 
-
-
               //审核班级
               .state("app.audit.class",{
                   url : "/class",
@@ -113,20 +111,17 @@ App
 
 
 
-//            //客服聊天
-//              .state("app.chat",{
-//                  url : "/chat",
-//                  views : {
-//                      "chat":{
-//                          templateUrl : "cs/tpl/chat/chat.html",
-//                          controller : "ChatCtrl"
-//                      }
-//                  }
-//              })
-
-
              //sop 路由部分
-
+              .state("sop", {
+                  abstract: true,
+                  url : "/sop",
+                  templateUrl : "sop/tpl/report.html"
+              })
+              .state("sop.report", {
+                  url : "/report",
+                  templateUrl : "sop/tpl/report.html",
+                  controller : "ReportCtrl"
+              })
 
              //sop 路由部分
 
