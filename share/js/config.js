@@ -47,7 +47,7 @@ App.constant("SERVER", {
         message : "http://10.10.68.12:8080/v1",
         push : "http://172.16.130.174:8080",
         im   : "ws://172.16.130.174:8080/customerIM",
-        sop  : "http://172.16.130.82:8080"
+        sop  : "http://121.41.61.218:9003"
     },
 //    //测试
 //    testUrl : {

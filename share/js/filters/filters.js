@@ -49,4 +49,9 @@ App
         return function(date) {
             return moment(date).fromNow();
         }
+    })
+    .filter("SCEformat", function($sce) {
+        return function(url) {
+            return $sce.trustAsResourceUrl(url);
+        }
     });
