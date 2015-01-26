@@ -33,10 +33,6 @@
     padding: 3px 6px;
     margin-left: -13px; }
 
-.tab-content .tab-pane {
-  height: 320px;
-  overflow-y: scroll; }
-
 .chatContent {
   background: #ffffff; }
   .chatContent .chatContentHeader {

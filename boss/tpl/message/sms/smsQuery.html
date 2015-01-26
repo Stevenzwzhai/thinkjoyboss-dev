@@ -5,14 +5,18 @@
 
 
 <div class="wrapper-md">
-    <div class="row wrapper">
 
-        <div class="col-sm-6">
 
-            <form name="smsForm">
+    <div class="panel panel-default">
 
-                <div class="input-group">
-                    <input type="search" class="input-sm   form-control" placeholder="例: 15399098793"  ng-model="params.phone"   />
+        <div class="row wrapper">
+
+            <div class="col-sm-6">
+
+                <form name="smsForm">
+
+                    <div class="input-group">
+                        <input type="search" class="input-sm   form-control" placeholder="例: 15399098793"  ng-model="params.phone"   />
               <span class="input-group-btn">
 
 
@@ -25,14 +29,14 @@
 
 
               </span>
-                </div>
+                    </div>
 
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <div class="panel panel-default">
-        <table-paging   is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="10"  params="params"  url="smsUrl"  results="posts"  resultsName="pageList"  total="total">
+
+        <table-paging   is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="10"  params="params"  url="smsUrl"  results="posts"  resultsName="pageList"  total="total" ng-show="posts.length > 0">
 
             <div class="table-responsive">
 

@@ -4,7 +4,6 @@ App
   .config(
     [        '$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
     function ($controllerProvider,   $compileProvider,   $filterProvider,   $provide) {
-        
         // lazy controller, directive and service
         app.controller = $controllerProvider.register;
         app.directive  = $compileProvider.directive;
@@ -24,7 +23,6 @@ App
       prefix: 'l10n/',
       suffix: '.json'
     });
-
     // Tell the module what language to use by default
     $translateProvider.preferredLanguage('cn');
 
