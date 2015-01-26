@@ -35,7 +35,7 @@
     </div>
 
 
-    <table-paging   is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="10"  params="params"  url="schoolUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total">
+    <table-paging   is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="10"  params="params"  url="schoolUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total"   ng-show="posts.length > 0">
 
         <div class="table-responsive">
 
@@ -87,4 +87,7 @@
 
 
 </div>
+
+
+
 </div>
