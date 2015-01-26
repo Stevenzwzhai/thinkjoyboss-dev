@@ -40,15 +40,16 @@ App.constant("SERVER", {
     url : {
         uc  : "",
         message : "",
-        push : ""
+        push : "",
+        sop  : "http://172.16.130.82:8080"
     },
     //测试
     testUrl : {
         uc  : "http://10.10.68.11:8080/v1",
         message : "http://10.10.68.12:8080/v1",
         push : "http://172.16.130.174:8080",
-        im   : "ws://172.16.130.174:8080/customerIM"
-
+        im   : "ws://172.16.130.174:8080/customerIM",
+        sop  : "http://172.16.130.82:8080"
     },
 //    //测试
 //    testUrl : {
@@ -64,6 +65,7 @@ App.constant("SERVER", {
     formalUrl : {
         uc  : "http://imzhiliao.com:10000/uc",
         message : "http://imzhiliao.com:10000/message",
-        push : "http://127.0.0.1:8080/"
+        push : "http://127.0.0.1:8080/",
+        sop  : "http://172.16.130.82:8080"
     }
 });
