@@ -7,10 +7,14 @@
     <div class="chat-left col-sm-offset-3 col-sm-6  bg-auto no-border-xs ib vt chatContent">
 
         <div class="chatContentHeader clear">
+
+
+
             <a ui-toggle-class href="javascript:void(0)"  class="block "  id="closeWindow" ng-click="toggleChat(true);">
                 <i class="glyphicon glyphicon-remove text-muted"></i>
             </a>
-            <h5 class="pull-left ib title">肖xx</h5>
+
+            <h5 class="pull-left ib title">{{currentUser.userName}}</h5>
             <ul class="pull-right list-unstyled  ">
 
                 <li>
@@ -28,32 +32,33 @@
             <div class="panel ">
                 <div class="panel-body">
 
-                    <div class="m-b" ng-repeat="post in posts">
+                    <div class="m-b" ng-repeat="post in posts ">
 
-
-                        <div ng-if="post.msgFrom != '2' ">
-                            <a href="" class="pull-left thumb-sm avatar"><img  ng-src="{{post.msgImg}}" alt="..."></a>
+                        <div ng-if="post.isReceive">
+                            <a href="" class="pull-left thumb-sm avatar"><img  ng-src="{{post.userIcon}}" alt="..."></a>
                             <div class="m-l-xxl" >
                                 <div class="pos-rlt wrapper b b-light r r-2x" >
                                     <span class="arrow left pull-up"></span>
-                                    <p class="m-b-none">{{post.msgBody}}</p>
+                                    <p class="m-b-none">{{post.body}}</p>
                                 </div>
-                                <small class="text-muted"><i class="fa fa-ok text-success"></i>{{post.msgTime}}</small>
+                                <small class="text-muted"><i class="fa fa-ok text-success"></i>{{post.sendTime | date:"yyyy-MM-dd hh:mm:ss"}}</small>
                             </div>
                         </div>
 
 
-                        <div ng-if="post.msgFrom == '2'">
-                            <a href="" class="pull-right thumb-sm avatar"><img src="lib/img/a0.jpg" class="img-circle" alt="..."></a>
-                            <div class="m-r-xxl" ng-if="post.msgFrom == '2' ">
+                        <div ng-if="!post.isReceive">
+                            <a href="" class="pull-right thumb-sm avatar">
+
+                                <img ng-src="{{post.userIcon}}" class="img-circle" alt="..."></a>
+                            <div class="m-r-xxl">
                                 <div class="pos-rlt wrapper bg-primary r r-2x">
                                     <span class="arrow right pull-up arrow-primary"></span>
-                                    <p class="m-b-none">{{post.msgBody}}</p>
+                                    <p class="m-b-none">{{post.body}}</p>
                                 </div>
-                                <small class="text-muted">{{post.msgTime}}</small>
+
+                                <small class="text-muted">{{ (post.sendTime)  | date:"yyyy-MM-dd hh:mm:ss"}}</small>
                             </div>
                         </div>
-
 
                     </div>
 
@@ -65,7 +70,7 @@
                         <a class="pull-left thumb-xs avatar"><img src="lib/img/a0.jpg" class="img-circle" alt="..."></a>
                         <form class="m-b-none m-l-xl ng-pristine ng-valid">
                             <div class="input-group" style="width: 100%;">
-                                <textarea class="form-control"  ng-model="sendVal" placeholder="说点什么" ng-keypress="enter($event)"></textarea>
+                                <textarea class="form-control"  ng-model="fm.content" placeholder="说点什么" ng-keypress="enter($event)"></textarea>
                             </div>
                         </form>
                     </div>
@@ -87,41 +92,59 @@
 
 
     <div class="col-sm-3   bg-white-only b-l bg-auto no-border-xs ib  chat-right">
-        <tabset class="nav-tabs-alt" justified="true">
-            <tab>
-                <tab-heading>
-                    <i class="glyphicon glyphicon-user text-md text-muted wrapper-sm"></i>
-                </tab-heading>
-                <div class="wrapper-md">
-                    <div class="m-b-sm text-md"></div>
-                    <ul class="list-group no-bg no-borders pull-in">
-                        <li class="list-group-item" ng-repeat="user in userList">
-                            <a herf class="pull-left thumb-sm avatar m-r" ng-dblclick="toggleChat(false)">
-                                <img ng-src="{{user.userIcon}}" alt="..." class="img-circle">
-                                <span class="badge badge-sm up bg-danger pull-right-xs">1</span>
-                                <i class="on b-white bottom"></i>
-                            </a>
-                            <div class="clear">
-                                <div><a href>ng-bind="user.userName"</a></div>
-                                <small class="text-muted">Designer, Blogger</small>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </tab>
 
-            <tab>
-                <tab-heading>
-                    <i class="glyphicon glyphicon-comment text-md text-muted wrapper-sm"></i>
-                </tab-heading>
 
-                <div class="wrapper-md">
-                    <div class="m-b-sm text-md"></div>
-                </div>
+        <div class="nav-tabs-alt ng-isolate-scope" justified="true">
 
-            </tab>
 
-        </tabset>
+            <ul class="nav nav-tabs nav-justified">
+                <li class="ng-isolate-scope active">
+                    <a href="" ng-click="select()" >
+                        <i class="glyphicon glyphicon-user text-md text-muted wrapper-sm"></i>
+
+                    </a>
+                </li>
+
+                <li class="ng-isolate-scope">
+                    <a href="" ng-click="select()">
+                            <i class="glyphicon glyphicon-comment text-md text-muted wrapper-sm"></i>
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <div class="tab-content">
+                     <div class="tab-pane ng-scope active">
+                            <div class="wrapper-md ng-scope">
+                                <div class="m-b-sm text-md"></div>
+                                <ul class="list-group no-bg no-borders pull-in">
+                                    <li class="list-group-item" ng-repeat="user in users">
+                                    <a herf class="pull-left thumb-sm avatar m-r" ng-dblclick="showMessage(user)">
+                                    <img ng-src="{{user.userIcon}}" alt="" class="img-circle">
+                                    <!--<span class="badge badge-sm up bg-danger pull-right-xs">1</span>-->
+                                    <i class="on b-white bottom"></i>
+                                    </a>
+
+                                    <div class="clear">
+                                    <div><a href ng-bind="user.userName"></a></div>
+                                    <small class="text-muted">Designer, Blogger</small>
+                                    </div>
+
+                                    </li>
+                                </ul>
+                        </div>
+
+            </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
 
 
 

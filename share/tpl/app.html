@@ -1,45 +1,45 @@
-  <!-- 顶部 -->
-  <div data-ng-include=" 'share/tpl/blocks/header.html' " class="app-header navbar">
-  </div>
-  <!-- /顶部 -->
+<!-- 顶部 -->
+<div data-ng-include=" 'share/tpl/blocks/header.html' " class="app-header navbar">
+</div>
+<!-- /顶部 -->
 
 
-  <!-- 左侧导航菜单 -->
-  <div data-ng-include=" 'share/tpl/blocks/aside.html' " class="app-aside hidden-xs {{app.settings.asideColor}}">
-  </div>
-  <!-- /左侧导航菜单 -->
+<!-- 左侧导航菜单 -->
+<div data-ng-include=" 'share/tpl/blocks/aside.html' " class="app-aside hidden-xs {{app.settings.asideColor}}">
+</div>
+<!-- /左侧导航菜单 -->
 
 
-
-  <!-- 内容区域 -->
-  <div class="app-content">
+<!-- 内容区域 -->
+<div class="app-content">
     <div ui-butterbar></div>
-    <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside" ></a>
+    <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside"></a>
+
     <div class="app-content-body fade-in-up" ui-view></div>
-  </div>
-  <!-- /内容区域 -->
+</div>
+<!-- /内容区域 -->
 
 
-
-  <!-- 底部 -->
-  <div class="app-footer wrapper b-t bg-light">
-    <span class="pull-right">{{app.version}} <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
+<!-- 底部 -->
+<div class="app-footer wrapper b-t bg-light">
+    <span class="pull-right">{{app.version}} <a href ui-scroll="app" class="m-l-sm text-muted"><i
+            class="fa fa-long-arrow-up"></i></a></span>
     &copy; 2014 Copyright.
-  </div>
-  <!-- /底部 -->
+</div>
+<!-- /底部 -->
 
 
-  <!-- 设置 -->
-  <div data-ng-include=" 'share/tpl/blocks/settings.html' " class="settings panel panel-default"></div>
+<!-- 设置 -->
+<div data-ng-include=" 'share/tpl/blocks/settings.html' " class="settings panel panel-default"></div>
 
 
-  <!-- 客服聊天 -->
-  <div  data-ng-include=" 'cs/tpl/chat/chat.html' " ></div>
+<!-- 客服聊天 -->
+<div data-ng-include=" 'cs/tpl/chat/chat.html' "></div>
 
 
-  <!-- toaster directive -->
-  <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
-  <!-- / toaster directive -->
+<!-- toaster directive -->
+<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+<!-- / toaster directive -->
 
 
 

@@ -74,6 +74,17 @@
 .chatContent{
   background: #ffffff;
 
+  .chatContentFeed{
+    .panel-body{
+      height: 300px;
+      overflow-y: scroll;
+    }
+    .panel-footer{
+      margin-top: 20px;
+    }
+
+  }
+
 
   .chatContentHeader{
     padding: 10px 20px;
