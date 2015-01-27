@@ -108,6 +108,12 @@ App
                   controller: "SMSCtrl"
               })
 
+              .state("app.smschannel", {
+                  url: "/smsChannel",
+                  templateUrl: "boss/tpl/message/sms/smsChannel.html",
+                  controller: "SMSChannelCtrl"
+              })
+
               .state("app.feedback", {
                   url: "/feedback",
                   templateUrl: "boss/tpl/message/feedback/feedbackQuery.html",

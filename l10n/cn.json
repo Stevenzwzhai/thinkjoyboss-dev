@@ -39,6 +39,7 @@
                     "BUTTONS" : "消息推送",
                     "ICONS" : "消息处理",
                     "SMS" : "短信查询",
+                    "SMS_CHANNEL" : "短信渠道切换",
                     "FEEDBACK" : "用户反馈"
                 },
 
