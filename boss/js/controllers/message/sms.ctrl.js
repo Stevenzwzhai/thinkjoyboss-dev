@@ -8,7 +8,7 @@ App
         console.log("sms....");
 
         //短信地址
-        $scope.smsUrl = SERVER.url.push + "/sms/nglist";
+        $scope.smsUrl = SERVER.url.push + "/sms/channel/list";
 
         //短信列表
         $scope.posts = [];

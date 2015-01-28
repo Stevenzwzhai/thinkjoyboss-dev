@@ -58,6 +58,8 @@ App
                     $http.get(scope.url, {
                         params:  params
                     })
+
+
                     .success(function (res) {
 
                         //加载结果集

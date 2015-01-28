@@ -39,14 +39,16 @@ App.constant("SERVER", {
         uc  : "",
         message : "",
         push : "",
-        sop  : "http://172.16.130.82:8080"
+        sop  : ""
     },
     //测试
     testUrl : {
         uc  : "http://10.10.68.11:8080/v1",
-        //message : "http://10.10.68.12:8080/v1",
-        message : "http://127.0.0.1:8080",
-        push : "http://127.0.0.1:8080",
+        message : "http://10.10.68.12:8080/v1",
+
+        //线上
+//        push : "http://115.29.184.78:8084/push",
+        push : "http://172.16.130.27:8080/push",
         im   : "ws://172.16.130.27:8080/customerIM",
         sop  : "http://121.41.61.218:9003"
     },
@@ -64,7 +66,8 @@ App.constant("SERVER", {
     formalUrl : {
         uc  : "http://imzhiliao.com:10000/uc",
         message : "http://imzhiliao.com:10000/message",
-        push : "http://127.0.0.1:8080/",
-        sop  : "http://172.16.130.82:8080"
+        push : "http://115.29.184.78:8084/push",
+        im   : "ws://115.29.184.78:8084/customerIM",
+        sop  : "http://121.41.61.218:9003"
     }
 });
