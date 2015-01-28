@@ -24,26 +24,17 @@
                     </thead>
 
                     <tbody>
-
-                        <tr>
-                            <td class="col-md-1">sco.userName </td>
-                            <td class="col-md-1">sco.userType</td>
-                            <td class="col-md-1">sco.userCity</td>
-                            <td class="col-md-1">sco.phone</td>
-                            <td class="col-md-2">sco.time</td>
-                            <td class="col-md-7">
-                                <span popover="I apdakfljdffffffon mouse enter!" popover-trigger="mouseenter">
-                                    sco.contensadfffffffjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjdfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjt
+                        <tr ng-repeat="sco in posts">
+                            <td>{{sco.userName}} </td>
+                            <td>{{sco.userType | feedbackUserType}} </td>
+                            <td>{{sco.userCity}}</td>
+                            <td>{{sco.phone}}</td>
+                            <td>{{sco.time | date: 'yyyy-MM-dd'}}</td>
+                            <td>
+                                <span popover="{{sco.content}}" popover-trigger="mouseenter">
+                                    {{sco.content}}
                                 </span>
                             </td>
-                        </tr>
-                        <tr ng-repeat="sco in posts" class="row">
-                            <td class="col-md-1"> {{sco.userName}} </td>
-                            <td class="col-md-1">{{sco.userType | feedbackUserType}} </td>
-                            <td class="col-md-1">{{sco.userCity}}</td>
-                            <td class="col-md-1">{{sco.phone}}</td>
-                            <td class="col-md-1">{{sco.time | date: 'yyyy-MM-dd'}}</td>
-                            <td>{{sco.content}}</td>
                         </tr>
                     </tbody>
                 </table>

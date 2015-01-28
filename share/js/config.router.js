@@ -114,6 +114,20 @@ App
                   controller: "FeedbackCtrl"
               })
 
+              .state("app.push", {
+                  url: "/push",
+                  views: {
+                      "": {
+                          templateUrl: "boss/tpl/message/push/messagePush.html",
+                          controller: "MessagePushCtrl"
+                      },
+                      "email@app.push": {
+                          templateUrl: "boss/tpl/message/push/email/email.html",
+                          controller: "EmailMessagePushCtrl"
+                      }
+                  }
+              })
+
 
 
 

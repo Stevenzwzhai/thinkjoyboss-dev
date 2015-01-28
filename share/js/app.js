@@ -15,5 +15,6 @@ var App = angular.module('app', [
     "toaster",
     'ui.validate',
     'oc.lazyLoad',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'ui.bootstrap.datetimepicker'
 ]);
