@@ -5,14 +5,11 @@ App
     .directive("zldatetimepicker", function ($rootScope) {
         return {
             restrict: "AE",
-            templateUrl: "share/tpl/directives/zldatetimepicker.html",
             scope: {
                 currentdate: "="
             },
             link: function (scope, element, attrs) {
 
-                var dateelement = element.children(0);
-                var inputelement = dateelement.children(0);
 
                 var dp = dateelement.datetimepicker({
                     defaultDate: "",

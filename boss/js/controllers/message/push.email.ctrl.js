@@ -36,7 +36,7 @@ App.controller('MailNewCtrl', ['$scope', '$rootScope', '$http', '$interval', '$m
         }
     }, 1000);
 
-    $scope.$watch("mail.date", function(newdate){
+    $scope.$watch("date", function(newdate){
         $scope.mail.sendDate = newdate;
     });
 

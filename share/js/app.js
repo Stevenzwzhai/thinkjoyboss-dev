@@ -16,6 +16,5 @@ var App = angular.module('app', [
     'ui.validate',
     'oc.lazyLoad',
     'pascalprecht.translate',
-    'ui.bootstrap.datetimepicker',
     'luegg.directives'
 ]);

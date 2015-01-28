@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label class="col-lg-2 control-label">接收邮箱:</label>
                 <div class="col-lg-8">
-                    <zlselectize receiverlist="{{mail.receiverList}}"></zlselectize>
+                    <!--<zlselectize receiverlist="{{mail.receiverList}}"></zlselectize>-->
                 </div>
             </div>
             <div class="form-group">
@@ -113,7 +113,15 @@
             <div class="form-group" ng-show="mail.sendTimeType">
                 <label class="col-lg-2 control-label">定时时间:</label>
                 <div class="col-lg-4">
-                    <zldatetimepicker currentdate="currentdate"/>
+
+
+                    <div ui-jq="datetimepicker"   ui-option =""   class='input-group date'>
+                        <input type='text'    class="form-control"  ng-model="date"  value="{{date}}" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
+
+
                 </div>
             </div>
             <div class="form-group">
