@@ -1,5 +1,5 @@
 
-<div class="chatMain " ng-class="{'indent' : isToggle}" id="chatMain" ng-controller="ChatCtrl">
+<div class="chatMain " ng-class="{'indent' : isToggle}" id="chatMain" ng-controller="ChatCtrl" >
 
 
 <div class="row">
@@ -27,14 +27,13 @@
             </ul>
         </div>
 
-        <div class="chatContentFeed">
+        <div class="chatContentFeed" >
 
             <div class="panel ">
-                <div class="panel-body">
+                <div class="panel-body" scroll-glue>
+                            <div class="m-b an-group" ng-repeat="post in posts   ">
 
-                    <div class="m-b" ng-repeat="post in posts ">
-
-                        <div ng-if="post.isReceive">
+                        <div ng-if="post.isReceive" >
                             <a href="" class="pull-left thumb-sm avatar"><img  ng-src="{{post.userIcon}}" alt="..."></a>
                             <div class="m-l-xxl" >
                                 <div class="pos-rlt wrapper b b-light r r-2x" >
@@ -46,8 +45,8 @@
                         </div>
 
 
-                        <div ng-if="!post.isReceive">
-                            <a href="" class="pull-right thumb-sm avatar">
+                        <div ng-if="!post.isReceive" >
+                            <a href="" class=" pull-right thumb-sm avatar">
 
                                 <img ng-src="{{post.userIcon}}" class="img-circle" alt="..."></a>
                             <div class="m-r-xxl">
@@ -61,16 +60,16 @@
                         </div>
 
                     </div>
-
-
                 </div>
                 <footer class="panel-footer">
                     <!-- chat form -->
                     <div>
                         <a class="pull-left thumb-xs avatar"><img src="lib/img/a0.jpg" class="img-circle" alt="..."></a>
                         <form class="m-b-none m-l-xl ng-pristine ng-valid">
+
+
                             <div class="input-group" style="width: 100%;">
-                                <textarea class="form-control"  ng-model="fm.content" placeholder="说点什么" ng-keypress="enter($event)"></textarea>
+                                <input type="text" class="form-control"  ng-model="fm.content" placeholder="说点什么" ng-keypress="enter($event)" />
                             </div>
                         </form>
                     </div>
@@ -119,8 +118,8 @@
                             <div class="wrapper-md ng-scope">
                                 <div class="m-b-sm text-md"></div>
                                 <ul class="list-group no-bg no-borders pull-in">
-                                    <li class="list-group-item" ng-repeat="user in users">
-                                    <a herf class="pull-left thumb-sm avatar m-r" ng-dblclick="showMessage(user)">
+                                    <li class="list-group-item   " ng-repeat="user in users">
+                                    <a herf class="pull-left thumb-sm avatar m-r" ng-click="showMessage(user)">
                                     <img ng-src="{{user.userIcon}}" alt="" class="img-circle">
                                     <!--<span class="badge badge-sm up bg-danger pull-right-xs">1</span>-->
                                     <i class="on b-white bottom"></i>

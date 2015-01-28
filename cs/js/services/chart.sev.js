@@ -27,10 +27,6 @@ App
                         defer.resolve(event);
                     }
 
-                    ChatSev.socket.onerror = function(e){
-                        console.log("ws error");
-                        defer.reject(event);
-                    }
 
                 return defer.promise;
             },
@@ -66,6 +62,9 @@ App
                 }
                 ChatSev.socket.send(JSON.stringify(option));
             }
+
+
+
 
 
         };
