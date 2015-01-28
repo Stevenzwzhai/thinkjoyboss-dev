@@ -119,18 +119,20 @@ App
               ChatSev.getUserList($scope.userName);
               ChatSev.socket.onmessage = onMessage;
 
+              //服务器关闭
               ChatSev.socket.onclose = function(e){
                   $rootScope.alertWarn("服务器已经关闭!");
                   $scope.toggleChat(true);
               }
 
+              //出现异常
               ChatSev.socket.onerror = function(e){
                   $rootScope.alertError("服务器出现异常错误！");
                   $scope.toggleChat(true);
               }
 
-
-          }).then(function(err){
+          },function(err){
+              $rootScope.alertError(err);
           });
 
 

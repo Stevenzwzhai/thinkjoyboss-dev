@@ -11,11 +11,18 @@ App
             open : function(userName){
                     var defer = $q.defer();
 
-                if ('WebSocket' in window) {
-                    ChatSev.socket = new WebSocket(SERVER.url.im);
-                } else if ('MozWebSocket' in window) {
-                    ChatSev.socket = new MozWebSocket(SERVER.url.im);
+                try{
+
+                    if ('WebSocket' in window) {
+                        ChatSev.socket = new WebSocket(SERVER.url.im);
+                    } else if ('MozWebSocket' in window) {
+                        ChatSev.socket = new MozWebSocket(SERVER.url.im);
+                    }
+
+                }catch(exception){
+                    defer.reject("服务器链接失败!");
                 }
+
 
                     ChatSev.socket.onopen = function(event) {
                         var option = {
