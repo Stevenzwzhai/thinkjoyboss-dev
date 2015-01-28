@@ -2,21 +2,27 @@
  * Created by shao on 15-1-27.
  */
 App
-    .controller("EmailMessagePushCtrl", ['$scope', function($scope) {
+    .controller("EmailMessagePushCtrl", ['$scope', 'SERVER', function($scope, SERVER) {
 
     }]);
 
-App.controller('MailNewCtrl', ['$scope', '$interval', '$modal', function($scope, $interval, $modal) {
+App.controller('MailNewCtrl', ['$scope', '$rootScope', '$http', '$interval', '$modal', 'SERVER', function($scope, $rootScope, $http, $interval, $modal, SERVER) {
     $scope.mail = {
-        to: '',
-        subject: '',
-        content: '',
-        sender: '',
-        password: '',
-        timeSend: 1,
-        date: "",
-        showDate: new Date()
+        receiverList: ["fshao@thinkjoy.cn"],
+        attachList: [],
+        ccList: [],
+        emailProvider: "EP_126",
+        subject: '测试标题',
+        content: '测试内容',
+        sender: 'ishaofeng@126.com',
+        password: 'shaofeng5000',
+        username: "ishaofeng@126.com",
+        useSsl: false,
+        sendTimeType: 0,
+        sendDate: new Date()
     };
+    
+    $scope.date = "";
 
     $scope.timeShow = false;
     $scope.showTime = function() {
@@ -26,16 +32,16 @@ App.controller('MailNewCtrl', ['$scope', '$interval', '$modal', function($scope,
     $interval(function() {
         if ($scope.mail.date == "")
         {
-            $scope.mail.showDate = new Date();
+            $scope.mail.sendDate = new Date();
         }
     }, 1000);
 
     $scope.$watch("mail.date", function(newdate){
-        $scope.mail.showDate = newdate;
+        $scope.mail.sendDate = newdate;
     });
 
     $scope.toggleTimeSend = function() {
-        $scope.mail.timeSend = !$scope.mail.timeSend;
+        $scope.mail.sendTimeType = $scope.mail.sendTimeType == 0 ? 1 : 0;
     }
 
     $scope.toggled = function(open) {
@@ -48,8 +54,6 @@ App.controller('MailNewCtrl', ['$scope', '$interval', '$modal', function($scope,
         {name: 'Lucy Yokes', email:'lucy.yokes@gmail.com'}
     ];
 
-    $scope.attachs = [];
-
     $scope.addAttach = function (size) {
 
         var modalInstance = $modal.open({
@@ -58,7 +62,7 @@ App.controller('MailNewCtrl', ['$scope', '$interval', '$modal', function($scope,
             size: size,
             resolve: {
                 attachs: function () {
-                    return $scope.attachs;
+                    return $scope.mail.attachList;
                 }
             }
         });
@@ -71,8 +75,25 @@ App.controller('MailNewCtrl', ['$scope', '$interval', '$modal', function($scope,
 
     $scope.currentdate = "";
 
+    $scope.url = SERVER.url.push + "/email/send";
+
     $scope.sendMail = function() {
-        alert($scope.currentdate);
+        console.log(angular.toJson($scope.mail));
+        $http.post($scope.url, $scope.mail, {headers:{'is-json-data': true}})
+            .success(function(data) {
+                if (data.result == true)
+                {
+                    $rootScope.alertSuccess("邮件发送成功");
+                }
+                else
+                {
+                    $rootScope.alertError("邮件发送失败: " + data.msg);
+                }
+
+            })
+            .error(function(data) {
+                $rootScope.alertError("邮件发送失败" )
+            })
     }
 }]);
 

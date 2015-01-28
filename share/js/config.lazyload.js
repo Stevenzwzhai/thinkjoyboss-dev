@@ -36,7 +36,12 @@ App
                           'lib/vendor/jquery/jvectormap/jquery-jvectormap-us-aea-en.js',
                           'lib/vendor/jquery/jvectormap/jquery-jvectormap.css'],
       footable:       ['lib/vendor/jquery/footable/footable.all.min.js',
-                          'lib/vendor/jquery/footable/footable.core.css']
+                          'lib/vendor/jquery/footable/footable.core.css'],
+        selectize: ['lib/vendor/jquery/selectize/selectize.min.js',
+        'lib/vendor/jquery/selectize/selectize.bootstrap3.css'],
+        bdatetimepicker: ['lib/vendor/modules/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css',
+           'lib/vendor/modules/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js']
+
       }
   )
   // oclazyload config

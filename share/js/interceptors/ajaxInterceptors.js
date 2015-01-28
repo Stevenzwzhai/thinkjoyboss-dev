@@ -9,7 +9,7 @@ App
             'request' : function(config ){
 
                 if(config.method == "POST"){
-                    if(!config.headers['is-form-data']){
+                    if(!config.headers['is-json-data'] ){
 
                         config.headers['Content-Type'] = "application/x-www-form-urlencoded";
                         config.transformRequest = function(obj) {

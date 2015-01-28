@@ -14,9 +14,7 @@
             <div class="form-group">
                 <label class="col-lg-2 control-label">接收邮箱:</label>
                 <div class="col-lg-8">
-                    <select ui-jq="chosen" data-placeholder="选择接收邮箱" class="form-control" multiple ng-model="mail.to">
-                        <option ng-repeat="list in tolist" value="{{list.email}}">{{list.name}} <{{list.email}}></option>
-                    </select>
+                    <zlselectize receiverlist="{{mail.receiverList}}"></zlselectize>
                 </div>
             </div>
             <div class="form-group">
@@ -107,12 +105,12 @@
                             <a class="btn btn-sm btn-default" tooltip="添加附件" ng-click="addAttach()"><i class="fa text-base fa-chain"></i></a>
                         </div>
                     </div>
-                    <div ui-jq="wysiwyg" class="form-control h-auto" style="min-height:200px;">
+                    <div ui-jq="wysiwyg" class="form-control h-auto" style="min-height:200px;" ng-model="mail.content">
                     </div>
                 </div>
             </div>
 
-            <div class="form-group" ng-show="timeSend">
+            <div class="form-group" ng-show="mail.sendTimeType">
                 <label class="col-lg-2 control-label">定时时间:</label>
                 <div class="col-lg-4">
                     <zldatetimepicker currentdate="currentdate"/>
