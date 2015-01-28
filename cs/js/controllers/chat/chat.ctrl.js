@@ -36,7 +36,6 @@ App
 
 
 
-
             //切换聊天
             $scope.toggleChat = function(toggle,user){
 
@@ -69,16 +68,19 @@ App
                     $scope.posts = [];
                 }
 
-                $scope.posts.push(message);
 
                 var u = searchUser(currentUser.userId);
 
 
-                if(!u.posts)
+                if(!u.posts){
                     u.posts = [];
+                }
 
-                u.posts.push(message);
-                $rootScope.alertSuccess("消息已经发送!");
+
+               $scope.posts.push(message);
+               u.posts.push(message);
+
+              //$rootScope.alertSuccess("消息已经发送!");
                 ChatSev.sendMessage($scope.userName,currentUser.userId,contnet);
 
                 //清空
@@ -101,12 +103,10 @@ App
                 else{
                     removeUser(user.userId);
                 }
-
             }
             else{
-                $scope.posts =  user.posts;
+                $scope.posts =  angular.copy(user.posts);
                 $scope.toggleChat(false,user);
-//                $scope.$apply();
             }
 
         }
@@ -118,9 +118,21 @@ App
 
               ChatSev.getUserList($scope.userName);
               ChatSev.socket.onmessage = onMessage;
-          }).then(function(err){
 
+              ChatSev.socket.onclose = function(e){
+                  $rootScope.alertWarn("服务器已经关闭!");
+                  $scope.toggleChat(true);
+              }
+
+              ChatSev.socket.onerror = function(e){
+                  $rootScope.alertError("服务器出现异常错误！");
+                  $scope.toggleChat(true);
+              }
+
+
+          }).then(function(err){
           });
+
 
 
 
@@ -152,18 +164,22 @@ App
                         if(!user.posts)
                             user.posts = [];
 
-                        //用户列表添加message
-                        user.posts.push(data.msg);
 
                         console.log(data.msg);
 
                         if(!$scope.posts){
                             $scope.posts = [];
+
+
                         }
 
                         if(user.userId == $scope.currentUser.userId){
                             $scope.posts.push(data.msg);
                         }
+
+                        //用户列表添加message
+                        user.posts.push(data.msg);
+
 
                         break;
 

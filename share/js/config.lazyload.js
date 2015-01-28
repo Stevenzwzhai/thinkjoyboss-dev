@@ -142,6 +142,7 @@ App
                       'lib/vendor/modules/videogular/plugins/ima-ads.min.js'
                   ]
               }
+
           ]
       });
   }])

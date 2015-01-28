@@ -5,6 +5,31 @@
 /** 客服系统 cs**/
 
 
+//ng animate
+
+.an-group.ng-enter{
+  -webkit-transition:all linear 3.5s;
+  -moz-transition:all linear 3.5s;
+  -o-transition:all linear 0.5s;
+  -ms-transition:all linear 0.5s;
+  transition:all linear 3.5s;
+
+  -webkit-animation : none;
+}
+
+
+.an-group.ng-enter.ng-enter-active{
+  -webkit-animation : zoomIn 0.5s ease 0s both;
+  animation : zoomIn 0.5s ease 0s both;
+  -moz-animation : zoomIn 0.5s ease 0s both;
+  -ms-animation:zoomIn 0.5s ease 0s both;
+
+}
+
+
+
+
+
 //缩进
 .indent{
   .chat-left{
@@ -75,6 +100,9 @@
   background: #ffffff;
 
   .chatContentFeed{
+
+
+
     .panel-body{
       height: 300px;
       overflow-y: scroll;
