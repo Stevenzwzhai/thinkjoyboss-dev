@@ -46,6 +46,13 @@
           </li>
 
 
+            <li class="hidden-xs">
+                <a ui-sref="app.set">
+                    <i class="fa fa-spin fa-gear"></i>
+                </a>
+            </li>
+
+
           <li class="hidden-xs">
             <a ui-fullscreen></a>
           </li>
@@ -62,28 +69,36 @@
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeInRight w">
-              <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
-                <div>
-                  <p>300mb of 500mb used</p>
-                </div>
-                <progressbar value="60" class="progress-xs m-b-none bg-white"></progressbar>
-              </li>
+
               <li>
                 <a href>
-                  <span class="badge bg-danger pull-right">30%</span>
-                  <span>Settings</span>
+                    <div class="m-b-sm">
+                        <label class="i-switch bg-info pull-right">
+                            <input type="checkbox"   ng-model="app.settings.env" >
+                            <i></i>
+                        </label>
+                        正式环境
+                    </div>
                 </a>
               </li>
+
+
               <li>
                 <a ui-sref="app.page.profile">Profile</a>
               </li>
+
+
               <li>
                 <a ui-sref="app.docs">
                   <span class="label bg-info pull-right">new</span>
                   Help
                 </a>
               </li>
+
+
               <li class="divider"></li>
+
+
               <li>
                 <a ui-sref="access.signin">Logout</a>
               </li>

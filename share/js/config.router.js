@@ -30,6 +30,13 @@ App
                   templateUrl: 'share/tpl/app.html'
               })
 
+              //设置页面
+              .state('app.set', {
+                  url: '/setting',
+                  templateUrl: 'share/tpl/settings-page.html'
+              })
+
+
               //首页
               .state('app.home', {
                   url: '/home',

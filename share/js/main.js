@@ -111,13 +111,33 @@ App
 
 
 
-      //默认环境
-      if($localStorage.settings.env){
-          SERVER.url = SERVER.formalUrl;
-      }
-      else{
-          SERVER.url = SERVER.testUrl;
-      }
+
+        SERVER.url = SERVER.testUrl;
+
+        //配置
+        $rootScope.setting = {
+            env : ""
+        }
+
+
+        $rootScope.$watch("setting.env",function(newVal,oldVal){
+                var msg;
+                //正式
+                if(newVal){
+                    SERVER.url = SERVER.formalUrl;
+                    msg = "正式环境";
+                }
+                //测试
+                else{
+                    SERVER.url = SERVER.testUrl;
+                    msg = "测试环境"
+                }
+                $rootScope.alertSuccess("已经切换到"+ msg);
+
+        });
+
+
+
 
 
 
@@ -125,28 +145,8 @@ App
         if( $scope.app.settings.asideDock  &&  $scope.app.settings.asideFixed ){
           // aside dock and fixed must set the header fixed.
           $scope.app.settings.headerFixed = true;
-        }
+             }
 
-
-
-          //地址切换
-          if(newVal.env !=  oldVal.env){
-                var msg;
-              //正式
-              if(newVal.env){
-                  SERVER.url = SERVER.formalUrl;
-                  msg = "正式环境";
-              }
-              //测试
-              else{
-                  SERVER.url = SERVER.testUrl;
-                  msg = "测试环境"
-              }
-              $rootScope.alertSuccess("已经切换到"+ msg);
-
-            var stateName = $state.current.name;
-            $state.go(stateName);
-          }
 
         // save to local storage
         $localStorage.settings = $scope.app.settings;
