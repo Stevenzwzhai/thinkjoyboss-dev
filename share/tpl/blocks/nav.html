@@ -1,98 +1,82 @@
 <!-- list -->
-
-
 <ul class="nav">
 
-  <!-- 标题 -->
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+<!-- 标题 -->
+<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components01.components">xxxxxx</span>
-  </li>
+</li>
 
-
-  <!-- 01 -->
-  <li>
-    <a href class="auto">      
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <i class="glyphicon glyphicon-book icon text-primary-dker"></i>
-      <span class="font-bold" translate="aside.nav.components01.base_mg.title">xxxxx</span>
+<!-- 01 -->
+<li>
+    <a href class="auto">
+        <span class="pull-right text-muted">
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+        </span>
+        <i class="glyphicon glyphicon-book icon text-primary-dker"></i>
+        <span class="font-bold" translate="aside.nav.components01.base_mg.title">xxxxx</span>
     </a>
-
     <ul class="nav nav-sub dk">
         <li ui-sref-active="active">
             <a ui-sref="app.user">
                 <span translate="aside.nav.components01.base_mg.user_mg">xxxxxx</span>
             </a>
         </li>
-
-
         <li ui-sref-active="active">
             <a ui-sref="app.school">
                 <span translate="aside.nav.components01.base_mg.school_mg">xxxxxx</span>
             </a>
         </li>
-
     </ul>
+</li>
 
 
-  </li>
-
-
-
-
-
-
-   <!-- 02 -->
-    <li>
-        <a href class="auto">
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-            <i class="glyphicon glyphicon-list-alt icon text-primary-dker"></i>
-            <span class="font-bold" translate="aside.nav.components01.work_order.title">xxxxx</span>
-        </a>
-
-        <ul class="nav nav-sub dk">
-            <li ui-sref-active="active">
-                <a ui-sref="app.audit.school">
-                    <span translate="aside.nav.components01.work_order.audit_mg">xxxxxx</span>
-                </a>
-            </li>
-
-        </ul>
-    </li>
-
-
-
-  <li class="line dk"></li>
-
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-    <span translate="aside.nav.components02.components">xxxxxx</span>
-  </li>
-
-
-
-  <!-- 消息管理 -->
-  <li ng-class="{active:$state.includes('app.ui')}">
+<!-- 02 -->
+<li>
     <a href class="auto">
-      <span class="pull-right text-muted">
-        <i class="fa fa-fw fa-angle-right text"></i>
-        <i class="fa fa-fw fa-angle-down text-active"></i>
-      </span>
-      <i class="glyphicon glyphicon-envelope icon text-primary-dker"></i>
-      <span translate="aside.nav.components02.ui_kits.UI_KITS">xxxxxx</span>
+        <span class="pull-right text-muted">
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+        </span>
+            <i class="glyphicon glyphicon-list-alt icon text-primary-dker"></i>
+        <span class="font-bold" translate="aside.nav.components01.work_order.title">xxxxx</span>
     </a>
 
     <ul class="nav nav-sub dk">
-      <li class="nav-sub-header">
-        <a href>
-          <span translate="aside.nav.components02.ui_kits.UI_KITS">xxxxxx</span>
-        </a>
-      </li>
+        <li ui-sref-active="active">
+            <a ui-sref="app.audit.school">
+                <span translate="aside.nav.components01.work_order.audit_mg">xxxxxx</span>
+            </a>
+        </li>
 
+    </ul>
+</li>
+
+
+<li class="line dk"></li>
+
+<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.components02.components">xxxxxx</span>
+</li>
+
+
+<!-- 消息管理 -->
+<li ng-class="{active:$state.includes('app.ui')}">
+    <a href class="auto">
+        <span class="pull-right text-muted">
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+        </span>
+        <i class="glyphicon glyphicon-envelope icon text-primary-dker"></i>
+        <span translate="aside.nav.components02.ui_kits.UI_KITS">xxxxxx</span>
+    </a>
+
+    <ul class="nav nav-sub dk">
+        <li class="nav-sub-header">
+            <a href>
+                <span translate="aside.nav.components02.ui_kits.UI_KITS">xxxxxx</span>
+            </a>
+        </li>
 
       <li ui-sref-active="active">
         <a ui-sref="app.push">
@@ -101,36 +85,41 @@
       </li>
 
 
-      <li ui-sref-active="active">
-        <a ui-sref="app.ui.icons">
-          <b class="badge bg-info pull-right">3</b>
-          <span translate="aside.nav.components02.ui_kits.ICONS">Icons</span>
-        </a>
-      </li>
+        <li ui-sref-active="active">
+            <a ui-sref="app.ui.icons">
+                <b class="badge bg-info pull-right">3</b>
+                <span translate="aside.nav.components02.ui_kits.ICONS">Icons</span>
+            </a>
+        </li>
+
+        <!-- 短信查询 -->
+        <li ui-sref-active="active">
+            <a ui-sref="app.sms">
+                <span translate="aside.nav.components02.ui_kits.SMS">xxxxxx</span>
+            </a>
+        </li>
+
+        <!-- 短信渠道切换 -->
+        <li ui-sref-active="active">
+            <a ui-sref="app.smschannel">
+                <span translate="aside.nav.components02.ui_kits.SMS_CHANNEL">xxxxxx</span>
+            </a>
+        </li>
 
 
-      <li ui-sref-active="active">
-        <a ui-sref="app.sms">
-          <span translate="aside.nav.components02.ui_kits.SMS ">xxxxxx</span>
-        </a>
-      </li>
-
-
-
-      <li ui-sref-active="active">
-        <a ui-sref="app.feedback">
-          <span translate="aside.nav.components02.ui_kits.FEEDBACK">xxxxxx</span>
-        </a>
-      </li>
+        <li ui-sref-active="active">
+            <a ui-sref="app.feedback">
+                <span translate="aside.nav.components02.ui_kits.FEEDBACK">xxxxxx</span>
+            </a>
+        </li>
 
 
     </ul>
-  </li>
+</li>
 
 
-
-  <!-- 营销管理 -->
-  <li ng-class="{active:$state.includes('app.table')}">
+<!-- 营销管理 -->
+<li ng-class="{active:$state.includes('app.table')}">
     <a href class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
@@ -138,87 +127,92 @@
       </span>
 
 
-      <i class="glyphicon glyphicon-credit-card text-primary-dker"></i>
-      <span translate="aside.nav.components02.table.TABLE">xxxxxx</span>
+        <i class="glyphicon glyphicon-credit-card text-primary-dker"></i>
+        <span translate="aside.nav.components02.table.TABLE">xxxxxx</span>
     </a>
     <ul class="nav nav-sub dk">
-      <li class="nav-sub-header">
-        <a href>
-          <span translate="aside.nav.components02.table.TABLE">xxxxxx</span>
-        </a>
-      </li>
-      <li ui-sref-active="active">
-        <a ui-sref="app.table.static">
-          <span translate="aside.nav.components02.table.TABLE_STATIC">xxxxxx</span>
-        </a>
-      </li>
+        <li class="nav-sub-header">
+            <a href>
+                <span translate="aside.nav.components02.table.TABLE">xxxxxx</span>
+            </a>
+        </li>
+        <li ui-sref-active="active">
+            <a ui-sref="app.table.static">
+                <span translate="aside.nav.components02.table.TABLE_STATIC">xxxxxx</span>
+            </a>
+        </li>
 
-      <li ui-sref-active="active">
-        <a ui-sref="app.table.datatable">
-          <span translate="aside.nav.components02.table.DATATABLE">xxxxxx</span>
-        </a>
-      </li>
+        <li ui-sref-active="active">
+            <a ui-sref="app.table.datatable">
+                <span translate="aside.nav.components02.table.DATATABLE">xxxxxx</span>
+            </a>
+        </li>
 
     </ul>
-  </li>
+</li>
 
 
+<li class="line dk"></li>
 
-    <li class="line dk"></li>
+<!-- 数据分析 -->
+<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.components03.components">xxxxxx</span>
+</li>
 
-    <!-- 数据分析 -->
-    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-        <span translate="aside.nav.components03.components">xxxxxx</span>
-    </li>
-
-
-
-  <!-- 报表 -->
-  <li>
-      <a href class="auto">
+<li>
+    <a href class="auto">
       <span class="pull-right text-muted">
         <i class="fa fa-fw fa-angle-right text"></i>
         <i class="fa fa-fw fa-angle-down text-active"></i>
       </span>
-          <i class="glyphicon glyphicon-book icon text-primary-dker"></i>
-          <span class="font-bold" translate="aside.nav.components03.data_analysis.title">xxxxx</span>
-      </a>
+        <i class="glyphicon glyphicon-book icon text-primary-dker"></i>
+        <span class="font-bold" translate="aside.nav.components03.data_analysis.title">xxxxx</span>
+    </a>
 
-      <ul class="nav nav-sub dk">
-          <li ui-sref-active="active">
-              <a ui-sref="app.sop.report">
-                  <span translate="aside.nav.components03.data_analysis.chart">xxxxxx</span>
-              </a>
-          </li>
-      </ul>
-  </li>
+    <!-- 用户地域分布图 -->
+    <ul class="nav nav-sub dk">
+        <li ui-sref-active="active">
+            <a ui-sref="app.sop.userMap">
+                <span translate="aside.nav.components03.data_analysis.userMap">xxxxxx</span>
+            </a>
+        </li>
+    </ul>
+    <!-- 7日趋势图 -->
+    <ul class="nav nav-sub dk">
+        <li ui-sref-active="active">
+            <a ui-sref="app.sop.7Trend">
+                <span translate="aside.nav.components03.data_analysis.7Trend">xxxxxx</span>
+            </a>
+        </li>
+    </ul>
+    <!-- 报表 -->
+    <ul class="nav nav-sub dk">
+        <li ui-sref-active="active">
+            <a ui-sref="app.sop.report">
+                <span translate="aside.nav.components03.data_analysis.report">xxxxxx</span>
+            </a>
+        </li>
+    </ul>
+</li>
 
 
+<li class="line dk hidden-folded"></li>
 
-
-
-
-
-
-
-
-    <li class="line dk hidden-folded"></li>
-
-  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
+<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.your_stuff.YOUR_STUFF">xxxxxx</span>
-  </li>  
-  <li>
+</li>
+<li>
     <a ui-sref="app.page.profile">
-      <i class="icon-user icon text-success-lter"></i>
-      <b class="badge bg-success pull-right">30%</b>
-      <span translate="aside.nav.your_stuff.PROFILE">xxxxxx</span>
+        <i class="icon-user icon text-success-lter"></i>
+        <b class="badge bg-success pull-right">30%</b>
+        <span translate="aside.nav.your_stuff.PROFILE">xxxxxx</span>
     </a>
-  </li>
-  <li>
-    <a  ng-click="openDoc();">
-      <i class="icon-question icon"></i>
-      <span translate="aside.nav.your_stuff.DOCUMENTS">xxxxxx</span>
+</li>
+<li>
+    <a ng-click="openDoc();">
+        <i class="icon-question icon"></i>
+        <span translate="aside.nav.your_stuff.DOCUMENTS">xxxxxx</span>
     </a>
-  </li>
+</li>
 </ul>
-<!-- / list -->
+<!--  list -->

@@ -39,6 +39,7 @@
                     "PUSH" : "消息推送",
                     "ICONS" : "消息处理",
                     "SMS" : "短信查询",
+                    "SMS_CHANNEL" : "短信渠道切换",
                     "FEEDBACK" : "用户反馈"
                 },
 
@@ -74,7 +75,9 @@
 
                 "data_analysis" :{
                     "title" : "数据分析",
-                    "chart"  : "报表"
+                    "report"  : "报表",
+                    "userMap" : "地域分布图",
+                    "7Trend" : "7日趋势图"
                 }
 
 

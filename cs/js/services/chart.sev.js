@@ -7,6 +7,7 @@ App
         var ChatSev = {
 
             socket : "",
+
             open : function(userName){
                     var defer = $q.defer();
 
@@ -19,7 +20,7 @@ App
                     ChatSev.socket.onopen = function(event) {
                         var option = {
                             type: "begin",
-                            username: userName
+                            userName: userName
                         }
 
                         ChatSev.socket.send(JSON.stringify(option));
@@ -33,16 +34,38 @@ App
 
                 return defer.promise;
             },
+
             //获得用户列表
             getUserList : function(username){
                 var  option = {
                     type: "userList",
-                    username: username
+                    userName: username
                 }
                 ChatSev.socket.send(JSON.stringify(option));
 
-            }
+            },
 
+            //添加用户
+            addUser  : function(username,cusNum,key){
+                var  option = {
+                    type: "accept",
+                    userName: username,
+                    to : cusNum,
+                    key  : key
+                }
+                ChatSev.socket.send(JSON.stringify(option));
+            },
+
+            //发送消息
+            sendMessage : function(username,cusNum,msg){
+                var  option = {
+                    type: "send",
+                    userName: username,
+                    to : cusNum,
+                    msg  : msg
+                }
+                ChatSev.socket.send(JSON.stringify(option));
+            }
 
 
         };

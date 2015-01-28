@@ -108,6 +108,12 @@ App
                   controller: "SMSCtrl"
               })
 
+              .state("app.smschannel", {
+                  url: "/smsChannel",
+                  templateUrl: "boss/tpl/message/sms/smsChannel.html",
+                  controller: "SMSChannelCtrl"
+              })
+
               .state("app.feedback", {
                   url: "/feedback",
                   templateUrl: "boss/tpl/message/feedback/feedbackQuery.html",
@@ -138,7 +144,18 @@ App
                   templateUrl : "sop/tpl/sop.html"
 
               })
-
+              //地域分布图
+              .state("app.sop.userMap", {
+                  url : "/userMap",
+                  templateUrl : "sop/tpl/userMap.html",
+                  controller : "userMapCtrl"
+              })
+              //7日趋势图
+              .state("app.sop.7Trend", {
+                  url : "/7Trend",
+                  templateUrl : "sop/tpl/7Trend.html",
+                  controller : "7TrendCtrl"
+              })
               //报表
               .state("app.sop.report", {
                   url : "/report",
