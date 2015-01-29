@@ -22,6 +22,15 @@ App
         ];
 
 
+        //requrest报文
+        $scope.jsonRequestProto  = "";
+
+        //response报文
+        $scope.jsonResponseProto  = "";
+
+
+
+
         // set default note
         $scope.note = $scope.posts[0];
         $scope.posts[0].selected = true;
@@ -33,14 +42,6 @@ App
            $rootScope.alertModal("brige/tpl/add-bridge.html","AddBridgeCtrl");
 
 
-
-//            var note = {
-//                content: 'New note',
-//                color: $scope.colors[Math.floor((Math.random()*3))],
-//                date: Date.now()
-//            };
-//            $scope.notes.push(note);
-//            $scope.selectNote(note);
         }
 
         //删除协议

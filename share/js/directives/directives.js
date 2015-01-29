@@ -113,5 +113,36 @@ App
     })
 
 
+.directive("jsonFormat", function ($http,$rootScope,Util) {
+
+    return {
+        restrict: "AE",
+        transclude: true,
+        scope: {
+            json  : "=",
+            error : "="
+        },
+        link: function (scope, element, attrs) {
+                //监听变化
+                element.on("input",function(){
+                    try {
+                        var result = jsonlint.parse(element.val());
+                        var  vk = JSON.stringify(result, null, "  ");
+                        element.val(vk);
+                        scope.json =vk;
+
+                    } catch(e) {
+                       scope.error = e;
+                    }
+
+
+                });
+
+
+
+        }
+    }
+
+});
 
 
