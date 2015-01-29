@@ -3,8 +3,8 @@
 //应用初始化设置
 //整体应用的配置
 App
-  .controller('AppCtrl', ['$scope', '$state','$translate', '$rootScope','$localStorage', '$window','toaster','SERVER',
-    function(    $scope, $state,$translate, $rootScope,  $localStorage, $window ,toaster,SERVER) {
+  .controller('AppCtrl', ['$scope', '$state','$translate', '$rootScope','$modal','$localStorage', '$window','toaster','SERVER',
+    function(    $scope, $state,$translate, $rootScope,  $modal,$localStorage, $window ,toaster,SERVER) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
@@ -69,6 +69,16 @@ App
         //跳转帮助页面
         $rootScope.openDoc = function(){
             $window.open("../cgular/src/index.html");
+        }
+
+
+        //弹窗
+        $rootScope.alertModal = function(templateUrl,controllerName){
+            var modalInstance = $modal.open({
+                templateUrl: templateUrl,
+                controller  : controllerName
+            });
+            return modalInstance;
         }
 
 

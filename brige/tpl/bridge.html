@@ -1,1 +1,60 @@
-my bridge
+<!-- hbox layout -->
+<div class="hbox hbox-auto-xs bg-light ">
+    <!-- column -->
+    <div class="col w-lg lt b-r">
+        <div class="vbox">
+            <div class="wrapper">
+                <a href class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="create()">添加</a>
+                <div class="h4">鹊桥</div>
+            </div>
+            <div class="wrapper b-t m-t-xxs">
+                <div class="input-group">
+                    <span class="input-group-addon input-sm"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control input-sm" placeholder="例:login" ng-model="query">
+                </div>
+            </div>
+            <div class="row-row">
+                <div class="cell scrollable hover">
+                    <div class="cell-inner">
+                        <div class="padder">
+                            <div class="list-group">
+                                <a ng-repeat="post in posts " class="list-group-item b-l-{{post.color}} b-l-3x hover-anchor" ng-class="{'hover': post.selected }" ng-click="selectNote(post)">
+                                    <span ng-click='deleteNote(post)' class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
+                                    <span class="block text-ellipsis">{{ post.desc ? post.desc : '这家伙很懒,么也没留下' }}</span>
+                                    <small class="text-muted">{{ post.url  }}</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /column -->
+
+    <!-- column -->
+    <div class="col">
+        <div class="vbox">
+            <div class="wrapper bg-light lt b-b">
+                <!--<span class="text-muted">Created on:</span> <span>{{ note.date  | date:'MMM-dd-yyyy H:mm' }}</span>-->
+                <div class="m-l inline dropdown" dropdown>
+                    <a class="v-middle pos-rlt inline bg-{{note.color}}" dropdown-toggle style="width:16px;height:16px;top:-2px"></a>
+                    <div class="dropdown-menu animated fadeInUp w wrapper">
+                        <a ng-repeat="color in colors" class="inline m-xs bg-{{color}}" style="width:18px;height:18px" ng-click=" note.color = color "></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row-row">
+                <div class="cell">
+
+                        <!--<textarea class="form-control no-radius no-border no-bg wrapper-lg text-md" style="height:100%;" ng-model="note.content">-->
+                        <!--</textarea>-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /column -->
+</div>
+<!-- /hbox layout -->
