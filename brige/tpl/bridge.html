@@ -39,19 +39,94 @@
     <!-- column -->
     <div class="col">
         <div class="vbox">
-            <div class="wrapper bg-light lt b-b">
-                <!--<span class="text-muted">Created on:</span> <span>{{ note.date  | date:'MMM-dd-yyyy H:mm' }}</span>-->
-                <div class="m-l inline dropdown" dropdown>
-                    <a class="v-middle pos-rlt inline bg-{{note.color}}" dropdown-toggle style="width:16px;height:16px;top:-2px"></a>
-                    <div class="dropdown-menu animated fadeInUp w wrapper">
-                        <a ng-repeat="color in colors" class="inline m-xs bg-{{color}}" style="width:18px;height:18px" ng-click=" note.color = color "></a>
-                    </div>
-                </div>
-            </div>
+
             <div class="row-row">
                 <div class="cell">
 
-                    <textarea  json-format   rows="20" cols="50" class="form-control" error="error" json="json"></textarea>
+
+
+                    <div class="wrapper bg-light lt b-b">
+                        <div class="m-l inline" >
+                            <span>协议部分</span>
+                        </div>
+                    </div>
+
+                    <section class="m-t">
+                        <div class="col-sm-6 connected" >
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    Request协议
+                                </div>
+                                <div class="list-group bg-white">
+                                   <span>
+                                         <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                   </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-6 connected" >
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    Response协议
+                                </div>
+                                <div class="list-group bg-white">
+                                   <span>
+                                         <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                   </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+
+
+
+                    <!-- 报文部分  -->
+
+                    <div class="wrapper bg-light lt b-b">
+                        <!--<span class="text-muted">Created on:</span> <span>{{ note.date  | date:'MMM-dd-yyyy H:mm' }}</span>-->
+                        <div class="m-l inline" >
+                            <span>服务端报文</span>
+                        </div>
+                    </div>
+
+                    <section class="m-t">
+                        <div class="col-sm-6 connected" >
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    服务端Request报文
+                                </div>
+                                <div class="list-group bg-white">
+                                   <span>
+                                         <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                   </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-6 connected" >
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    服务端Response报文
+                                </div>
+                                <div class="list-group bg-white">
+                                   <span>
+                                         <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                   </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </section>
+
+
+
+
 
                     </div>
                 </div>
