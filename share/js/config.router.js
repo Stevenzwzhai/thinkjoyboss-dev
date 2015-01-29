@@ -176,6 +176,20 @@ App
 
               //brige 路由部分
 
+              .state("app.mbridge",{
+                  url : "/mbridge",
+                  abstract : true,
+                  templateUrl : "brige/tpl/mbridge.html"
+              })
+
+                  .state("app.mbridge.bridge", {
+                      url : "/bridge",
+                      templateUrl : "brige/tpl/bridge.html",
+                      controller : "BridgeCtrl"
+                  })
+
+
+
               //brige 路由部分
 
       }

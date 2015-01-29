@@ -47,9 +47,10 @@ App.constant("SERVER", {
         message : "http://10.10.68.12:8080/v1",
 
         //线上
-//        push : "http://115.29.184.78:8084/push",
-        push : "http://172.16.130.27:8080/push",
-        im   : "ws://172.16.130.27:8080/customerIM",
+        push : "http://115.29.184.78:8084/push",
+//        push : "http://172.16.130.27:8080/push",
+//        im   : "ws://172.16.130.27:8080/push/customerIM",
+        im   : "ws://115.29.184.78:8084/push/customerIM",
         sop  : "http://121.41.61.218:9003"
     },
 //    //测试
@@ -62,12 +63,13 @@ App.constant("SERVER", {
 //        uc  : "http://imzhiliao.com:10012/v1",
 //        message : "http://imzhiliao.com:10011/v1"
 //    }
+
     //预发布
     formalUrl : {
         uc  : "http://imzhiliao.com:10000/uc",
         message : "http://imzhiliao.com:10000/message",
         push : "http://115.29.184.78:8084/push",
-        im   : "ws://115.29.184.78:8084/customerIM",
+        im   : "ws://115.29.184.78:8084/push/customerIM",
         sop  : "http://121.41.61.218:9003"
     }
 });

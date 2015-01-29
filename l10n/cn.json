@@ -84,6 +84,19 @@
             },
 
 
+            "components04":{
+                "components" : "MBridge 鹊桥",
+
+                "bridge" :{
+                    "title" : "鹊桥",
+                    "bridge"  : "鹊桥"
+
+                }
+
+
+            },
+
+
             "your_stuff" : {
                 "YOUR_STUFF": "boss 展示平台",
                 "PROFILE" : "个人信息",

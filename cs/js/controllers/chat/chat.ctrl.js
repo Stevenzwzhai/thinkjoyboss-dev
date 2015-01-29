@@ -99,6 +99,7 @@ App
 
                 if(isCon){
                     ChatSev.addUser($scope.userName,user.userId,user.key);
+                    user.isNew = false;
                 }
                 else{
                     removeUser(user.userId);
