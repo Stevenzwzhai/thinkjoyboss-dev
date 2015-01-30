@@ -95,8 +95,6 @@ App
                 $page.find(".previous > button").click(function(){
                     Util.calcPage(scope,"prev");
                     loadList();
-
-
                 });
 
                 //下一页
@@ -143,6 +141,30 @@ App
         }
     }
 
-});
+})
+
+//    .directive("path", function ($http,$rootScope,Util) {
+//        return {
+//            restrict: "AE",
+//            replace: true,
+//            scope: {
+//
+//            },
+//            link: function (scope, element, attrs) {
+//
+//                element.find("#nav").ferroMenu({
+//                    position 	: "right-bottom",
+//                    delay 		: 50,
+//                    rotation 	: 720,
+//                    margin		: 20
+//                });
+//
+//
+//
+//
+//            }
+//        }
+//
+//    });
 
 

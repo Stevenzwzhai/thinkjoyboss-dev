@@ -22,6 +22,10 @@ App
         ];
 
 
+        $scope.currentPotoy = 1;
+
+        
+
         //requrest报文
         $scope.jsonRequestProto  = "";
 
