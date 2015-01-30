@@ -5114,3 +5114,14 @@ a.text-#000000:hover {
 .text-muted.active{
     color: #141719;
 }
+
+
+.bridge-edit{
+    position: relative;
+    color: #ffffff;
+    top : 1px;
+}
+
+.bridge-edit:hover{
+    color: #ffffff;
+}

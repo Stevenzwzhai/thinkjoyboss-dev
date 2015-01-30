@@ -1,6 +1,6 @@
 App
 
-    .controller("BridgeCtrl", function ($rootScope, $modal,$scope, $state, $window, $log, $q, $timeout, AuditService,Util) {
+    .controller("BridgeCtrl", function ($rootScope, $modal,$scope, $state, $window, $log, $q, $timeout, BridgeService,Util) {
 
             console.log("bridge.....");
 
@@ -22,16 +22,38 @@ App
         ];
 
 
+
+
+        //服务列表
+        $scope.serves = [];
+
+        //url列表
+        $scope.urls = [];
+
+        //加载服务器列表
+        BridgeService.getServerList().then(function(res){
+            $scope.serves = res;
+        },function(err){
+            $rootScope.alertError("服务器列表,加载失败")
+            console.log(err);
+        });
+
+
+
+        //控制切换
         $scope.currentPotoy = 1;
 
-        
 
         //requrest报文
         $scope.jsonRequestProto  = "";
-
         //response报文
         $scope.jsonResponseProto  = "";
 
+
+
+        //协议
+//        $scope. requestproto =  true;
+//        $scope. responseproto = true;
 
 
 
@@ -40,6 +62,23 @@ App
         $scope.posts[0].selected = true;
         $scope.colors = ['primary', 'info', 'success', 'warning', 'danger', 'dark'];
 
+
+
+
+        //查询url列表
+        $scope.findUrlList = function(url,sysCode,pageIndex,pageSize){
+
+            url   = url || "";
+            sysCode = sysCode || "";
+            pageIndex =   pageIndex || 0;
+            pageSize  =   pageSize || 10;
+            BridgeService.getUrlList(url,sysCode,pageIndex,pageSize).then(function(res){
+                $scope.posts = res.pageList;
+            },function(err){
+                $rootScope.alertError("url列表,加载失败")
+                console.log(err);
+            });
+        }
 
         //创建协议
         $scope.create = function(){
@@ -68,6 +107,10 @@ App
             $scope.note.selected = true;
         }
 
+
+
+        //load
+        $scope.findUrlList();
 
     })
 

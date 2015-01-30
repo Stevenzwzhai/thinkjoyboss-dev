@@ -16,6 +16,16 @@
                     <span class="input-group-addon input-sm"><i class="fa fa-search"></i></span>
                     <input type="text" class="form-control input-sm" placeholder="例:login" ng-model="query">
                 </div>
+                <div class="form-group m-t">
+
+                   <select class="form-control">
+                        <option value="">请选择</option>
+                        <option value="{{server.systemCode}}" ng-repeat=" server in  serves">
+                            {{server.systemName}}
+                        </option>
+                   </select>
+
+                </div>
             </div>
             <div class="row-row">
                 <div class="cell scrollable hover">
@@ -23,9 +33,10 @@
                         <div class="padder">
                             <div class="list-group">
                                 <a ng-repeat="post in posts " class="list-group-item b-l-{{post.color}} b-l-3x hover-anchor" ng-class="{'hover': post.selected }" ng-click="selectNote(post)">
+                                    {{post.result}}
                                     <span ng-click='deleteNote(post)' class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
-                                    <span class="block text-ellipsis">{{ post.desc ? post.desc : '这家伙很懒,么也没留下' }}</span>
-                                    <small class="text-muted">{{ post.url  }}</small>
+                                    <span class="block text-ellipsis">{{ post.urlDesc ? post.urlDesc : '这家伙很懒,么也没留下' }}</span>
+                                    <small class="text-muted">{{ post.exeUrl  }}</small>
                                 </a>
                             </div>
                         </div>
@@ -96,19 +107,24 @@
 
                                 <section class="m-t">
                             <div class="col-sm-6 connected" >
-                                <div class="panel panel-primary">
+                                <div class="panel panel-primary"  >
                                     <div class="panel-heading">
                                         Request协议
+                                        <a href="" ui-toggle-class="" ng-click="requestproto=false" class="pull-right bridge-edit">
+                                            <i class="fa fa-floppy-o text-white fa-lg  text-active "></i>
+                                            <i class="fa fa-pencil-square-o fa-lg  text-white  text"></i>
+                                        </a>
+                                        <!--<a class=" ib pull-right  bridge-edit">编辑</a>-->
                                     </div>
                                     <div class="list-group bg-white">
                                        <span>
-                                             <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                             <textarea    readonly="requestproto" json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
                                        </span>
                                     </div>
                                 </div>
 
 
-                            </div>
+                    </div>
                             <div class="col-sm-6 connected" >
                                 <div class="panel panel-success">
                                     <div class="panel-heading">
@@ -116,7 +132,7 @@
                                     </div>
                                     <div class="list-group bg-white">
                                        <span>
-                                             <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                             <textarea    readonly="requestproto" json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
                                        </span>
                                     </div>
                                 </div>
@@ -188,7 +204,7 @@
                                         </div>
                                         <div class="list-group bg-white">
                                        <span>
-                                             <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                             <textarea      json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
                                        </span>
                                         </div>
                                     </div>
@@ -199,10 +215,11 @@
                                     <div class="panel panel-info">
                                         <div class="panel-heading">
                                             约定响应报文
+
                                         </div>
                                         <div class="list-group bg-white">
                                        <span>
-                                             <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                             <textarea     json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
                                        </span>
                                         </div>
                                     </div>
