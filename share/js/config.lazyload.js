@@ -39,7 +39,7 @@ App
                           'lib/vendor/jquery/footable/footable.core.css'],
 
 //        selectize: ['lib/vendor/jquery/selectize/selectize.min.js',
-//        'lib/vendor/jquery/selectize/selectize.bootstrap3.css'],
+ //       'lib/vendor/jquery/selectize/selectize.bootstrap3.css'],
         datetimepicker: ['lib/vendor/modules/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css',
            'lib/vendor/modules/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js']
 

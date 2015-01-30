@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label class="col-lg-2 control-label">接收邮箱:</label>
                 <div class="col-lg-8">
-                    <!--<zlselectize receiverlist="{{mail.receiverList}}"></zlselectize>-->
+                    <zlselectize receiver-list="mail.receiverList"></zlselectize>
                 </div>
             </div>
             <div class="form-group">
@@ -26,86 +26,49 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">邮件内容:</label>
                 <div class="col-sm-10">
-                    <div class="btn-toolbar m-b-sm btn-editor" data-role="editor-toolbar" data-target="#editor">
-                        <div class="btn-group">
+                    <div lazy-load="textAngular">
+                        <div text-angular ng-model="mail.content" class="btn-groups"></div>
+                    </div>
+                    <div class="btn-group">
+                        <script type="text/ng-template" id="myModalContent.html">
+                            <div class="modal-body">
+                                <table class="table bg-white-only b-a">
+                                    <thead>
+                                    <tr>
+                                        <th>名称</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="attach in attachs" class="ng-scope">
+                                        <td><strong class="ng-binding">{{attach}}</strong></td>
+                                        <td nowrap="">
+                                            <button type="button" class="btn btn-default btn-xs" ng-click="remove(attach)">
+                                               删除
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
 
-                        </div>
-                        <div class="btn-group dropdown">
-                            <a class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" tooltip="Font"><i class="fa text-base fa-font"></i><b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href dropdown-toggle data-edit="fontName Serif" style="font-family:'Serif'">Serif</a></li>
-                                <li><a href dropdown-toggle data-edit="fontName Sans" style="font-family:'Sans'">Sans</a></li>
-                                <li><a href dropdown-toggle data-edit="fontName Arial" style="font-family:'Arial'">Arial</a></li></ul>
-                        </div>
-                        <div class="btn-group dropdown">
-                            <a class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" tooltip="Font Size"><i class="fa text-base fa-text-height"></i>&nbsp;<b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href dropdown-toggle data-edit="fontSize 5" style="font-size:24px">Huge</a></li>
-                                <li><a href dropdown-toggle data-edit="fontSize 3" style="font-size:18px">Normal</a></li>
-                                <li><a href dropdown-toggle data-edit="fontSize 1" style="font-size:14px">Small</a></li>
-                            </ul>
-                        </div>
-                        <div class="btn-group">
-                            <a class="btn btn-sm btn-default" data-edit="bold" tooltip="Bold (Ctrl/Cmd+B)"><i class="fa text-base fa-bold"></i></a>
-                            <a class="btn btn-sm btn-default" data-edit="italic" tooltip="Italic (Ctrl/Cmd+I)"><i class="fa text-base fa-italic"></i></a>
-                            <a class="btn btn-sm btn-default" data-edit="strikethrough" tooltip="Strikethrough"><i class="fa text-base fa-strikethrough"></i></a>
-                            <a class="btn btn-sm btn-default" data-edit="underline" tooltip="Underline (Ctrl/Cmd+U)"><i class="fa text-base fa-underline"></i></a>
-                        </div>
-                        <div class="btn-group">
-                            <a class="btn btn-sm btn-default" data-edit="insertunorderedlist" tooltip="Bullet list"><i class="fa text-base fa-list-ul"></i></a>
-                            <a class="btn btn-sm btn-default" data-edit="insertorderedlist" tooltip="Number list"><i class="fa text-base fa-list-ol"></i></a>
-                            <a class="btn btn-sm btn-default" data-edit="outdent" tooltip="Reduce indent (Shift+Tab)"><i class="fa text-base fa-dedent"></i></a>
-                            <a class="btn btn-sm btn-default" data-edit="indent" tooltip="Indent (Tab)"><i class="fa text-base fa-indent"></i></a>
-                        </div>
-                        <div class="btn-group">
-                            <a class="btn btn-sm btn-default" data-edit="justifyleft" tooltip="Align Left (Ctrl/Cmd+L)"><i class="fa text-base fa-align-left"></i></a>
-                            <a class="btn btn-sm btn-default" data-edit="justifycenter" tooltip="Center (Ctrl/Cmd+E)"><i class="fa text-base fa-align-center"></i></a>
-                            <a class="btn btn-sm btn-default" data-edit="justifyright" tooltip="Align Right (Ctrl/Cmd+R)"><i class="fa text-base fa-align-right"></i></a>
-                            <a class="btn btn-sm btn-default" data-edit="justifyfull" tooltip="Justify (Ctrl/Cmd+J)"><i class="fa text-base fa-align-justify"></i></a>
-                        </div>
-                        <div class="btn-group">
-                            <script type="text/ng-template" id="myModalContent.html">
-                                <div class="modal-body">
-                                    <table class="table bg-white-only b-a">
-                                        <thead>
-                                        <tr>
-                                            <th>名称</th>
-                                            <th>操作</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr ng-repeat="attach in attachs" class="ng-scope">
-                                            <td><strong class="ng-binding">{{attach}}</strong></td>
-                                            <td nowrap="">
-                                                <button type="button" class="btn btn-default btn-xs" ng-click="remove(attach)">
-                                                   删除
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <div class="col-md-10" style="padding-right: 0">
-                                                <input type="text" class="form-control" ng-model="newattach" placeholder="请输入附件链接地址">
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="row text-left">
-                                                    <button class="btn btn-success" ng-click="addNewAttach()" style="display: inline-block">添加</button>
-                                                </div>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-md-10" style="padding-right: 0">
+                                            <input type="text" class="form-control" ng-model="newattach" placeholder="请输入附件链接地址">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="row text-left">
+                                                <button class="btn btn-success" ng-click="addNewAttach()" style="display: inline-block">添加</button>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary" ng-click="ok()">OK</button>
-                                </div>
-                            </script>
-                            <a class="btn btn-sm btn-default" tooltip="添加附件" ng-click="addAttach()"><i class="fa text-base fa-chain"></i></a>
-                        </div>
-                    </div>
-                    <div ui-jq="wysiwyg" class="form-control h-auto" style="min-height:200px;" ng-model="mail.content">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" ng-click="ok()">OK</button>
+                            </div>
+                        </script>
+                        <a class="btn btn-sm btn-default" tooltip="添加附件" ng-click="addAttach()"><i class="fa text-base fa-chain"></i></a>
                     </div>
                 </div>
             </div>
@@ -115,7 +78,8 @@
                 <div class="col-lg-4">
 
 
-                    <div ui-jq="datetimepicker"   ui-option =""   class='input-group date'>
+                    <div ui-jq="datetimepicker"   ui-option =' defaultDate: "", locale: "zh-cn", format: "YYYY-MM-DD HH:mm:ss"'
+                         class='input-group date'>
                         <input type='text'    class="form-control"  ng-model="date"  value="{{date}}" />
                         <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
                         </span>

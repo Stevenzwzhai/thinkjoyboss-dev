@@ -6,9 +6,9 @@ App
 
     }]);
 
-App.controller('MailNewCtrl', ['$scope', '$rootScope', '$http', '$interval', '$modal', 'SERVER', function($scope, $rootScope, $http, $interval, $modal, SERVER) {
+App.controller('MailNewCtrl', function($scope, $rootScope, $http, $interval, $modal, SERVER, EmailService) {
     $scope.mail = {
-        receiverList: ["fshao@thinkjoy.cn"],
+        receiverList: [],
         attachList: [],
         ccList: [],
         emailProvider: "EP_126",
@@ -24,21 +24,10 @@ App.controller('MailNewCtrl', ['$scope', '$rootScope', '$http', '$interval', '$m
     
     $scope.date = "";
 
-    $scope.timeShow = false;
-    $scope.showTime = function() {
-        $scope.timeShow = !$scope.timeShow;
-    }
-
-    $interval(function() {
-        if ($scope.mail.date == "")
-        {
-            $scope.mail.sendDate = new Date();
-        }
-    }, 1000);
-
     $scope.$watch("date", function(newdate){
-        $scope.mail.sendDate = newdate;
+        $scope.mail.sendDate = moment(newdate, "LLL").toDate().getTime();
     });
+
 
     $scope.toggleTimeSend = function() {
         $scope.mail.sendTimeType = $scope.mail.sendTimeType == 0 ? 1 : 0;
@@ -48,11 +37,6 @@ App.controller('MailNewCtrl', ['$scope', '$rootScope', '$http', '$interval', '$m
 
     };
 
-    $scope.tolist = [
-        {name: 'James', email:'james@gmail.com'},
-        {name: 'Luoris Kiso', email:'luoris.kiso@hotmail.com'},
-        {name: 'Lucy Yokes', email:'lucy.yokes@gmail.com'}
-    ];
 
     $scope.addAttach = function (size) {
 
@@ -75,12 +59,8 @@ App.controller('MailNewCtrl', ['$scope', '$rootScope', '$http', '$interval', '$m
 
     $scope.currentdate = "";
 
-    $scope.url = SERVER.url.push + "/email/send";
-
     $scope.sendMail = function() {
-        console.log(angular.toJson($scope.mail));
-        $http.post($scope.url, $scope.mail, {headers:{'is-json-data': true}})
-            .success(function(data) {
+        EmailService.sendEmail($scope.mail).then(function(data) {
                 if (data.result == true)
                 {
                     $rootScope.alertSuccess("邮件发送成功");
@@ -90,12 +70,11 @@ App.controller('MailNewCtrl', ['$scope', '$rootScope', '$http', '$interval', '$m
                     $rootScope.alertError("邮件发送失败: " + data.msg);
                 }
 
-            })
-            .error(function(data) {
-                $rootScope.alertError("邮件发送失败" )
-            })
-    }
-}]);
+            }, function(err) {
+                $rootScope.alertError("邮件发送失败" );
+            });
+    };
+});
 
 App.controller('ModalInstanceCtrl', function ($scope, $modalInstance, attachs) {
 

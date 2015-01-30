@@ -47,7 +47,9 @@ App.constant("SERVER", {
         message : "http://10.10.68.12:8080/v1",
 
         //线上
-        push : "http://115.29.184.78:8084/push",
+       // push : "http://115.29.184.78:8084/push",
+        push: "http://127.0.0.1:8080",
+
 //        push : "http://172.16.130.27:8080/push",
 //        im   : "ws://172.16.130.27:8080/push/customerIM",
         im   : "ws://115.29.184.78:8084/push/customerIM",
