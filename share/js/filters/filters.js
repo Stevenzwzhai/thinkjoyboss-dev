@@ -23,6 +23,32 @@ App
         }
     })
 
+    .filter("colorClass",function(){
+        return function(res) {
+            if(res){
+                var color=  res.testResult;
+
+                if(color == "success"){
+                    return "success";
+                }
+                else if(color == "error"){
+                    return "danger";
+                }
+                else if(color == "warn"){
+                    return "warning";
+                }
+                else{
+                    return "info";
+                }
+            }
+            else{
+                return "info";
+            }
+
+        };
+    })
+
+
 .filter("userType",function(){
     return function(res) {
 

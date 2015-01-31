@@ -19,7 +19,14 @@ App
 
                 scope.pageIndex =  element.attr("pageIndex");
                 scope.pageSize =   element.attr("pageSize");
+                scope.preName =   element.attr("preName") || "上一页";
+                scope.nextName =   element.attr("nextName") || "下一页";
 
+                if(scope.preName == "num")
+                    scope.preName = "";
+
+                if(scope.nextName == "num")
+                    scope.nextName = "";
 
                 var getReName = function(resNameArray,res){
 

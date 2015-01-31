@@ -1,26 +1,14 @@
 App
 
-    .controller("BridgeCtrl", function ($rootScope, $modal,$scope, $state, $window, $log, $q, $timeout, BridgeService,Util) {
+    .controller("BridgeCtrl", function ($rootScope,$modal,$scope, $state, $window, $log, $q, $timeout, SERVER,BridgeService,Util,BridgeShare) {
 
             console.log("bridge.....");
 
         $scope.posts =[
 
-            {
-                "url" : "http:///www.baidu.com/login",
-                "color" : "primary",
-                "desc" : "这是注册使用的",
-                "type" : "post"
-            },
-            {
-                "url" : "http:///www.google.com/register",
-                "color" : "success",
-                "desc" : "这是登录使用的",
-                "type" : "get"
-            }
+
 
         ];
-
 
 
 
@@ -33,6 +21,7 @@ App
         //加载服务器列表
         BridgeService.getServerList().then(function(res){
             $scope.serves = res;
+            BridgeShare.initServers($scope.serves);
         },function(err){
             $rootScope.alertError("服务器列表,加载失败")
             console.log(err);
@@ -57,33 +46,46 @@ App
 
 
 
-        // set default note
-        $scope.note = $scope.posts[0];
-        $scope.posts[0].selected = true;
-        $scope.colors = ['primary', 'info', 'success', 'warning', 'danger', 'dark'];
 
 
-
-
-        //查询url列表
-        $scope.findUrlList = function(url,sysCode,pageIndex,pageSize){
-
-            url   = url || "";
-            sysCode = sysCode || "";
-            pageIndex =   pageIndex || 0;
-            pageSize  =   pageSize || 10;
-            BridgeService.getUrlList(url,sysCode,pageIndex,pageSize).then(function(res){
-                $scope.posts = res.pageList;
-            },function(err){
-                $rootScope.alertError("url列表,加载失败")
-                console.log(err);
-            });
+        //url
+        $scope.urlList = SERVER.url.mBrige + "/url/list";
+        $scope.params = {
+            url : "",
+            sysCode : ""
         }
+
+
+        //监听完成
+        $scope.$watch("params.url",function(newV){
+            if(newV ==  ""){
+                $scope.refresh = true;
+            }
+        });
+
+        $scope.$watch("params.sysCode",function(newV){
+                $scope.refresh = true;
+        });
+
+
+        //查询
+        $scope.search = function () {
+            $scope.refresh = true;
+        }
+
+
+        //查询
+        $scope.enter = function(ev){
+            if (ev.keyCode !== 13) return;
+            $scope.refresh = true;
+        }
+
+
+
 
         //创建协议
         $scope.create = function(){
            $rootScope.alertModal("brige/tpl/add-bridge.html","AddBridgeCtrl");
-
 
         }
 
@@ -108,16 +110,33 @@ App
         }
 
 
-
-        //load
-        $scope.findUrlList();
-
     })
 
-
+    .service("BridgeShare",function(){
+          var  sv  = [];
+        return  {
+            initServers : function(serverList){
+                sv = serverList;
+            },
+            getServers : function($scope){
+                return sv;
+            }
+        }
+    })
     //add bridge
-    .controller("AddBridgeCtrl", function ($rootScope, $modalInstance,$modal,$scope, $state, $window, $log, $q, $timeout, AuditService,Util) {
+    .controller("AddBridgeCtrl", function ($rootScope, $modalInstance,$modal,$scope, $state, $window, $log, $q, $timeout, BridgeService,Util,BridgeShare) {
             console.log("add bridge");
+        $scope.fm = {
+            sysCode : "",
+            url : "",
+            requestType : "",
+            urlDesc : "",
+            owner : ""
+        }
+
+        //服务列表
+        $scope.serves = BridgeShare.getServers();
+
 
 
         $scope.ok = function () {
@@ -128,5 +147,22 @@ App
             $modalInstance.dismiss('cancel');
         };
 
+
+        //添加sub
+        $scope.addSub = function(){
+            console.log($scope.fm);
+            BridgeService.addBridge($scope.fm.url,$scope.fm.sysCode,$scope.fm.requestType,$scope.fm.urlDesc,$scope.fm.owner)
+                .then(function(res){
+                    if(res.result){
+                        $rootScope.alertSuccess(res.resultDesc);
+                        $modalInstance.dismiss('cancel');
+                    }
+                    else{
+                        $rootScope.alertError(res.resultDesc);
+                    }
+                },function(err){
+                });
+
+        }
 
     });

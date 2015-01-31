@@ -37,6 +37,26 @@ App
                         defer.reject(err);
                     });
                 return  defer.promise;
+            },
+
+
+            addBridge : function(url,sysCode,requestType,urlDesc,owner){
+                var defer = $q.defer();
+                $http.post(SERVER.url.mBrige + "/addProtocol",{
+                        sysCode : sysCode,
+                        url : url,
+                        requestType : requestType,
+                        urlDesc  : urlDesc,
+                        owner : owner
+                })
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
             }
+
         }
     });
