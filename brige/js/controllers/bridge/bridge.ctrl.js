@@ -10,6 +10,7 @@ App
 
         ];
 
+        $scope.note = "";
 
 
         //服务列表
@@ -21,7 +22,7 @@ App
         //加载服务器列表
         BridgeService.getServerList().then(function(res){
             $scope.serves = res;
-            BridgeShare.initServers($scope.serves);
+            BridgeShare.init($scope);
         },function(err){
             $rootScope.alertError("服务器列表,加载失败")
             console.log(err);
@@ -41,11 +42,14 @@ App
 
 
         //协议
-//        $scope. requestproto =  true;
-//        $scope. responseproto = true;
+        $scope. isReqPoto =  true;
+        $scope. isRepPoto =  true;
 
 
 
+        $scope.fm ={
+            requestPotoVal : ""
+        }
 
 
         //url
@@ -67,6 +71,40 @@ App
                 $scope.refresh = true;
         });
 
+        //保存请求协议
+        $scope.saveReqPoto = function(){
+
+            var newReq = JSON.stringify( JSON.parse($scope.note.urlRequest));
+            BridgeService.updateBridgeReq($scope.note.urlId,newReq).then(function(res){
+                if(res.result){
+                    $rootScope.alertSuccess(res.resultDesc);
+                    $scope.refresh = true;
+                }
+                else{
+                    $rootScope.alertError(res.resultDesc);
+                }
+            });
+            $scope.isReqPoto = true;
+        }
+
+
+        //保存响应协议
+        $scope.saveResPoto = function(){
+            var newRes = JSON.stringify( JSON.parse($scope.note.urlResponse));
+            BridgeService.updateBridgeRep($scope.note.urlId,newRes).then(function(res){
+                if(res.result){
+                    $rootScope.alertSuccess(res.resultDesc);
+                    $scope.refresh = true;
+                }
+                else{
+                    $rootScope.alertError(res.resultDesc);
+                }
+            });
+            $scope.isRepPoto = true;
+        }
+
+
+
 
         //查询
         $scope.search = function () {
@@ -81,6 +119,9 @@ App
         }
 
 
+        $scope.$on("BgChildRefresh",function(){
+            $scope.refresh = true;
+        });
 
 
         //创建协议
@@ -92,21 +133,28 @@ App
         //删除协议
         $scope.delete = function(note){
 
-            $scope.notes.splice($scope.notes.indexOf(note), 1);
-            if(note.selected){
-                $scope.note = $scope.notes[0];
-                $scope.notes.length && ($scope.notes[0].selected = true);
+            var conf =  window.confirm("确定要删除协议 "+note.exeUrl.url+" ?");
+            if(conf){
+                BridgeService.removeBridge(note.urlId).then(function(res){
+                    if(res.result){
+                        $rootScope.alertSuccess(res.resultDesc);
+                        $scope.refresh = true;
+                    }
+                    else{
+                        $rootScope.alertError(res.resultDesc);
+                    }
+                });
             }
+
         }
 
         //选择协议
         $scope.select = function(note){
 
-            angular.forEach($scope.notes, function(note) {
-                note.selected = false;
-            });
             $scope.note = note;
-            $scope.note.selected = true;
+            $scope. isReqPoto =  true;
+            $scope.isRepPoto = true;
+
         }
 
 
@@ -114,12 +162,18 @@ App
 
     .service("BridgeShare",function(){
           var  sv  = [];
+          var  scope = {};
+
         return  {
-            initServers : function(serverList){
-                sv = serverList;
+            init : function($scope){
+                scope = $scope
+                sv = $scope.serves;
             },
             getServers : function($scope){
                 return sv;
+            },
+            getScope : function(){
+                return scope;
             }
         }
     })
@@ -134,8 +188,13 @@ App
             owner : ""
         }
 
+
+
         //服务列表
         $scope.serves = BridgeShare.getServers();
+
+        $scope.otherScope = BridgeShare.getScope();
+
 
 
 
@@ -155,14 +214,18 @@ App
                 .then(function(res){
                     if(res.result){
                         $rootScope.alertSuccess(res.resultDesc);
+                        $scope.otherScope.refresh = true;
                         $modalInstance.dismiss('cancel');
+
                     }
                     else{
                         $rootScope.alertError(res.resultDesc);
                     }
                 },function(err){
                 });
-
         }
+
+
+
 
     });

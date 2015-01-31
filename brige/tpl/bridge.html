@@ -19,7 +19,7 @@
                 <div class="form-group m-t">
 
                    <select class="form-control" ng-model="params.sysCode">
-                        <option value="">请选择</option>
+                        <option value="">请选择系统</option>
                         <option value="{{server.systemCode}}" ng-repeat=" server in  serves">
                             {{server.systemName}}
                         </option>
@@ -35,10 +35,10 @@
                             <table-paging    preName="num" nextName="num"  is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="6"  params="params"  url="urlList"  results="posts"  resultsName="pageList"  total="total"   ng-show="posts.length > 0">
 
                                 <div class="list-group ">
-                                    <a ng-repeat="post in posts " class=" clear list-group-item b-l-{{post.result | colorClass}} b-l-3x hover-anchor" ng-class="{'hover': post.selected }" ng-click="selectNote(post)">
+                                    <a ng-repeat="post in posts " class=" clear list-group-item b-l-{{post.result | colorClass}} b-l-3x hover-anchor" ng-class="{'hover': post.selected }" ng-click="select(post)">
 
-                                        <span ng-click='deleteNote(post)' class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
-                                        <span class="pull-left requestType  requestType-{{post.result | colorClass}}" >G</span>
+                                        <span ng-click='delete(post)' class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
+                                        <span class="pull-left requestType  requestType-{{post.result | colorClass}}" >{{post.requestType | requestType}}</span>
                                         <div class="" style="margin-left: 30px;">
                                             <span class=" text-ellipsis text-ellipsis">    {{ post.urlDesc ? post.urlDesc : '这家伙很懒,么也没留下' }}</span>
                                             <small class="text-muted text-ellipsis" >{{ post.exeUrl  }}</small>
@@ -57,9 +57,12 @@
     </div>
     <!-- /column -->
 
+
+
+
     <!-- column -->
     <div class="col">
-        <div class="vbox">
+        <div class="vbox" ng-hide="note == '' ">
 
             <div class="row-row">
                 <div class="cell" >
@@ -98,16 +101,35 @@
                                     <div class="m-l-lg panel b-a">
                                         <div class="panel-heading pos-rlt b-b b-light">
                                             <span class="arrow left"></span>
-                                            <a href="">国宝</a>
-                                            <label class="label bg-info m-l-xs">get</label>
+                                            <a href="">{{note.urlOwner}}</a>
+                                            <label class="label bg-info m-l-xs">{{note.requestType}}</label>
+                                            <label class="label bg-info m-l-xs requestType-{{note.result | colorClass}}" >{{note.result | resultCode}}</label>
+
                                               <span class="text-muted m-l-sm pull-right">
+                                                 {{note.system.systemName}}&emsp;
                                                 <i class="fa fa-clock-o"></i>
-                                                Just now
+                                               {{note.modifyTime  }}
                                               </span>
+
                                         </div>
                                         <div class="panel-body">
                                             <div>
-                                                这是一个登录接口 来完成此个应用
+                                                {{note.urlValue}}
+                                            </div>
+                                            <div class="">
+                                                {{note.urlDesc}}
+                                            </div>
+
+                                            <div class="m-t" ng-show="note.result.testResult == 'error' ">
+                                                <div class="alert alert-danger" role="alert" style="margin-bottom: 6px;">
+                                                    <strong>错误</strong> {{note.result.errorInfo.errorName}}
+                                                </div>
+                                            </div>
+
+                                            <div class="m-t" ng-show="note.result.testResult == 'warn' ">
+                                                <div class="alert alert-warning" role="alert" style="margin-bottom: 6px;">
+                                                    <strong>警告</strong> {{note.result.errorInfo.errorName}}
+                                                </div>
                                             </div>
 
                                         </div>
@@ -118,17 +140,17 @@
                                 <section class="m-t">
                             <div class="col-sm-6 connected" >
                                 <div class="panel panel-primary"  >
-                                    <div class="panel-heading">
+                                    <div class="panel-heading"  >
                                         Request协议
-                                        <a href="" ui-toggle-class="" ng-click="requestproto=false" class="pull-right bridge-edit">
-                                            <i class="fa fa-floppy-o text-white fa-lg  text-active "></i>
-                                            <i class="fa fa-pencil-square-o fa-lg  text-white  text"></i>
+                                        <a href="" ui-toggle-class    class="pull-right bridge-edit"  >
+                                            <i class="fa fa-floppy-o text-white fa-lg  text-active "  ng-click="saveReqPoto()"></i>
+                                            <i class="fa fa-pencil-square-o fa-lg  text-white  text" ng-click="isReqPoto=false;"></i>
                                         </a>
                                         <!--<a class=" ib pull-right  bridge-edit">编辑</a>-->
                                     </div>
                                     <div class="list-group bg-white">
                                        <span>
-                                             <textarea    readonly="requestproto" json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                             <textarea   json-format   ng-readonly="isReqPoto"   rows="15"  class="form-control" error="error"   json="note.urlRequest"  ng-model="note.urlRequest"    style="border-radius: 0;"></textarea>
                                        </span>
                                     </div>
                                 </div>
@@ -139,10 +161,14 @@
                                 <div class="panel panel-success">
                                     <div class="panel-heading">
                                         Response协议
+                                        <a href="" ui-toggle-class    class="pull-right bridge-edit"  >
+                                            <i class="fa fa-floppy-o text-white fa-lg  text-active "  ng-click="saveResPoto()"></i>
+                                            <i class="fa fa-pencil-square-o fa-lg  text-white  text" ng-click="isRepPoto=false;"></i>
+                                        </a>
                                     </div>
                                     <div class="list-group bg-white">
                                        <span>
-                                             <textarea    readonly="requestproto" json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                             <textarea    ng-readonly="isRepPoto"  json-format   rows="15"  class="form-control" error="error" json="note.urlResponse"    ng-model="note.urlResponse"  style="border-radius: 0;"></textarea>
                                        </span>
                                     </div>
                                 </div>
@@ -245,6 +271,8 @@
 
                 </div>
                 </div>
+
+
             </div>
         </div>
     </div>

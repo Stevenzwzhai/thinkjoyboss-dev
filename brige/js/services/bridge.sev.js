@@ -56,6 +56,51 @@ App
                         defer.reject(err);
                     });
                 return  defer.promise;
+            },
+
+           removeBridge : function(urlId){
+                var defer = $q.defer();
+                $http.post(SERVER.url.mBrige + "/deleteProtocol",{
+                    urlId : urlId
+                })
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
+            },
+            updateBridgeReq: function(urlId,urlRequest){
+                var defer = $q.defer();
+                $http.post(SERVER.url.mBrige + "/update/protocol/request",{
+                    urlId : urlId,
+                    urlRequest : urlRequest
+                })
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
+
+            },
+
+            updateBridgeRep: function(urlId,urlResponse){
+                var defer = $q.defer();
+                $http.post(SERVER.url.mBrige + "/update/protocol/response",{
+                    urlId : urlId,
+                    urlResponse : urlResponse
+                })
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
+
             }
 
         }

@@ -128,50 +128,29 @@ App
             error : "="
         },
         link: function (scope, element, attrs) {
-                //监听变化
-                element.on("input",function(){
-                    try {
-                        var result = jsonlint.parse(element.val());
-                        var  vk = JSON.stringify(result, null, "  ");
-                        element.val(vk);
-                        scope.json =vk;
+                scope.$watch("json",function(newV,oldVal){
 
-                    } catch(e) {
-                       scope.error = e;
+                    if(newV){
+                        try {
+                            newV =  JSON.stringify(JSON.parse(newV));
+                            var result = jsonlint.parse(newV);
+                                var  vk = JSON.stringify(result, null, "  ");
+                                element.val(vk);
+                                element.trigger("input");
+
+                        } catch(e) {
+                            scope.error = e;
+                            $rootScope.alertError(e);
+                        }
+
                     }
-
-
                 });
-
-
 
         }
     }
 
 })
 
-//    .directive("path", function ($http,$rootScope,Util) {
-//        return {
-//            restrict: "AE",
-//            replace: true,
-//            scope: {
-//
-//            },
-//            link: function (scope, element, attrs) {
-//
-//                element.find("#nav").ferroMenu({
-//                    position 	: "right-bottom",
-//                    delay 		: 50,
-//                    rotation 	: 720,
-//                    margin		: 20
-//                });
-//
-//
-//
-//
-//            }
-//        }
-//
-//    });
+
 
 

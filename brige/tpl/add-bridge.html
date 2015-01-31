@@ -12,7 +12,7 @@
             <form name="step1" class="form-validation">
                 <p class="m-b">设置所在系统:</p>
                 <select class="form-control" ng-model="fm.sysCode" required>
-                    <option value="">请选择</option>
+                    <option value="">请选择系统</option>
                     <option value="{{server.systemCode}}" ng-repeat=" server in  serves">
                         {{server.systemName}}
                     </option>
