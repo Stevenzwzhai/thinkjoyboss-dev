@@ -33,18 +33,17 @@
                         <div class="padder">
 
                             <table-paging    preName="num" nextName="num"  is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="6"  params="params"  url="urlList"  results="posts"  resultsName="pageList"  total="total"   ng-show="posts.length > 0">
-
                                 <div class="list-group ">
-                                    <a ng-repeat="post in posts " class=" clear list-group-item b-l-{{post.result | colorClass}} b-l-3x hover-anchor" ng-class="{'hover': post.selected }" ng-click="select(post)">
 
+                                    <a ng-repeat="post in posts " class=" clear list-group-item b-l-{{post.result | colorClass}} b-l-3x hover-anchor" ng-class="{'hover': post.selected }" ng-click="select(post)">
                                         <span ng-click='delete(post)' class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
                                         <span class="pull-left requestType  requestType-{{post.result | colorClass}}" >{{post.requestType | requestType}}</span>
                                         <div class="" style="margin-left: 30px;">
                                             <span class=" text-ellipsis text-ellipsis">    {{ post.urlDesc ? post.urlDesc : '这家伙很懒,么也没留下' }}</span>
                                             <small class="text-muted text-ellipsis" >{{ post.exeUrl  }}</small>
                                         </div>
-
                                     </a>
+
                                 </div>
 
                             </table-paging>
@@ -66,7 +65,6 @@
 
             <div class="row-row">
                 <div class="cell" >
-
                     <div class="fbox text-center text-sm">
                         <a href="" class="active col padder-v text-muted b-r b-light"  ng-click="currentPotoy=1">
                             <i class=" icon-screen-tablet block m-b-xs fa-2x"></i>
@@ -87,10 +85,10 @@
                     <div style="margin-top: 80px;">
                         <!-- 协议说明 -->
                         <section  class="fadeShow" ng-show="currentPotoy == 1 ">
-                                <div class="wrapper bg-light lt b-b">
-                                <div class="m-l inline" >
-                                    <span>协议说明</span>
-                                </div>
+                                    <div class="wrapper bg-light lt b-b">
+                                    <div class="m-l inline" >
+                                        <span>协议说明</span>
+                                    </div>
                             </div>
 
                                 <div class="  m-lg  ">
@@ -185,20 +183,65 @@
                             <div class="wrapper bg-light lt b-b">
                                 <!--<span class="text-muted">Created on:</span> <span>{{ note.date  | date:'MMM-dd-yyyy H:mm' }}</span>-->
                                 <div class="m-l inline" >
-                                    <span>服务端报文</span>
+                                    <span>服务端测试</span>
                                 </div>
                             </div>
+
+
+                            <section class="m-t-lg m-l m-r">
+
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading font-bold">
+                                        测试配置
+                                    </div>
+                                    <div class="panel-body">
+                                        <form role="form"  name="serverTestForm" class="form-inline">
+                                            <div class="form-group">
+                                                <label for="ipaddress" class="sr-only">ip地址</label>
+                                                <input type="text" placeholder="ip地址" id="ipaddress"   ng-model="sevFm.ip" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="iport" class="sr-only">端口号</label>
+                                                <input type="text" placeholder="端口号" id="iport"   ng-model="sevFm.port"  class="form-control" required>
+                                            </div>
+
+                                                <span >
+
+                                                    <button type="button"  class="btn  btn-success "  ng-click="serverTest()"     ng-disabled="serverTestForm.$invalid  || isServerSubmit" >
+                                                        <div ng-show="isServerSubmit">
+                                                            <span class="glyphicon glyphicon-refresh refresh" ></span>
+                                                        </div>
+                                                        <span ng-hide="isServerSubmit">开启测试</span>
+                                                    </button>
+
+                                                </span>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+
+
+                            </section>
+
 
                             <section class="m-t">
                                 <div class="col-sm-6 connected" >
                                     <div class="panel panel-success">
                                         <div class="panel-heading">
                                             测试报文
+                                            <a href="" ui-toggle-class    class="pull-right bridge-edit"  >
+                                                <i class="fa fa-floppy-o text-white fa-lg  text-active "  ng-click="saveResTest()"></i>
+                                                <i class="fa fa-pencil-square-o fa-lg  text-white  text" ng-click="isReqTest=false;"></i>
+                                            </a>
                                         </div>
                                         <div class="list-group bg-white">
-                                       <span>
-                                             <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
-                                       </span>
+
+                                           <span>
+                                                 <textarea   json-format   ng-readonly="isReqTest"   rows="15"  class="form-control" error="error"   json="note.urlTestRequest.urlRequest"  ng-model="note.urlTestRequest.urlRequest"    style="border-radius: 0;"></textarea>
+                                           </span>
+
                                         </div>
                                     </div>
 
@@ -210,9 +253,11 @@
                                             当前响应报文
                                         </div>
                                         <div class="list-group bg-white">
-                                       <span>
-                                             <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
-                                       </span>
+
+                                             <span>
+                                                 <textarea   json-format   ng-readonly="isRepTest"   rows="15"  class="form-control" error="error"   json="note.urlTestResponse.urlResponse"    style="border-radius: 0;"></textarea>
+                                           </span>
+
                                         </div>
                                     </div>
 

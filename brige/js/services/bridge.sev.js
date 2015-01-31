@@ -101,7 +101,45 @@ App
                     });
                 return  defer.promise;
 
-            }
+            },
+
+
+            //测试服务端请求
+            updateBridgeTestReq : function(urlId,urlRequest){
+                var defer = $q.defer();
+                $http.post(SERVER.url.mBrige + "/update/client/request",{
+                    urlId : urlId,
+                    urlRequest : urlRequest
+                })
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
+
+            },
+
+
+            startServerTest : function(urlId,ip,port){
+            var defer = $q.defer();
+                $http.get(SERVER.url.mBrige + "/exeClient",{
+                    "params" :{
+                        urlId : urlId,
+                        ip : ip,
+                        port : port
+                    }
+                })
+                .success(function(data) {
+                    defer.resolve(data);
+                })
+                .error(function(err) {
+                    defer.reject(err);
+                });
+            return  defer.promise;
+        }
+
 
         }
     });

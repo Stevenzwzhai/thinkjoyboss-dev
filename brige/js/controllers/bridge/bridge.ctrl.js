@@ -33,11 +33,8 @@ App
         //控制切换
         $scope.currentPotoy = 1;
 
-
-        //requrest报文
-        $scope.jsonRequestProto  = "";
-        //response报文
-        $scope.jsonResponseProto  = "";
+        //server 测试
+        $scope.isServerSubmit = false;
 
 
 
@@ -45,10 +42,16 @@ App
         $scope. isReqPoto =  true;
         $scope. isRepPoto =  true;
 
+        //服务test
+        $scope. isReqTest = true;
+        $scope. isRepTest = true;
 
 
-        $scope.fm ={
-            requestPotoVal : ""
+
+        //serv test
+        $scope.sevFm ={
+            ip  : "",
+            port : ""
         }
 
 
@@ -104,7 +107,41 @@ App
         }
 
 
+        //保存服务器请求数据
+        $scope.saveResTest = function(){
+            var newReq = JSON.stringify( JSON.parse($scope.note.urlTestRequest.urlRequest));
+            BridgeService.updateBridgeTestReq($scope.note.urlId,newReq).then(function(res){
+                if(res.result){
+                    $rootScope.alertSuccess(res.resultDesc);
+                    $scope.refresh = true;
+                }
+                else{
+                    $rootScope.alertError(res.resultDesc);
+                }
+            });
+            $scope.isReqTest = true;
 
+        }
+
+
+        //服务端测试
+        $scope.serverTest = function(){
+
+            $scope.isServerSubmit = true;
+            BridgeService.startServerTest($scope.note.urlId,$scope.sevFm.ip,$scope.sevFm.port).then(function(res){
+                if(res.result){
+                    $rootScope.alertSuccess(res.resultDesc);
+                    $scope.isServerSubmit = false;
+                }
+                else{
+                    $rootScope.alertError(res.resultDesc);
+                    $scope.isServerSubmit = false;
+                }
+            },function(){
+                $scope.isServerSubmit = false;
+            });
+
+        }
 
         //查询
         $scope.search = function () {
