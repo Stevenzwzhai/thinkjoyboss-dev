@@ -102,7 +102,8 @@ App
                   name: 'textAngular',
                   files: [
                       'lib/vendor/modules/textAngular/textAngular-sanitize.min.js',
-                      'lib/vendor/modules/textAngular/textAngular.min.js'
+                      'lib/vendor/modules/textAngular/textAngular.min.js',
+                      'lib/vendor/modules/textAngular/textAngularSetup.js'
                   ]
               },
               {
