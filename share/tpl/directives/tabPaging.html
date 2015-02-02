@@ -10,13 +10,13 @@
             <nav>
                 <ul class="pager">
                     <li class="previous col-sm-4 text-left"  >
-                        <button href="#" class="ib" ng-disabled="pageIndex <= 1"   >&larr; 上一页</button>
+                        <button href="#" class="ib" ng-disabled="pageIndex <= 1"   > &larr; {{preName}}</button>
                     </li>
                     <li class="col-sm-4 text-center">
                         <span class="pageShow">{{pageIndex}}/{{pageTotal}}</span>
                     </li>
                     <li class="next col-sm-4 text-right"    >
-                        <button href="#"   ng-disabled="pageIndex >= pageTotal">下一页 &rarr;</button>
+                        <button href="#"   ng-disabled="pageIndex >= pageTotal">{{nextName}} &rarr;</button>
                     </li>
 
                 </ul>

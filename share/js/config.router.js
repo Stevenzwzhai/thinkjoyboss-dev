@@ -186,6 +186,7 @@ App
                       url : "/bridge",
                       templateUrl : "brige/tpl/bridge.html",
                       controller : "BridgeCtrl"
+
                   })
 
 

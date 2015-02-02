@@ -2,7 +2,7 @@
     <h3 class="modal-title">添加MBridge</h3>
 </div>
 
-<div class="wrapper-md">
+<div class="wrapper-md" >
     <tabset class="tab-container" ng-init="steps={percent:20, step1:true, step2:false}">
         <tab heading="第一步" active="steps.step1" select="steps.percent=30">
             <p class="m-b">选择 MBridge 所在的系统</p>
@@ -11,24 +11,23 @@
 
             <form name="step1" class="form-validation">
                 <p class="m-b">设置所在系统:</p>
-                <select class="form-control">
-                    <option>123</option>
-                    <option>123</option>
-                    <option>123</option>
-                    <option>123</option>
-                    <option>123</option>
+                <select class="form-control" ng-model="fm.sysCode" required>
+                    <option value="">请选择系统</option>
+                    <option value="{{server.systemCode}}" ng-repeat=" server in  serves">
+                        {{server.systemName}}
+                    </option>
                 </select>
 
                 <p class="m-t">设置请求类型:</p>
                 <div>
 
                     <label class="checkbox i-checks m-r-md m-b-md  ib">
-                        <input type="radio"  name="postType"  ng-model="oneAtATime"><i></i>
+                        <input type="radio"  name="postType"  value="GET"  ng-model="fm.requestType"  required><i></i>
                         GET
                     </label>
 
                     <label class="checkbox i-checks  m-b-md ib">
-                        <input type="radio"  name="postType" ng-model="oneAtATime"><i></i>
+                        <input type="radio"  name="postType"  value="POST"  ng-model="fm.requestType" required><i></i>
                         POST
                     </label>
 
@@ -42,19 +41,23 @@
         </tab>
         <tab heading="第二步" disabled="step1.$invalid" active="steps.step2" select="steps.percent=60">
 
-            <form name="step2" class="form-validation">
+            <form name="step2" class="form-validation" >
                 <p class="m-b">填写MBridge描述和url</p>
                 <progressbar value="steps.percent" class="progress-xs" type="info"></progressbar>
+
+                <p class="m-b m-t">责任人:</p>
+                <input type="text" placeholder="例 : 国宝" ng-model="fm.owner" class="form-control"  required>
+
                 <p class="m-b m-t">url地址:</p>
-                <input type="text" name="mockUrl" placeholder="例 : /auth/login" class="form-control"  required>
+                <input type="text" name="mockUrl" placeholder="例 : /auth/login" ng-model="fm.url" class="form-control"  required>
 
                 <p class="m-b m-t">描述:</p>
-                <textarea class="form-control" rows="6" placeholder="简单描述下" required></textarea>
+                <textarea class="form-control" rows="6" placeholder="简单描述下"  ng-model="fm.urlDesc" required></textarea>
 
 
                 <div class="m-t  text-right">
                     <button type="button" class="btn btn-default " ng-click="steps.step1=true">返回修改</button>
-                    <button type="submit" ng-disabled="step2.$invalid" class="btn btn-primary "
+                    <button type="submit" ng-disabled="step2.$invalid" class="btn btn-primary " ng-click="addSub()"
                             ng-click="steps.percent=100">完成
                     </button>
                 </div>

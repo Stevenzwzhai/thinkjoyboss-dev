@@ -53,7 +53,8 @@ App.constant("SERVER", {
 //        push : "http://172.16.130.27:8080/push",
 //        im   : "ws://172.16.130.27:8080/push/customerIM",
         im   : "ws://115.29.184.78:8084/push/customerIM",
-        sop  : "http://121.41.61.218:9003"
+        sop  : "http://121.41.61.218:9003",
+        mBrige : "http://172.16.130.27:8080"
     },
 //    //测试
 //    testUrl : {
@@ -72,6 +73,7 @@ App.constant("SERVER", {
         message : "http://imzhiliao.com:10000/message",
         push : "http://115.29.184.78:8084/push",
         im   : "ws://115.29.184.78:8084/push/customerIM",
-        sop  : "http://121.41.61.218:9003"
+        sop  : "http://121.41.61.218:9003",
+        mBrige : "http://172.16.130.27:8080"
     }
 });

@@ -22,6 +22,67 @@ App
             return status;
         }
     })
+    .filter("requestType", function() {
+        return function(status) {
+            if (status == "GET") {
+                return "G";
+            } else if (status == "POST") {
+                return "P";
+            }
+
+            return status;
+        }
+    })
+
+    .filter("resultCode", function() {
+        return function(res) {
+            if(res){
+                var color=  res.testResult;
+
+                if(color == "success"){
+                    return "运行正常";
+                }
+                else if(color == "error"){
+                    return "出现错误";
+                }
+                else if(color == "warn"){
+                    return "警告";
+                }
+                else{
+                    return "还未执行";
+                }
+            }
+            else{
+                return "还未执行";
+            }
+        }
+    })
+
+    .filter("colorClass",function(){
+        return function(res) {
+            if(res){
+                var color=  res.testResult;
+
+                if(color == "success"){
+                    return "success";
+                }
+                else if(color == "error"){
+                    return "danger";
+                }
+                else if(color == "warn"){
+                    return "warning";
+                }
+                else{
+                    return "info";
+                }
+            }
+            else{
+                return "info";
+            }
+
+        };
+    })
+
 
 .filter("userType",function(){
     return function(res) {
