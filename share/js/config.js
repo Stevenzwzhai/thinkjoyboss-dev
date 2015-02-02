@@ -54,7 +54,7 @@ App.constant("SERVER", {
 //        im   : "ws://172.16.130.27:8080/push/customerIM",
         im   : "ws://115.29.184.78:8084/push/customerIM",
         sop  : "http://121.41.61.218:9003",
-        mBrige : "http://172.16.130.27:8080"
+        mBrige : "http://172.16.130.172:8080"
     },
 //    //测试
 //    testUrl : {
@@ -74,6 +74,6 @@ App.constant("SERVER", {
         push : "http://115.29.184.78:8084/push",
         im   : "ws://115.29.184.78:8084/push/customerIM",
         sop  : "http://121.41.61.218:9003",
-        mBrige : "http://172.16.130.27:8080"
+        mBrige : "http://172.16.130.172:8080"
     }
 });

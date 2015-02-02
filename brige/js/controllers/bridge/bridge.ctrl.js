@@ -4,14 +4,9 @@ App
 
             console.log("bridge.....");
 
-        $scope.posts =[
-
-
-
-        ];
+        $scope.posts =[];
 
         $scope.note = "";
-
 
         //服务列表
         $scope.serves = [];
@@ -50,8 +45,8 @@ App
 
         //serv test
         $scope.sevFm ={
-            ip  : "",
-            port : ""
+            ip  : "172.16.130.172",
+            port : "8080"
         }
 
 
@@ -108,8 +103,25 @@ App
 
 
         //保存服务器请求数据
-        $scope.saveResTest = function(){
-            var newReq = JSON.stringify( JSON.parse($scope.note.urlTestRequest.urlRequest));
+        $scope.saveResTest = function(type){
+            var newReq;
+
+            if(type =='POST'){
+                newReq = JSON.stringify( JSON.parse($scope.note.urlTestRequest.urlRequest));
+            }
+            else{
+
+                //数据序列
+                var  obj = {};
+                var p =  $scope.note.paramMap;
+                for(var i=0; i< p.length; i++){
+                    var param =  p[i];
+                    obj[param.paramKey]  =  param.paramType;
+                }
+
+                newReq = JSON.stringify(obj);
+            }
+
             BridgeService.updateBridgeTestReq($scope.note.urlId,newReq).then(function(res){
                 if(res.result){
                     $rootScope.alertSuccess(res.resultDesc);
@@ -121,6 +133,7 @@ App
             });
             $scope.isReqTest = true;
 
+
         }
 
 
@@ -129,14 +142,14 @@ App
 
             $scope.isServerSubmit = true;
             BridgeService.startServerTest($scope.note.urlId,$scope.sevFm.ip,$scope.sevFm.port).then(function(res){
-                if(res.result){
-                    $rootScope.alertSuccess(res.resultDesc);
-                    $scope.isServerSubmit = false;
-                }
-                else{
-                    $rootScope.alertError(res.resultDesc);
-                    $scope.isServerSubmit = false;
-                }
+                var newRep = JSON.stringify( JSON.parse(res.responseBody));
+                $scope.note.serverTestResult.testResult =  res.testResult;
+                $scope.note.serverTestResult.responseBody = newRep;
+                $scope.note.serverTestResult.errorDesc = res.errorDesc;
+
+
+                $scope.isServerSubmit = false;
+
             },function(){
                 $scope.isServerSubmit = false;
             });
@@ -187,12 +200,25 @@ App
 
         //选择协议
         $scope.select = function(note){
-
             $scope.note = note;
             $scope. isReqPoto =  true;
             $scope.isRepPoto = true;
 
+            $scope.posts.forEach(function(obj,index){
+
+                if(obj.urlId == note.urlId){
+                    note.active = true;
+                }
+                else{
+                    obj.active  = false;
+                }
+
+            });
+
         }
+
+
+
 
 
     })

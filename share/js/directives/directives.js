@@ -43,7 +43,6 @@ App
 
 
 
-
                 scope.$watch("refresh",function(newD,oldD){
 
                     if(newD){
@@ -129,19 +128,30 @@ App
         },
         link: function (scope, element, attrs) {
                 scope.$watch("json",function(newV,oldVal){
+                    var result = "";
+
 
                     if(newV){
-                        try {
-                            newV =  JSON.stringify(JSON.parse(newV));
-                            var result = jsonlint.parse(newV);
+//                        try {
+
+                            if( typeof newV == "string"){
+                                newV =  JSON.stringify(JSON.parse(newV));
+                            }
+                            else{
+                                newV =  JSON.stringify(newV);
+                            }
+
+                                 result = jsonlint.parse(newV);
                                 var  vk = JSON.stringify(result, null, "  ");
                                 element.val(vk);
                                 element.trigger("input");
 
-                        } catch(e) {
-                            scope.error = e;
-                            $rootScope.alertError(e);
-                        }
+//                        } catch(e) {
+//                            var str = JSON.stringify(e.message);
+//
+//                            console.log(e);
+//                            scope.error = str;
+//                        }
 
                     }
                 });
