@@ -3,13 +3,13 @@
 
 
 <!-- hbox layout -->
-<div class="hbox hbox-auto-xs bg-light ">
+<div class="hbox hbox-auto-xs bg-light " >
     <!-- column -->
     <div class="col w-lg lt b-r">
         <div class="vbox">
             <div class="wrapper">
                 <a href class="pull-right btn btn-sm btn-info m-t-n-xs" ng-click="create()">添加</a>
-                <div class="h4">鹊桥</div>
+                <div class="h4" ng-click="currentPotoy=2;">鹊桥</div>
             </div>
             <div class="wrapper b-t m-t-xxs">
                 <div class="input-group">
@@ -41,94 +41,182 @@
         <div class="vbox">
 
             <div class="row-row">
-                <div class="cell">
+                <div class="cell" >
 
-
-
-                    <div class="wrapper bg-light lt b-b">
-                        <div class="m-l inline" >
-                            <span>协议部分</span>
-                        </div>
+                    <div class="fbox text-center text-sm">
+                        <a href="" class="active col padder-v text-muted b-r b-light"  ng-click="currentPotoy=1">
+                            <i class=" icon-screen-tablet block m-b-xs fa-2x"></i>
+                            <span>协议信息</span>
+                        </a>
+                        <a href="" class="col padder-v text-muted b-r b-light" ng-click="currentPotoy=2">
+                            <i class="icon-rocket block m-b-xs fa-2x"></i>
+                            <span>测试服务端</span>
+                        </a>
+                        <a href="" class="col padder-v text-muted " ng-click="currentPotoy=3">
+                            <i class=" icon-paper-plane block m-b-xs fa-2x"></i>
+                            <span>测试客户端</span>
+                        </a>
                     </div>
 
-                    <section class="m-t">
-                        <div class="col-sm-6 connected" >
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    Request协议
-                                </div>
-                                <div class="list-group bg-white">
-                                   <span>
-                                         <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
-                                   </span>
+
+
+                    <div style="margin-top: 80px;">
+                        <!-- 协议说明 -->
+                        <section  class="fadeShow" ng-show="currentPotoy == 1 ">
+                                <div class="wrapper bg-light lt b-b">
+                                <div class="m-l inline" >
+                                    <span>协议说明</span>
                                 </div>
                             </div>
 
+                                <div class="  m-lg  ">
+                                <div>
+                                    <a class="pull-left thumb-sm avatar m-l-n-md">
+                                        <img src="lib/img/a1.jpg" class="img-circle" alt="...">
+                                    </a>
+                                    <div class="m-l-lg panel b-a">
+                                        <div class="panel-heading pos-rlt b-b b-light">
+                                            <span class="arrow left"></span>
+                                            <a href="">国宝</a>
+                                            <label class="label bg-info m-l-xs">get</label>
+                                              <span class="text-muted m-l-sm pull-right">
+                                                <i class="fa fa-clock-o"></i>
+                                                Just now
+                                              </span>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div>
+                                                这是一个登录接口 来完成此个应用
+                                            </div>
 
-                        </div>
-                        <div class="col-sm-6 connected" >
-                            <div class="panel panel-success">
-                                <div class="panel-heading">
-                                    Response协议
-                                </div>
-                                <div class="list-group bg-white">
-                                   <span>
-                                         <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
-                                   </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                        </div>
-                    </section>
+                                <section class="m-t">
+                            <div class="col-sm-6 connected" >
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Request协议
+                                    </div>
+                                    <div class="list-group bg-white">
+                                       <span>
+                                             <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                       </span>
+                                    </div>
+                                </div>
 
 
+                            </div>
+                            <div class="col-sm-6 connected" >
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        Response协议
+                                    </div>
+                                    <div class="list-group bg-white">
+                                       <span>
+                                             <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                       </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </section>
+
+                        </section >
 
 
-                    <!-- 报文部分  -->
+                        <!-- 服务端报文部分  -->
+                        <section  class="fadeShow" ng-show="currentPotoy == 2 ">
 
-                    <div class="wrapper bg-light lt b-b">
-                        <!--<span class="text-muted">Created on:</span> <span>{{ note.date  | date:'MMM-dd-yyyy H:mm' }}</span>-->
-                        <div class="m-l inline" >
-                            <span>服务端报文</span>
-                        </div>
+                            <div class="wrapper bg-light lt b-b">
+                                <!--<span class="text-muted">Created on:</span> <span>{{ note.date  | date:'MMM-dd-yyyy H:mm' }}</span>-->
+                                <div class="m-l inline" >
+                                    <span>服务端报文</span>
+                                </div>
+                            </div>
+
+                            <section class="m-t">
+                                <div class="col-sm-6 connected" >
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading">
+                                            测试报文
+                                        </div>
+                                        <div class="list-group bg-white">
+                                       <span>
+                                             <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                       </span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-sm-6 connected" >
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            当前响应报文
+                                        </div>
+                                        <div class="list-group bg-white">
+                                       <span>
+                                             <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                       </span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </section>
+
+
+                        </section>
+
+
+                        <!-- 客户端报文 -->
+                        <section class="fadeShow" ng-show="currentPotoy == 3 ">
+                            <div class="wrapper bg-light lt b-b">
+                                <div class="m-l inline" >
+                                    <span>客户端端报文</span>
+                                </div>
+                            </div>
+
+                            <section class="m-t">
+                                <div class="col-sm-6 connected" >
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading">
+                                           当前请求报文
+                                        </div>
+                                        <div class="list-group bg-white">
+                                       <span>
+                                             <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                       </span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-sm-6 connected" >
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            约定响应报文
+                                        </div>
+                                        <div class="list-group bg-white">
+                                       <span>
+                                             <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                       </span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </section>
+
+
+                        </section>
+
                     </div>
 
-                    <section class="m-t">
-                        <div class="col-sm-6 connected" >
-                            <div class="panel panel-success">
-                                <div class="panel-heading">
-                                    服务端Request报文
-                                </div>
-                                <div class="list-group bg-white">
-                                   <span>
-                                         <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
-                                   </span>
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <div class="col-sm-6 connected" >
-                            <div class="panel panel-info">
-                                <div class="panel-heading">
-                                    服务端Response报文
-                                </div>
-                                <div class="list-group bg-white">
-                                   <span>
-                                         <textarea    json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
-                                   </span>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </section>
-
-
-
-
-
-                    </div>
+                </div>
                 </div>
             </div>
         </div>

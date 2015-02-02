@@ -29,6 +29,8 @@
                     <div oc-lazy-load="textAngular">
                         <div text-angular ng-model="mail.content" class="btn-groups"></div>
                     </div>
+
+
                     <div class="btn-group">
                         <script type="text/ng-template" id="myModalContent.html">
                             <div class="modal-body" style="{min-height: 200px;}">
@@ -70,7 +72,7 @@
                                 </form>
                             </div>
                         </script>
-                        <a class="btn btn-sm btn-default" tooltip="添加附件" ng-click="addAttach()"><i class="fa text-base fa-chain"></i></a>
+                        <a class="btn btn-sm btn-default" tooltip="添加附件" ng-click="addAttach()"><i class="fa text-base fa-chain"></i>添加附件</a>
                     </div>
                 </div>
             </div>
@@ -80,7 +82,7 @@
                 <div class="col-lg-4">
 
 
-                    <div ui-jq="datetimepicker"   ui-option =' defaultDate: "", locale: "zh-cn", format: "YYYY-MM-DD HH:mm:ss"'
+                    <div ui-jq="datetimepicker"   ui-options="{defaultDate:'', locale: 'zh-cn', format: 'YYYY-MM-DD HH:mm:ss'}"
                          class='input-group date'>
                         <input type='text'    class="form-control"  ng-model="date"  value="{{date}}" />
                         <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
@@ -92,7 +94,7 @@
             </div>
             <div class="form-group">
                 <div class="col-lg-2 col-lg-offset-2">
-                    <button class="btn btn-info w-xs" ng-click="sendMail()">发送</button>
+                    <button class="btn btn-info w-xs" ng-click="sendMail()" ng-enable='sending'>{{sendButton}}</button>
                 </div>
                 <div class="col-lg-2">
                     <div class="checkbox">

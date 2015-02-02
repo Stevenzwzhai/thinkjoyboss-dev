@@ -6,26 +6,31 @@ App
 
     }]);
 
-App.controller('MailNewCtrl', function($scope, $rootScope, $http, $interval, $modal, SERVER, EmailService) {
+App.controller('MailNewCtrl', function($scope, $localStorage, $rootScope, $http, $interval, $modal, SERVER, EmailService) {
     $scope.mail = {
         receiverList: [],
         attachList: [],
         ccList: [],
         emailProvider: "EP_126",
-        subject: '测试标题',
-        content: '测试内容',
-        sender: 'ishaofeng@126.com',
-        password: 'shaofeng5000',
-        username: "ishaofeng@126.com",
+        subject: '',
+        content: '',
+        sender: '',
+        password: '',
+        username: "",
         useSsl: false,
         sendTimeType: 0,
-        sendDate: new Date()
+        sendDate: new Date().getTime()
     };
     
     $scope.date = "";
 
+
+    //本地保存用户使用的用户名和密码
+    $scope.mail.sender = $localStorage.mail_sender;
+    $scope.mail.password = $localStorage.mail_password;
+
     $scope.$watch("date", function(newdate){
-        $scope.mail.sendDate = moment(newdate, "LLL").toDate().getTime();
+        $scope.mail.sendDate = moment(newdate).toDate().getTime();
     });
 
 
@@ -59,8 +64,30 @@ App.controller('MailNewCtrl', function($scope, $rootScope, $http, $interval, $mo
 
     $scope.currentdate = "";
 
+    $scope.sending = false;
+    $scope.sendButton = "发送";
+    $scope.setSendButton = function(status) {
+        $scope.sending = status;
+        $scope.sendButton = $scope.sending ? "发送邮件..."  : "发送" ;
+    };
+    $scope.resetSendStatus = function() {
+        $scope.setSendButton(false);
+        $scope.mail.attachList = [];
+        $scope.mail.subject = "";
+        $scope.mail.content = "";
+    }
+
     $scope.sendMail = function() {
-        EmailService.sendEmail($scope.mail).then(function(data) {
+        if ($scope.mail.receiverList.isEmpty || $scope.mail.sender == "" || $scope.mail.password == ""
+            || $scope.mail.subject == "") {
+            $rootScope.alertWarn("请完成填写邮件信息" );
+        } else {
+            $scope.setSendButton(true);
+
+            $scope.mail.username = $scope.mail.sender;
+            $localStorage.mail_sender = $scope.mail.sender;
+            $localStorage.mail_password = $scope.mail.password;
+            EmailService.sendEmail($scope.mail).then(function(data) {
                 if (data.result == true)
                 {
                     $rootScope.alertSuccess("邮件发送成功");
@@ -70,9 +97,11 @@ App.controller('MailNewCtrl', function($scope, $rootScope, $http, $interval, $mo
                     $rootScope.alertError("邮件发送失败: " + data.msg);
                 }
 
+                $scope.resetSendStatus();
             }, function(err) {
                 $rootScope.alertError("邮件发送失败" );
             });
+        }
     };
 });
 

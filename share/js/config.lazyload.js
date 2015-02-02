@@ -49,7 +49,7 @@ App
   .config(['$ocLazyLoadProvider', function($ocLazyLoadProvider) {
       // We configure ocLazyLoad to use the lib script.js as the async loader
       $ocLazyLoadProvider.config({
-          debug:  false,
+          debug:  true,
           events: true,
           modules: [
               {

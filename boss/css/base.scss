@@ -1,12 +1,13 @@
 //ng animate
 .loading-am.ng-hide-add, .loading-am.ng-hide-remove {
-  -webkit-transition:all linear 0.5s;
-  -moz-transition:all linear 0.5s;
-  -o-transition:all linear 0.5s;
-  -ms-transition:all linear 0.5s;
-  transition:all linear 0.5s;
+  -webkit-transition:all linear 0.8s;
+  -moz-transition:all linear 0.8s;
+  -o-transition:all linear 0.8s;
+  -ms-transition:all linear 0.8s;
+  transition:all linear 0.8s;
 
   display:block!important;
+
 }
 
 .loading-am.ng-hide-add.ng-hide-add-active,
@@ -18,6 +19,28 @@
 .loading-am.ng-hide-remove.ng-hide-remove-active {
   opacity:1;
 }
+
+
+
+.fadeShow.ng-hide-remove {
+  -webkit-transition:all linear 1s;
+  -moz-transition:all linear 0.5s;
+  -o-transition:all linear 0.5s;
+  -ms-transition:all linear 0.5s;
+  transition:all linear 1s;
+  display:block!important;
+  opacity:0;
+}
+
+.fadeShow.ng-hide-remove-active {
+  opacity:1;
+}
+
+
+
+
+
+
 
 
 
