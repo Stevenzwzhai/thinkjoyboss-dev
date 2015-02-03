@@ -153,9 +153,8 @@ App
                                 element.trigger("input");
 
                         } catch(e) {
-
                             var str = JSON.stringify(e.message);
-                            console.log(scope.error,"000");
+                            console.log(e);
                         }
 
                     }

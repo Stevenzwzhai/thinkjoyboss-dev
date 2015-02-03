@@ -157,11 +157,13 @@ App
 
             $scope.isServerSubmit = true;
             BridgeService.startServerTest($scope.note.urlId,$scope.sevFm.ip,$scope.sevFm.port,$scope.sevFm.token).then(function(res){
-                var newRep = JSON.stringify( JSON.parse(res.responseBody));
-                $scope.note.serverTestResult.testResult =  res.testResult;
-                $scope.note.serverTestResult.responseBody = newRep;
-                $scope.note.serverTestResult.errorDesc = res.errorDesc;
 
+                var newRep = JSON.stringify( JSON.parse(res.responseBody));
+                res.responseBody =  newRep;
+//                $scope.note.serverTestResult.testResult =  res.testResult;
+//                $scope.note.serverTestResult.responseBody = newRep;
+//                $scope.note.serverTestResult.errorDesc = res.errorDesc;
+                $scope.note.serverTestResult = res;
 
                 $scope.isServerSubmit = false;
 
