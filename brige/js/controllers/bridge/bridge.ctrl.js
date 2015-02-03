@@ -8,6 +8,8 @@ App
 
         $scope.note = "";
 
+        $scope.jsonError = "dd";
+
         //服务列表
         $scope.serves = [];
 
@@ -41,12 +43,14 @@ App
         $scope. isReqTest = true;
         $scope. isRepTest = true;
 
+        $scope.isReqTestSuper = true;
 
 
         //serv test
         $scope.sevFm ={
             ip  : "172.16.130.172",
-            port : "8080"
+            port : "8080",
+            token  : ""
         }
 
         //client test
@@ -112,6 +116,7 @@ App
         $scope.saveResTest = function(type){
             var newReq;
 
+
             if(type =='POST'){
                 newReq = JSON.stringify( JSON.parse($scope.note.urlTestRequest.urlRequest));
             }
@@ -126,6 +131,8 @@ App
                 }
 
                 newReq = JSON.stringify(obj);
+
+
             }
 
             BridgeService.updateBridgeTestReq($scope.note.urlId,newReq).then(function(res){
@@ -137,7 +144,8 @@ App
                     $rootScope.alertError(res.resultDesc);
                 }
             });
-            $scope.isReqTest = true;
+
+
 
 
         }
@@ -146,8 +154,9 @@ App
         //服务端测试
         $scope.serverTest = function(){
 
+
             $scope.isServerSubmit = true;
-            BridgeService.startServerTest($scope.note.urlId,$scope.sevFm.ip,$scope.sevFm.port).then(function(res){
+            BridgeService.startServerTest($scope.note.urlId,$scope.sevFm.ip,$scope.sevFm.port,$scope.sevFm.token).then(function(res){
                 var newRep = JSON.stringify( JSON.parse(res.responseBody));
                 $scope.note.serverTestResult.testResult =  res.testResult;
                 $scope.note.serverTestResult.responseBody = newRep;
@@ -319,7 +328,6 @@ App
                 },function(err){
                 });
         }
-
 
 
 

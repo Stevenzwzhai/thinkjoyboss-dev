@@ -127,14 +127,15 @@
                                         </div>
                                     </div>
 
-                                    <div class="m-t" ng-show="error">
-                                        <div class="alert alert-danger" role="alert" style="margin-bottom: 6px;">
-                                            <strong>错误</strong> {{error }}
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+
+                    <div class="m-t" >
+                        <div class="alert alert-danger" role="alert" style="margin-bottom: 6px;">
+                            <strong>JSON格式错误</strong> {{jsonError}}
                         </div>
                     </div>
 
@@ -161,12 +162,12 @@
                                     <div class="list-group bg-white">
                                        <span ng-if="note.requestType == 'POST' ">
 
-                                             <textarea   json-format   ng-readonly="isReqPoto"   rows="15"  class="form-control" error="error"   json="note.urlRequest"  ng-model="note.urlRequest"    style="border-radius: 0;"></textarea>
+                                             <textarea   json-format   ng-readonly="isReqPoto"   rows="15"  class="form-control"   error="error"   json="note.urlRequest"  ng-model="note.urlRequest"    style="border-radius: 0;"></textarea>
                                        </span>
 
                                         <span ng-if="note.requestType == 'GET' ">
 
-                                             <textarea   json-format   ng-readonly="isReqPoto"   rows="15"  class="form-control" error="error"   json="note.paramStr"  ng-model="note.urlRequest"    style="border-radius: 0;"></textarea>
+                                             <textarea   json-format   ng-readonly="isReqPoto"   rows="15"  class="form-control"   error="error"   json="note.paramStr"  ng-model="note.urlRequest"    style="border-radius: 0;"></textarea>
                                        </span>
 
                                     </div>
@@ -225,6 +226,11 @@
                                                 <input type="text" placeholder="端口号" id="iport"   ng-model="sevFm.port"  class="form-control" required>
                                             </div>
 
+                                            <div class="form-group">
+                                                <label for="token" class="sr-only">token</label>
+                                                <input type="text" placeholder="没有token,请先执行login" id="token"   ng-model="sevFm.token"  class="form-control" required>
+                                            </div>
+
                                                 <span >
 
                                                     <button type="button"  class="btn  btn-success "  ng-click="serverTest()"     ng-disabled="serverTestForm.$invalid  || isServerSubmit" >
@@ -268,16 +274,16 @@
                                 <div class="col-sm-6 connected" >
                                     <div class="panel panel-success"  ng-if="note.requestType == 'POST' ">
                                         <div class="panel-heading">
-                                            测试报文
+                                            测试报文 {{isReqTestSuper}}
                                             <a href="" ui-toggle-class    class="pull-right bridge-edit"  >
-                                                <i class="fa fa-floppy-o text-white fa-lg  text-active "  ng-click="saveResTest('POST')"></i>
-                                                <i class="fa fa-pencil-square-o fa-lg  text-white  text" ng-click="isReqTest=false;"></i>
+                                                <i class="fa fa-floppy-o text-white fa-lg  text-active "  ng-click="isReqTestSuper=true;saveResTest('POST')"></i>
+                                                <i class="fa fa-pencil-square-o fa-lg  text-white  text" ng-click="isReqTestSuper=false"></i>
                                             </a>
                                         </div>
                                         <div class="list-group bg-white">
 
                                              <span >
-                                                 <textarea   json-format   ng-readonly="isReqTest"   rows="15"  class="form-control" error="error"   json="note.urlTestRequest.urlRequest"  ng-model="note.urlTestRequest.urlRequest"    style="border-radius: 0;"></textarea>
+                                                 <textarea   ng-readonly="isReqTestSuper"   json-format      rows="15"  class="form-control"   error="jsonError"   json="note.urlTestRequest.urlRequest"  ng-model="note.urlTestRequest.urlRequest"    style="border-radius: 0;"></textarea>
                                             </span>
 
 
@@ -289,15 +295,15 @@
                                                  <div class="panel panel-default"  ng-if="note.requestType == 'GET' ">
                                                      <div class="panel-heading font-bold">参数配置
                                                          <a href="" ui-toggle-class    class="pull-right bridge-edit"  >
-                                                             <i class="fa fa-floppy-o text-muted fa-lg  text-active "  ng-click="saveResTest('GET')"></i>
-                                                             <i class="fa fa-pencil-square-o fa-lg  text-muted  text" ng-click="isReqTest=false"></i>
+                                                             <i class="fa fa-floppy-o text-muted fa-lg  text-active "  ng-click="isReqTestSuper=true;saveResTest('GET')"></i>
+                                                             <i class="fa fa-pencil-square-o fa-lg  text-muted  text" ng-click="isReqTestSuper=false"></i>
                                                          </a>
                                                      </div>
                                                      <div class="panel-body">
                                                          <form role="form">
                                                              <div class="form-group" ng-repeat=" param  in  note.paramMap">
                                                                  <label>{{param.paramKey}}</label>
-                                                                 <input  ng-readonly="isReqTest"   type="text" class="form-control"  ng-model="param.paramType"  placeholder="填吧" required>
+                                                                 <input  ng-readonly="isReqTestSuper"   type="text" class="form-control"  ng-model="param.paramType"  placeholder="填吧" required>
                                                              </div>
                                                          </form>
                                                      </div>

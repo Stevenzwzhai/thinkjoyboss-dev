@@ -126,9 +126,10 @@ App
             json  : "=",
             error : "="
         },
-        link: function (scope, element, attrs) {
+        link: function (scope,element, attrs) {
                 scope.$watch("json",function(newV,oldVal){
                     var result = "";
+
 
 
                     if(newV){
@@ -137,7 +138,9 @@ App
                             if(newV == "null"){
                                 newV =  {};
                             }
+
                             else if( typeof newV == "string"){
+
                                 newV =  JSON.stringify(JSON.parse(newV));
                             }
                             else{
@@ -150,9 +153,9 @@ App
                                 element.trigger("input");
 
                         } catch(e) {
+
                             var str = JSON.stringify(e.message);
-                            console.log(e);
-                            scope.error = str;
+                            console.log(scope.error,"000");
                         }
 
                     }

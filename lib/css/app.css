@@ -5228,11 +5228,11 @@ a.text-#000000:hover {
 }
 
 
-.urlListBg  .list-group-item.active small{
-    color:  #98a6ad !important;
-}
+/*.urlListBg  .list-group-item.active small{*/
+    /*color:  #98a6ad !important;*/
+/*}*/
 
-.urlListBg  .list-group-item.active  span.text-ellipsis{
-    color:  #555 !important;
-}
+/*.urlListBg  .list-group-item.active  span.text-ellipsis{*/
+    /*color:  #555 !important;*/
+/*}*/
 

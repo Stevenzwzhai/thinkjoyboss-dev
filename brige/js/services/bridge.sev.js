@@ -122,13 +122,14 @@ App
             },
 
 
-            startServerTest : function(urlId,ip,port){
+            startServerTest : function(urlId,ip,port,token){
             var defer = $q.defer();
                 $http.get(SERVER.url.mBrige + "/exeServer",{
                     "params" :{
                         urlId : urlId,
                         ip : ip,
-                        port : port
+                        port : port,
+                        token : token
                     }
                 })
                 .success(function(data) {
