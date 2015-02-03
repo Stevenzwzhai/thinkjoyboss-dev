@@ -18,12 +18,12 @@
     </a>
     <ul class="nav nav-sub dk">
         <li ui-sref-active="active">
-            <a ui-sref="app.user">
+            <a ui-sref="app.user" ng-click="app.settings.asideFolded=false">
                 <span translate="aside.nav.components01.base_mg.user_mg">xxxxxx</span>
             </a>
         </li>
         <li ui-sref-active="active">
-            <a ui-sref="app.school">
+            <a ui-sref="app.school" ng-click="app.settings.asideFolded=false">
                 <span translate="aside.nav.components01.base_mg.school_mg">xxxxxx</span>
             </a>
         </li>
@@ -172,7 +172,7 @@
     <!-- 鹊桥 -->
     <ul class="nav nav-sub dk">
         <li ui-sref-active="active">
-            <a ui-sref="app.mbridge.bridge">
+            <a ui-sref="app.mbridge.bridge" ng-click="app.settings.asideFolded=true">
                 <span translate="aside.nav.components04.bridge.bridge">xxxxxx</span>
             </a>
         </li>

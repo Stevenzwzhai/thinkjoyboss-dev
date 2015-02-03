@@ -132,9 +132,12 @@ App
 
 
                     if(newV){
-//                        try {
+                        try {
 
-                            if( typeof newV == "string"){
+                            if(newV == "null"){
+                                newV =  {};
+                            }
+                            else if( typeof newV == "string"){
                                 newV =  JSON.stringify(JSON.parse(newV));
                             }
                             else{
@@ -146,12 +149,11 @@ App
                                 element.val(vk);
                                 element.trigger("input");
 
-//                        } catch(e) {
-//                            var str = JSON.stringify(e.message);
-//
-//                            console.log(e);
-//                            scope.error = str;
-//                        }
+                        } catch(e) {
+                            var str = JSON.stringify(e.message);
+                            console.log(e);
+                            scope.error = str;
+                        }
 
                     }
                 });

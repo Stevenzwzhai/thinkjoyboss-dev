@@ -124,7 +124,7 @@ App
 
             startServerTest : function(urlId,ip,port){
             var defer = $q.defer();
-                $http.get(SERVER.url.mBrige + "/exeClient",{
+                $http.get(SERVER.url.mBrige + "/exeServer",{
                     "params" :{
                         urlId : urlId,
                         ip : ip,
@@ -138,7 +138,23 @@ App
                     defer.reject(err);
                 });
             return  defer.promise;
-        }
+        },
+
+            startClientTest : function(sysCode,port){
+                var defer = $q.defer();
+                $http.post(SERVER.url.mBrige + "/startServer",{
+                        sysCode : sysCode,
+                        port : port
+                })
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
+
+            }
 
 
         }

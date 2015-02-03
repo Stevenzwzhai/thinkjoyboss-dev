@@ -30,7 +30,7 @@ App
 
         //server 测试
         $scope.isServerSubmit = false;
-
+        $scope.isClientSubmit = false;
 
 
         //协议
@@ -48,6 +48,12 @@ App
             ip  : "172.16.130.172",
             port : "8080"
         }
+
+        //client test
+        $scope.clientFm = {
+            port : ""
+        }
+
 
 
         //url
@@ -155,6 +161,34 @@ App
             });
 
         }
+        //客户端测试
+        $scope.clientTest = function(){
+
+
+            if($scope.clientFm.port < 9000 ||  $scope.clientFm.port  > 65535){
+                $rootScope.alertError("指定端口在 9000 - 65535");
+                return;
+            }
+
+            $scope.isClientSubmit = true;
+            BridgeService.startClientTest($scope.note.system.systemCode,$scope.clientFm.port).then(function(res){
+
+                if(res.result){
+                    $rootScope.alertSuccess(res.resultDesc);
+                    $scope.refresh = true;
+                }
+                else{
+                    $rootScope.alertError(res.resultDesc);
+                }
+
+
+                $scope.isClientSubmit = false;
+
+            },function(){
+                $scope.isClientSubmit = false;
+            });
+
+        }
 
         //查询
         $scope.search = function () {
@@ -257,8 +291,6 @@ App
         $scope.serves = BridgeShare.getServers();
 
         $scope.otherScope = BridgeShare.getScope();
-
-
 
 
         $scope.ok = function () {

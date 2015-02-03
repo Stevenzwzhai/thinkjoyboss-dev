@@ -5221,8 +5221,18 @@ a.text-#000000:hover {
 
 .urlListBg  .list-group-item.active{
 
-        background-color: #23b7e5 !important;
+    background-color: #23b7e5 !important;
+        /*background-color: #f6f8f8 !important;*/
     border: 0 none;
     border-left: 3px  solid;
+}
+
+
+.urlListBg  .list-group-item.active small{
+    color:  #98a6ad !important;
+}
+
+.urlListBg  .list-group-item.active  span.text-ellipsis{
+    color:  #555 !important;
 }
 

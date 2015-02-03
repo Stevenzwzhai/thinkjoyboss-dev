@@ -18,7 +18,7 @@
 
 
             "components01":{
-                "components" : "boss 就这么任性",
+                "components" : "BOSS 就这么任性",
                 "base_mg" :{
                     "title" : "基础信息管理",
                     "user_mg"  : "用户管理",
@@ -33,7 +33,7 @@
             },
 
             "components02" : {
-                "components" : "boss 提供一站服务",
+                "components" : "BOSS 提供一站服务",
                 "ui_kits" : {
                     "UI_KITS" : "消息管理",
                     "PUSH" : "消息推送",
@@ -71,7 +71,7 @@
             },
 
             "components03":{
-                "components" : "sop 数据分析",
+                "components" : "Sop 数据分析",
 
                 "data_analysis" :{
                     "title" : "数据分析",
@@ -98,7 +98,7 @@
 
 
             "your_stuff" : {
-                "YOUR_STUFF": "boss 展示平台",
+                "YOUR_STUFF": "BOSS 展示平台",
                 "PROFILE" : "个人信息",
                 "DOCUMENTS" : "ar文档"
             }
