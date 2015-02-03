@@ -151,6 +151,19 @@ App
         }
 
 
+        var getSelectNote =  function(note){
+
+            for(var i=0;i<$scope.posts.length;i++){
+                  var pi = $scope.posts[i];
+                   if(pi.urlId == note.urlId ){
+                        return  $scope.posts[i];
+                   }
+            }
+
+            return  "";
+        }
+
+
         //服务端测试
         $scope.serverTest = function(){
 
@@ -160,10 +173,13 @@ App
 
                 var newRep = JSON.stringify( JSON.parse(res.responseBody));
                 res.responseBody =  newRep;
-//                $scope.note.serverTestResult.testResult =  res.testResult;
-//                $scope.note.serverTestResult.responseBody = newRep;
-//                $scope.note.serverTestResult.errorDesc = res.errorDesc;
                 $scope.note.serverTestResult = res;
+
+
+                //替换左侧菜单
+                var thisNote = getSelectNote($scope.note);
+                thisNote.serverTestResult = res;
+
 
                 $scope.isServerSubmit = false;
 

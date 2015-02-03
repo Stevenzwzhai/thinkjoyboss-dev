@@ -130,15 +130,12 @@ App
                 scope.$watch("json",function(newV,oldVal){
                     var result = "";
 
-
-
                     if(newV){
                         try {
 
                             if(newV == "null"){
                                 newV =  {};
                             }
-
                             else if( typeof newV == "string"){
 
                                 newV =  JSON.stringify(JSON.parse(newV));
