@@ -5228,6 +5228,12 @@ a.text-#000000:hover {
 }
 
 
+
+.removeCk{
+    position: relative;
+    bottom: 1px;
+}
+
 /*.urlListBg  .list-group-item.active small{*/
     /*color:  #98a6ad !important;*/
 /*}*/

@@ -89,7 +89,8 @@
 
                 "bridge" :{
                     "title" : "鹊桥",
-                    "bridge"  : "鹊桥"
+                    "bridge"  : "MBridge",
+                    "setting" :  "MBridge配置"
 
                 }
 

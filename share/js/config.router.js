@@ -182,14 +182,19 @@ App
                   templateUrl : "brige/tpl/mbridge.html"
               })
 
-                  .state("app.mbridge.bridge", {
-                      url : "/bridge",
-                      templateUrl : "brige/tpl/bridge.html",
-                      controller : "BridgeCtrl"
+              .state("app.mbridge.bridge", {
+                  url : "/bridge",
+                  templateUrl : "brige/tpl/bridge.html",
+                  controller : "BridgeCtrl"
 
-                  })
+              })
 
+              .state("app.mbridge.setting", {
+                  url : "/setting",
+                  templateUrl : "brige/tpl/bridge-setting.html",
+                  controller : "BridgeSettingCtrl"
 
+              })
 
               //brige 路由部分
 

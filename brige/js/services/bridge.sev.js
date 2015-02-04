@@ -15,10 +15,52 @@ App
                     .error(function(err) {
                         defer.reject(err);
                     });
-
                 return  defer.promise;
             },
 
+            updateFiled : function (so) {
+                var cp  = angular.copy(so);
+                delete  cp.edit;
+                delete  cp.isReadOnly;
+
+                var defer = $q.defer();
+                $http.post(SERVER.url.mBrige + "/field/template/update",cp,{"headers" : {"is-json-data" : "true"} })
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
+            },
+
+            addFiled : function (so) {
+                var cp  = angular.copy(so);
+                var defer = $q.defer();
+                $http.post(SERVER.url.mBrige + "/field/template/add",cp)
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
+            },
+
+            removeFiled : function(id){
+                var defer = $q.defer();
+                $http.post(SERVER.url.mBrige + "/field/template/delete",{
+                    templateId : id
+                })
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
+
+            },
 
             getUrlList: function (url,sysCode,pageIndex,pageSize) {
                 var defer = $q.defer();

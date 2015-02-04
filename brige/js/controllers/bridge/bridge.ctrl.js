@@ -27,6 +27,7 @@ App
 
 
 
+
         //控制切换
         $scope.currentPotoy = 1;
 
@@ -48,8 +49,8 @@ App
 
         //serv test
         $scope.sevFm ={
-            ip  : "172.16.130.172",
-            port : "8080",
+            ip  : "",
+            port : "",
             token  : ""
         }
 
@@ -64,7 +65,8 @@ App
         $scope.urlList = SERVER.url.mBrige + "/url/list";
         $scope.params = {
             url : "",
-            sysCode : ""
+            sysCode : "",
+            resultType : "all"
         }
 
 
@@ -161,6 +163,12 @@ App
             }
 
             return  "";
+        }
+
+
+        $scope.filterType = function(type){
+            $scope.params.resultType = type;
+            $scope.refresh = true;
         }
 
 

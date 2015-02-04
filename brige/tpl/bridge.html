@@ -16,7 +16,17 @@
                     <span class="input-group-addon input-sm" ng-click="search();"><i class="fa fa-search"></i></span>
                     <input type="text" class="form-control input-sm" placeholder="例:login" ng-model="params.url" ng-keypress="enter($event)" >
                 </div>
-                <div class="form-group m-t">
+                <div class="form-group m-t" style="margin-bottom: 0;">
+
+                    <div class="m-t m-b">
+                        <p>
+                            <a class="label bg-success active" type="success" ng-click="filterType('success')">成功</a>
+                            <a class="label bg-info" type="info" ng-click="filterType('info')">未开始</a>
+                            <a class="label bg-warning" type="warning" ng-click="filterType('warning')">警告</a>
+                            <a class="label bg-danger" type="error" ng-click="filterType('error')">错误</a>
+                            <a class="label bg-primary" type="all" ng-click="filterType('all')">全部</a>
+                        </p>
+                    </div>
 
                    <select class="form-control" ng-model="params.sysCode">
                         <option value="">请选择系统</option>
@@ -24,6 +34,8 @@
                             {{server.systemName}}
                         </option>
                    </select>
+
+
 
                 </div>
             </div>
@@ -68,7 +80,7 @@
                     <div class="fbox text-center text-sm">
                         <a href="" class=" col padder-v text-muted b-r b-light" ng-class="{'active': currentPotoy == 1 }"   ng-click="currentPotoy=1">
                             <i class=" icon-screen-tablet block m-b-xs fa-2x"></i>
-                            <span>协议信息</span>
+                            <span>协议配置</span>
                         </a>
                         <a href="" class="col padder-v text-muted b-r b-light" ng-click="currentPotoy=2"  ng-class="{'active': currentPotoy == 2 }">
                             <i class="icon-rocket block m-b-xs fa-2x"></i>
