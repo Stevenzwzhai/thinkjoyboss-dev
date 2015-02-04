@@ -35,9 +35,12 @@ App
             },
 
             addFiled : function (so) {
-                var cp  = angular.copy(so);
                 var defer = $q.defer();
-                $http.post(SERVER.url.mBrige + "/field/template/add",cp)
+                $http.post(SERVER.url.mBrige + "/field/template/add",{
+                    sysCode : so.system.systemCode,
+                    fieldName : so.fieldName,
+                    fieldValue  : so.fieldValue
+                })
                     .success(function(data) {
                         defer.resolve(data);
                     })

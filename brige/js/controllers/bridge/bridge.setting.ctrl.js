@@ -77,7 +77,7 @@ App
 
 
             try {
-                 JSON.parse($scope.fm.fieldValue);
+                // JSON.parse($scope.fm.fieldValue);
 
                 BridgeService.addFiled($scope.fm).then(function(res){
                     if(res.result){
