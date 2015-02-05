@@ -1,0 +1,102 @@
+<div class="m-b" >
+
+    <select    class="form-control ib  input-sm  " ng-model="severMessageModelParams.sysCode" style="width: 150px; vertical-align: bottom; display: none;">
+        <option value="">请选择系统</option>
+        <option value="{{server.systemCode}}" ng-repeat=" server in  serves">
+            {{server.systemName}}
+        </option>
+    </select>
+
+    <button class="btn  m-l  btn-sm  btn-danger btn-addon" ng-click="isAdd=true;"><i class="fa fa-plus"></i>添加报文</button>
+
+</div>
+
+<table-paging   is-submit="severMessageModelIsSubmit"   refresh="severMessageModelRefresh"  pageIndex="1"  pageSize="10"  params="severMessageModelParams"  url="severMessageModelUrl"  results="severMessageModelPost"  resultsName="pageList"  total="total"   >
+
+    <div class="table-responsive">
+        <form name="addSevMessageForm" novalidate role="form">
+            <table class="table table-striped b-t b-light">
+                <thead>
+                <tr>
+                    <th>报文类型</th>
+                    <th>所属系统</th>
+                    <th>报文内容</th>
+                    <th>修改时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <tr ng-show="isAdd">
+
+                    <td>
+                        <select class="form-control input-sm" ng-model="fm.bodyType" required>
+                            <option value="">
+                                请选择报文类型
+                            </option>
+                            <option value="request" >
+                                request
+                            </option>
+                            <option value="response">
+                                response
+                            </option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control input-sm" ng-model="fm.system.systemCode" required>
+                            <option value="">请选择系统</option>
+                            <option value="{{server.systemCode}}" ng-repeat=" server in  serves">
+                                {{server.systemName}}
+                            </option>
+                        </select>
+                    </td>
+                    <td>
+                        <textarea  class="form-control input-sm"  ng-model="fm.bodyValue" placeholder="报文内容"  required></textarea>
+                    </td>
+
+                    <td>
+                        系统自动生成
+                    </td>
+
+                    <td>
+                        <a class="ib"   ng-click="addFilederverMessage()" >
+                            <i class="fa  fa-plus text-primary   "></i>
+                        </a>
+
+                        <a class="ib m-l removeCk" ng-click="resetFm()">
+                            <i class="fa fa-reply text-primary "></i>
+                        </a>
+                    </td>
+
+                </tr>
+
+                <tr ng-repeat="message in severMessageModelPost">
+                    <td>{{message.bodyType}}</td>
+
+                    <td>{{message.system.systemName}}</td>
+                    <td>
+                        <textarea   ng-init="message.isReadOnly = true"  ng-readonly="message.isReadOnly" ng-model="message.bodyValue" class="form-control">{{message.bodyValue}}</textarea>
+                    </td>
+                    <td>{{message.modifyTime}}</td>
+                    <td>
+                        <a href  ui-toggle-class  ng-click="editServerMessage(message)">
+                            <i class="fa fa-floppy-o text-primary  text-active "></i>
+                            <i class="fa fa-pencil-square-o text-primary  text"></i>
+                        </a>
+
+                        <a class="ib m-l removeCk" ng-click="deleteServerMessage(message)">
+                            <i class="fa fa-times text-primary   "></i>
+                        </a>
+                    </td>
+
+
+                </tr>
+
+                </tbody>
+
+            </table>
+        </form>
+    </div>
+
+</table-paging>

@@ -54,8 +54,8 @@ App.constant("SERVER", {
 //        im   : "ws://172.16.130.27:8080/push/customerIM",
         im   : "ws:/121.41.61.218:8080/notify/customerIM",
         sop  : "http://121.41.61.218:9003",
-        mBrige : "http://10.10.68.13:8081/mBridge"
-//        mBrige : "http://172.16.130.172:8080/mBridge"
+//        mBrige : "http://10.10.68.13:8081/mBridge"
+        mBrige : "http://172.16.130.172:8080/mBridge"
     },
 //    //测试
 //    testUrl : {

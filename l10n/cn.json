@@ -22,7 +22,8 @@
                 "base_mg" :{
                     "title" : "基础信息管理",
                     "user_mg"  : "用户管理",
-                    "school_mg" : "学校管理"
+                    "school_mg" : "学校管理",
+                    "class_mg" : "班级管理"
                 },
 
                 "work_order" :{

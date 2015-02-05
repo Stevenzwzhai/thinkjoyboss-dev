@@ -1,0 +1,101 @@
+<div class="m-b">
+
+    <select    class="form-control ib  input-sm  " ng-model="severMessageModelParams.sysCode" style="width: 150px; vertical-align: bottom;">
+        <option value="">请选择系统</option>
+        <option value="{{server.systemCode}}" ng-repeat=" server in  serves">
+            {{server.systemName}}
+        </option>
+    </select>
+
+    <button class="btn  m-l  btn-sm  btn-primary btn-addon" ng-click="isAdd=true;"><i class="fa fa-plus"></i>添加字段</button>
+
+</div>
+
+
+<table-paging   is-submit="severMessageModelIsSubmit"   refresh="severMessageModelRefresh"  pageIndex="1"  pageSize="10"  params="severMessageModelParams"  url="severMessageModelUrl"  results="severMessageModelPost"  resultsName="pageList"  total="total"   ng-show="severMessageModelPost.length > 0">
+
+    <div class="table-responsive">
+        <form name="addSevMessageForm" novalidate role="form">
+            <table class="table table-striped b-t b-light">
+                <thead>
+                <tr>
+                    <th>字段编号</th>
+                    <th>所属系统</th>
+                    <th>字段名称</th>
+                    <th>字段内容</th>
+                    <th>修改时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <tr ng-show="isAdd">
+
+                    <td>
+                        系统自动生成
+                    </td>
+                    <td>
+                        <select class="form-control input-sm" ng-model="fm.system.systemCode" required>
+                            <option value="">请选择系统</option>
+                            <option value="{{server.systemCode}}" ng-repeat=" server in  serves">
+                                {{server.systemName}}
+                            </option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm"  ng-model="fm.fieldName"  placeholder="字段名称"  required/>
+                    </td>
+
+                    <td>
+                        <textarea  class="form-control input-sm"  ng-model="fm.fieldValue" placeholder="字段内容"  required></textarea>
+                    </td>
+
+                    <td>
+                        系统自动生成
+                    </td>
+
+                    <td>
+
+                        <a class="ib"   ng-click="addFilederverMessage()" >
+                            <i class="fa  fa-plus text-primary   "></i>
+                        </a>
+
+                        <a class="ib m-l removeCk" ng-click="resetFm()">
+                            <i class="fa fa-reply text-primary "></i>
+                        </a>
+                    </td>
+
+                </tr>
+
+
+                <tr ng-repeat="message in severMessageModelPost">
+                    <td>{{message.templateId}}</td>
+                    <td>{{message.system.systemName}}</td>
+                    <td>{{message.fieldName}}</td>
+                    <td>
+                        <textarea   ng-init="message.isReadOnly = true"  ng-readonly="message.isReadOnly" ng-model="message.fieldValue" class="form-control">{{message.system.fieldValue}}</textarea>
+                    </td>
+                    <td>{{message.modifyTime}}</td>
+                    <td>
+                        <a href  ui-toggle-class  ng-click="editServerMessage(message)">
+                            <i class="fa fa-floppy-o text-primary  text-active "></i>
+                            <i class="fa fa-pencil-square-o text-primary  text"></i>
+                        </a>
+
+                        <a class="ib m-l removeCk" ng-click="deleteServerMessage(message)">
+                            <i class="fa fa-times text-primary   "></i>
+                        </a>
+                    </td>
+
+
+                </tr>
+
+                </tbody>
+
+            </table>
+        </form>
+    </div>
+
+</table-paging>
+

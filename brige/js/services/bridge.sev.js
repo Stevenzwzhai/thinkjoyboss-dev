@@ -50,6 +50,38 @@ App
                 return  defer.promise;
             },
 
+
+            addPoto : function (so) {
+                var defer = $q.defer();
+                $http.post(SERVER.url.mBrige + "/body/template/add",{
+                    sysCode : so.system.systemCode,
+                    bodyType : so.bodyType,
+                    bodyValue  : so.bodyValue
+                })
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
+            },
+
+            removePoto : function (so) {
+                var defer = $q.defer();
+                $http.post(SERVER.url.mBrige + "/body/template/delete",{
+                    sysCode : so.system.systemCode,
+                    bodyType : so.bodyType
+                })
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
+            },
+
             removeFiled : function(id){
                 var defer = $q.defer();
                 $http.post(SERVER.url.mBrige + "/field/template/delete",{

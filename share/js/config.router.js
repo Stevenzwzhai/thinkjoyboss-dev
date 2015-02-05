@@ -102,6 +102,13 @@ App
                   }
               })
 
+              //班级管理
+              .state("app.class",{
+                  url : "/class",
+                  templateUrl : "boss/tpl/class/class.html",
+                  controller : "ClassCtrl"
+              })
+
 
               .state("app.user", {
                   url: "/user",
@@ -192,9 +199,25 @@ App
               .state("app.mbridge.setting", {
                   url : "/setting",
                   templateUrl : "brige/tpl/bridge-setting.html",
+                  abstract : true,
                   controller : "BridgeSettingCtrl"
 
               })
+
+
+              .state("app.mbridge.setting.filed", {
+                  url : "/filed",
+                  templateUrl : "brige/tpl/bridge-setting-filed.html",
+                  controller : "BridgeSettingMessageCtrl"
+
+              })
+
+              .state("app.mbridge.setting.poto", {
+                  url : "/poto",
+                  templateUrl : "brige/tpl/bridge-setting-poto.html",
+                  controller : "BridgeSettingPotoCtrl"
+              })
+
 
               //brige 路由部分
 
