@@ -282,8 +282,13 @@ App
             //取消选中
             else{
 
-                BridgeService.updateFiled(sco).then(function(res){
-                    $rootScope.alertSuccess(res.resultDesc);
+                BridgeService.addPoto(sco).then(function(res){
+                    if(res.result){
+                        $rootScope.alertSuccess("更新成功");
+                    }
+                    else{
+                        $rootScope.alertError(res.resultDesc);
+                    }
                     sco.edit  =false;
                     sco.isReadOnly = true;
 
