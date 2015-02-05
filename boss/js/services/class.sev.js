@@ -7,7 +7,7 @@ App
 
             getClassMessageInfoByCode : function(classCode,count){
                 var defer =  $q.defer();
-                $http.get(SERVER.url.uc+"/messageBoss/getClassMessages?classId=14100&count=10",{
+                $http.get(SERVER.url.message+"/messageBoss/getClassMessages",{
                     params : {
                         classId : classCode,
                         count  : count
@@ -20,6 +20,24 @@ App
                         console.error("class error");
                         defer.reject(err);
                   });
+                return  defer.promise;
+            },
+
+
+            getClassInfo : function(classCode){
+                var defer =  $q.defer();
+                $http.get(SERVER.url.uc+"/schoolBoss/classInfo",{
+                    params : {
+                        classCode : classCode
+                    }
+                })
+                    .success(function(result){
+                        defer.resolve(result);
+                    })
+                    .error(function(err){
+                        console.error("class error");
+                        defer.reject(err);
+                    });
                 return  defer.promise;
             }
 

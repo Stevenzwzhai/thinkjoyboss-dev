@@ -43,7 +43,8 @@ App.constant("SERVER", {
     },
     //测试
     testUrl : {
-        uc  : "http://10.10.68.11:8080/v1",
+//        uc  : "http://10.10.68.11:8080/v1",
+        uc  : "http://172.16.130.172:8088",
         message : "http://10.10.68.12:8080/v1",
 
         //线上
@@ -54,8 +55,7 @@ App.constant("SERVER", {
 //        im   : "ws://172.16.130.27:8080/push/customerIM",
         im   : "ws:/121.41.61.218:8080/notify/customerIM",
         sop  : "http://121.41.61.218:9003",
-//        mBrige : "http://10.10.68.13:8081/mBridge"
-        mBrige : "http://172.16.130.172:8080/mBridge"
+        mBrige : "http://10.10.68.13:8081/mBridge"
     },
 //    //测试
 //    testUrl : {
