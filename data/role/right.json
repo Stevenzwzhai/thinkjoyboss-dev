@@ -4,17 +4,30 @@
         "roleList" :[
             {
                 "roleName" : "研发人员",
-                "sysCode" :  "mBridge",
-                "resourceList" : [
+                "sysCode" :  "boss",
+                "resourcePage" : [
                     {
-                        "resourceName"  : "添加mbridge",
-                        "resourceValue" : "add/mbridge"
+                        "resourcePageName" : "用户管理",
+                        "resourcePageValue" : "BossUserManager"
                     },
                     {
-                        "resourceName"  : "添加mbridge",
-                        "resourceValue" : "add/mbridge"
+                        "resourcePageName" : "学校管理",
+                        "resourcePageValue" : "BossSchoolManager"
+                    },
+                    {
+                        "resourcePageName" : "班级管理",
+                        "resourcePageValue" : "BossClassManager"
                     }
-
+                ],
+                "resourceData" : [
+                    {
+                        "resourceName"  : "添加用户",
+                        "resourceValue" : "/add/user"
+                    },
+                    {
+                        "resourceName"  : "添加班级",
+                        "resourceValue" : "/add/class"
+                    }
                 ]
             }
 
