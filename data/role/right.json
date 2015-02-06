@@ -1,0 +1,24 @@
+{
+       "username"  : "小明",
+       "userId"    : 101,
+        "roleList" :[
+            {
+                "roleName" : "研发人员",
+                "sysCode" :  "mBridge",
+                "resourceList" : [
+                    {
+                        "resourceName"  : "添加mbridge",
+                        "resourceValue" : "add/mbridge"
+                    },
+                    {
+                        "resourceName"  : "添加mbridge",
+                        "resourceValue" : "add/mbridge"
+                    }
+
+                ]
+            }
+
+        ]
+
+
+}
