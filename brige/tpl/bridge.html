@@ -147,11 +147,7 @@
                     </div>
 
 
-                    <div class="m-t m-l m-r"  style="" ng-show="error">
-                        <div class="alert alert-danger" role="alert" style="margin-bottom: 6px;">
-                            <strong>{{error}}</strong>
-                        </div>
-                    </div>
+
 
 
                         <!-- 协议说明 -->
@@ -162,9 +158,24 @@
                                 <!--</div>-->
                             <!--</div>-->
 
+
+                            <div class="m-t m-l m-r"  style="" ng-show="note.errReq">
+                                <div class="alert alert-danger" role="alert" style="margin-bottom: 6px;">
+                                    <strong>Request</strong> &emsp; {{note.errReq}}
+                                </div>
+                            </div>
+
+                            <div class="m-t m-l m-r"  style="" ng-show="note.errRep">
+                                <div class="alert alert-danger" role="alert" style="margin-bottom: 6px;">
+                                    <strong>Response</strong> &emsp; {{note.errRep}}
+                                </div>
+                            </div>
+
+
+
                                 <section class="m-t">
                             <div class="col-sm-6 connected" >
-                                <div class="panel panel-primary"  >
+                                <div class="panel panel-primary"  ng-class="{'panel-danger': note.exReq}" >
                                     <div class="panel-heading"  >
                                         Request协议
                                         <a href="" ui-toggle-class    class="pull-right bridge-edit"  >
@@ -190,7 +201,7 @@
 
                     </div>
                             <div class="col-sm-6 connected" >
-                                <div class="panel panel-success">
+                                <div class="panel panel-success" ng-class="{'panel-danger': note.exRep}">
                                     <div class="panel-heading">
                                         Response协议
                                         <a href="" ui-toggle-class    class="pull-right bridge-edit"  >
@@ -220,6 +231,13 @@
                                     <!--<span>服务端测试</span>-->
                                 <!--</div>-->
                             <!--</div>-->
+
+
+                            <div class="m-t m-l m-r"  style="" ng-show="note.exTestReq">
+                                <div class="alert alert-danger" role="alert" style="margin-bottom: 6px;">
+                                    <strong>Request</strong> &emsp; {{note.errTestReq}}
+                                </div>
+                            </div>
 
 
                             <section class="m-t-lg m-l m-r">
@@ -286,7 +304,7 @@
 
                             <section class="m-t">
                                 <div class="col-sm-6 connected" >
-                                    <div class="panel panel-success"  ng-if="note.requestType == 'POST' ">
+                                    <div class="panel panel-success"    ng-class="{'panel-danger': note.exTestReq}"  ng-if="note.requestType == 'POST' ">
                                         <div class="panel-heading">
                                             测试报文 {{isReqTestSuper}}
                                             <a href="" ui-toggle-class    class="pull-right bridge-edit"  >

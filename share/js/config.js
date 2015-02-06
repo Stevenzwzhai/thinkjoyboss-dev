@@ -44,30 +44,15 @@ App.constant("SERVER", {
     //测试
     testUrl : {
 //        uc  : "http://10.10.68.11:8080/v1",
-        uc  : "http://172.16.130.172:8088",
-        message : "http://10.10.68.12:8080/v1",
+          uc  : "http://172.16.130.172:8088",
+          message : "http://10.10.68.12:8080/v1",
 
-        //线上
-       // push : "http://115.29.184.78:8084/push",
-        push : "http://121.41.61.218:8080/notify",
-
-//        push : "http://172.16.130.27:8080/push",
-//        im   : "ws://172.16.130.27:8080/push/customerIM",
-        im   : "ws:/121.41.61.218:8080/notify/customerIM",
-        sop  : "http://121.41.61.218:9003",
-        mBrige : "http://10.10.68.13:8081/mBridge"
+            //线上
+            push : "http://121.41.61.218:8080/notify",
+            im   : "ws:/121.41.61.218:8080/notify/customerIM",
+            sop  : "http://121.41.61.218:9003",
+            mBrige : "http://10.10.68.13:8081/mBridge"
     },
-//    //测试
-//    testUrl : {
-//        uc  : "http://172.16.130.34:8080/v1",
-//        message : "http://172.16.130.34:8080/v1"
-//    },
-//    //正式
-//    formalUrl : {
-//        uc  : "http://imzhiliao.com:10012/v1",
-//        message : "http://imzhiliao.com:10011/v1"
-//    }
-
     //预发布
     formalUrl : {
         uc  : "http://imzhiliao.com:10000/uc",

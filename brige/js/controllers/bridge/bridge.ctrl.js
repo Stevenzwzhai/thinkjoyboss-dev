@@ -92,7 +92,10 @@ App
                 newReq = JSON.stringify(result, null, "  ");
             } catch(e) {
                 $rootScope.alertError("json格式错误!");
-                $scope.error = e.message;
+
+                $scope.note.exReq  = true;
+                $scope.note.errReq = e.message;
+
 
             } finally{
                 if(newReq){
@@ -107,6 +110,8 @@ App
                         $scope.error = "";
                     });
                     $scope.isReqPoto = true;
+                    $scope.note.exReq  = "";
+                    $scope.note.errReq = "";
                 }
 
             }
@@ -117,15 +122,15 @@ App
         //保存响应协议
         $scope.saveResPoto = function(){
 
-
             var newRes;
-
             try {
                 var  result = jsonlint.parse($scope.note.urlResponse);
                 newRes = JSON.stringify(result, null, "  ");
             } catch(e) {
                 $rootScope.alertError("json格式错误!");
-                $scope.error = e.message;
+
+                $scope.note.exRep  = true;
+                $scope.note.errRep = e.message;
 
             } finally{
                 if(newRes) {
@@ -141,6 +146,9 @@ App
                         $scope.error = "";
                     });
                     $scope.isRepPoto = true;
+
+                    $scope.note.exRep  = "";
+                    $scope.note.errRep = "";
                 }
             }
 
@@ -161,12 +169,17 @@ App
                     newReq = JSON.stringify(result, null, "  ");
                 } catch(e) {
                     $rootScope.alertError("json格式错误!");
-                    $scope.error = e.message;
+
+                    $scope.note.exTestReq  = true;
+                    $scope.note.errTestReq = e.message;
 
                 } finally{
 
                    if(newReq){
                        saveTest(newReq);
+
+                       $scope.note.exTestReq  = "";
+                       $scope.note.errTestReq = "";
                    }
                 }
             }
