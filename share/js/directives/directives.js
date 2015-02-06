@@ -46,8 +46,8 @@ App
                 scope.$watch("refresh",function(newD,oldD){
 
                     if(newD){
-                        loadList(true);
                         scope.pageIndex = 1;
+                        loadList(true);
                     }
 
                 });

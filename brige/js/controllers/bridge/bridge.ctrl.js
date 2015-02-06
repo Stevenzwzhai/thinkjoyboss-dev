@@ -78,49 +78,97 @@ App
         });
 
         $scope.$watch("params.sysCode",function(newV){
+
                 $scope.refresh = true;
         });
 
         //保存请求协议
         $scope.saveReqPoto = function(){
 
-            var newReq = JSON.stringify( JSON.parse($scope.note.urlRequest));
-            BridgeService.updateBridgeReq($scope.note.urlId,newReq).then(function(res){
-                if(res.result){
-                    $rootScope.alertSuccess(res.resultDesc);
-                    $scope.refresh = true;
+            var newReq;
+
+            try {
+                var  result = jsonlint.parse($scope.note.urlRequest);
+                newReq = JSON.stringify(result, null, "  ");
+            } catch(e) {
+                $rootScope.alertError("json格式错误!");
+                $scope.error = e.message;
+
+            } finally{
+                if(newReq){
+                    BridgeService.updateBridgeReq($scope.note.urlId,newReq).then(function(res){
+                        if(res.result){
+                            $rootScope.alertSuccess(res.resultDesc);
+                            $scope.refresh = true;
+                        }
+                        else{
+                            $rootScope.alertError(res.resultDesc);
+                        }
+                        $scope.error = "";
+                    });
+                    $scope.isReqPoto = true;
                 }
-                else{
-                    $rootScope.alertError(res.resultDesc);
-                }
-            });
-            $scope.isReqPoto = true;
+
+            }
+
         }
 
 
         //保存响应协议
         $scope.saveResPoto = function(){
-            var newRes = JSON.stringify( JSON.parse($scope.note.urlResponse));
-            BridgeService.updateBridgeRep($scope.note.urlId,newRes).then(function(res){
-                if(res.result){
-                    $rootScope.alertSuccess(res.resultDesc);
-                    $scope.refresh = true;
+
+
+            var newRes;
+
+            try {
+                var  result = jsonlint.parse($scope.note.urlResponse);
+                newRes = JSON.stringify(result, null, "  ");
+            } catch(e) {
+                $rootScope.alertError("json格式错误!");
+                $scope.error = e.message;
+
+            } finally{
+                if(newRes) {
+                    BridgeService.updateBridgeRep($scope.note.urlId,newRes).then(function(res){
+                        if(res.result){
+                            $rootScope.alertSuccess(res.resultDesc);
+                            $scope.refresh = true;
+                        }
+                        else{
+                            $rootScope.alertError(res.resultDesc);
+                        }
+
+                        $scope.error = "";
+                    });
+                    $scope.isRepPoto = true;
                 }
-                else{
-                    $rootScope.alertError(res.resultDesc);
-                }
-            });
-            $scope.isRepPoto = true;
+            }
+
+
         }
 
 
         //保存服务器请求数据
         $scope.saveResTest = function(type){
+
             var newReq;
 
-
             if(type =='POST'){
-                newReq = JSON.stringify( JSON.parse($scope.note.urlTestRequest.urlRequest));
+                var newReq;
+
+                try {
+                    var  result = jsonlint.parse($scope.note.urlTestRequest.urlRequest);
+                    newReq = JSON.stringify(result, null, "  ");
+                } catch(e) {
+                    $rootScope.alertError("json格式错误!");
+                    $scope.error = e.message;
+
+                } finally{
+
+                   if(newReq){
+                       saveTest(newReq);
+                   }
+                }
             }
             else{
 
@@ -133,9 +181,13 @@ App
                 }
 
                 newReq = JSON.stringify(obj);
-
-
+                saveTest(newReq);
             }
+
+        }
+
+
+        var saveTest  =function(newReq){
 
             BridgeService.updateBridgeTestReq($scope.note.urlId,newReq).then(function(res){
                 if(res.result){
@@ -145,10 +197,9 @@ App
                 else{
                     $rootScope.alertError(res.resultDesc);
                 }
+
+                $scope.error = "";
             });
-
-
-
 
         }
 
@@ -272,6 +323,8 @@ App
             $scope.note = note;
             $scope. isReqPoto =  true;
             $scope.isRepPoto = true;
+
+            $scope.error  =  "";
 
             $scope.posts.forEach(function(obj,index){
 

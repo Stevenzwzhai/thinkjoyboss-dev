@@ -282,6 +282,13 @@ App
             //取消选中
             else{
 
+
+                //验证json
+
+
+
+
+
                 BridgeService.addPoto(sco).then(function(res){
                     if(res.result){
                         $rootScope.alertSuccess("更新成功");
