@@ -5,10 +5,15 @@ App
         var SignIn = {
             login : function(username,password,account){
                 var defer =  $q.defer();
-                $http.post(SERVER.url.ucm+"/login",{
-                     username : username,
-                    password  : password,
-                    accountType : account
+                $http.get(SERVER.url.ucm+"/login",{
+
+                    params : {
+                        username : username,
+                        password  : password,
+                        accountType : account
+
+                    }
+
                 })
                     .success(function(result){
                         defer.resolve(result);
