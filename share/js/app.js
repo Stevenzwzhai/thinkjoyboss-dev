@@ -16,5 +16,6 @@ var App = angular.module('app', [
     'ui.validate',
     'oc.lazyLoad',
     'pascalprecht.translate',
-    'luegg.directives'
+    'luegg.directives',
+    "infinite-scroll"
 ]);

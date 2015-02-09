@@ -107,6 +107,7 @@ App
                   url : "/class",
                   templateUrl : "boss/tpl/class/class.html",
                   controller : "ClassCtrl"
+
               })
 
 

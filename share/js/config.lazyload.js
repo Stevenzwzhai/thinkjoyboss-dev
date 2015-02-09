@@ -38,6 +38,7 @@ App
       footable:       ['lib/vendor/jquery/footable/footable.all.min.js',
                           'lib/vendor/jquery/footable/footable.core.css'],
 
+
 //        selectize: ['lib/vendor/jquery/selectize/selectize.min.js',
  //       'lib/vendor/jquery/selectize/selectize.bootstrap3.css'],
         datetimepicker: ['lib/vendor/modules/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css',
@@ -65,6 +66,14 @@ App
                   files: [
                       'lib/vendor/modules/angular-ui-select/select.min.js',
                       'lib/vendor/modules/angular-ui-select/select.min.css'
+                  ]
+              },
+              {
+                 name : "infinite",
+                  files : [
+                      [
+                          'lib/vendor/angular/angular-infinite-scroll/ng-infinite-scroll.min.js'
+                      ]
                   ]
               },
               {

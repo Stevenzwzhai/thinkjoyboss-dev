@@ -1,9 +1,8 @@
 App
 
-    .controller("ClassCtrl", function ($rootScope, $scope, $state, $window, $log, $q, $timeout, ClassService, Util, SERVER) {
+    .controller("ClassCtrl", function ($rootScope, $scope, $state, $window, $log, $q, $timeout, ClassService,Util, SERVER) {
 
         console.log("class....");
-
 
         //班级信息
         $scope.classMsgPosts = [];
@@ -13,6 +12,10 @@ App
 
 
         $scope.classInfo = "";
+
+        $scope.busy = false;
+
+        $scope.isFirst = true;
 
         //form
         $scope.fm = {
@@ -31,15 +34,22 @@ App
             pageSize = pageSize || $scope.pageSize;
             if(type == "all"){
                 ClassService.getClassMessageInfoByCode(classCode,pageSize).then(function(res){
-                    $scope.classMsgPosts  =  res.bizData;
 
-                    for( var i =0 ;  i<$scope.classMsgPosts.length;i++){
-                        $scope.classMsgPosts[i].messageInfo.messagePics =  msgPic;
-                    }
 
+                    $scope.classMsgPosts  = $scope.classMsgPosts.concat(res.bizData);
+
+//                    for( var i =0 ;  i<$scope.classMsgPosts.length;i++){
+//                        $scope.classMsgPosts[i].messageInfo.messagePics =  msgPic;
+//                    }
+
+                    $scope.isFirst= false;
+                    $scope.busy = false;
 
 
                 },function(){
+
+                    $scope.isFirst= false;
+                    $scope.busy = false;
 
                 });
             }
@@ -57,9 +67,33 @@ App
 
         //查询班级
          $scope.searchClass = function(){
-            loadClassMg($scope.fm.classCode,"all",$scope.pageSize);
-            loadClassInfo($scope.fm.classCode);
+             console.log("search...");
+             loadClassMg($scope.fm.classCode,"all",$scope.pageSize);
+             loadClassInfo($scope.fm.classCode);
+
         }
+
+
+        $scope.loadMore = function(){
+
+            if(!$scope.isFirst){
+
+                console.log("load more..");
+                if ($scope.busy) return;
+                    $scope.busy = true;
+                loadClassMg($scope.fm.classCode,"all",$scope.pageSize);
+
+            }
+
+        }
+
+
+
+
+
+
+
+
 
 
 
