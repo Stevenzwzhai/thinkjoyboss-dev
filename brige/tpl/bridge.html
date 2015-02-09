@@ -172,7 +172,6 @@
                             </div>
 
 
-
                                 <section class="m-t">
                             <div class="col-sm-6 connected" >
                                 <div class="panel panel-primary"  ng-class="{'panel-danger': note.exReq}" >
@@ -186,7 +185,11 @@
                                     </div>
                                     <div class="list-group bg-white">
                                        <span ng-if="note.requestType == 'POST' ">
-
+                                                <!--<span class="left-num">-->
+                                                    <!--<div>1</div>-->
+                                                    <!--<div>2</div>-->
+                                                    <!--<div>3</div>-->
+                                                <!--</span>-->
                                              <textarea   json-format   ng-readonly="isReqPoto"   rows="15"  class="form-control"   error="error"   json="note.urlRequest"  ng-model="note.urlRequest"    style="border-radius: 0;"></textarea>
                                        </span>
 
@@ -211,6 +214,7 @@
                                     </div>
                                     <div class="list-group bg-white">
                                        <span>
+
                                              <textarea    ng-readonly="isRepPoto"  json-format   rows="15"  class="form-control" error="error" json="note.urlResponse"    ng-model="note.urlResponse"  style="border-radius: 0;"></textarea>
                                        </span>
                                     </div>

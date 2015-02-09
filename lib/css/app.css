@@ -220,6 +220,21 @@ a:hover .caret-white {
 
 .list-group {
   border-radius: 2px;
+  position: relative;
+}
+
+.list-group textarea{
+    padding-left: 20px;
+}
+.left-num{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    background: white;
+    height: 100%;
+    text-align: center;
+    padding-top: 7px;
 }
 
 .list-group.no-radius .list-group-item {
@@ -229,6 +244,8 @@ a:hover .caret-white {
 .list-group.no-borders .list-group-item {
   border: none;
 }
+
+
 
 .list-group.no-border .list-group-item {
   border-width: 1px 0;

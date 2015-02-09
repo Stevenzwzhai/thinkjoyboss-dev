@@ -127,35 +127,39 @@ App
             error : "="
         },
         link: function (scope,element, attrs) {
-                scope.$watch("json",function(newV,oldVal){
-                    var result = "";
+            var newV = scope.json;
+            var result = "";
+            if(newV){
+                try {
 
-                    if(newV){
-                        try {
-
-                            if(newV == "null"){
-                                newV =  {};
-                            }
-                            else if( typeof newV == "string"){
-
-                                newV =  JSON.stringify(JSON.parse(newV));
-                            }
-                            else{
-                                newV =  JSON.stringify(newV);
-                            }
-
-                                 result = jsonlint.parse(newV);
-                                var  vk = JSON.stringify(result, null, "  ");
-                                element.val(vk);
-                                element.trigger("input");
-
-                        } catch(e) {
-                            var str = JSON.stringify(e.message);
-                            console.log(e);
-                        }
-
+                    if(newV == "null"){
+                        newV =  {};
                     }
-                });
+                    else if( typeof newV == "string"){
+
+                        newV =  JSON.stringify(JSON.parse(newV));
+                    }
+                    else{
+                        newV =  JSON.stringify(newV);
+                    }
+
+                    result = jsonlint.parse(newV);
+                    var  vk = JSON.stringify(result, null, "  ");
+                    element.val(vk);
+                    element.trigger("input");
+
+                } catch(e) {
+                    var str = JSON.stringify(e.message);
+                    console.log(e);
+                }
+
+            }
+
+
+//                scope.$watch("json",function(newV,oldVal){
+//
+//
+//                });
 
         }
     }

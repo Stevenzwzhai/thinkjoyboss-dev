@@ -222,6 +222,26 @@ App
 
               //brige 路由部分
 
+
+
+            //login
+
+              .state("auth", {
+                  url : "/auth",
+                  abstract : true,
+                  templateUrl : "share/tpl/auth/auth.html"
+              })
+
+              .state("auth.login", {
+                  url : "/login",
+                  templateUrl : "share/tpl/auth/signin.html"
+              })
+
+
+
+
+            //login
+
       }
     ]
   );

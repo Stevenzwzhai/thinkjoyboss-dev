@@ -82,6 +82,17 @@ App
                 $scope.refresh = true;
         });
 
+
+        var  getLine = function(message){
+                var first = message.indexOf("line");
+                var second = message.indexOf(":");
+                var str = message.substring(first+4,second);
+                console.log(str);
+
+
+        }
+
+
         //保存请求协议
         $scope.saveReqPoto = function(){
 
@@ -90,8 +101,12 @@ App
             try {
                 var  result = jsonlint.parse($scope.note.urlRequest);
                 newReq = JSON.stringify(result, null, "  ");
+                $scope.note.urlRequest = newReq;
+
             } catch(e) {
                 $rootScope.alertError("json格式错误!");
+
+                console.log(e);
 
                 $scope.note.exReq  = true;
                 $scope.note.errReq = e.message;
@@ -126,6 +141,7 @@ App
             try {
                 var  result = jsonlint.parse($scope.note.urlResponse);
                 newRes = JSON.stringify(result, null, "  ");
+                $scope.note.urlResponse = newRes;
             } catch(e) {
                 $rootScope.alertError("json格式错误!");
 
@@ -167,6 +183,8 @@ App
                 try {
                     var  result = jsonlint.parse($scope.note.urlTestRequest.urlRequest);
                     newReq = JSON.stringify(result, null, "  ");
+                    $scope.note.urlTestRequest.urlRequest = newReq;
+
                 } catch(e) {
                     $rootScope.alertError("json格式错误!");
 
