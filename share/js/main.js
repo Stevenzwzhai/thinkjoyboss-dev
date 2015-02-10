@@ -11,6 +11,12 @@ App
       isSmartDevice( $window ) && angular.element($window.document.body).addClass('smart');
 
 
+
+        $rootScope.currentSys = "";
+
+
+
+
         //全局提示框
         $rootScope.$watch("httpError",function(temp){
             if(temp){
@@ -85,7 +91,7 @@ App
 
       //应用设置参数
       $scope.app = {
-        name: 'BOSS',
+        name: '云服务',
         version: '0.0.3',
         // for chart colors
         color: {
@@ -148,7 +154,6 @@ App
 
 
 
-
         //路由状态变化
         $rootScope.$on("$stateChangeStart",function(event, toState, toParams,
                                                     fromState, fromParams) {
@@ -157,7 +162,7 @@ App
                 if(toState.url != "/login"){
                     event.preventDefault();
                     console.log(toState);
-                    $state.go("auth.login");
+                    $state.go("launch");
                 }
             }
         });

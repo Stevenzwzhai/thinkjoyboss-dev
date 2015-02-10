@@ -25,6 +25,12 @@ App
 
           $stateProvider
 
+              .state('launch', {
+                  url: '/launch',
+                  templateUrl: 'share/tpl/launch/launch.html'
+              })
+
+
               .state('app', {
                   abstract: true,
                   url: '/app',
@@ -224,18 +230,21 @@ App
               //brige 路由部分
 
 
-
             //login
-
               .state("auth", {
                   url : "/auth",
                   abstract : true,
-                  templateUrl : "share/tpl/auth/auth.html"
+                  templateUrl : "auth/tpl/auth.html"
               })
 
               .state("auth.login", {
                   url : "/login",
-                  templateUrl : "share/tpl/auth/signin.html"
+                  templateUrl : "auth/tpl/signin.html"
+              })
+
+              .state("auth.setting", {
+                  url : "/login",
+                  templateUrl : "auth/tpl/signin.html"
               })
 
 

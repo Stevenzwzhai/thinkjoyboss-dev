@@ -29,7 +29,7 @@ App.controller('SingInCtrl', function($window,$scope,$rootScope,$state,Util,Sign
                     $window.sessionStorage.token = res.token;
                     //本地存储登录信息
                     Util.setSgObj("user",res.ucmUser);
-                    $state.go("app.home");
+                    $state.go("launch");
 
                 }
                 //登录失败

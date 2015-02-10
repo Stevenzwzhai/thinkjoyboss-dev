@@ -1,11 +1,9 @@
-<!-- list -->
-<ul class="nav">
-
+<!-- Boss -->
+<ul class="nav" ng-show="$root.currentSys == 'boss'  ">
 <!-- 标题 -->
 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components01.components">xxxxxx</span>
 </li>
-
 <!-- 01 -->
 <li>
     <a href class="auto">
@@ -34,8 +32,6 @@
         </li>
     </ul>
 </li>
-
-
 <!-- 02 -->
 <li>
     <a href class="auto">
@@ -56,15 +52,10 @@
 
     </ul>
 </li>
-
-
 <li class="line dk"></li>
-
 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components02.components">xxxxxx</span>
 </li>
-
-
 <!-- 消息管理 -->
 <li ng-class="{active:$state.includes('app.ui')}">
     <a href class="auto">
@@ -121,8 +112,6 @@
 
     </ul>
 </li>
-
-
 <!-- 营销管理 -->
 <li ng-class="{active:$state.includes('app.table')}">
     <a href class="auto">
@@ -155,15 +144,20 @@
 
     </ul>
 </li>
-
-
 <li class="line dk"></li>
+</ul>
+<!-- Boss -->
 
+
+
+
+
+<!-- bridge 部分 -->
+<ul class="nav" ng-show="$root.currentSys == 'mbridge'  ">
 <!-- brige -->
 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components04.components">xxxxxx</span>
 </li>
-
 <li>
     <a href class="auto">
       <span class="pull-right text-muted">
@@ -189,19 +183,19 @@
     </ul>
 
 </li>
-
-
-
-
-
-
 <li class="line dk"></li>
+</ul>
+<!-- bridge 部分 -->
+
+
+
+
 
 <!-- 数据分析 -->
+<ul class="nav"  ng-show="$root.currentSys == 'sop'  ">
 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components03.components">xxxxxx</span>
 </li>
-
 <li>
     <a href class="auto">
       <span class="pull-right text-muted">
@@ -237,12 +231,7 @@
         </li>
     </ul>
 </li>
-
-
-
-
 <li class="line dk hidden-folded"></li>
-
 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.your_stuff.YOUR_STUFF">xxxxxx</span>
 </li>
@@ -260,4 +249,8 @@
     </a>
 </li>
 </ul>
-<!--  list -->
+<!-- 数据分析 -->
+
+
+
+
