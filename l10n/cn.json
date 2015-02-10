@@ -89,9 +89,8 @@
                 "components" : "MBridge 鹊桥",
 
                 "bridge" :{
-                    "title" : "鹊桥",
-                    "bridge"  : "MBridge",
-                    "setting" :  "MBridge配置"
+                    "title" : "MBridge",
+                    "setting" :  "配置"
 
                 }
 
