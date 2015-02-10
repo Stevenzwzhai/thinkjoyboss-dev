@@ -35,7 +35,6 @@ App
             }
 
 
-
             //切换聊天
             $scope.toggleChat = function(toggle,user){
 

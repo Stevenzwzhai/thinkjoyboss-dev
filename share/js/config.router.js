@@ -8,7 +8,8 @@ App
     [          '$rootScope', '$state', '$stateParams',
       function ($rootScope,   $state,   $stateParams) {
           $rootScope.$state = $state;
-          $rootScope.$stateParams = $stateParams;        
+          $rootScope.$stateParams = $stateParams;
+
       }
     ]
   )
@@ -28,7 +29,7 @@ App
                   abstract: true,
                   url: '/app',
                   templateUrl: 'share/tpl/app.html'
-              })
+               })
 
               //设置页面
               .state('app.set', {
@@ -239,12 +240,13 @@ App
 
 
 
-
             //login
 
       }
     ]
   );
+
+
 
 
 //配置http 拦截器

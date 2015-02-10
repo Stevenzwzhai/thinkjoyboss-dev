@@ -2,7 +2,7 @@
 
 /* Controllers */
 // signin controller
-App.controller('SingInCtrl', function($scope,$state,SignInSev) {
+App.controller('SingInCtrl', function($window,$scope,$rootScope,$state,Util,SignInSev) {
     $scope.user = {
         username : "",
         password : "",
@@ -23,8 +23,20 @@ App.controller('SingInCtrl', function($scope,$state,SignInSev) {
 
         SignInSev.login(user.username,user.password,user.account)
             .then(function(res){
+                //登录成功
+                if(res.result){
+                    //设置 token
+                    $window.sessionStorage.token = res.token;
+                    //本地存储登录信息
+                    Util.setSgObj("user",res.ucmUser);
+                    $state.go("app.home");
 
-                console.log(res);
+                }
+                //登录失败
+                else{
+                  $rootScope.alertError("验证错误！");
+                }
+
             },function(err){
 
             });

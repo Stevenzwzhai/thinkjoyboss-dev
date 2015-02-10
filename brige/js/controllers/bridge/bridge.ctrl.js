@@ -51,7 +51,8 @@ App
         $scope.sevFm ={
             ip  : "",
             port : "",
-            token  : ""
+            token  : "",
+            rootPath : ""
         }
 
         //client test
@@ -259,7 +260,7 @@ App
 
 
             $scope.isServerSubmit = true;
-            BridgeService.startServerTest($scope.note.urlId,$scope.sevFm.ip,$scope.sevFm.port,$scope.sevFm.token).then(function(res){
+            BridgeService.startServerTest($scope.note.urlId,$scope.sevFm.ip,$scope.sevFm.port,$scope.sevFm.token,$scope.sevFm.rootPath).then(function(res){
 
                 var newRep = JSON.stringify( JSON.parse(res.responseBody));
                 res.responseBody =  newRep;

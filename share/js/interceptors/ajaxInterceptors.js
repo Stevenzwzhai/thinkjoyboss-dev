@@ -21,6 +21,25 @@ App
                     }
                 }
 
+                //token代理
+                if ($window.sessionStorage.token) {
+
+                    if(config.method == "POST" ||  config.method == "PUT"){
+                        config.data.token = $window.sessionStorage.token;
+                    }
+                    else if(config.method = "GET"){
+
+                        if( config.headers['Content-Type'] == "application/json"){
+                            config.params =   config.params || {};
+                            config.params.token = $window.sessionStorage.token;
+                        }
+                    }
+                }
+
+
+
+
+
 
                 return config ;
             },
@@ -56,7 +75,6 @@ App
                     default:
                         temp.content  = "网络错误";
                 }
-
 
 
                 var sp = {
