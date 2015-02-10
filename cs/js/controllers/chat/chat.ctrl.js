@@ -114,34 +114,59 @@ App
 
 
 
-          //建立连接
-          ChatSev.open($scope.userName).then(function(res){
 
-              ChatSev.getUserList($scope.userName);
-              ChatSev.socket.onmessage = onMessage;
+        var  openFn = function(res){
 
-              //服务器关闭
-              ChatSev.socket.onclose = function(e){
-                  $rootScope.alertWarn("服务器已经关闭!");
-                  $scope.toggleChat(true);
-              }
+            ChatSev.getUserList($scope.userName);
+            ChatSev.socket.onmessage = onMessage;
 
-              //出现异常
-              ChatSev.socket.onerror = function(e){
-                  $rootScope.alertError("服务器出现异常错误！");
-                  $scope.toggleChat(true);
-              }
+            //服务器关闭
+            ChatSev.socket.onclose = function(e){
+                $rootScope.alertWarn("服务器已经关闭!");
+                $scope.toggleChat(true);
+            }
 
-          },function(err){
-              $rootScope.alertError(err);
-          });
+            //出现异常
+            ChatSev.socket.onerror = function(e){
+                $rootScope.alertError("服务器出现异常错误！");
+                $scope.toggleChat(true);
+            }
+
+        }
 
 
 
+        //打开连接
+        function openSocket (){
+
+            //建立连接
+            ChatSev.open($scope.userName).then(function(res){
+
+                ChatSev.getUserList($scope.userName);
+                ChatSev.socket.onmessage = onMessage;
+
+                //服务器关闭
+                ChatSev.socket.onclose = function(e){
+                    $rootScope.alertWarn("服务器已经关闭!");
+                    $scope.toggleChat(true);
+                }
+
+                //出现异常
+                ChatSev.socket.onerror = function(e){
+                    $rootScope.alertError("服务器出现异常错误！");
+                    $scope.toggleChat(true);
+                }
+
+            },function(err){
+                $rootScope.alertError(err);
+            });
+
+        }
 
 
         //接受消息
         var  onMessage = function(event){
+
             var data = JSON.parse(event.data);
                 switch (data.type){
                     case "broadcast" :  //获取广播到的新用户
@@ -159,7 +184,6 @@ App
                             $rootScope.alertError("已经有客服接受次用户!");
                             removeUser(data.to);
                         }
-
                         break;
                     case "receive" :   //接受消息
                         data.msg.isReceive = true;
@@ -167,18 +191,20 @@ App
                         if(!user.posts)
                             user.posts = [];
 
-
                         console.log(data.msg);
 
                         if(!$scope.posts){
                             $scope.posts = [];
-
-
                         }
+
 
                         if(user.userId == $scope.currentUser.userId){
                             $scope.posts.push(data.msg);
                         }
+
+                        //覆盖用户资料
+                        user.userName = data.msg.userName;
+                        user.userIcon = data.msg.userIcon;
 
                         //用户列表添加message
                         user.posts.push(data.msg);
@@ -194,7 +220,6 @@ App
             console.log(data.type);
                 $scope.$apply();
         }
-
 
 
         //删除列表用户
@@ -218,6 +243,7 @@ App
 
 
 
+        openSocket();
 
     });
 

@@ -49,7 +49,7 @@ App.constant("SERVER", {
             "ucm"  : "http://172.16.130.63:8081/ucm",
             //线上
             push : "http://121.41.61.218:8080/notify",
-            im   : "ws://121.41.61.218:8080/notify/customerIM",
+            im   : "ws://10.10.68.13:8080/notify/customerIM",
             sop  : "http://121.41.61.218:9003",
             mBrige : "http://10.10.68.13:8081/mBridge"
     },
@@ -58,7 +58,7 @@ App.constant("SERVER", {
         uc  : "http://imzhiliao.com:10000/uc",
         message : "http://imzhiliao.com:10000/message",
         push : "http://121.41.61.218:8080/notify",
-        im   : "ws:/121.41.61.218:8080/notify/customerIM",
+        im   : "ws://121.41.61.218:8080/notify/customerIM",
         sop  : "http://121.41.61.218:9003",
         mBrige : "http://10.10.68.13:8081/mBridge"
     }
