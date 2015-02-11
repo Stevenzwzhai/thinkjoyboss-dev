@@ -9,8 +9,7 @@ App
                 var defer =  $q.defer();
                 $http.get(SERVER.url.message+"/messageBoss/getClassMessages",{
                     params : {
-                        classId : classCode,
-                        count  : count
+                        classId : classCode
                     }
                 })
                  .success(function(result){
