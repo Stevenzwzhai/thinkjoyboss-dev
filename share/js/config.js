@@ -47,8 +47,7 @@ App.constant("SERVER", {
 //          uc  : "http://172.16.130.172:8088",
           message : "http://10.10.68.12:8080/v1",
             "ucm"  : "http://172.16.130.63:8081/ucm",
-            //线上
-            push : "http://121.41.61.218:8080/notify",
+            push : "http://10.10.68.13:8080/notify",
             im   : "ws://10.10.68.13:8080/notify/customerIM",
             sop  : "http://121.41.61.218:9003",
             mBrige : "http://10.10.68.13:8081/mBridge"
