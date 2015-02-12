@@ -20,8 +20,6 @@ App
     [          '$stateProvider', '$urlRouterProvider',
       function ($stateProvider,   $urlRouterProvider) {
 
-          $urlRouterProvider
-              .otherwise('/app/home');
 
           $stateProvider
 
@@ -188,7 +186,6 @@ App
 
 
 
-
               //brige 路由部分
 
               .state("app.mbridge",{
@@ -245,11 +242,13 @@ App
               .state("auth.setting", {
                   url : "/login",
                   templateUrl : "auth/tpl/signin.html"
-              })
-
+              });
 
 
             //login
+
+          $urlRouterProvider
+              .otherwise('/auth/lolgin');
 
       }
     ]

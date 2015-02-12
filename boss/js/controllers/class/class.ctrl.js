@@ -19,7 +19,8 @@ App
 
         //form
         $scope.fm = {
-            classCode : "14100"
+            classCode : "14100",
+            userType : "-1"
         }
 
         var  msgPic  = [
@@ -33,9 +34,7 @@ App
         var loadClassMg = function(classCode,type,pageSize){
             pageSize = pageSize || $scope.pageSize;
             if(type == "all"){
-                ClassService.getClassMessageInfoByCode(classCode,pageSize).then(function(res){
-
-
+                ClassService.getClassMessageInfoByCode(classCode,$scope.fm.userType,pageSize).then(function(res){
                     $scope.classMsgPosts  = $scope.classMsgPosts.concat(res.bizData);
 
 //                    for( var i =0 ;  i<$scope.classMsgPosts.length;i++){

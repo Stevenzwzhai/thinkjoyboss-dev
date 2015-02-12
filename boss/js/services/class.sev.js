@@ -5,11 +5,13 @@ App
         return {
 
 
-            getClassMessageInfoByCode : function(classCode,count){
+            getClassMessageInfoByCode : function(classCode,userType,count){
                 var defer =  $q.defer();
                 $http.get(SERVER.url.message+"/messageBoss/getClassMessages",{
                     params : {
-                        classId : classCode
+                        classId : classCode,
+                        count  : count,
+                        userType : userType
                     }
                 })
                  .success(function(result){
