@@ -248,7 +248,7 @@ App
             //login
 
           $urlRouterProvider
-              .otherwise('/auth/lolgin');
+              .otherwise('/auth/login');
 
       }
     ]
