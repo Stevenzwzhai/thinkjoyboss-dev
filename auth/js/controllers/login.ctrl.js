@@ -30,7 +30,9 @@ App.controller('SingInCtrl', function($window,$scope,$rootScope,$state,Util,Sign
                     //本地存储登录信息
                     Util.setSgObj("user",res.ucmUser);
                     $state.go("launch");
-
+                    //用户信息保存到cookie中
+                    window.sessionStorage.setItem("user", JSON.stringify(res.ucmUser));
+                    $rootScope.user = res.ucmUser;
                 }
                 //登录失败
                 else{

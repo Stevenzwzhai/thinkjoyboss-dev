@@ -14,7 +14,8 @@ App
 
         $rootScope.currentSys = "";
 
-
+        //将用户信息从本地读取出来，回填页面
+        $rootScope.user = JSON.parse(window.sessionStorage.getItem('user'));
 
 
         //全局提示框
