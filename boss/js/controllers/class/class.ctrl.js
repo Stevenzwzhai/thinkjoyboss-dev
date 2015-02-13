@@ -17,10 +17,14 @@ App
 
         $scope.isFirst = true;
 
+        $scope.isContact = true;
+
+
         //form
         $scope.fm = {
             classCode : "14100",
-            userType : "-1"
+            userType : "-1",
+            queryTime : 0
         }
 
         var  msgPic  = [
@@ -30,19 +34,57 @@ App
             "http://i2.tietuku.com/43ce0a6e07897c7d.jpg"
         ]
 
-        //查询班级信息
-        var loadClassMg = function(classCode,type,pageSize){
-            pageSize = pageSize || $scope.pageSize;
-            if(type == "all"){
-                ClassService.getClassMessageInfoByCode(classCode,$scope.fm.userType,pageSize).then(function(res){
-                    $scope.classMsgPosts  = $scope.classMsgPosts.concat(res.bizData);
 
-//                    for( var i =0 ;  i<$scope.classMsgPosts.length;i++){
-//                        $scope.classMsgPosts[i].messageInfo.messagePics =  msgPic;
+
+        //监听
+        $scope.$watch("fm.userType",function(res){
+            if(res){
+
+                $scope.isContact = false;
+                $scope.isFirst = true;
+                $scope.queryTime = 0;
+                $scope.classMsgPosts =  [];
+                loadClassMg($scope.fm.classCode,$scope.fm.userType,$scope.pageSize,$scope.fm.queryTime);
+
+            }
+
+
+        });
+
+        //查询班级信息
+        var loadClassMg = function(classCode,type,pageSize,queryTime){
+            pageSize = pageSize || $scope.pageSize;
+                ClassService.getClassMessageInfoByCode(classCode,type,pageSize,queryTime).then(function(res){
+
+                    if(res.bizData.length == 0){
+                        $scope.busy = true;
+                        return;
+                    }
+
+//                    if($scope.isContact){
+//
+//                        $scope.classMsgPosts  = $scope.classMsgPosts.concat(res.bizData);
+//                        $scope.isFirst= false;
+//                        $scope.busy = false;
+//
+//
+//
+//
+//
+//                    }
+//                    else{
+//                        $scope.classMsgPosts  = res.bizData;
+//                        $scope.isFirst= false;
+//                        $scope.busy = false;
 //                    }
 
+                    $scope.classMsgPosts  = $scope.classMsgPosts.concat(res.bizData);
                     $scope.isFirst= false;
                     $scope.busy = false;
+
+
+                    $scope.fm.queryTime =  $scope.classMsgPosts[$scope.classMsgPosts.length-1].messageInfo.messageSendTime;
+                    console.log($scope.fm.queryTime);
 
 
                 },function(){
@@ -51,7 +93,6 @@ App
                     $scope.busy = false;
 
                 });
-            }
 
         }
 
@@ -67,27 +108,20 @@ App
         //查询班级
          $scope.searchClass = function(){
              console.log("search...");
-             loadClassMg($scope.fm.classCode,"all",$scope.pageSize);
+             loadClassMg($scope.fm.classCode,$scope.fm.userType,$scope.pageSize,$scope.fm.queryTime);
              loadClassInfo($scope.fm.classCode);
 
         }
 
 
         $scope.loadMore = function(){
-
-            if(!$scope.isFirst){
-
                 console.log("load more..");
                 if ($scope.busy) return;
                     $scope.busy = true;
-                loadClassMg($scope.fm.classCode,"all",$scope.pageSize);
+                    loadClassMg($scope.fm.classCode,$scope.fm.userType,$scope.pageSize,$scope.fm.queryTime);
 
-            }
 
         }
-
-
-
 
 
 

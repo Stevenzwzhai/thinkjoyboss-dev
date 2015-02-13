@@ -226,7 +226,6 @@ App
 
               //brige 路由部分
 
-
             //login
               .state("auth", {
                   url : "/auth",
@@ -247,8 +246,9 @@ App
 
             //login
 
-          $urlRouterProvider
-              .otherwise('/auth/login');
+          $urlRouterProvider.otherwise('/auth/login');
+
+
 
       }
     ]

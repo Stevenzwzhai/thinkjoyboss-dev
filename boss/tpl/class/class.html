@@ -97,9 +97,9 @@
     <section ng-show="classMsgPosts.length > 0">
         <div class="wrapper bg-white b-b" >
             <ul class="nav nav-pills nav-sm">
-                <li class="active"><a href>全部</a></li>
-                <li><a href>老师</a></li>
-                <li><a href>家长</a></li>
+                <li  ng-class="{'active':fm.userType == -1}" ng-click="fm.userType=-1"><a href>全部</a></li>
+                <li  ng-class="{'active':fm.userType == 1}" ng-click="fm.userType=1"><a href>老师</a></li>
+                <li  ng-class="{'active':fm.userType == '0'}" ng-click="fm.userType='0' "><a href>家长</a></li>
             </ul>
         </div>
         <div class="padder">
@@ -122,12 +122,11 @@
 
 
 
-
-
                             <div class="m-b">
 
-
-
+                                <div style="margin-bottom: 15px;margin-top: 15px;">
+                                    {{class.messageInfo.messageContent}}
+                                </div>
 
                                 <div class="row">
                                     <div class="col-md-12" >
@@ -203,11 +202,7 @@
 
 
 
-
-<div infinite-scroll='loadMore()'   infinite-scroll-disabled='busy'  infinite-scroll-distance='1'>
-    滚动加载
-</div>
-
+<div infinite-scroll='loadMore()'   infinite-scroll-disabled='busy'  infinite-scroll-distance='2'></div>
 
 
 <div ng-show='busy'>Loading data...</div>

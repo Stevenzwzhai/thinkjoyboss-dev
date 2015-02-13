@@ -155,18 +155,26 @@ App
 
 
 
+
         //路由状态变化
         $rootScope.$on("$stateChangeStart",function(event, toState, toParams,
                                                     fromState, fromParams) {
-            //未登录
-            if (!$window.sessionStorage.token) {
-                if(toState.url != "/login"){
-                    event.preventDefault();
-                    console.log(toState);
-                    $state.go("launch");
-                }
-            }
+            console.log(toState);
+
+//            //未登录
+//            if (!$window.sessionStorage.token) {
+//                if(toState.url != "/login"){
+//                    $state.go("auth.login");
+//                }
+//            }
+
         });
+
+
+
+
+
+
 
 
 
