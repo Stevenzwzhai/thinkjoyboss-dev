@@ -63,11 +63,13 @@ App
 
 
         //url
-        $scope.urlList = SERVER.url.mBrige + "/url/list";
+        $scope.urlList = SERVER.url.mBridge + "/url/list";
+        var token = window.sessionStorage.getItem("token");
         $scope.params = {
             url : "",
             sysCode : "",
-            resultType : "all"
+            resultType : "all",
+            token : token
         }
 
 
@@ -328,7 +330,7 @@ App
 
         //创建协议
         $scope.create = function(){
-           $rootScope.alertModal("brige/tpl/add-bridge.html","AddBridgeCtrl");
+           $rootScope.alertModal("bridge/tpl/add-bridge.html","AddBridgeCtrl");
 
         }
 

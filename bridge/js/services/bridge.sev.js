@@ -8,7 +8,9 @@ App
             getServerList: function () {
                 var defer = $q.defer();
 
-                $http.get(SERVER.url.mBrige + "/systems",{})
+                var token = window.sessionStorage.getItem("token");
+
+                $http.get(SERVER.url.mBridge + "/systems" + "?token=" + token,{})
                     .success(function(data) {
                         defer.resolve(data);
                     })
@@ -22,9 +24,10 @@ App
                 var cp  = angular.copy(so);
                 delete  cp.edit;
                 delete  cp.isReadOnly;
+                var token = window.sessionStorage.getItem("token");
 
                 var defer = $q.defer();
-                $http.post(SERVER.url.mBrige + "/field/template/update",cp,{"headers" : {"is-json-data" : "true"} })
+                $http.post(SERVER.url.mBridge + "/field/template/update" + "?token=" + token,cp,{"headers" : {"is-json-data" : "true"} })
                     .success(function(data) {
                         defer.resolve(data);
                     })
@@ -36,7 +39,10 @@ App
 
             addFiled : function (so) {
                 var defer = $q.defer();
-                $http.post(SERVER.url.mBrige + "/field/template/add",{
+
+                var token = window.sessionStorage.getItem("token");
+
+                $http.post(SERVER.url.mBridge + "/field/template/add" + "?token=" + token,{
                     sysCode : so.system.systemCode,
                     fieldName : so.fieldName,
                     fieldValue  : so.fieldValue
@@ -53,7 +59,10 @@ App
 
             addPoto : function (so) {
                 var defer = $q.defer();
-                $http.post(SERVER.url.mBrige + "/body/template/add",{
+
+                var token = window.sessionStorage.getItem("token");
+
+                $http.post(SERVER.url.mBridge + "/body/template/add" + "?token=" + token,{
                     sysCode : so.system.systemCode,
                     bodyType : so.bodyType,
                     bodyValue  : so.bodyValue
@@ -69,7 +78,10 @@ App
 
             removePoto : function (so) {
                 var defer = $q.defer();
-                $http.post(SERVER.url.mBrige + "/body/template/delete",{
+
+                var token = window.sessionStorage.getItem("token");
+
+                $http.post(SERVER.url.mBridge + "/body/template/delete" + "?token=" + token,{
                     sysCode : so.system.systemCode,
                     bodyType : so.bodyType
                 })
@@ -84,7 +96,10 @@ App
 
             removeFiled : function(id){
                 var defer = $q.defer();
-                $http.post(SERVER.url.mBrige + "/field/template/delete",{
+
+                var token = window.sessionStorage.getItem("token");
+
+                $http.post(SERVER.url.mBridge + "/field/template/delete" + "?token=" + token,{
                     templateId : id
                 })
                     .success(function(data) {
@@ -99,12 +114,16 @@ App
 
             getUrlList: function (url,sysCode,pageIndex,pageSize) {
                 var defer = $q.defer();
-                $http.get(SERVER.url.mBrige + "/url/list",{
+
+                var token = window.sessionStorage.getItem("token");
+
+                $http.get(SERVER.url.mBridge + "/url/list",{
                     params : {
                         url : url,
                         sysCode : sysCode,
                         pageIndex : pageIndex,
-                        pageSize  : pageSize
+                        pageSize  : pageSize,
+                        token : token
                     }
                 })
                     .success(function(data) {
@@ -119,7 +138,10 @@ App
 
             addBridge : function(url,sysCode,requestType,urlDesc,owner){
                 var defer = $q.defer();
-                $http.post(SERVER.url.mBrige + "/addProtocol",{
+
+                var token = window.sessionStorage.getItem("token");
+
+                $http.post(SERVER.url.mBridge + "/addProtocol" + "?token=" + token,{
                         sysCode : sysCode,
                         url : url,
                         requestType : requestType,
@@ -137,7 +159,10 @@ App
 
            removeBridge : function(urlId){
                 var defer = $q.defer();
-                $http.post(SERVER.url.mBrige + "/deleteProtocol",{
+
+               var token = window.sessionStorage.getItem("token");
+
+                $http.post(SERVER.url.mBridge + "/deleteProtocol" + "?token=" + token,{
                     urlId : urlId
                 })
                     .success(function(data) {
@@ -150,7 +175,10 @@ App
             },
             updateBridgeReq: function(urlId,urlRequest){
                 var defer = $q.defer();
-                $http.post(SERVER.url.mBrige + "/update/protocol/request",{
+
+                var token = window.sessionStorage.getItem("token");
+
+                $http.post(SERVER.url.mBridge + "/update/protocol/request" + "?token=" + token,{
                     urlId : urlId,
                     urlRequest : urlRequest
                 })
@@ -166,7 +194,10 @@ App
 
             updateBridgeRep: function(urlId,urlResponse){
                 var defer = $q.defer();
-                $http.post(SERVER.url.mBrige + "/update/protocol/response",{
+
+                var token = window.sessionStorage.getItem("token");
+
+                $http.post(SERVER.url.mBridge + "/update/protocol/response" + "?token=" + token,{
                     urlId : urlId,
                     urlResponse : urlResponse
                 })
@@ -184,7 +215,10 @@ App
             //测试服务端请求
             updateBridgeTestReq : function(urlId,urlRequest){
                 var defer = $q.defer();
-                $http.post(SERVER.url.mBrige + "/update/client/request",{
+
+                var token = window.sessionStorage.getItem("token");
+
+                $http.post(SERVER.url.mBridge + "/update/client/request" + "?token=" + token,{
                     urlId : urlId,
                     urlRequest : urlRequest
                 })
@@ -201,7 +235,10 @@ App
 
             startServerTest : function(urlId,ip,port,token,rootPath){
             var defer = $q.defer();
-                $http.get(SERVER.url.mBrige + "/exeServer",{
+
+                var token = window.sessionStorage.getItem("token");
+
+                $http.get(SERVER.url.mBridge + "/exeServer" + "?token=" + token,{
                     "params" :{
                         urlId : urlId,
                         ip : ip,
@@ -221,7 +258,10 @@ App
 
             startClientTest : function(sysCode,port){
                 var defer = $q.defer();
-                $http.post(SERVER.url.mBrige + "/startServer",{
+
+                var token = window.sessionStorage.getItem("token");
+
+                $http.post(SERVER.url.mBridge + "/startServer" + "?token=" + token,{
                         sysCode : sysCode,
                         port : port
                 })

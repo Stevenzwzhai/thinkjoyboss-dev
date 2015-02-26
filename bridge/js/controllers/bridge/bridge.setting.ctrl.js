@@ -62,7 +62,7 @@ App
 
 
         //服务端字段配置 url
-        $scope.severMessageModelUrl = SERVER.url.mBrige + "/field/template";
+        $scope.severMessageModelUrl = SERVER.url.mBridge + "/field/template";
 
         //初始化
         bridgeSettingShare.init($scope);
@@ -184,7 +184,7 @@ App
 
     .controller("BridgeSettingPotoCtrl", function ($rootScope,$modal,$scope, $state, $window, $log, $q, $timeout, SERVER,BridgeService,bridgeSettingShare,Util,BridgeShare) {
         //报文
-        $scope.severMessageModelUrl = SERVER.url.mBrige + "/body/template";
+        $scope.severMessageModelUrl = SERVER.url.mBridge + "/body/template";
 
 
         //初始化

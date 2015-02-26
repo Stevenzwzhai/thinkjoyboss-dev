@@ -186,24 +186,24 @@ App
 
 
 
-              //brige 路由部分
+              //bridge 路由部分
 
               .state("app.mbridge",{
                   url : "/mbridge",
                   abstract : true,
-                  templateUrl : "brige/tpl/mbridge.html"
+                  templateUrl : "bridge/tpl/mbridge.html"
               })
 
               .state("app.mbridge.bridge", {
                   url : "/bridge",
-                  templateUrl : "brige/tpl/bridge.html",
+                  templateUrl : "bridge/tpl/bridge.html",
                   controller : "BridgeCtrl"
 
               })
 
               .state("app.mbridge.setting", {
                   url : "/setting",
-                  templateUrl : "brige/tpl/bridge-setting.html",
+                  templateUrl : "bridge/tpl/bridge-setting.html",
                   abstract : true,
                   controller : "BridgeSettingCtrl"
 
@@ -212,19 +212,19 @@ App
 
               .state("app.mbridge.setting.filed", {
                   url : "/filed",
-                  templateUrl : "brige/tpl/bridge-setting-filed.html",
+                  templateUrl : "bridge/tpl/bridge-setting-filed.html",
                   controller : "BridgeSettingMessageCtrl"
 
               })
 
               .state("app.mbridge.setting.poto", {
                   url : "/poto",
-                  templateUrl : "brige/tpl/bridge-setting-poto.html",
+                  templateUrl : "bridge/tpl/bridge-setting-poto.html",
                   controller : "BridgeSettingPotoCtrl"
               })
 
 
-              //brige 路由部分
+              //bridge 路由部分
 
             //login
               .state("auth", {
