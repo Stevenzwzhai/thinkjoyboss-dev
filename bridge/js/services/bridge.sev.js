@@ -236,9 +236,7 @@ App
             startServerTest : function(urlId,ip,port,token,rootPath){
             var defer = $q.defer();
 
-                var token = window.sessionStorage.getItem("token");
-
-                $http.get(SERVER.url.mBridge + "/exeServer" + "?token=" + token,{
+                $http.get(SERVER.url.mBridge + "/exeServer",{
                     "params" :{
                         urlId : urlId,
                         ip : ip,
