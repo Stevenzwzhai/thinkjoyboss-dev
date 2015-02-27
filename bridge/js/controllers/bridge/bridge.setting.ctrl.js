@@ -57,12 +57,10 @@ App
     })
 
     .controller("BridgeSettingMessageCtrl", function ($rootScope,$modal,$scope, $state, $window, $log, $q, $timeout, SERVER,BridgeService,bridgeSettingShare,Util,BridgeShare) {
-
-        console.log("bridge setting message.....");
-
+        var token = window.sessionStorage.getItem("token");
 
         //服务端字段配置 url
-        $scope.severMessageModelUrl = SERVER.url.mBridge + "/field/template";
+        $scope.severMessageModelUrl = SERVER.url.mBridge + "/field/template" + "?token=" + token;
 
         //初始化
         bridgeSettingShare.init($scope);

@@ -8,7 +8,6 @@ App
         var Util = {
 
             caclTotal : function($scope){
-                console.log("ddd");
                 var size   = parseInt($scope.pageSize);
                 var total  = parseInt($scope.pageTotal);
                 var  currentPage;

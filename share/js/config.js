@@ -51,16 +51,16 @@ App.constant("SERVER", {
             push : "http://121.41.61.218:8080/notify",
             im   : "ws://10.10.68.13:8080/notify/customerIM",
             sop  : "http://121.41.61.218:9003",
-            mBrige : "http://10.10.68.13:8081/mBridge"
+            mBridge : "http://172.16.130.16:8080/mBridge"
     },
     //预发布
     formalUrl : {
-        "ucm"  : "http://10.10.68.13:8080/ucm",
+        "ucm"  : "http://172.16.130.16:8081/ucm",
         uc  : "http://imzhiliao.com:10000/uc",
         message : "http://imzhiliao.com:10000/message",
         push : "http://121.41.61.218:8080/notify",
         im   : "ws://121.41.61.218:8080/notify/customerIM",
         sop  : "http://121.41.61.218:9003",
-        mBrige : "http://10.10.68.13:8081/mBridge"
+        mBridge : "http://10.10.68.13:8081/mBridge"
     }
 });
