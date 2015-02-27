@@ -183,8 +183,9 @@ App
 
 
     .controller("BridgeSettingPotoCtrl", function ($rootScope,$modal,$scope, $state, $window, $log, $q, $timeout, SERVER,BridgeService,bridgeSettingShare,Util,BridgeShare) {
+        var token = window.sessionStorage.getItem("token");
         //报文
-        $scope.severMessageModelUrl = SERVER.url.mBridge + "/body/template";
+        $scope.severMessageModelUrl = SERVER.url.mBridge + "/body/template" + "?token=" + token;
 
 
         //初始化
