@@ -8,7 +8,6 @@ App
 
 
 
-
         //查询学校
         var loadList = function (data,isFirst) {
            var  areaId = data.areaId || "";

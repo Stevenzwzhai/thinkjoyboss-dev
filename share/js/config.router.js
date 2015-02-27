@@ -35,33 +35,31 @@ App
                   templateUrl: 'share/tpl/app.html'
                })
 
-              //设置页面
-              .state('app.set', {
-                  url: '/setting',
-                  templateUrl: 'share/tpl/settings-page.html'
+
+
+              //boss 部分...............
+              .state('app.boss', {
+                  abstract: true,
+                  url: '/boss',
+                  templateUrl: 'boss/tpl/boss.html',
+                  controller: "BossCtrl"
               })
 
-
               //首页
-              .state('app.home', {
+              .state('app.boss.home', {
                   url: '/home',
                   templateUrl: 'boss/tpl/home/home.html',
                   controller: "HomeCtrl as home"
               })
 
-
-
               //学校管理
-              .state("app.school", {
+              .state("app.boss.school", {
                   url: "/school",
                   templateUrl: "boss/tpl/school/school.html",
                   controller: "SchoolCtrl"
               })
-
-
-
               //基础审核
-              .state("app.audit",{
+              .state("app.boss.audit",{
                   url : "/audit",
                   abstract : true,
                   templateUrl : "boss/tpl/audit/audit.html",
@@ -69,9 +67,8 @@ App
 
 
               })
-
               //审核学校
-              .state("app.audit.school",{
+              .state("app.boss.audit.school",{
                   url : "/school",
 
                   "views" : {
@@ -82,9 +79,8 @@ App
                   }
 
               })
-
               //审核班级
-              .state("app.audit.class",{
+              .state("app.boss.audit.class",{
                   url : "/class",
                   "views" : {
                       "audit-class":{
@@ -95,9 +91,8 @@ App
 
 
               })
-
               //审核科目
-              .state("app.audit.subject",{
+              .state("app.boss.audit.subject",{
                   url : "/subject",
                   "views" : {
                       "audit-subject":{
@@ -106,54 +101,75 @@ App
                       }
                   }
               })
-
               //班级管理
-              .state("app.class",{
+              .state("app.boss.class",{
                   url : "/class",
                   templateUrl : "boss/tpl/class/class.html",
                   controller : "ClassCtrl"
 
               })
-
-
-              .state("app.user", {
+              .state("app.boss.user", {
                   url: "/user",
                   templateUrl: "boss/tpl/user/userManager.html",
                   controller: "UserCtrl as test"
               })
+              //boss 部分...............
 
-              .state("app.sms", {
+
+
+              //notfiy 部分...............
+              .state("app.notify",{
+                  abstract: true,
+                  url: '/notify',
+                  templateUrl: 'notify/tpl/notify.html',
+                  controller: "NotifyCtrl"
+
+
+              })
+              .state("app.notify.sms", {
                   url: "/sms",
-                  templateUrl: "boss/tpl/message/sms/smsQuery.html",
+                  templateUrl: "notify/tpl/message/sms/smsQuery.html",
                   controller: "SMSCtrl"
               })
 
-              .state("app.smschannel", {
+              .state("app.notify.smschannel", {
                   url: "/smsChannel",
-                  templateUrl: "boss/tpl/message/sms/smsChannel.html",
+                  templateUrl: "notify/tpl/message/sms/smsChannel.html",
                   controller: "SMSChannelCtrl"
               })
-
-              .state("app.feedback", {
+              .state("app.notify.feedback", {
                   url: "/feedback",
-                  templateUrl: "boss/tpl/message/feedback/feedbackQuery.html",
+                  templateUrl: "notify/tpl/message/feedback/feedbackQuery.html",
                   controller: "FeedbackCtrl"
               })
-
-              .state("app.push", {
+              .state("app.notify.push", {
                   url: "/push",
                   views: {
                       "": {
-                          templateUrl: "boss/tpl/message/push/messagePush.html",
+                          templateUrl: "notify/tpl/message/push/messagePush.html",
                           controller: "MessagePushCtrl"
                       },
                       "email@app.push": {
-                          templateUrl: "boss/tpl/message/push/email/email.html",
+                          templateUrl: "notify/tpl/message/push/email/email.html",
                           controller: "EmailMessagePushCtrl"
                       }
                   }
               })
 
+
+              //notfiy 部分...............
+
+
+
+
+              //setting 部分...............
+
+              //设置页面
+              .state('app.set', {
+                  url: '/setting',
+                  templateUrl: 'share/tpl/settings-page.html'
+              })
+              //setting 部分...............
 
 
 
@@ -161,7 +177,8 @@ App
               .state("app.sop", {
                   abstract: true,
                   url : "/sop",
-                  templateUrl : "sop/tpl/sop.html"
+                  templateUrl : "sop/tpl/sop.html",
+                  controller: "SopCtrl"
 
               })
               //地域分布图
@@ -191,14 +208,14 @@ App
               .state("app.mbridge",{
                   url : "/mbridge",
                   abstract : true,
-                  templateUrl : "bridge/tpl/mbridge.html"
+                  templateUrl : "bridge/tpl/mbridge.html",
+                  controller : "MyBridgeCtrl"
               })
 
               .state("app.mbridge.bridge", {
                   url : "/bridge",
                   templateUrl : "bridge/tpl/bridge.html",
                   controller : "BridgeCtrl"
-
               })
 
               .state("app.mbridge.setting", {

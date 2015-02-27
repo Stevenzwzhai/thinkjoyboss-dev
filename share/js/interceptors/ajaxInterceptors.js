@@ -40,7 +40,6 @@ App
 
 
 
-
                 return config ;
             },
 
@@ -52,7 +51,6 @@ App
             //捕获返回异常
             responseError : function(response){
 
-
                 var defer = $q.defer();
                 var temp = {};
 
@@ -62,9 +60,11 @@ App
                         break;
                     case (401):
                         temp.content  = "您未登录";
+
                         break;
                     case (403):
                         temp.content  = "您没有权限";
+
                         break;
                     case (404):
                         temp.content  = "没找到该资源(404)";
@@ -83,9 +83,10 @@ App
                     status : response.status,
                     type : "danger"
                 }
-                $rootScope.httpError = sp;
-                defer.reject(response.status);
-                return defer.promise;
+
+                $rootScope.httpError = angular.copy(sp);
+
+                return defer.reject(response);
             }
         }
 

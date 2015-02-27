@@ -12,8 +12,12 @@ App
 
 
         //当前登录系统
-        $rootScope.currentSys =  Util.getSgObj("currentSys") || "";
+        $rootScope.currentSys = "";
 
+
+        $rootScope.launchApp = function(role){
+            $rootScope.currentSys  = role.sysCode;
+        }
 
 
         //系统发生变更
@@ -23,22 +27,28 @@ App
                  //存入local
                  Util.setSgObj("currentSys",data);
              }
-
         });
-
-
-
 
 
         //将用户信息从本地读取出来，回填页面
         $rootScope.user = JSON.parse(window.sessionStorage.getItem('user'));
 
 
+
+
         //全局提示框
         $rootScope.$watch("httpError",function(temp){
+
             if(temp){
+
+                console.log(temp);
+
                 var type = temp.type || "info";
                 toaster.pop(type, temp.title, temp.content);
+
+                if(temp.status == "403" || temp.status =="401"){
+                    $state.go("auth.login");
+                }
             }
         });
 
@@ -88,7 +98,6 @@ App
             $rootScope.httpError = httpError;
         }
 
-
         //跳转帮助页面
         $rootScope.openDoc = function(){
             $window.open("../cgular/src/index.html");
@@ -103,6 +112,8 @@ App
             });
             return modalInstance;
         }
+
+
 
 
 
@@ -143,14 +154,13 @@ App
       }
 
 
-
-
         SERVER.url = SERVER.testUrl;
 
         //配置
         $rootScope.setting = {
             env : ""
         }
+
 
 
         $rootScope.$watch("setting.env",function(newVal,oldVal){
@@ -170,21 +180,11 @@ App
         });
 
 
+        $rootScope.isLogin = false;
 
         //路由状态变化
         $rootScope.$on("$stateChangeStart",function(event, toState, toParams,
-                                                    fromState, fromParams) {
-            console.log(toState);
-
-//            //未登录
-//            if (!$window.sessionStorage.token) {
-//                if(toState.url != "/login"){
-//                    $state.go("auth.login");
-//                }
-//            }
-
-        });
-
+                                                    fromState, fromParams) { });
 
 
 
@@ -228,3 +228,6 @@ App
           return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
       }
     }]);
+
+
+

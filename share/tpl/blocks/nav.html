@@ -16,17 +16,17 @@
     </a>
     <ul class="nav nav-sub dk">
         <li ui-sref-active="active">
-            <a ui-sref="app.user" ng-click="app.settings.asideFolded=false">
+            <a ui-sref="app.boss.user" ng-click="app.settings.asideFolded=false">
                 <span translate="aside.nav.components01.base_mg.user_mg">xxxxxx</span>
             </a>
         </li>
         <li ui-sref-active="active">
-            <a ui-sref="app.school" ng-click="app.settings.asideFolded=false">
+            <a ui-sref="app.boss.school" ng-click="app.settings.asideFolded=false">
                 <span translate="aside.nav.components01.base_mg.school_mg">xxxxxx</span>
             </a>
         </li>
         <li ui-sref-active="active">
-            <a ui-sref="app.class" ng-click="app.settings.asideFolded=false">
+            <a ui-sref="app.boss.class" ng-click="app.settings.asideFolded=false">
                 <span translate="aside.nav.components01.base_mg.class_mg">xxxxxx</span>
             </a>
         </li>
@@ -45,73 +45,19 @@
 
     <ul class="nav nav-sub dk">
         <li ui-sref-active="active">
-            <a ui-sref="app.audit.school">
+            <a ui-sref="app.boss.audit.school">
                 <span translate="aside.nav.components01.work_order.audit_mg">xxxxxx</span>
             </a>
         </li>
 
     </ul>
 </li>
+
 <li class="line dk"></li>
 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components02.components">xxxxxx</span>
 </li>
-<!-- 消息管理 -->
-<li ng-class="{active:$state.includes('app.ui')}">
-    <a href class="auto">
-        <span class="pull-right text-muted">
-            <i class="fa fa-fw fa-angle-right text"></i>
-            <i class="fa fa-fw fa-angle-down text-active"></i>
-        </span>
-        <i class="glyphicon glyphicon-envelope icon text-primary-dker"></i>
-        <span translate="aside.nav.components02.ui_kits.UI_KITS">xxxxxx</span>
-    </a>
 
-    <ul class="nav nav-sub dk">
-        <li class="nav-sub-header">
-            <a href>
-                <span translate="aside.nav.components02.ui_kits.UI_KITS">xxxxxx</span>
-            </a>
-        </li>
-
-      <li ui-sref-active="active">
-        <a ui-sref="app.push">
-          <span translate="aside.nav.components02.ui_kits.PUSH">xxxxxx</span>
-        </a>
-      </li>
-
-
-        <li ui-sref-active="active">
-            <a ui-sref="app.ui.icons">
-                <b class="badge bg-info pull-right">3</b>
-                <span translate="aside.nav.components02.ui_kits.ICONS">Icons</span>
-            </a>
-        </li>
-
-        <!-- 短信查询 -->
-        <li ui-sref-active="active">
-            <a ui-sref="app.sms">
-                <span translate="aside.nav.components02.ui_kits.SMS">xxxxxx</span>
-            </a>
-        </li>
-
-        <!-- 短信渠道切换 -->
-        <li ui-sref-active="active">
-            <a ui-sref="app.smschannel">
-                <span translate="aside.nav.components02.ui_kits.SMS_CHANNEL">xxxxxx</span>
-            </a>
-        </li>
-
-
-        <li ui-sref-active="active">
-            <a ui-sref="app.feedback">
-                <span translate="aside.nav.components02.ui_kits.FEEDBACK">xxxxxx</span>
-            </a>
-        </li>
-
-
-    </ul>
-</li>
 <!-- 营销管理 -->
 <li ng-class="{active:$state.includes('app.table')}">
     <a href class="auto">
@@ -151,9 +97,55 @@
 
 
 
+<!-- notify -->
+<ul class="nav" ng-show="$root.currentSys == 'notify'  ">
+    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+        <span translate="aside.nav.components05.components">xxxxxx</span>
+    </li>
+
+    <!-- 消息管理 -->
+    <li ng-class="{active:$state.includes('app.ui')}"   >
+        <a href class="auto">
+        <span class="pull-right text-muted">
+            <i class="fa fa-fw fa-angle-right text"></i>
+            <i class="fa fa-fw fa-angle-down text-active"></i>
+        </span>
+            <i class="glyphicon glyphicon-envelope icon text-primary-dker"></i>
+            <span translate="aside.nav.components05.notify.title">xxxxxx</span>
+        </a>
+
+        <ul class="nav nav-sub dk">
+
+
+            <!-- 短信查询 -->
+            <li ui-sref-active="active">
+                <a ui-sref="app.notify.sms">
+                    <span translate="aside.nav.components05.notify.sms">xxxxxx</span>
+                </a>
+            </li>
+
+            <!-- 短信渠道切换 -->
+            <li ui-sref-active="active">
+                <a ui-sref="app.notify.smschannel">
+                    <span translate="aside.nav.components05.notify.sms-chanel">xxxxxx</span>
+                </a>
+            </li>
+
+            <li ui-sref-active="active">
+                <a ui-sref="app.notify.feedback">
+                    <span translate="aside.nav.components05.notify.feed-back">xxxxxx</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </li>
+</ul>
+
+
 
 <!-- bridge 部分 -->
-<ul class="nav" ng-show="$root.currentSys == 'mbridge'  ">
+<ul class="nav" ng-show="$root.currentSys == 'mBridge'  ">
 <!-- bridge -->
 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components04.components">xxxxxx</span>
@@ -180,13 +172,15 @@
 
 
 
-
-
 <!-- 数据分析 -->
 <ul class="nav"  ng-show="$root.currentSys == 'sop'  ">
+
 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components03.components">xxxxxx</span>
 </li>
+
+
+
 <li>
     <a href class="auto">
       <span class="pull-right text-muted">
@@ -222,26 +216,35 @@
         </li>
     </ul>
 </li>
-<li class="line dk hidden-folded"></li>
-<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-    <span translate="aside.nav.your_stuff.YOUR_STUFF">xxxxxx</span>
-</li>
-<li>
-    <a ui-sref="app.page.profile">
-        <i class="icon-user icon text-success-lter"></i>
-        <b class="badge bg-success pull-right">30%</b>
-        <span translate="aside.nav.your_stuff.PROFILE">xxxxxx</span>
-    </a>
-</li>
-<li>
-    <a ng-click="openDoc();">
-        <i class="icon-question icon"></i>
-        <span translate="aside.nav.your_stuff.DOCUMENTS">xxxxxx</span>
-    </a>
-</li>
+
+
+
+
 </ul>
 <!-- 数据分析 -->
 
+
+
+<ul class="nav">
+    <li class="line dk hidden-folded"></li>
+    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+        <span translate="aside.nav.your_stuff.YOUR_STUFF">xxxxxx</span>
+    </li>
+    <li>
+        <a ui-sref="app.page.profile">
+            <i class="icon-user icon text-success-lter"></i>
+            <b class="badge bg-success pull-right">30%</b>
+            <span translate="aside.nav.your_stuff.PROFILE">xxxxxx</span>
+        </a>
+    </li>
+    <li>
+        <a ng-click="openDoc();">
+            <i class="icon-question icon"></i>
+            <span translate="aside.nav.your_stuff.DOCUMENTS">xxxxxx</span>
+        </a>
+    </li>
+
+</ul>
 
 
 

@@ -1,0 +1,45 @@
+<div class="bg-light lter b-b wrapper-md ng-scope">
+    <h1 class="m-n font-thin h3">反馈信息列表</h1>
+</div>
+
+
+
+<div class="wrapper-md">
+
+    <div class="panel panel-default">
+        <table-paging   is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="10"  params="params"  url="feedbackUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total">
+
+            <div class="table-responsive">
+
+                <table class=" table table-striped b-t b-light">
+                    <thead>
+                    <tr>
+                        <th>用户</th>
+                        <th>用户类型</th>
+                        <th>用户城市</th>
+                        <th>用户电话</th>
+                        <th>发送时间</th>
+                        <th>反馈内容</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="sco in posts">
+                            <td>{{sco.userName}} </td>
+                            <td>{{sco.userType | feedbackUserType}} </td>
+                            <td>{{sco.userCity}}</td>
+                            <td>{{sco.phone}}</td>
+                            <td>{{sco.time | date: 'yyyy-MM-dd'}}</td>
+                            <td>
+                                <span popover="{{sco.content}}" popover-trigger="mouseenter">
+                                    {{sco.content}}
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </table-paging>
+    </div>
+</div>

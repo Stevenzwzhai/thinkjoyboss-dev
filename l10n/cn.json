@@ -44,6 +44,7 @@
                     "FEEDBACK" : "用户反馈"
                 },
 
+                "components-notify" : "BOSS 提供一站服务",
 
                 "table" : {
                     "TABLE" : "营销管理",
@@ -91,6 +92,20 @@
                 "bridge" :{
                     "title" : "MBridge",
                     "setting" :  "配置"
+
+                }
+
+
+            },
+
+            "components05":{
+                "components" : "Notify 消息中心",
+
+                "notify" :{
+                    "title" : "消息管理",
+                    "sms" : "短信查询",
+                    "sms-chanel" :  "短信渠道",
+                    "feed-back" : "用户反馈"
 
                 }
 

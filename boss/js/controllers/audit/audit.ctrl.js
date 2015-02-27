@@ -131,7 +131,7 @@ App
             else if(num == "2"){
                 temp = "subject";
             }
-            $state.go("app.audit."+temp);
+            $state.go("app.boss.audit."+temp);
         }
 
 
