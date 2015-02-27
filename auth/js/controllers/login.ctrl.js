@@ -12,17 +12,31 @@ App.controller('SingInCtrl', function($window,$scope,$rootScope,$state,Util,Sign
     ];
 
 
+
+    //判断localstorage
+    var tempUser = Util.getSgObj("user");
+    var userName= "";
+    if(tempUser){
+        userName = tempUser.accountName;
+    }
+
+
+
+
     $scope.user = {
-        username : "",
+        username : userName,
         password : "",
         account : $scope.userTypes[0]
     };
 
 
 
+
     $scope.authError = null;
     $scope.login = function(user) {
         $scope.authError = null;
+
+
 
         SignInSev.login(user.username,user.password,user.account.typeName)
             .then(function(res){
@@ -32,10 +46,13 @@ App.controller('SingInCtrl', function($window,$scope,$rootScope,$state,Util,Sign
                     $window.sessionStorage.token = res.token;
                     //本地存储登录信息
                     Util.setSgObj("user",res.ucmUser);
-                    $state.go("launch");
+
                     //用户信息保存到cookie中
                     window.sessionStorage.setItem("user", JSON.stringify(res.ucmUser));
                     $rootScope.user = res.ucmUser;
+
+
+                    $state.go("launch");
                 }
                 //登录失败
                 else{

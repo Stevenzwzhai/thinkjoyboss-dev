@@ -3,16 +3,32 @@
 //应用初始化设置
 //整体应用的配置
 App
-  .controller('AppCtrl', ['$scope', '$state','$translate', '$rootScope','$modal','$localStorage', '$window','toaster','SERVER',
-    function(    $scope, $state,$translate, $rootScope,  $modal,$localStorage, $window ,toaster,SERVER) {
+  .controller('AppCtrl', ['$scope', '$state','$translate', '$rootScope','$modal','$localStorage', '$window','toaster','SERVER','Util',
+    function(    $scope, $state,$translate, $rootScope,  $modal,$localStorage, $window ,toaster,SERVER,Util) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice( $window ) && angular.element($window.document.body).addClass('smart');
 
 
+        //当前登录系统
+        $rootScope.currentSys =  Util.getSgObj("currentSys") || "";
 
-        $rootScope.currentSys = "";
+
+
+        //系统发生变更
+        $rootScope.$watch("currentSys",function(data){
+
+             if(data){
+                 //存入local
+                 Util.setSgObj("currentSys",data);
+             }
+
+        });
+
+
+
+
 
         //将用户信息从本地读取出来，回填页面
         $rootScope.user = JSON.parse(window.sessionStorage.getItem('user'));
@@ -155,7 +171,6 @@ App
 
 
 
-
         //路由状态变化
         $rootScope.$on("$stateChangeStart",function(event, toState, toParams,
                                                     fromState, fromParams) {
@@ -169,8 +184,6 @@ App
 //            }
 
         });
-
-
 
 
 
