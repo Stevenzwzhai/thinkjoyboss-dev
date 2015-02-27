@@ -16,8 +16,8 @@
                     <input type="password" placeholder="密码" class="form-control no-border" ng-model="user.password" required>
                 </div>
                 <div class="list-group-item">
-                    <select class="form-control" ng-model="user.account">
-                        <option value="">请选择账号类型</option>
+                    <select class="form-control" ng-model="user.account"  ng-options=" type.typeDesc for type in  userTypes">
+                        <!--<option value="{{type.typeName}}" ng-repeat="type in  userTypes">{{type.typeDesc}}</option>-->
                         <option value="{{type.typeName}}" ng-repeat="type in  userTypes">{{type.typeDesc}}</option>
                     </select>
                 </div>

@@ -3,12 +3,7 @@
 /* Controllers */
 // signin controller
 App.controller('SingInCtrl', function($window,$scope,$rootScope,$state,Util,SignInSev) {
-    $scope.user = {
-        username : "",
-        password : "",
-        account : ""
 
-    };
 
     $scope.userTypes = [
         {"typeName" : "ldap", typeDesc : "域账号"},
@@ -17,11 +12,19 @@ App.controller('SingInCtrl', function($window,$scope,$rootScope,$state,Util,Sign
     ];
 
 
+    $scope.user = {
+        username : "",
+        password : "",
+        account : $scope.userTypes[0]
+    };
+
+
+
     $scope.authError = null;
     $scope.login = function(user) {
         $scope.authError = null;
 
-        SignInSev.login(user.username,user.password,user.account)
+        SignInSev.login(user.username,user.password,user.account.typeName)
             .then(function(res){
                 //登录成功
                 if(res.result){
