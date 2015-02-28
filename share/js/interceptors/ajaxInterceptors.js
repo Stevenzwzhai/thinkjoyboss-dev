@@ -11,7 +11,7 @@ App
                 if(config.method == "POST"){
                     if(!config.headers['is-json-data'] ){
 
-                        config.headers['Content-Type'] = "application/x-www-form-urlencoded";
+                        config.headers['Content-Type'] = "application/x-www-form-urlencoded;charset=utf-8";
                         config.transformRequest = function(obj) {
                             var str = [];
                             for(var p in obj)

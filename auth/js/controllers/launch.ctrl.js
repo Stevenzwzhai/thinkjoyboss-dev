@@ -44,7 +44,7 @@ App.controller('LaunchCtrl', function($scope,$rootScope) {
 
                     obj.sysDesc = "消息中心";
                     obj.homeUrl = "#app/notify/sms";
-                    obj.icon = "imgs/logo/default.jpg";
+                    obj.icon = "imgs/logo/notify-logo.jpg";
                     break;
 
             }
