@@ -54,6 +54,14 @@
                 <p class="m-b m-t">描述:</p>
                 <textarea class="form-control" rows="6" placeholder="简单描述下"  ng-model="fm.urlDesc" required></textarea>
 
+                <div ng-show="fm.requestType == 'POST'">
+                    <p class="m-b m-t">请求报文类型:</p>
+                    <select class="form-control" ng-model="fm.requestBodyType" >
+                        <option value="form">application/x-www-form-urlencoded</option>
+                        <option value="json">application/json</option>
+                    </select>
+
+                </div>
 
                 <div class="m-t  text-right">
                     <button type="button" class="btn btn-default " ng-click="steps.step1=true">返回修改</button>
@@ -61,7 +69,13 @@
                             ng-click="steps.percent=100">完成
                     </button>
                 </div>
+
+
+
             </form>
+
+
+
         </tab>
 
     </tabset>

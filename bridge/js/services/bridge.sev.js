@@ -136,7 +136,7 @@ App
             },
 
 
-            addBridge : function(url,sysCode,requestType,urlDesc,owner){
+            addBridge : function(url,sysCode,requestType,urlDesc,owner,requestBodyType){
                 var defer = $q.defer();
 
                 var token = window.sessionStorage.getItem("token");
@@ -146,7 +146,8 @@ App
                         url : url,
                         requestType : requestType,
                         urlDesc  : urlDesc,
-                        owner : owner
+                        owner : owner,
+                        requestBodyType : requestBodyType
                 })
                     .success(function(data) {
                         defer.resolve(data);

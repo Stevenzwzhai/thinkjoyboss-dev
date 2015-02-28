@@ -442,7 +442,8 @@ App
             url : "",
             requestType : "",
             urlDesc : "",
-            owner : ""
+            owner : "",
+            requestBodyType:"form"
         }
 
 
@@ -465,7 +466,7 @@ App
         //添加sub
         $scope.addSub = function(){
             console.log($scope.fm);
-            BridgeService.addBridge($scope.fm.url,$scope.fm.sysCode,$scope.fm.requestType,$scope.fm.urlDesc,$scope.fm.owner)
+            BridgeService.addBridge($scope.fm.url,$scope.fm.sysCode,$scope.fm.requestType,$scope.fm.urlDesc,$scope.fm.owner,$scope.fm.requestBodyType)
                 .then(function(res){
                     if(res.result){
                         $rootScope.alertSuccess(res.resultDesc);

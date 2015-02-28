@@ -120,17 +120,17 @@
                                               </span>
 
                                 </div>
-                                <div class="panel-body">
+                                <div class="panel-body " style="position: relative">
                                     <div>
                                         {{note.urlValue}}
                                     </div>
                                     <div class="">
                                         {{note.urlDesc}}
                                     </div>
-                                    <div ng-if="note.requestBodyType" class="pull-right" style="position: relative; top:-32px; margin: 0 5px;">
-                                        <a class="label bg-info" type="info"> {{note.requestBodyType}}</a>
 
-                                    </div>
+                                    <div>
+                                        <a ng-if="note.requestBodyType" class="label bg-info" type="info"  style="position: absolute;right: 16px;top: 17px;"> {{note.requestBodyType}}</a>
+                                        </div>
 
                                     <div class="m-t clearfix" ng-show="note.result.testResult == 'error' ">
                                         <div class="alert alert-danger" role="alert" style="margin-bottom: 6px;">
