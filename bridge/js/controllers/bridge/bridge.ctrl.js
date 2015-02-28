@@ -264,10 +264,10 @@ App
             $scope.isServerSubmit = true;
             BridgeService.startServerTest($scope.note.urlId,$scope.sevFm.ip,$scope.sevFm.port,$scope.sevFm.token,$scope.sevFm.rootPath).then(function(res){
 
-                var newRep = JSON.stringify( JSON.parse(res.responseBody));
-                res.responseBody =  newRep;
-                $scope.note.serverTestResult = res;
 
+                var newRep = JSON.stringify( JSON.parse(res.responseBody));
+                res.responseBody =  formatJson(newRep);
+                $scope.note.serverTestResult = res;
 
                 //替换左侧菜单
                 var thisNote = getSelectNote($scope.note);
