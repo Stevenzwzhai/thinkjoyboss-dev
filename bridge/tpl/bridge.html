@@ -127,8 +127,12 @@
                                     <div class="">
                                         {{note.urlDesc}}
                                     </div>
+                                    <div ng-if="note.requestBodyType" class="pull-right" style="position: relative; top:-32px; margin: 0 5px;">
+                                        <a class="label bg-info" type="info"> {{note.requestBodyType}}</a>
 
-                                    <div class="m-t" ng-show="note.result.testResult == 'error' ">
+                                    </div>
+
+                                    <div class="m-t clearfix" ng-show="note.result.testResult == 'error' ">
                                         <div class="alert alert-danger" role="alert" style="margin-bottom: 6px;">
                                             <strong>错误</strong> {{note.result.errorInfo.errorName }}
                                         </div>

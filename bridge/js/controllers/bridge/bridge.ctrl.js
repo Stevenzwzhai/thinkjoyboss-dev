@@ -365,6 +365,9 @@ App
             //格式化测试结果json
             $scope.note.serverTestResult.responseBody = formatJson( $scope.note.serverTestResult.responseBody);
 
+            //协议响应json
+            $scope.note.urlResponse = formatJson( $scope.note.urlResponse);
+
             $scope.posts.forEach(function(obj,index){
 
                 if(obj.urlId == note.urlId){
