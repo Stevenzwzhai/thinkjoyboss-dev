@@ -22,7 +22,7 @@ App.controller('LaunchCtrl', function($scope,$rootScope) {
 
                 case "mBridge":
 
-                    obj.sysDesc = "MBridge";
+                    obj.sysDesc = "鹊桥";
                     obj.homeUrl = "#app/mbridge/bridge";
                     obj.icon = "imgs/logo/mbridge-logo.jpg";
                     break;
@@ -35,14 +35,14 @@ App.controller('LaunchCtrl', function($scope,$rootScope) {
 
                 case "sop":
 
-                    obj.sysDesc = "SOP";
+                    obj.sysDesc = "观星台";
                     obj.homeUrl = "#app/sop/userMap";
                     obj.icon = "imgs/logo/sop-logo.jpg";
                     break;
 
                 case "notify":
 
-                    obj.sysDesc = "Notify";
+                    obj.sysDesc = "消息中心";
                     obj.homeUrl = "#app/notify/sms";
                     obj.icon = "imgs/logo/default.jpg";
                     break;

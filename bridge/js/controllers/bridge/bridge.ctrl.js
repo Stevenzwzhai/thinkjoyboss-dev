@@ -337,7 +337,7 @@ App
         //删除协议
         $scope.delete = function(note){
 
-            var conf =  window.confirm("确定要删除协议 "+note.exeUrl.url+" ?");
+            var conf =  window.confirm("确定要删除协议 "+note.exeUrl+" ?");
             if(conf){
                 BridgeService.removeBridge(note.urlId).then(function(res){
                     if(res.result){
@@ -360,6 +360,8 @@ App
 
             $scope.error  =  "";
 
+
+
             $scope.posts.forEach(function(obj,index){
 
                 if(obj.urlId == note.urlId){
@@ -370,9 +372,31 @@ App
                 }
 
             });
-
         }
 
+
+        //进入测试服务端
+        $scope.showSeverTest = function(){
+
+            var newReq;
+            try {
+                var  result = jsonlint.parse($scope.note.serverTestResult.responseBody);
+                newReq = JSON.stringify(result, null, "  ");
+                $scope.note.serverTestResult.responseBody = newReq;
+
+            } catch(e) {
+                $rootScope.alertError("json格式错误!");
+                console.log(e);
+                $scope.note.exReq  = true;
+                $scope.note.errReq = e.message;
+
+            } finally{
+
+            }
+
+            $scope.currentPotoy=2
+
+        }
 
 
 

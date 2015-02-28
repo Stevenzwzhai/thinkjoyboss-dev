@@ -82,7 +82,7 @@
                             <i class=" icon-screen-tablet block m-b-xs fa-2x"></i>
                             <span>协议配置</span>
                         </a>
-                        <a href="" class="col padder-v text-muted b-r b-light" ng-click="currentPotoy=2"  ng-class="{'active': currentPotoy == 2 }">
+                        <a href=""   class="col padder-v text-muted b-r b-light" ng-click="showSeverTest()"  ng-class="{'active': currentPotoy == 2 }">
                             <i class="icon-rocket block m-b-xs fa-2x"></i>
                             <span>测试服务端</span>
                         </a>
@@ -362,7 +362,7 @@
                                         <div class="list-group bg-white">
 
                                              <span>
-                                                 <textarea   json-format   ng-readonly="isRepTest"   rows="15"  class="form-control" error="error"   json="note.serverTestResult.responseBody"    style="border-radius: 0;"></textarea>
+                                                 <textarea   json-format   ng-readonly="isRepTest"   rows="15"  class="form-control" error="error"    ng-model="note.serverTestResult.responseBody"   style="border-radius: 0;"></textarea>
                                            </span>
 
                                         </div>
