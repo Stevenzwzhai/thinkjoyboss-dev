@@ -362,6 +362,9 @@ App
 
 
 
+            //格式化测试结果json
+            $scope.note.serverTestResult.responseBody = formatJson( $scope.note.serverTestResult.responseBody);
+
             $scope.posts.forEach(function(obj,index){
 
                 if(obj.urlId == note.urlId){
@@ -374,25 +377,33 @@ App
             });
         }
 
-
-        //进入测试服务端
-        $scope.showSeverTest = function(){
+        function formatJson (str){
 
             var newReq;
             try {
-                var  result = jsonlint.parse($scope.note.serverTestResult.responseBody);
+                var  result = jsonlint.parse(str);
                 newReq = JSON.stringify(result, null, "  ");
-                $scope.note.serverTestResult.responseBody = newReq;
+                return  newReq
 
             } catch(e) {
                 $rootScope.alertError("json格式错误!");
                 console.log(e);
                 $scope.note.exReq  = true;
                 $scope.note.errReq = e.message;
+                return "";
 
             } finally{
 
             }
+
+
+
+        }
+
+
+
+        //进入测试服务端
+        $scope.showSeverTest = function(){
 
             $scope.currentPotoy=2
 
