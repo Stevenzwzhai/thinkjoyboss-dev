@@ -35,7 +35,6 @@ App
 
 
 
-
         //全局提示框
         $rootScope.$watch("httpError",function(temp){
 
@@ -185,7 +184,6 @@ App
         //路由状态变化
         $rootScope.$on("$stateChangeStart",function(event, toState, toParams,
                                                     fromState, fromParams) { });
-
 
 
 

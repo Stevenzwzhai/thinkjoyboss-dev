@@ -25,7 +25,8 @@ App
 
               .state('launch', {
                   url: '/launch',
-                  templateUrl: 'share/tpl/launch/launch.html'
+                  templateUrl: 'auth/tpl/launch.html',
+                  controller: "LaunchCtrl"
               })
 
 

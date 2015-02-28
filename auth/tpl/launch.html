@@ -11,15 +11,14 @@
 
             <div class="row text-center" style="margin-top: 150px;">
 
-
                 <div class="col-md-4 launch-cp" ng-repeat="role in $root.roleList">
 
-                    <div class=" ib animated fadeInUp text-center pointer"  ui-sref="app.home" ng-click="$root.launchApp(role)" >
+                    <a class=" ib animated fadeInUp text-center pointer"      href="{{role.homeUrl}}"   ng-click="$root.launchApp(role)" >
                         <div class="thumb-lg">
-                            <img src="lib/img/a0.jpg" class="img-circle">
+                            <img ng-src="{{role.icon}}" class="img-circle">
                         </div>
-                        <p class="h4 m-t m-b">{{role.sysCode}}</p>
-                    </div>
+                        <p class="h4 m-t m-b">{{role.sysDesc}}</p>
+                    </a>
 
                 </div>
 
