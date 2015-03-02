@@ -35,6 +35,8 @@ App
 
 
 
+
+
         //全局提示框
         $rootScope.$watch("httpError",function(temp){
 
@@ -156,25 +158,36 @@ App
         SERVER.url = SERVER.testUrl;
 
         //配置
-        $rootScope.setting = {
-            env : ""
+        $rootScope.setting = {};
+
+
+        //读出系统环境
+        var temp;
+        if(Util.getLg("env") == "1"){
+            $rootScope.setting.env  = true;
+        }
+        else{
+            $rootScope.setting.env  = false;
         }
 
-
-
         $rootScope.$watch("setting.env",function(newVal,oldVal){
-                var msg;
+            var msg = "";
+            var num;
                 //正式
                 if(newVal){
                     SERVER.url = SERVER.formalUrl;
-                    msg = "正式环境";
+                    $rootScope.setting.msg = "正式环境";
+                    num = 1;
+
                 }
                 //测试
                 else{
                     SERVER.url = SERVER.testUrl;
-                    msg = "测试环境"
+                    $rootScope.setting.msg = "测试环境";
+                    num = 0;
                 }
-                $rootScope.alertSuccess("已经切换到"+ msg);
+                Util.setLg("env",num);
+                $rootScope.alertSuccess("已经切换到"+  $rootScope.setting.msg);
 
         });
 
