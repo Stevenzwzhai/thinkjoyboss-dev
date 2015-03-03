@@ -387,9 +387,15 @@ App
 
             var newReq;
             try {
-                var  result = jsonlint.parse(str);
-                newReq = JSON.stringify(result, null, "  ");
+                if(!str){
+                    var  result = jsonlint.parse(str);
+                    newReq = JSON.stringify(result, null, "  ");
+                }
+                else{
+                    newReq = "";
+                }
                 return  newReq
+
 
             } catch(e) {
                 $rootScope.alertError("json格式错误!");

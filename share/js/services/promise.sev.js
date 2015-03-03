@@ -1,3 +1,7 @@
+/**
+ * 权限管理模块
+ *
+ */
 App.factory("Promise",function($rootScope,Util){
 
     var  Promise = {
@@ -16,7 +20,6 @@ App.factory("Promise",function($rootScope,Util){
                     return right.resourceValue;
                 });
             }
-
             return newRight;
         }
 
