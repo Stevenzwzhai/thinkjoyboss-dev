@@ -1,6 +1,6 @@
-App.controller("SopCtrl",function($rootScope){
+App.controller("SopCtrl",function($rootScope,Promise){
 
-    $rootScope.currentSys = "sop";
+    Promise.init("sop","sopRight","sop");
 //    console.log("sop ctrl...");
 
 });

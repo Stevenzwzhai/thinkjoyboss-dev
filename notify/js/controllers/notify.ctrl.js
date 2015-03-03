@@ -1,7 +1,6 @@
-App.controller("NotifyCtrl",function($rootScope){
+App.controller("NotifyCtrl",function($rootScope,Promise){
 
-    $rootScope.currentSys = "notify";
-
+    Promise.init("notify","notifyRight","notify");
 //    console.log("notify ctrl...");
 
 });

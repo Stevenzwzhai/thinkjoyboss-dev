@@ -387,7 +387,7 @@ App
 
             var newReq;
             try {
-                if(!str){
+                if(str){
                     var  result = jsonlint.parse(str);
                     newReq = JSON.stringify(result, null, "  ");
                 }

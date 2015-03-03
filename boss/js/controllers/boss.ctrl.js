@@ -1,7 +1,5 @@
-App.controller("BossCtrl",function($rootScope){
-
-    $rootScope.currentSys = "boss";
-
-   console.log("boss ctrl...");
+App.controller("BossCtrl",function($rootScope,Promise){
+    Promise.init("boss","bossRight","boss");
+    console.log("boss ctrl...");
 
 });
