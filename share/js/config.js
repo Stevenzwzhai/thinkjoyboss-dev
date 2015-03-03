@@ -56,7 +56,7 @@ App.constant("SERVER", {
     },
     //预发布
     formalUrl : {
-        "ucm"  : "http://10.10.68.11:8080/uc",
+        "ucm"  : "http://10.10.68.13:8080/ucm",
         uc  : "http://imzhiliao.com:10000/uc",
         message : "http://imzhiliao.com:10000/message",
         push : "http://121.41.61.218:8080/notify",

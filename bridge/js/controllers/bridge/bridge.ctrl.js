@@ -365,6 +365,9 @@ App
             //格式化测试结果json
             $scope.note.serverTestResult.responseBody = formatJson( $scope.note.serverTestResult.responseBody);
 
+            //格式化协议请求
+            $scope.note.urlRequest = formatJson( $scope.note.urlRequest);
+
             //协议响应json
             $scope.note.urlResponse = formatJson( $scope.note.urlResponse);
 

@@ -4,9 +4,9 @@
 //整体应用的配置
 App
   .controller('AppCtrl', ['$scope', '$state','$translate', '$rootScope','$modal','$localStorage', '$window','toaster','SERVER','Util',
-    function(    $scope, $state,$translate, $rootScope,  $modal,$localStorage, $window ,toaster,SERVER,Util) {
+    function(    $scope, $state,$translate, $rootScope,$modal,$localStorage,$window,toaster,SERVER,Util) {
       // add 'ie' classes to html
-      var isIE = !!navigator.userAgent.match(/MSIE/i);
+     var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice( $window ) && angular.element($window.document.body).addClass('smart');
 
@@ -19,6 +19,9 @@ App
             $rootScope.currentSys  = role.sysCode;
         }
 
+        //将用户信息从本地读取出来，回填页面
+        $rootScope.user = JSON.parse(window.sessionStorage.getItem('user'));
+
 
         //系统发生变更
         $rootScope.$watch("currentSys",function(data){
@@ -28,13 +31,6 @@ App
                  Util.setSgObj("currentSys",data);
              }
         });
-
-
-        //将用户信息从本地读取出来，回填页面
-        $rootScope.user = JSON.parse(window.sessionStorage.getItem('user'));
-
-
-
 
 
         //全局提示框
@@ -238,6 +234,9 @@ App
           // Checks for iOs, Android, Blackberry, Opera Mini, and Windows mobile devices
           return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
       }
+
+
+
     }]);
 
 

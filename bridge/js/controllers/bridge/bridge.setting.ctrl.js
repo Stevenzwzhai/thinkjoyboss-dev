@@ -306,6 +306,135 @@ App
 
         }
 
+    })
+
+
+    .controller("BridgeSettingSystemCtrl", function ($rootScope,$modal,$scope, $state, $window, $log, $q, $timeout, SERVER,BridgeService,bridgeSettingShare,Util,BridgeShare) {
+        var token = window.sessionStorage.getItem("token");
+        //报文
+        $scope.severMessageModelUrl = SERVER.url.mBridge + "/body/template" + "?token=" + token;
+
+
+        //初始化
+        bridgeSettingShare.init($scope);
+
+        //加载服务器列表
+        BridgeService.getServerList().then(function(res){
+            $scope.serves = res;
+//            BridgeShare.init($scope);
+        },function(err){
+            $rootScope.alertError("服务器列表,加载失败")
+            console.log(err);
+        });
+
+        //查询服务端报文
+        $scope.$watch("severMessageModelParams.sysCode",function(newV){
+            $scope.severMessageModelRefresh = true;
+        });
+
+        //添加
+        $scope.addFilederverMessage = function(){
+
+            if($scope.fm.bodyType == ""){
+                $rootScope.alertError("请选择报文类型?");
+                return;
+            }
+            else if( $scope.fm.system.systemCode == ""){
+
+                $rootScope.alertError("请选择系统！");
+                return;
+            }
+            else if( $scope.fm.bodyValue == ""){
+                $rootScope.alertError("请填写报文内容！");
+            }
+
+            try {
+                $scope.fm.bodyValue =  JSON.stringify(JSON.parse($scope.fm.bodyValue));
+                BridgeService.addPoto($scope.fm).then(function(res){
+                    if(res.result){
+                        $rootScope.alertSuccess(res.resultDesc);
+                        $scope.severMessageModelRefresh = true;
+                        $scope.resetFm();
+                    }
+                    else{
+                        $rootScope.alertError(res.resultDesc);
+                    }
+                });
+
+            } catch(e) {
+                var str = JSON.stringify(e.message);
+                $rootScope.alertError(str);
+                console.log(e);
+            } finally{
+
+            }
+
+
+        }
+        $scope.resetFm = function(){
+
+            $scope.isAdd = false;
+
+            $scope.fm = {
+                fieldName : "",
+                fieldValue : "",
+                system : {
+                    systemCode  : "",
+                    systemName  : ""
+                }
+            }
+        }
+        $scope.deleteServerMessage = function(sco){
+            var conf =  window.confirm("确定要删除报文?");
+            if(conf){
+                BridgeService.removePoto(sco).then(function(res){
+                    if(res.result){
+                        $rootScope.alertSuccess(res.resultDesc);
+                        $scope.severMessageModelRefresh = true;
+                    }
+                    else{
+                        $rootScope.alertError(res.resultDesc);
+                    }
+                });
+            }
+
+        }
+        //修改报文
+        $scope.editServerMessage = function(sco){
+            //选中
+            if(!sco.edit){
+                sco.edit  = true;
+                sco.isReadOnly = false;
+
+            }
+            //取消选中
+            else{
+
+
+                //验证json
+
+
+
+
+
+                BridgeService.addPoto(sco).then(function(res){
+                    if(res.result){
+                        $rootScope.alertSuccess("更新成功");
+                    }
+                    else{
+                        $rootScope.alertError(res.resultDesc);
+                    }
+                    sco.edit  =false;
+                    sco.isReadOnly = true;
+
+                }).then(function(){
+                    sco.edit  =false;
+                    sco.isReadOnly = true;
+                });
+            }
+
+        }
+
     });
 
 
