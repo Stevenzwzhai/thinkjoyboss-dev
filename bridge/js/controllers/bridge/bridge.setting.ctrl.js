@@ -6,14 +6,17 @@ App
 
             init : function($scope){
 
-
                 //服务端 报文 列表
                 $scope.severMessageModelPost = [];
                 $scope.severPotoModelPost = [];
+                $scope.severSystemModelPost = [];
+
+
 
                 //刷新 服务端报文
                 $scope.severMessageModelRefresh = false;
                 $scope.severPotoModelRefresh = false;
+                $scope.severSystemModelRefresh = false;
 
                 //服务端 报文 参数
                 $scope.severMessageModelParams = {
@@ -26,9 +29,17 @@ App
                 };
 
 
+                $scope.severSystemModelParams = {
+
+                };
+
+
                 $scope.severMessageModelIsSubmit = false;
 
                 $scope.severPotoModelIsSubmit = false;
+
+                $scope.severSystemModelIsSubmit = false;
+
 
                 $scope.isAdd = false;
 
@@ -64,8 +75,6 @@ App
 
         //初始化
         bridgeSettingShare.init($scope);
-
-
 
         //加载服务器列表
         BridgeService.getServerList().then(function(res){
@@ -310,27 +319,20 @@ App
 
 
     .controller("BridgeSettingSystemCtrl", function ($rootScope,$modal,$scope, $state, $window, $log, $q, $timeout, SERVER,BridgeService,bridgeSettingShare,Util,BridgeShare) {
-        var token = window.sessionStorage.getItem("token");
-        //报文
-        $scope.severMessageModelUrl = SERVER.url.mBridge + "/body/template" + "?token=" + token;
 
+        var token = window.sessionStorage.getItem("token");
+        //系统配置
+        $scope.severSystemModelUrl = SERVER.url.mBridge + "/systems" + "?token=" + token;
 
         //初始化
         bridgeSettingShare.init($scope);
 
-        //加载服务器列表
-        BridgeService.getServerList().then(function(res){
-            $scope.serves = res;
-//            BridgeShare.init($scope);
-        },function(err){
-            $rootScope.alertError("服务器列表,加载失败")
-            console.log(err);
-        });
 
         //查询服务端报文
-        $scope.$watch("severMessageModelParams.sysCode",function(newV){
-            $scope.severMessageModelRefresh = true;
+        $scope.$watch("severSystemModelParams.sysCode",function(newV){
+            $scope.severSystemModelRefresh = true;
         });
+
 
         //添加
         $scope.addFilederverMessage = function(){
@@ -350,10 +352,10 @@ App
 
             try {
                 $scope.fm.bodyValue =  JSON.stringify(JSON.parse($scope.fm.bodyValue));
-                BridgeService.addPoto($scope.fm).then(function(res){
+                BridgeService.addSystem($scope.fm.sysCode,$scope.fm.systemName,$scope.fm.mockPort).then(function(res){
                     if(res.result){
                         $rootScope.alertSuccess(res.resultDesc);
-                        $scope.severMessageModelRefresh = true;
+                        $scope.severSystemModelRefresh = true;
                         $scope.resetFm();
                     }
                     else{
@@ -372,25 +374,22 @@ App
 
         }
         $scope.resetFm = function(){
-
             $scope.isAdd = false;
-
             $scope.fm = {
-                fieldName : "",
-                fieldValue : "",
-                system : {
-                    systemCode  : "",
-                    systemName  : ""
-                }
+                systemCode : "",
+                systemName : "",
+                mockPort  : ""
             }
         }
+
+        //删除系统
         $scope.deleteServerMessage = function(sco){
-            var conf =  window.confirm("确定要删除报文?");
+            var conf =  window.confirm("确定要删除系统?");
             if(conf){
-                BridgeService.removePoto(sco).then(function(res){
+                BridgeService.removeSystem(sco.sysId).then(function(res){
                     if(res.result){
                         $rootScope.alertSuccess(res.resultDesc);
-                        $scope.severMessageModelRefresh = true;
+                        $scope.severSystemModelRefresh = true;
                     }
                     else{
                         $rootScope.alertError(res.resultDesc);
@@ -399,7 +398,7 @@ App
             }
 
         }
-        //修改报文
+        //修改系统
         $scope.editServerMessage = function(sco){
             //选中
             if(!sco.edit){
@@ -409,15 +408,7 @@ App
             }
             //取消选中
             else{
-
-
-                //验证json
-
-
-
-
-
-                BridgeService.addPoto(sco).then(function(res){
+                BridgeService.updateSystem(sco.systemCode,sco.systemName,sco.mockPort).then(function(res){
                     if(res.result){
                         $rootScope.alertSuccess("更新成功");
                     }

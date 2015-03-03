@@ -174,6 +174,58 @@ App
                     });
                 return  defer.promise;
             },
+
+            removeSystem : function(sysId){
+                var defer = $q.defer();
+                var token = window.sessionStorage.getItem("token");
+                $http.post(SERVER.url.mBridge + "/system/delete" + "?token=" + token,{
+                    sysId : sysId
+                })
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
+
+            },
+
+            updateSystem: function(systemCode,systemName,mockPort){
+                var defer = $q.defer();
+                var token = window.sessionStorage.getItem("token");
+                $http.post(SERVER.url.mBridge + "/system/update" + "?token=" + token,{
+                    systemCode : systemCode,
+                    systemName : systemName,
+                    mockPort : mockPort
+                })
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
+            },
+
+            addSystem : function(systemCode,systemName,mockPort){
+
+                var defer = $q.defer();
+                var token = window.sessionStorage.getItem("token");
+                $http.post(SERVER.url.mBridge + "/system/add" + "?token=" + token,{
+                    systemCode : systemCode,
+                    systemName : systemName,
+                    mockPort : mockPort
+                })
+                    .success(function(data) {
+                        defer.resolve(data);
+                    })
+                    .error(function(err) {
+                        defer.reject(err);
+                    });
+                return  defer.promise;
+
+            },
             updateBridgeReq: function(urlId,urlRequest){
                 var defer = $q.defer();
 
