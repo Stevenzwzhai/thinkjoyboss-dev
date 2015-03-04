@@ -3,8 +3,8 @@
 //应用初始化设置
 //整体应用的配置
 App
-  .controller('AppCtrl', ['$scope', '$state','$translate', '$rootScope','$modal','$localStorage', '$window','toaster','SERVER','Util',
-    function(    $scope, $state,$translate, $rootScope,$modal,$localStorage,$window,toaster,SERVER,Util) {
+  .controller('AppCtrl', ['$scope', '$state','$translate', '$rootScope','$modal','$localStorage', '$window','toaster','SERVER','Util',"VERSION",
+    function(    $scope, $state,$translate, $rootScope,$modal,$localStorage,$window,toaster,SERVER,Util,VERSION) {
       // add 'ie' classes to html
      var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');

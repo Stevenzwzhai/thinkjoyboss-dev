@@ -45,7 +45,7 @@
                         <div class="padder">
 
 
-                            <table-paging    preName="num" nextName="num"  is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="6"  params="params"  url="urlList"  results="posts"  resultsName="pageList"  total="total"   ng-show="posts.length > 0">
+                            <table-paging    preName="num" nextName="num"  is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="7"  params="params"  url="urlList"  results="posts"  resultsName="pageList"  total="total"   ng-show="posts.length > 0">
                                 <div class="list-group urlListBg ">
 
                                     <a ng-repeat="post in posts " class=" clear list-group-item b-l-{{post.serverTestResult | colorClass}} b-l-3x    hover-anchor" ng-class="{'hover': post.selected,'active':post.active }" ng-click="select(post)">
