@@ -16,7 +16,7 @@ App.controller("userMapCtrl", function ($rootScope,$scope,$window,$log,$q,$timeo
         },
         dataRange: {
             min: 0,
-            max: 200,
+            max: 300,
             x: 'left',
             y: 'bottom',
             text:['高','低'],           // 文本，默认为数值文本
