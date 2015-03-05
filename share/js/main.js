@@ -112,6 +112,9 @@ App
 
 
 
+        $rootScope.toggleNav = function(toggle){
+            $scope.app.settings.asideFolded = toggle;
+        }
 
 
       //应用设置参数
