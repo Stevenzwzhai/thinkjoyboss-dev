@@ -1,87 +1,80 @@
-<!--<div class="m-b" >-->
+<div class="m-b" >
 
-    <!--<select    class="form-control ib  input-sm  " ng-model="severMessageModelParams.sysCode" style="width: 150px; vertical-align: bottom; display: none;">-->
-        <!--<option value="">请选择系统</option>-->
-        <!--<option value="{{server.systemCode}}" ng-repeat=" server in  serves">-->
-            <!--{{server.systemName}}-->
-        <!--</option>-->
-    <!--</select>-->
+    <select    class="form-control ib  input-sm  " ng-model="severMessageModelParams.sysCode" style="width: 150px; vertical-align: bottom; display: none;">
+        <option value="">请选择系统</option>
+        <option value="{{server.systemCode}}" ng-repeat=" server in  serves">
+            {{server.systemName}}
+        </option>
+    </select>
 
-    <!--<button class="btn  m-l  btn-sm  btn-danger btn-addon" ng-click="isAdd=true;"><i class="fa fa-plus"></i>添加系统</button>-->
+    <button class="btn  m-l  btn-sm  btn-danger btn-addon" ng-click="isAdd=true;"><i class="fa fa-plus"></i>添加系统</button>
 
-<!--</div>-->
+</div>
 
-<!--<table-paging   is-submit="severSystemModelIsSubmit"   refresh="severSystemModelRefresh"  pageIndex="1"  pageSize="10"  params="severSystemModelParams"  url="severSystemModelUrl"  results="severSystemModelPost"  resultsName="pageList"  total="total"   >-->
+<table-paging   is-submit="severSystemModelIsSubmit"   refresh="severSystemModelRefresh"  pageIndex="1"  pageSize="10"  params="severSystemModelParams"  url="severSystemModelUrl"  results="severSystemModelPost"  resultsName="pageList"  total="total"   >
 
-    <!--<div class="table-responsive">-->
-        <!--<form name="addSevMessageForm" novalidate role="form">-->
-            <!--<table class="table table-striped b-t b-light">-->
-                <!--<thead>-->
-                <!--<tr>-->
-                    <!--<th>系统标识</th>-->
-                    <!--<th>系统名称</th>-->
-                    <!--<th>系统端口</th>-->
-                    <!--<th>修改时间</th>-->
-                    <!--<th>操作</th>-->
-                <!--</tr>-->
-                <!--</thead>-->
+    <div class="table-responsive">
+        <form name="addSevMessageForm" novalidate role="form">
+            <table class="table table-striped b-t b-light">
+                <thead>
+                <tr>
+                    <th>系统标识</th>
+                    <th>系统名称</th>
+                    <th>系统端口</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
 
-                <!--<tbody>-->
+                <tbody>
 
-                <!--<tr ng-show="isAdd">-->
+                <tr ng-show="isAdd">
 
-                    <!--<td>-->
-                        <!--<input type="text" class="form-control input-sm" ng-model="fm.systemCode"  placeholder="英文标识唯一" required />-->
-                    <!--</td>-->
-                    <!--<td>-->
-                        <!--<input type="text" class="form-control input-sm" ng-model="fm.systemName" placeholder="中文名称" required />-->
-                    <!--</td>-->
-                    <!--<td>-->
-                        <!--<input type="text" class="form-control input-sm" ng-model="fm.mockPort" placeholder="8080" required />-->
-                    <!--</td>-->
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="fm.systemCode"  placeholder="英文标识唯一" required />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="fm.systemName" placeholder="中文名称" required />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="fm.mockPort" placeholder="8080" required />
+                    </td>
 
-                    <!--<td>-->
-                        <!--系统自动生成-->
-                    <!--</td>-->
+                    <td>
+                        <a class="ib"   ng-click="addFilederverMessage()" >
+                            <i class="fa  fa-plus text-primary   "></i>
+                        </a>
 
-                    <!--<td>-->
-                        <!--<a class="ib"   ng-click="addFilederverMessage()" >-->
-                            <!--<i class="fa  fa-plus text-primary   "></i>-->
-                        <!--</a>-->
+                        <a class="ib m-l removeCk" ng-click="resetFm()">
+                            <i class="fa fa-reply text-primary "></i>
+                        </a>
+                    </td>
 
-                        <!--<a class="ib m-l removeCk" ng-click="resetFm()">-->
-                            <!--<i class="fa fa-reply text-primary "></i>-->
-                        <!--</a>-->
-                    <!--</td>-->
+                </tr>
 
-                <!--</tr>-->
+                <tr ng-repeat="system in severSystemModelPost">
+                    <td>{{system.systemCode}}</td>
 
-                <!--<tr ng-repeat="system in severSystemModelPost">-->
-                    <!--<td>{{system.systemCode}}</td>-->
+                    <td>{{system.systemName}}</td>
+                    <td>
+                        {{system.mockPort}}
+                    </td>
+                    <td>
+                        <a href  ui-toggle-class  ng-click="editServerMessage(system)">
+                            <i class="fa fa-floppy-o text-primary  text-active "></i>
+                            <i class="fa fa-pencil-square-o text-primary  text"></i>
+                        </a>
 
-                    <!--<td>{{system.systemName}}</td>-->
-                    <!--<td>-->
-                        <!--{{system.mockPort}}-->
-                    <!--</td>-->
-                    <!--<td>{{system.modifyTime}}</td>-->
+                        <a class="ib m-l removeCk" ng-click="deleteServerMessage(system)">
+                            <i class="fa fa-times text-primary   "></i>
+                        </a>
+                    </td>
 
-                    <!--<td>-->
-                        <!--<a href  ui-toggle-class  ng-click="editServerMessage(message)">-->
-                            <!--<i class="fa fa-floppy-o text-primary  text-active "></i>-->
-                            <!--<i class="fa fa-pencil-square-o text-primary  text"></i>-->
-                        <!--</a>-->
+                </tr>
 
-                        <!--<a class="ib m-l removeCk" ng-click="deleteServerMessage(message)">-->
-                            <!--<i class="fa fa-times text-primary   "></i>-->
-                        <!--</a>-->
-                    <!--</td>-->
+                </tbody>
 
-                <!--</tr>-->
+            </table>
+        </form>
+    </div>
 
-                <!--</tbody>-->
-
-            <!--</table>-->
-        <!--</form>-->
-    <!--</div>-->
-
-<!--</table-paging>-->
+</table-paging>

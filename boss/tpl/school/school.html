@@ -52,7 +52,7 @@
 
                 <tbody>
                         <tr ng-repeat="sco in posts">
-                            <td>{{sco.id}}</td>
+                            <td>{{sco.schoolId}}</td>
                             <td>
                                 <div ng-hide="sco.edit">{{sco.schoolName}}</div>
                                 <div ng-show="sco.edit"><input type="text"     class="input-sm form-control"  ng-model="sco.schoolName"  name="schoolName"  /></div>

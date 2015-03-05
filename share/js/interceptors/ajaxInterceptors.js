@@ -18,6 +18,8 @@ App
                                 str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
                             return str.join("&");
                         }
+                    } else {
+                        delete config.headers['is-json-data'];
                     }
                 }
 

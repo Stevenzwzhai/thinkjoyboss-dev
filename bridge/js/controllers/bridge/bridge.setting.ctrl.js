@@ -320,111 +320,112 @@ App
 
     .controller("BridgeSettingSystemCtrl", function ($rootScope,$modal,$scope, $state, $window, $log, $q, $timeout, SERVER,BridgeService,bridgeSettingShare,Util,BridgeShare) {
 
-//        var token = window.sessionStorage.getItem("token");
-//        //系统配置
-//        $scope.severSystemModelUrl = SERVER.url.mBridge + "/systems" + "?token=" + token;
-//
-//        //初始化
-//        bridgeSettingShare.init($scope);
-//
-//
-//        //查询服务端报文
-//        $scope.$watch("severSystemModelParams.sysCode",function(newV){
-//            $scope.severSystemModelRefresh = true;
-//        });
-//
-//
-//        //添加
-//        $scope.addFilederverMessage = function(){
-//
-//            if($scope.fm.bodyType == ""){
-//                $rootScope.alertError("请选择报文类型?");
-//                return;
-//            }
-//            else if( $scope.fm.system.systemCode == ""){
-//
-//                $rootScope.alertError("请选择系统！");
-//                return;
-//            }
-//            else if( $scope.fm.bodyValue == ""){
-//                $rootScope.alertError("请填写报文内容！");
-//            }
-//
-//            try {
-//                $scope.fm.bodyValue =  JSON.stringify(JSON.parse($scope.fm.bodyValue));
-//                BridgeService.addSystem($scope.fm.sysCode,$scope.fm.systemName,$scope.fm.mockPort).then(function(res){
-//                    if(res.result){
-//                        $rootScope.alertSuccess(res.resultDesc);
-//                        $scope.severSystemModelRefresh = true;
-//                        $scope.resetFm();
-//                    }
-//                    else{
-//                        $rootScope.alertError(res.resultDesc);
-//                    }
-//                });
-//
-//            } catch(e) {
-//                var str = JSON.stringify(e.message);
-//                $rootScope.alertError(str);
-//                console.log(e);
-//            } finally{
-//
-//            }
-//
-//
-//        }
-//        $scope.resetFm = function(){
-//            $scope.isAdd = false;
-//            $scope.fm = {
-//                systemCode : "",
-//                systemName : "",
-//                mockPort  : ""
-//            }
-//        }
-//
-//        //删除系统
-//        $scope.deleteServerMessage = function(sco){
-//            var conf =  window.confirm("确定要删除系统?");
-//            if(conf){
-//                BridgeService.removeSystem(sco.sysId).then(function(res){
-//                    if(res.result){
-//                        $rootScope.alertSuccess(res.resultDesc);
-//                        $scope.severSystemModelRefresh = true;
-//                    }
-//                    else{
-//                        $rootScope.alertError(res.resultDesc);
-//                    }
-//                });
-//            }
-//
-//        }
-//        //修改系统
-//        $scope.editServerMessage = function(sco){
-//            //选中
-//            if(!sco.edit){
-//                sco.edit  = true;
-//                sco.isReadOnly = false;
-//
-//            }
-//            //取消选中
-//            else{
-//                BridgeService.updateSystem(sco.systemCode,sco.systemName,sco.mockPort).then(function(res){
-//                    if(res.result){
-//                        $rootScope.alertSuccess("更新成功");
-//                    }
-//                    else{
-//                        $rootScope.alertError(res.resultDesc);
-//                    }
-//                    sco.edit  =false;
-//                    sco.isReadOnly = true;
-//
-//                }).then(function(){
-//                    sco.edit  =false;
-//                    sco.isReadOnly = true;
-//                });
-//            }
-//
-//        }
+        var token = window.sessionStorage.getItem("token");
+        //系统配置
+        $scope.severSystemModelUrl = SERVER.url.mBridge + "/systems/page" + "?token=" + token;
+
+        //初始化
+        bridgeSettingShare.init($scope);
+
+
+
+        $scope.fm = {
+        }
+
+        //查询服务端报文
+        $scope.$watch("severSystemModelParams.sysCode",function(newV){
+            $scope.severSystemModelRefresh = true;
+        });
+
+
+        //添加
+        $scope.addFilederverMessage = function(){
+
+            if($scope.fm.systemName == ""){
+                $rootScope.alertError("请指定系统名称!");
+                return;
+            }
+            else if( $scope.fm.systemCode == ""){
+
+                $rootScope.alertError("请指定系统编码!");
+                return;
+            }
+            else if( $scope.fm.mockPort == ""){
+                $rootScope.alertError("请指定测试端口!");
+            }
+
+            try {
+                BridgeService.addSystem($scope.fm.systemCode,$scope.fm.systemName,$scope.fm.mockPort).then(function(res){
+                    if(res.result){
+                        $rootScope.alertSuccess(res.resultDesc);
+                        $scope.severSystemModelRefresh = true;
+                        $scope.resetFm();
+                    }
+                    else{
+                        $rootScope.alertError(res.resultDesc);
+                    }
+                });
+
+            } catch(e) {
+                console.log(e);
+            } finally{
+
+            }
+
+
+        }
+        $scope.resetFm = function(){
+            $scope.isAdd = false;
+            $scope.fm = {
+                systemCode : "",
+                systemName : "",
+                mockPort  : ""
+            }
+        }
+
+        //删除系统
+        $scope.deleteServerMessage = function(sco){
+            var conf =  window.confirm("确定要删除系统?");
+            if(conf){
+                BridgeService.removeSystem(sco.systemCode,sco.systemName,sco.mockPort).then(function(res){
+                    if(res.result){
+                        $rootScope.alertSuccess(res.resultDesc);
+                        $scope.severSystemModelRefresh = true;
+                    }
+                    else{
+                        $rootScope.alertError(res.resultDesc);
+                    }
+                });
+            }
+
+        }
+        //修改系统
+        $scope.editServerMessage = function(sco){
+            //选中
+            if(!sco.edit){
+                sco.edit  = true;
+                sco.isReadOnly = false;
+
+            }
+            //取消选中
+            else{
+                BridgeService.updateSystem(sco.systemCode,sco.systemName,sco.mockPort).then(function(res){
+                    if(res.result){
+                        $rootScope.alertSuccess("更新成功");
+                    }
+                    else{
+                        $rootScope.alertError(res.resultDesc);
+                    }
+                    sco.edit  =false;
+                    sco.isReadOnly = true;
+
+                }).then(function(){
+                    sco.edit  =false;
+                    sco.isReadOnly = true;
+                });
+            }
+
+        }
 
     });
 

@@ -175,11 +175,13 @@ App
                 return  defer.promise;
             },
 
-            removeSystem : function(sysId){
+            removeSystem : function(systemCode,systemName,mockPort){
                 var defer = $q.defer();
                 var token = window.sessionStorage.getItem("token");
                 $http.post(SERVER.url.mBridge + "/system/delete" + "?token=" + token,{
-                    sysId : sysId
+                    systemCode : systemCode,
+                    systemName : systemName,
+                    mockPort : mockPort
                 })
                     .success(function(data) {
                         defer.resolve(data);
