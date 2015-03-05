@@ -55,11 +55,17 @@
                     <td>{{system.systemCode}}</td>
 
                     <td>{{system.systemName}}</td>
-                    <td>
-                        {{system.mockPort}}
+
+                    <td width="150">
+                        <span ng-if="!system.edit">{{system.mockPort}}</span>
+                        <span class="ib" ng-hide="!system.edit">
+                                <input  type="text"    ng-model="system.mockPort" class="form-control"  />
+                        </span>
+
                     </td>
+
                     <td>
-                        <a href  ui-toggle-class  ng-click="editServerMessage(system)">
+                        <a href  ui-toggle-class  ng-click="editSysMessage(system)">
                             <i class="fa fa-floppy-o text-primary  text-active "></i>
                             <i class="fa fa-pencil-square-o text-primary  text"></i>
                         </a>

@@ -400,15 +400,19 @@ App
 
         }
         //修改系统
-        $scope.editServerMessage = function(sco){
+        $scope.editSysMessage = function(sco){
+
+            sco.edit  = !sco.edit;
+
             //选中
             if(!sco.edit){
-                sco.edit  = true;
+//                sco.edit  = true;
                 sco.isReadOnly = false;
 
             }
             //取消选中
             else{
+
                 BridgeService.updateSystem(sco.systemCode,sco.systemName,sco.mockPort).then(function(res){
                     if(res.result){
                         $rootScope.alertSuccess("更新成功");
@@ -416,13 +420,15 @@ App
                     else{
                         $rootScope.alertError(res.resultDesc);
                     }
-                    sco.edit  =false;
+//                    sco.edit  =false;
                     sco.isReadOnly = true;
 
                 }).then(function(){
-                    sco.edit  =false;
+//                    sco.edit  =false;
                     sco.isReadOnly = true;
                 });
+
+//                sco.edit  =false;
             }
 
         }
