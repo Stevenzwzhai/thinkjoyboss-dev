@@ -182,10 +182,13 @@
                                 <div class="panel panel-primary"  ng-class="{'panel-danger': note.exReq}" >
                                     <div class="panel-heading"  >
                                         Request协议
-                                        <a href="" ui-toggle-class    class="pull-right bridge-edit"  ng-if="bridgeRight.indexOf('/update/protocol/request') != '-1' " >
-                                            <i class="fa fa-floppy-o text-white fa-lg  text-active "  ng-click="saveReqPoto()"></i>
-                                            <i class="fa fa-pencil-square-o fa-lg  text-white  text" ng-click="isReqPoto=false;"></i>
-                                        </a>
+
+                                        <span ng-show="bridgeRight.indexOf('/update/protocol/request') != '-1' " >
+                                            <a href="" ui-toggle-class    class="pull-right bridge-edit"  >
+                                                <i class="fa fa-floppy-o text-white fa-lg  text-active "  ng-click="saveReqPoto()"></i>
+                                                <i class="fa fa-pencil-square-o fa-lg  text-white  text" ng-click="isReqPoto=false;"></i>
+                                            </a>
+                                            </span>
                                         <!--<a class=" ib pull-right  bridge-edit">编辑</a>-->
                                     </div>
                                     <div class="list-group bg-white">
@@ -212,7 +215,7 @@
                                 <div class="panel panel-success" ng-class="{'panel-danger': note.exRep}">
                                     <div class="panel-heading">
                                         Response协议
-                                        <a href="" ui-toggle-class    class="pull-right bridge-edit"  ng-if="bridgeRight.indexOf('/update/protocol/response') != '-1' " >
+                                        <a href="" ui-toggle-class    class="pull-right bridge-edit"  ng-show="bridgeRight.indexOf('/update/protocol/response') != '-1' " >
                                             <i class="fa fa-floppy-o text-white fa-lg  text-active "  ng-click="saveResPoto()"></i>
                                             <i class="fa fa-pencil-square-o fa-lg  text-white  text" ng-click="isRepPoto=false;"></i>
                                         </a>
@@ -320,7 +323,7 @@
                                     <div class="panel panel-success"    ng-class="{'panel-danger': note.exTestReq}"  ng-if="note.requestType == 'POST' "  >
                                         <div class="panel-heading">
                                             测试报文 {{isReqTestSuper}}
-                                            <a href="" ui-toggle-class    class="pull-right bridge-edit" ng-if="bridgeRight.indexOf('/update/client/request') != '-1' " >
+                                            <a href="" ui-toggle-class    class="pull-right bridge-edit" ng-show="bridgeRight.indexOf('/update/client/request') != '-1' " >
                                                 <i class="fa fa-floppy-o text-white fa-lg  text-active "  ng-click="isReqTestSuper=true;saveResTest('POST')"></i>
                                                 <i class="fa fa-pencil-square-o fa-lg  text-white  text" ng-click="isReqTestSuper=false"></i>
                                             </a>
