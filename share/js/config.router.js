@@ -152,12 +152,10 @@ App
 
 
               //notfiy 部分...............
-
-//              .state("app.notify.email", {
-//                  url: "/sms",
-//                  templateUrl: "notify/tpl/message/sms/smsQuery.html?v="+VERSION.vs,
-//                  controller: "SMSCtrl"
-//              })
+              .state("app.notify.email", {
+                  url: "/email",
+                  templateUrl: "notify/tpl/message/email/email.html?v="+VERSION.vs
+              })
 
 
 

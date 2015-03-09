@@ -2,6 +2,8 @@ App
 
     .service("bridgeSettingShare",function(SERVER){
 
+        console.log("setting...");
+
         return {
 
             init : function($scope){

@@ -2,7 +2,7 @@ App
 
     .controller("BridgeCtrl", function ($rootScope,$modal,$scope, $state, $window, $log, $q, $timeout, SERVER,BridgeService,Util,BridgeShare) {
 
-            console.log("bridge.....");
+            console.log("bridge0001.....");
 
         $scope.posts =[];
 
