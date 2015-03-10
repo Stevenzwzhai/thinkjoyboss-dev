@@ -79,27 +79,26 @@
             <div class="row-row">
                 <div class="cell" >
                     <div class="fbox text-center text-sm">
-                        <a href="" class=" col padder-v text-muted b-r b-light" ng-class="{'active': currentPotoy == 1 }"   ng-click="currentPotoy=1">
-                            <i class=" icon-screen-tablet block m-b-xs fa-2x"></i>
-                            <span>协议配置</span>
+                        <a href="" class=" col  text-muted b-r b-light" style="padding: 17px;" ng-class="{'active': currentPotoy == 1 }"   ng-click="currentPotoy=1">
+                            <i class=" icon-screen-tablet  m-b-xs fa-16"></i>
+                            <span class="bridge-tab-bar">协议配置</span>
                         </a>
-                        <a href=""   class="col padder-v text-muted b-r b-light" ng-click="showSeverTest()"  ng-class="{'active': currentPotoy == 2 }">
-                            <i class="icon-rocket block m-b-xs fa-2x"></i>
-                            <span>测试服务端</span>
+                        <a href=""   class="col  text-muted b-r b-light" style="padding: 17px;" ng-click="showSeverTest()"  ng-class="{'active': currentPotoy == 2 }">
+                            <i class="icon-rocket  m-b-xs fa-16"></i>
+                            <span class="bridge-tab-bar">测试服务端</span>
                         </a>
-                        <a href="" class="col padder-v text-muted " ng-click="currentPotoy=3"  ng-class="{'active': currentPotoy == 3}">
-                            <i class=" icon-paper-plane block m-b-xs fa-2x"></i>
-                            <span>测试客户端</span>
+                        <a href="" class="col  text-muted "  style="padding: 17px;" ng-click="currentPotoy=3"  ng-class="{'active': currentPotoy == 3}">
+                            <i class=" icon-paper-plane  m-b-xs fa-16"></i>
+                            <span class="bridge-tab-bar">测试客户端</span>
                         </a>
                     </div>
 
 
 
-                    <div style="margin-top: 120px;">
+                    <div  >
 
-
-
-                    <div class="m-lg " >
+                    <!-- 协议信息 -->
+                    <div ng-if="currentPotoy==1"  style="margin-top: 80px;" class="m-lg " >
                         <div>
                             <a class="pull-left thumb-sm avatar m-l-n-md">
                                 <img src="lib/img/a1.jpg" class="img-circle" alt="...">
@@ -152,11 +151,8 @@
                     </div>
 
 
-
-
-
                         <!-- 协议说明 -->
-                        <section  class="fadeShow" ng-show="currentPotoy == 1 ">
+                        <section  class="fadeShow"   ng-show="currentPotoy == 1 ">
                             <!--<div class="wrapper bg-light lt b-b">-->
                                 <!--<div class="m-l inline" >-->
                                     <!--<span>协议说明</span>-->
@@ -198,12 +194,12 @@
                                                     <!--<div>2</div>-->
                                                     <!--<div>3</div>-->
                                                 <!--</span>-->
-                                             <textarea   json-format   ng-readonly="isReqPoto"   rows="15"  class="form-control"   error="error"   json="note.urlRequest"  ng-model="note.urlRequest"    style="border-radius: 0;"></textarea>
+                                             <textarea   json-format   ng-readonly="isReqPoto"   rows="18"  class="form-control"   error="error"   json="note.urlRequest"  ng-model="note.urlRequest"    style="border-radius: 0;"></textarea>
                                        </span>
 
                                         <span ng-if="note.requestType == 'GET' ">
 
-                                             <textarea   json-format   ng-readonly="isReqPoto"   rows="15"  class="form-control"   error="error"   json="note.paramStr"  ng-model="note.urlRequest"    style="border-radius: 0;"></textarea>
+                                             <textarea   json-format   ng-readonly="isReqPoto"   rows="18"  class="form-control"   error="error"   json="note.paramStr"  ng-model="note.urlRequest"    style="border-radius: 0;"></textarea>
                                        </span>
 
                                     </div>
@@ -223,7 +219,7 @@
                                     <div class="list-group bg-white">
                                        <span>
 
-                                             <textarea    ng-readonly="isRepPoto"  json-format   rows="15"  class="form-control" error="error" json="note.urlResponse"    ng-model="note.urlResponse"  style="border-radius: 0;"></textarea>
+                                             <textarea    ng-readonly="isRepPoto"  json-format   rows="18"  class="form-control" error="error" json="note.urlResponse"    ng-model="note.urlResponse"  style="border-radius: 0;"></textarea>
                                        </span>
                                     </div>
                                 </div>
@@ -235,7 +231,7 @@
 
 
                         <!-- 服务端报文部分  -->
-                        <section  class="fadeShow" ng-show="currentPotoy == 2 ">
+                        <section  class="fadeShow"  style="margin-top: 77px;"  ng-show="currentPotoy == 2 ">
 
                             <!--<div class="wrapper bg-light lt b-b">-->
                                 <!--&lt;!&ndash;<span class="text-muted">Created on:</span> <span>{{ note.date  | date:'MMM-dd-yyyy H:mm' }}</span>&ndash;&gt;-->
@@ -252,70 +248,6 @@
                             </div>
 
 
-                            <section class="m-t-lg m-l m-r">
-
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading font-bold">
-                                        测试配置
-                                    </div>
-                                    <div class="panel-body">
-                                        <form role="form"  name="serverTestForm" class="form-inline">
-                                            <div class="form-group">
-                                                <label for="ipaddress" class="sr-only">ip地址</label>
-                                                <input type="text" placeholder="ip地址" id="ipaddress"   ng-model="sevFm.ip" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="iport" class="sr-only">端口号</label>
-                                                <input type="text" placeholder="端口号" id="iport"   ng-model="sevFm.port"  class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="rootPath" class="sr-only">根路径</label>
-                                                <input type="text" placeholder="根路径" id="rootPath"   ng-model="sevFm.rootPath"  class="form-control" />
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="token" class="sr-only">token</label>
-                                                <input type="text" placeholder="没有token,请先执行login" id="token"   style="width:188px;"  ng-model="sevFm.token"  class="form-control" required>
-                                            </div>
-
-                                                <span >
-
-                                                    <button type="button"  class="btn  btn-success "  ng-click="serverTest()"     ng-disabled="serverTestForm.$invalid  || isServerSubmit" >
-                                                        <div ng-show="isServerSubmit">
-                                                            <span class="glyphicon glyphicon-refresh refresh" ></span>
-                                                        </div>
-                                                        <span ng-hide="isServerSubmit">开启测试</span>
-                                                    </button>
-
-                                                </span>
-                                        </form>
-                                    </div>
-                                </div>
-
-
-
-                                        <div class="m-t" ng-show="note.serverTestResult.testResult == 'success' ">
-                                            <div class="alert alert-success" role="alert" style="margin-bottom: 6px;">
-                                                <strong>{{note.serverTestResult.testTime}}</strong>&emsp;执行成功
-                                            </div>
-                                        </div>
-
-
-                                        <div class="m-t" ng-show="note.serverTestResult.testResult == 'error' ">
-                                            <div class="alert alert-danger" role="alert" style="margin-bottom: 6px;">
-                                                <strong>{{note.serverTestResult.testTime}}</strong>&emsp;{{note.serverTestResult.errorDesc}}
-                                            </div>
-                                        </div>
-
-
-                                        <div class="m-t" ng-show="note.serverTestResult.testResult == 'warn' ">
-                                            <div class="alert alert-warning" role="alert" style="margin-bottom: 6px;">
-                                                <strong>{{note.serverTestResult.testTime}}</strong>&emsp;{{note.serverTestResult.errorDesc}}
-                                            </div>
-                                        </div>
-
-                            </section>
 
 
                             <section class="m-t">
@@ -369,7 +301,7 @@
                                         <div class="list-group bg-white">
 
                                              <span>
-                                                 <textarea   json-format   ng-readonly="isRepTest"   rows="15"  class="form-control" error="error"    ng-model="note.serverTestResult.responseBody"   style="border-radius: 0;"></textarea>
+                                                 <textarea   json-format   ng-readonly="isRepTest"   rows="18"  class="form-control" error="error"    ng-model="note.serverTestResult.responseBody"   style="border-radius: 0;"></textarea>
                                            </span>
 
                                         </div>
@@ -380,11 +312,76 @@
                             </section>
 
 
+
+                            <section class="m-t-lg m-l m-r">
+
+                                <div class="panel panel-default ovh" >
+                                    <div class="panel-heading font-bold">
+                                        测试配置
+                                    </div>
+                                    <div class="panel-body">
+                                        <form role="form"  name="serverTestForm" class="form-inline">
+                                            <div class="form-group">
+                                                <label for="ipaddress" class="sr-only">ip地址</label>
+                                                <input type="text" placeholder="ip地址" id="ipaddress"   ng-model="sevFm.ip" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="iport" class="sr-only">端口号</label>
+                                                <input type="text" placeholder="端口号" id="iport"   ng-model="sevFm.port"  class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="rootPath" class="sr-only">根路径</label>
+                                                <input type="text" placeholder="根路径" id="rootPath"   ng-model="sevFm.rootPath"  class="form-control" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="token" class="sr-only">token</label>
+                                                <input type="text" placeholder="没有token,请先执行login" id="token"   style="width:188px;"  ng-model="sevFm.token"  class="form-control" required>
+                                            </div>
+
+                                                <span >
+
+                                                    <button type="button"  class="btn  btn-success "  ng-click="serverTest()"     ng-disabled="serverTestForm.$invalid  || isServerSubmit" >
+                                                        <div ng-show="isServerSubmit">
+                                                            <span class="glyphicon glyphicon-refresh refresh" ></span>
+                                                        </div>
+                                                        <span ng-hide="isServerSubmit">开启测试</span>
+                                                    </button>
+
+                                                </span>
+                                        </form>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="m-t" ng-show="note.serverTestResult.testResult == 'success' ">
+                                    <div class="alert alert-success" role="alert" style="margin-bottom: 6px;">
+                                        <strong>{{note.serverTestResult.testTime}}</strong>&emsp;执行成功
+                                    </div>
+                                </div>
+
+
+                                <div class="m-t" ng-show="note.serverTestResult.testResult == 'error' ">
+                                    <div class="alert alert-danger" role="alert" style="margin-bottom: 6px;">
+                                        <strong>{{note.serverTestResult.testTime}}</strong>&emsp;{{note.serverTestResult.errorDesc}}
+                                    </div>
+                                </div>
+
+
+                                <div class="m-t" ng-show="note.serverTestResult.testResult == 'warn' ">
+                                    <div class="alert alert-warning" role="alert" style="margin-bottom: 6px;">
+                                        <strong>{{note.serverTestResult.testTime}}</strong>&emsp;{{note.serverTestResult.errorDesc}}
+                                    </div>
+                                </div>
+
+                            </section>
+
                         </section>
 
 
                         <!-- 客户端报文 -->
-                        <section class="fadeShow" ng-show="currentPotoy == 3 ">
+                        <section class="fadeShow"  style="margin-top: 77px;" ng-show="currentPotoy == 3 ">
 
 
                             <!--<div class="panel panel-default m-l m-t" >-->
@@ -421,7 +418,7 @@
                                         </div>
                                         <div class="list-group bg-white">
                                        <span>
-                                             <textarea       readonly json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                             <textarea       readonly json-format   rows="18"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
                                        </span>
                                         </div>
                                     </div>
@@ -435,7 +432,7 @@
                                         </div>
                                         <div class="list-group bg-white">
                                        <span>
-                                             <textarea     readonly  json-format   rows="15"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
+                                             <textarea     readonly  json-format   rows="18"  class="form-control" error="error" json="json"  style="border-radius: 0;"></textarea>
                                        </span>
                                         </div>
                                     </div>

@@ -42,7 +42,7 @@ App.controller('LaunchCtrl', function($scope,$rootScope) {
 
                 case "notify":
 
-                    obj.sysDesc = "消息中心";
+                    obj.sysDesc = "烽火台";
                     obj.homeUrl = "#app/notify/sms";
                     obj.icon = "imgs/logo/notify-logo.jpg";
                     break;

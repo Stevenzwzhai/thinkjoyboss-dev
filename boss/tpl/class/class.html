@@ -97,7 +97,7 @@
     <section ng-show="classMsgPosts.length > 0">
         <div class="wrapper bg-white b-b" >
             <ul class="nav nav-pills nav-sm">
-                <li  ng-class="{'active':fm.userType == -1}" ng-click="fm.userType=-1"><a href>全部</a></li>
+                <li  ng-class="{'active':fm.userType == -1}" ng-click="fm.userType='-1'"><a href>全部</a></li>
                 <li  ng-class="{'active':fm.userType == 1}" ng-click="fm.userType=1"><a href>老师</a></li>
                 <li  ng-class="{'active':fm.userType == '0'}" ng-click="fm.userType='0' "><a href>家长</a></li>
             </ul>
@@ -129,7 +129,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-12" >
+                                    <div class="col-md-12" style="width: 400px;" >
 
                                         <!-- 1张图片显示 -->
                                         <div class="row" ng-if="class.messageInfo.messagePics.length == 1">
@@ -174,17 +174,11 @@
 
 
 
-
-
-
-
-
                             </div>
 
                             <div class="m-t-sm">
                                 <a href class="text-muted m-xs"><i class="icon-heart">&emsp;{{class.praiserCount}}</i></a>
                             </div>
-
 
 
                         </div>
@@ -196,13 +190,19 @@
             </div>
         </div>
     </section>
+
+        <div   infinite-scroll-disabled='busy' infinite-scroll='loadMore()'     infinite-scroll-distance='1'></div>
+        <div   class="text-center" ng-show='busy'>正在加载.....</div>
+
 </div>
 </div>
+
+
+
 </section>
 
 
 
-<div infinite-scroll='loadMore()'   infinite-scroll-disabled='busy'  infinite-scroll-distance='2'></div>
 
 
-<div ng-show='busy'>Loading data...</div>
+

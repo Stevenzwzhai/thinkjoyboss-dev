@@ -7,16 +7,14 @@ App
 
             getUserInfo : function(phone){
                 var defer =  $q.defer();
-                $http.get(SERVER.url.uc+"/userBoss/getUserInfo",{
-                    params : {
-                        phone : phone,
-                        token  : ""
-                    }
-                })
+                $http.post(SERVER.url.uc+"/userBoss/getUserInfo?token=122",{
+                       data : {
+                           phone : phone
+                       }
+
+                },{headers:{"is-json-data":1}})
                  .success(function(result){
-
                         defer.resolve(result);
-
                     })
                     .error(function(err){
                         console.error("user error");
