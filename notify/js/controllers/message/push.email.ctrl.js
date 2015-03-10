@@ -8,7 +8,11 @@ App
 
 App.controller('MailNewCtrl', function($scope, $localStorage, $rootScope, $http, $interval, $modal, SERVER, EmailService) {
     $scope.mail = {
-        receiverList: [],
+        receiverList: [
+            {email: 'brian@thirdroute.com', name: '赵国峰'},
+            {email: 'nikola@tesla.com', name: 'abjia'},
+            {email: 'someone@gmail.com',name:"老师"}
+        ],
         attachList: [],
         ccList: [],
         emailProvider: "EP_126",
@@ -77,6 +81,9 @@ App.controller('MailNewCtrl', function($scope, $localStorage, $rootScope, $http,
         $scope.mail.content = "";
     }
 
+
+
+
     $scope.sendMail = function() {
         if ($scope.mail.receiverList.isEmpty || $scope.mail.sender == "" || $scope.mail.password == ""
             || $scope.mail.subject == "") {
@@ -110,11 +117,8 @@ App.controller('ModalInstanceCtrl', function ($scope, $modalInstance, attachs) {
     $scope.attachs = attachs;
     $scope.newattach = "";
     $scope.addNewAttach = function() {
-        if ($scope.newattach != "")
-        {
-            attachs.push($scope.newattach);
-            $scope.newattach = "";
-        }
+
+
     }
 
     $scope.remove = function(attach) {

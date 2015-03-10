@@ -152,8 +152,8 @@ App
 
 
               //notfiy 部分...............
-              .state("app.notify.email", {
-                  url: "/email",
+              .state("app.notify.emailSetting", {
+                  url: "/emailSetting",
                   templateUrl: "notify/tpl/message/email/email.html?v="+VERSION.vs
               })
 

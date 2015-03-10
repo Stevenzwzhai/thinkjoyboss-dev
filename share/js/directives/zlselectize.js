@@ -33,11 +33,10 @@ App
 
                 var selectto = element.children(0);
 
-                var contacts = [];
-                for (i = 0; i < $localStorage.mail_contacts.length; ++i) {
-                    contacts.push({email: $localStorage.mail_contacts[i]});
-                }
-
+                var contacts = scope.receiverList;
+//                for (i = 0; i < $localStorage.mail_contacts.length; ++i) {
+//                    contacts.push({email: $localStorage.mail_contacts[i]});
+//                }
 
                 var $select = selectto.selectize({
                     plugins: ["remove_button"],

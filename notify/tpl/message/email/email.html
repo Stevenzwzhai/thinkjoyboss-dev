@@ -2,19 +2,21 @@
     <!-- / header -->
     <div class="wrapper" style="padding-top: 0px">
         <form name="newMail" class="form-horizontal m-t-lg">
+
             <div class="form-group">
                 <label class="col-lg-2 control-label">发送邮箱:</label>
-                <div class="col-lg-4">
-                    <input type="email" class="form-control" placeholder="发送邮箱地址" ng-model="mail.sender"/>
-                </div>
-                <div class="col-lg-4">
-                    <input type="password" class="form-control" placeholder="发送邮箱密码" ng-model="mail.password"/>
+                <div class="col-lg-8">
+
+                    <zlselectize receiver-list="mail.receiverList" ng-model="mail.sender"></zlselectize>
+
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-lg-2 control-label">接收邮箱:</label>
                 <div class="col-lg-8">
+
                     <zlselectize receiver-list="mail.receiverList"></zlselectize>
+
                 </div>
             </div>
             <div class="form-group">
@@ -23,6 +25,9 @@
                     <input type="text" class="form-control" ng-model="mail.subject">
                 </div>
             </div>
+
+
+
             <div class="form-group">
                 <label class="col-sm-2 control-label">邮件内容:</label>
                 <div class="col-sm-10">
@@ -34,46 +39,60 @@
                     <div class="btn-group">
                         <script type="text/ng-template" id="myModalContent.html">
                             <div class="modal-body" style="{min-height: 200px;}">
-                                <table class="table bg-white-only b-a" >
-                                    <thead>
-                                    <tr>
-                                        <th>名称</th>
-                                        <th>操作</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody >
-                                        <tr ng-repeat="attach in attachs" class="ng-scope">
-                                            <td><strong class="ng-binding">{{attach}}</strong></td>
-                                            <td nowrap="">
-                                                <button type="button" class="btn btn-default btn-xs" ng-click="remove(attach)">
-                                                   删除
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+
+                                <ul class="list-unstyled report-list col-md-12">
+                                    <li class="col-md-6">
+
+                                        <label class="checkbox i-checks m-l-md m-b-md">
+                                            <input type="checkbox" ><i></i>
+                                            报表01
+                                        </label>
+
+                                    </li>
+                                    <li class="col-md-6">
+
+                                        <label class="checkbox i-checks m-l-md m-b-md">
+                                            <input type="checkbox" ><i></i>
+                                            报表01
+                                        </label>
+
+                                    </li>
+                                    <li class="col-md-6">
+
+                                        <label class="checkbox i-checks m-l-md m-b-md">
+                                            <input type="checkbox" ><i></i>
+                                            报表01
+                                        </label>
+
+                                    </li>
+                                    <li class="col-md-6">
+
+                                        <label class="checkbox i-checks m-l-md m-b-md">
+                                            <input type="checkbox" ><i></i>
+                                            报表01
+                                        </label>
+
+                                    </li>
+                                </ul>
 
                             </div>
                             <div class="modal-footer">
                                 <form class="form-horizontal">
                                     <div class="form-group">
-                                        <div class="col-md-6" style="padding-right: 0">
-                                            <input type="text" class="form-control" ng-model="newattach" placeholder="请输入附件链接地址">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="row text-left">
-                                                <button class="btn btn-success" ng-click="addNewAttach()" style="display: inline-block">添加</button>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2"></div>
-                                            <button class="btn btn-primary" ng-click="ok()" style="display: inline-block">确定</button>
-                                        </div>
+                                        <button class="btn btn-primary" ng-click="ok()" style="display: inline-block">确定</button>
                                     </div>
                                 </form>
                             </div>
                         </script>
-                        <a class="btn btn-sm btn-default" tooltip="添加附件" ng-click="addAttach()"><i class="fa text-base fa-chain"></i>添加附件</a>
+                        <!--<a class="btn btn-sm btn-default" tooltip="添加附件" ><i class="fa text-base fa-chain"></i>添加附件</a>-->
                     </div>
+                </div>
+            </div>
+
+            <div class="form-group m-t-md">
+                <label class="col-lg-2 control-label" >选择报表:</label>
+                <div class="col-lg-8">
+                    <button class="btn   btn-sm  btn-danger btn-addon" ng-click="addAttach()"><i class="fa fa-plus"></i>添加报表</button>
                 </div>
             </div>
 
@@ -89,7 +108,6 @@
                         </span>
                     </div>
 
-
                 </div>
             </div>
             <div class="form-group">
@@ -104,6 +122,11 @@
                     </div>
                 </div>
             </div>
+
+
+
+
+
         </form>
     </div>
 </div>
