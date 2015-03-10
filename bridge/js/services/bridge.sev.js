@@ -1,6 +1,6 @@
 App
 
-    .factory("BridgeService", function ($http, $q, SERVER) {
+    .factory("BridgeService", function ($http, $resource,$q, SERVER) {
 
         return {
 
@@ -193,20 +193,37 @@ App
 
             },
 
+
+            //更新系统
             updateSystem: function(systemCode,systemName,mockPort){
                 var defer = $q.defer();
                 var token = window.sessionStorage.getItem("token");
-                $http.post(SERVER.url.mBridge + "/system/update" + "?token=" + token,{
+//                $http.post(SERVER.url.mBridge + "/system/update" + "?token=" + token,{
+//                    systemCode : systemCode,
+//                    systemName : systemName,
+//                    mockPort : mockPort
+//                })
+//                    .success(function(data) {
+//                        defer.resolve(data);
+//                    })
+//                    .error(function(err) {
+//                        defer.reject(err);
+//                    });
+
+
+                var  temp = $resource(SERVER.url.mBridge + "/system/update" + "?token=" + token,null,{
+                    'save':   {method:'POST',headers:{"is-json-data":1}},
+                });
+                temp.save({
                     systemCode : systemCode,
                     systemName : systemName,
                     mockPort : mockPort
+                },function(res){
+                    console.log("diao...");
+                    console.log(res);
                 })
-                    .success(function(data) {
-                        defer.resolve(data);
-                    })
-                    .error(function(err) {
-                        defer.reject(err);
-                    });
+
+
                 return  defer.promise;
             },
 

@@ -1,6 +1,6 @@
 App
 
-    .factory("UserService",function($http,$q,SERVER){
+    .factory("UserService",function($http,$q,$resource,SERVER){
 
         return {
 

@@ -1,6 +1,6 @@
 App
 
-    .factory("ClassService",function($http,$q,SERVER){
+    .factory("ClassService",function($http,$resource,$q,SERVER){
 
         return {
 
@@ -9,21 +9,38 @@ App
 
             getClassMessageInfoByCode : function(classCode,userType,count,queryTime){
                 var defer =  $q.defer();
-                $http.post(SERVER.url.message+"/messageBoss/getClassMessages",{
+//                $http.post(SERVER.url.message+"/messageBoss/getClassMessages",{
+//                    data : {
+//                        classId : classCode,
+//                        count  : count,
+//                        userType : userType,
+//                        queryTime : queryTime
+//                    }
+//                },{headers : {"is-json-data":1}})
+//                 .success(function(result){
+//                        defer.resolve(result);
+//                    })
+//                    .error(function(err){
+//                        console.error("class error");
+//                        defer.reject(err);
+//                  });
+
+                var  temp = $resource(SERVER.url.message+"/messageBoss/getClassMessages",{
+
+
+                });
+                temp.save({
                     data : {
-                        classId : classCode,
-                        count  : count,
-                        userType : userType,
-                        queryTime : queryTime
+                        classId: classCode,
+                        count: count,
+                        userType: userType,
+                        queryTime: queryTime
                     }
-                },{headers : {"is-json-data":1}})
-                 .success(function(result){
-                        defer.resolve(result);
-                    })
-                    .error(function(err){
-                        console.error("class error");
-                        defer.reject(err);
-                  });
+                  },function(res){
+                        console.log("diao...");
+                        console.log(res);
+                })
+
                 return  defer.promise;
             },
 

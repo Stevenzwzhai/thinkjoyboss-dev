@@ -20,7 +20,6 @@ App
 
         $scope.isSubmit = false;
 
-
         //监听完成
         $scope.$watch("params.schoolName",function(newV){
             if(newV == ""){

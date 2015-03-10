@@ -25,7 +25,6 @@ App
 
                 //token代理
                 if ($window.sessionStorage.token) {
-
                     if(config.method == "POST" ||  config.method == "PUT"){
                         config.data.token = $window.sessionStorage.token;
                     }
