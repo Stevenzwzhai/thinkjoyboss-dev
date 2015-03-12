@@ -198,11 +198,26 @@ App
             updateSystem: function(systemCode,systemName,mockPort){
                 var defer = $q.defer();
                 var token = window.sessionStorage.getItem("token");
-//                $http.post(SERVER.url.mBridge + "/system/update" + "?token=" + token,{
-//                    systemCode : systemCode,
-//                    systemName : systemName,
-//                    mockPort : mockPort
-//                })
+
+                var system = {
+                    systemCode : systemCode,
+                    systemName : systemName,
+                    mockPort : mockPort
+                };
+
+
+                var st = JSON.stringify(system);
+
+
+                $http({method: 'POST', headers:{"is-json-data":1},url: SERVER.url.mBridge + "/system/update" + "?token=" + token, data:st})
+                    .success(function(data, status, headers){
+                        console.log(data);
+
+                    });
+
+
+
+//                $http.post(SERVER.url.mBridge + "/system/update" + "?token=" + token,)
 //                    .success(function(data) {
 //                        defer.resolve(data);
 //                    })
@@ -211,17 +226,17 @@ App
 //                    });
 
 
-                var  temp = $resource(SERVER.url.mBridge + "/system/update" + "?token=" + token,null,{
-                    'save':   {method:'POST',headers:{"is-json-data":1}},
-                });
-                temp.save({
-                    systemCode : systemCode,
-                    systemName : systemName,
-                    mockPort : mockPort
-                },function(res){
-                    console.log("diao...");
-                    console.log(res);
-                })
+//                var  temp = $resource(SERVER.url.mBridge + "/system/update?token=" + token,null,{
+//                    'save':   {method:'POST',headers:{"is-json-data":1}}
+//                });
+//                temp.save({
+//                    systemCode : systemCode,
+//                    systemName : systemName,
+//                    mockPort : mockPort
+//                },function(res){
+//                    console.log("diao...");
+//                    console.log(res);
+//                })
 
 
                 return  defer.promise;

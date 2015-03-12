@@ -53,7 +53,7 @@ App.constant("SERVER", {
             push : "http://121.41.61.218:8080/notify",
             im   : "ws://10.10.68.13:8080/notify/customerIM",
             sop  : "http://121.41.61.218:9003",
-            mBridge : "http://172.16.130.204:8080/mBridge"
+            mBridge : "http://172.16.130.204:8083/mBridge"
 //        mBridge : "http://10.10.68.13:8081/mBridge"
     },
     //预发布
