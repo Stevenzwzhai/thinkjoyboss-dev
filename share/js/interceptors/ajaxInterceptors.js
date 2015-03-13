@@ -20,6 +20,7 @@ App
                         }
                     } else {
                         delete config.headers['is-json-data'];
+                        config.headers['Content-Type'] = "application/json; charset=utf-8";
                     }
                 }
 
@@ -36,8 +37,6 @@ App
                         }
                     }
                 }
-
-
 
                 return config ;
             },

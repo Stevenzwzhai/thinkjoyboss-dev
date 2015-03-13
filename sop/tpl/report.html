@@ -8,10 +8,10 @@
         <div class="col-xs-12 col-md-6 col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    家长详情报表
+                    家长详情报表(手机号归属地)
                 </div>
                 <div class="panel-body">
-                    姓名 学校 年级 班级 孩子姓名 关系 注册时间 加班时间 电话
+                    省份 城市 姓名 性别 电话 学校 年级 班级 班级码 孩子姓名 关系 注册时间 加班时间
                 </div>
                 <div class="panel-footer">
                     <form action="{{SERVER.url.sop + '/report/registerHomeDetail' | SCEformat}}" method="post">
@@ -23,10 +23,10 @@
         <div class="col-xs-12 col-md-6 col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    教师详情报表
+                    教师详情报表(手机号归属地)
                 </div>
                 <div class="panel-body">
-                    姓名 学校 年级 班级 科目 注册时间 加班时间 电话
+                    省份 城市 姓名 性别 电话 学校 年级 班级 班级码 是否班主任 科目 注册时间 加班时间
                 </div>
                 <div class="panel-footer">
                     <form action="{{SERVER.url.sop + '/report/registerTeacherDetail' | SCEformat}}" method="post">
