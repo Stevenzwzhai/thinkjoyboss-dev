@@ -38,6 +38,21 @@
         <div class="col-xs-12 col-md-6 col-lg-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    教师&家长详情报表(手机号归属地)
+                </div>
+                <div class="panel-body">
+                    省份 城市 姓名 性别 身份 电话 学校 年级 班级 班级码 注册时间 加班时间
+                </div>
+                <div class="panel-footer">
+                    <form action="{{SERVER.url.sop + '/report/registerUserDetail' | SCEformat}}" method="post">
+                        <button type="submit" class="btn btn-primary btn-sm">下载</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
                     发布消息数目报表
                 </div>
                 <div class="panel-body">
