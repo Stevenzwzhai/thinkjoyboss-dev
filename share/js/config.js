@@ -50,7 +50,7 @@ App.constant("SERVER", {
 //          message : "http://10.10.68.12:8080/message",
             "ucm"  : "http://10.10.68.13:8080/ucm",
             //线上
-            push : "http://121.41.61.218:8080/notify",
+            push : "http://10.10.68.13:8080/notify",
             im   : "ws://10.10.68.13:8080/notify/customerIM",
             sop  : "http://121.41.61.218:9003",
             mBridge : "http://172.16.130.204:8083/mBridge"
