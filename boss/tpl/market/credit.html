@@ -14,11 +14,11 @@
                 <table class=" table table-striped b-t b-light">
                     <thead>
                     <tr>
-                        <th>兑换ID</th>
-                        <th>用户ID</th>
+
                         <th>兑换商品</th>
                         <th>所需积分</th>
-                        <th>内容部分</th>
+                        <th>兑换者手机号</th>
+                        <th>兑换凭证</th>
                         <th>兑换时间</th>
                         <th>兑换状态</th>
                         <th>兑换卡卷</th>
@@ -27,12 +27,12 @@
 
                     <tbody>
                     <tr ng-repeat="sco in posts">
-                        <td>{{sco.id}} </td>
-                        <td>{{sco.userId}} </td>
-                        <td>{{sco.productionName}} </td>
-                        <td>{{sco.credit}}</td>
-                        <td>{{sco.comment}}</td>
-                        <td>{{sco.createDate | date: 'yyyy-MM-dd'}}</td>
+
+                        <td>{{sco.goodsName}} </td>
+                        <td>{{sco.costCredit}}</td>
+                        <td>{{sco.exchangePhone}}</td>
+                        <td>{{sco.exchangeCert}}</td>
+                        <td>{{sco.exchangeDate | date: 'yyyy-MM-dd'}}</td>
                         <td>
                             {{sco.status | creditFilterStatus}}
                         </td>
