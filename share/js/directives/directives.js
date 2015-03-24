@@ -10,7 +10,8 @@ App
                 url: "=",
                 results : "=",
                 refresh : "=",
-                isSubmit : "="
+                isSubmit : "=",
+                contentType : "@"
             },
             link: function (scope, element, attrs) {
 
@@ -27,6 +28,7 @@ App
 
                 if(scope.nextName == "num")
                     scope.nextName = "";
+
 
                 var getReName = function(resNameArray,res){
 
@@ -57,35 +59,72 @@ App
 
 //                    var index = (scope.pageIndex-1) * scope.pageSize;
                     var index = scope.pageIndex - 1;
-                    var  params = angular.extend([],{pageIndex:index,pageSize:scope.pageSize},scope.params);
+                    var  params;
+                    if(scope.contentType == "json"){
+                        params = scope.params;
+                        params.data.pageIndex = index;
+                        params.data.pageSize = parseInt(scope.pageSize);
 
+                    }
+                    else{
+                        params = angular.extend([],{pageIndex:index,pageSize:scope.pageSize},scope.params);
+                    }
                     scope.isSubmit = true;
 
-                    $http.get(scope.url, {
-                        params:  params
-                    })
+                    if(scope.contentType == "json"){
 
+                        $http.post(scope.url,params
+                        ,{headers:{"is-json-data":1}})
+                        .success(function (res) {
 
-                    .success(function (res) {
+                            //加载结果集
+                            scope.results = getReName(resNameArray,res);
 
-                        //加载结果集
-                        scope.results = getReName(resNameArray,res);
-
-
-                        if(isFirst){
-                            //分页
-                            scope.pageTotal = getReName(totalArray,res);
-                           Util.caclTotal(scope);
-                        }
-
+                            if(isFirst){
+                                //分页
+                                scope.pageTotal = getReName(totalArray,res);
+                                Util.caclTotal(scope);
+                            }
                             scope.isSubmit = false;
 
-
-                    })
-                    .error(function () {
-                          $rootScope.alertError("网络错误！");
+                        })
+                        .error(function () {
+                            $rootScope.alertError("网络错误！");
                             scope.isSubmit = false;
-                    });
+                        });
+
+
+                    }
+                    else{
+
+                        $http.get(scope.url, {
+                            params:  params
+                        })
+
+                            .success(function (res) {
+
+                                //加载结果集
+                                scope.results = getReName(resNameArray,res);
+
+
+                                if(isFirst){
+                                    //分页
+                                    scope.pageTotal = getReName(totalArray,res);
+                                    Util.caclTotal(scope);
+                                }
+
+                                scope.isSubmit = false;
+
+
+                            })
+                            .error(function () {
+                                $rootScope.alertError("网络错误！");
+                                scope.isSubmit = false;
+                            });
+
+                    }
+
+
 
 
                     scope.refresh = false;

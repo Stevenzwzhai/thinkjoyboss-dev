@@ -107,6 +107,22 @@ App
                   templateUrl: "boss/tpl/user/userManager.html?v="+VERSION.vs,
                   controller: "UserCtrl as test"
               })
+
+
+              .state('app.boss.market', {
+                  url:"/market",
+                  templateUrl : "boss/tpl/market/market.html?v="+VERSION.vs
+              })
+
+              //查询兑换记录
+              .state('app.boss.market.credit', {
+                  url:"/credit",
+                  templateUrl: "boss/tpl/market/credit.html?v="+VERSION.vs,
+                  controller: "CreditCtrl"
+              })
+
+
+
               //boss 部分...............
 
 
@@ -264,8 +280,7 @@ App
               });
 
 
-            //login
-
+          //login
           $urlRouterProvider.otherwise('/auth/login');
 
 

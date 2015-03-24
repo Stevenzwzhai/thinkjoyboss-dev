@@ -1,0 +1,49 @@
+
+<div class="bg-light lter b-b wrapper-md ng-scope">
+    <h1 class="m-n font-thin h3">兑换记录</h1>
+</div>
+
+
+<div class="wrapper-md">
+
+    <div class="panel panel-default">
+        <table-paging   is-submit="isSubmit"   refresh="refresh"  content-type="json"  pageIndex="1"  pageSize="10"  params="params"  url="creditUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total">
+
+            <div class="table-responsive">
+
+                <table class=" table table-striped b-t b-light">
+                    <thead>
+                    <tr>
+                        <th>兑换ID</th>
+                        <th>用户ID</th>
+                        <th>兑换商品</th>
+                        <th>所需积分</th>
+                        <th>内容部分</th>
+                        <th>兑换时间</th>
+                        <th>兑换状态</th>
+                        <th>兑换卡卷</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr ng-repeat="sco in posts">
+                        <td>{{sco.id}} </td>
+                        <td>{{sco.userId}} </td>
+                        <td>{{sco.productionName}} </td>
+                        <td>{{sco.credit}}</td>
+                        <td>{{sco.comment}}</td>
+                        <td>{{sco.createDate | date: 'yyyy-MM-dd'}}</td>
+                        <td>
+                            {{sco.status | creditFilterStatus}}
+                        </td>
+                        <td>
+                               {{sco.orderNumber}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </table-paging>
+    </div>
+</div>

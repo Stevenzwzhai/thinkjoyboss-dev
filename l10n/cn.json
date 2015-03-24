@@ -46,12 +46,11 @@
 
 
 
+                    "components-notify" : "BOSS 提供一站服务",
 
-                "components-notify" : "BOSS 提供一站服务",
-
-                "table" : {
-                    "TABLE" : "营销管理",
-                    "TABLE_STATIC" : "营销报表",
+                    "table" : {
+                        "TABLE" : "营销管理",
+                        "CREDIT" : "兑换记录",
                     "DATATABLE" : "营销活动"
                 },
                 "form" : {

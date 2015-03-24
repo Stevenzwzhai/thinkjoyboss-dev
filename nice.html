@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo">click here to get your location:</p>
+<button onclick="getLocation()">click here</button>
+
+
+<script>
+var x=document.getElementById("demo");
+function getLocation(){
+if(navigator.geolocation){
+navigator.geolocation.getCurrentPosition(showPosition);
+}else{
+    alert("not supported");
+}
+}
+
+function showPosition(position){
+
+var positionOptions={
+enableHighAccuracy:true,
+timeout:5000, //单位毫秒
+maximumAge:1000*60
+}
+
+lat=position.coords.latitude;
+lon=position.coords.longitude;
+//var map = new BMap.Map("container"); // 创建Map实例
+var point = new BMap.Point(lon, lat); // 创建点坐标
+//map.centerAndZoom(point,15); //
+//map.enableScrollWheelZoom();
+var gc = new BMap.Geocoder();
+gc.getLocation(point, function(rs){
+var addComp = rs.addressComponents;
+alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street);
+});
+}
+</script>
+</body>
+</html>
