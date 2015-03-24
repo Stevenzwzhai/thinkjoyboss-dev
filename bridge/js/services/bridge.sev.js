@@ -209,10 +209,14 @@ App
                 var st = JSON.stringify(system);
 
 
-                $http({method: 'POST', headers:{"is-json-data":1},url: SERVER.url.mBridge + "/system/update" + "?token=" + token, data:st})
+                $http({
+                    method: 'POST',
+                    headers:{"is-json-data":1},
+                    url: SERVER.url.mBridge + "/system/update" + "?token=" + token,
+                    data:st
+                    })
                     .success(function(data, status, headers){
                         console.log(data);
-
                     });
 
 
@@ -225,9 +229,12 @@ App
 //                        defer.reject(err);
 //                    });
 
-
+//
 //                var  temp = $resource(SERVER.url.mBridge + "/system/update?token=" + token,null,{
-//                    'save':   {method:'POST',headers:{"is-json-data":1}}
+//                    'save':   {
+//                        method:'POST',
+//                        headers:{"is-json-data":1}
+//                    }
 //                });
 //                temp.save({
 //                    systemCode : systemCode,

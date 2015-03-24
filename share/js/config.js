@@ -48,17 +48,17 @@ App.constant("SERVER", {
 //          uc  : "http://172.16.130.172:8088",
           message : "http://10.10.68.11:10000/message",
 //          message : "http://10.10.68.12:8080/message",
-            "ucm"  : "http://10.10.68.13:8081/ucm",
+            "ucm"  : "http://10.10.68.13:8080/ucm",
             //线上
             push : "http://10.10.68.13:8081/notify",
             im   : "ws://10.10.68.13:8080/notify/customerIM",
             sop  : "http://121.41.61.218:9003",
-//            mBridge : "http://172.16.130.202:8083/mBridge"
-        mBridge : "http://10.10.68.13:8081/mBridge"
+            mBridge : "http://172.16.130.202:8083/mBridge"
+//        mBridge : "http://10.10.68.13:8081/mBridge"
     },
     //预发布
     formalUrl : {
-        "ucm"  : "http://10.10.68.13:8081/ucm",
+        "ucm"  : "http://10.10.68.13:8080/ucm",
         uc  : "http://imzhiliao.com:10000/uc",
         message : "http://imzhiliao.com:10000/message",
         push : "http://121.41.61.218:8080/notify",
