@@ -54,7 +54,9 @@ App.constant("SERVER", {
             im   : "ws://10.10.68.13:8080/notify/customerIM",
             sop  : "http://121.41.61.218:9003",
 //            mBridge : "http://172.16.130.202:8083/mBridge"
-        mBridge : "http://10.10.68.16:8081/mBridge"
+        mBridge : "http://10.10.68.16:8081/mBridge",
+        credit : "http://10.10.68.11:8080/credit"
+
     },
     //预发布
     formalUrl : {
@@ -64,13 +66,14 @@ App.constant("SERVER", {
         push : "http://121.41.61.218:8080/notify",
         im   : "ws://121.41.61.218:8080/notify/customerIM",
         sop  : "http://121.41.61.218:9003",
-        mBridge : "http://10.10.68.16:8081/mBridge"
+        mBridge : "http://10.10.68.16:8081/mBridge",
+        credit : "http://imzhiliao.com:10000/credit"
     }
 });
 
 
 App.constant("VERSION",{
-    vs : "123"
+    vs : "126"
 });
 
 
