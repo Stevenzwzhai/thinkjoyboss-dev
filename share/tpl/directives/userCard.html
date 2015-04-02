@@ -1,0 +1,139 @@
+<div class="mask-glass"></div>
+<section class="userCardLayer">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="clearfix">
+                <a href class="pull-left thumb-md avatar b-3x m-r">
+                    <img  ng-src="{{post.userInfo.userIcon}}" />
+                </a>
+                <div class="clear">
+                    <div class="h3 m-t-xs m-b-xs">
+                        {{post.userInfo.userName}}
+                        <i class="fa fa-circle text-success pull-right text-xs m-t-sm"></i>
+                    </div>
+                    <small class="text-muted">{{post | userType}}</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-group no-radius alt">
+
+            <section ng-init="isCollapsedChild=true;" >
+            <a class="list-group-item" href="javascript:void(0);"  ng-click="isCollapsedChild = !isCollapsedChild">
+                <span class="badge bg-success">{{post.childInfo.length}}</span>
+                <i class="fa fa-comment fa-fw text-muted"></i>
+                 孩子信息
+            </a>
+            <div collapse="isCollapsedChild" class="user-scroll-hg">
+                <table class="table table-striped  ">
+                    <thead>
+                    <tr>
+                        <th>
+                            名称
+                        </th>
+                        <th>
+                            班级
+                        </th>
+                        <th>
+                            学校
+                        </th>
+                        <th>
+                            性别
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="obj in post.childInfo">
+                        <td>{{obj.childName}}</td>
+                        <td>{{obj.childClassName}}</td>
+                        <td>{{obj.childSchoolName}}</td>
+                        <td>{{obj.childSex}}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            </section>
+            <section ng-if="post.teacherInfo.length > 0"   ng-init="isCollapsedTeacher=true;">
+                <a class="list-group-item" href="javascript:void(0);"  ng-click="isCollapsedTeacher = !isCollapsedTeacher">
+                    <span class="badge bg-info">{{post.teacherInfo.length}}</span>
+                    <i class="fa fa-envelope fa-fw text-muted"></i>
+                    授课班级
+                </a>
+
+                 <div collapse="isCollapsedTeacher"  class="user-scroll-hg">
+                    <table class="table table-striped  " style="height: 200px; overflow-y: scroll;">
+                        <thead>
+                        <tr>
+                            <th>
+                                班级码
+                            </th>
+                            <th>
+                                班级名称
+                            </th>
+                            <th>
+                                老师数量
+                            </th>
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="obj in post.teacherInfo">
+                            <td>{{obj.classCode}}</td>
+                            <td>{{obj.className}}</td>
+                            <td>{{obj.teacherCount}}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+
+            <section  ng-if="post.groupInfo.length > 0"   ng-init="isCollapsedGroup=true;">
+                <a class="list-group-item" href="javascript:void(0);" ng-click="isCollapsedGroup = !isCollapsedGroup">
+                    <span class="badge bg-light">{{post.groupInfo.length}}</span>
+                    <i class="fa fa-eye fa-fw text-muted"></i>
+                    加入的群
+                </a>
+                <div collapse="isCollapsedGroup" class="user-scroll-hg" >
+
+                    <table class="table table-striped  ">
+                        <thead>
+                        <tr>
+
+                            <th>
+                                群名称
+                            </th>
+
+                            <th>
+                                修改时间
+                            </th>
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr ng-repeat="obj in post.groupInfo">
+                            <td>{{obj.groupName}}</td>
+                            <td>{{obj.lastModDate |  date:"yyyy-MM-dd hh:mm:ss"}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+            </section>
+
+
+
+
+
+
+
+        </div>
+    </div>
+</section>

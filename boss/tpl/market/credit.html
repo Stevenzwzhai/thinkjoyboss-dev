@@ -1,7 +1,11 @@
 
+
+
 <div class="bg-light lter b-b wrapper-md ng-scope">
     <h1 class="m-n font-thin h3">兑换记录</h1>
 </div>
+
+
 
 
 <div class="wrapper-md">
@@ -10,18 +14,17 @@
         <table-paging   is-submit="isSubmit"   refresh="refresh"  content-type="json"  pageIndex="1"  pageSize="10"  params="params"  url="creditUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total">
 
             <div class="table-responsive">
-
                 <table class=" table table-striped b-t b-light">
                     <thead>
                     <tr>
-
                         <th>兑换商品</th>
                         <th>所需积分</th>
                         <th>兑换者手机号</th>
                         <th>兑换凭证</th>
                         <th>兑换时间</th>
-                        <th>兑换状态</th>
                         <th>兑换卡卷</th>
+                        <th>兑换状态</th>
+                        <th>操作</th>
                     </tr>
                     </thead>
 
@@ -30,14 +33,20 @@
 
                         <td>{{sco.goodsName}} </td>
                         <td>{{sco.costCredit}}</td>
-                        <td>{{sco.exchangePhone}}</td>
+                        <td><a href="javascript:void(0)" class="text-primary" ng-click="userCard(sco)">{{sco.exchangePhone}}</a></td>
                         <td>{{sco.exchangeCert}}</td>
                         <td>{{sco.exchangeDate | date: 'yyyy-MM-dd'}}</td>
+                        <td>
+                               {{sco.orderNumber}}
+                        </td>
                         <td>
                             {{sco.status | creditFilterStatus}}
                         </td>
                         <td>
-                               {{sco.orderNumber}}
+                            <label class="i-switch bg-success" >
+                                <input type="checkbox"     ng-disabled="sco.status=='1'"  ng-model="sco.status"   ng-true-value="1"  ng-false-value="0"  ng-change="changeStatus(sco)" />
+                                <i></i>
+                            </label>
                         </td>
                     </tr>
                     </tbody>
@@ -47,3 +56,10 @@
         </table-paging>
     </div>
 </div>
+
+
+<!-- user card -->
+<user-card class="userCard" data="" phone="fm.phone" ></user-card>
+
+
+

@@ -9,7 +9,7 @@ App
                 var defer =  $q.defer();
                 $http.post(SERVER.url.uc+"/userBoss/getUserInfo?token=122",{
                        data : {
-                           phone : phone
+                           "phone" : phone
                        }
 
                 },{headers:{"is-json-data":1}})

@@ -103,10 +103,19 @@ App
 
         //弹窗
         $rootScope.alertModal = function(templateUrl,controllerName){
-            var modalInstance = $modal.open({
-                templateUrl: templateUrl,
-                controller  : controllerName
-            });
+            var option = {};
+            if(controllerName){
+                option = {
+                    templateUrl: templateUrl,
+                    controller  : controllerName
+                };
+            }
+            else{
+                option = {
+                    templateUrl: templateUrl
+                };
+            }
+            var modalInstance = $modal.open(option);
             return modalInstance;
         }
 
@@ -199,13 +208,13 @@ App
 
 
 
-
-
       $scope.$watch('app.settings', function(newVal,oldVal){
+
         if( $scope.app.settings.asideDock  &&  $scope.app.settings.asideFixed ){
           // aside dock and fixed must set the header fixed.
           $scope.app.settings.headerFixed = true;
-             }
+
+       }
 
 
         // save to local storage
