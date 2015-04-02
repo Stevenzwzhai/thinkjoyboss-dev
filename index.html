@@ -6,7 +6,13 @@
 
   <meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <!-- skin -->
+
+    <!-- 防止缓存 -->
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Expires" CONTENT="0">
+
+    <!-- skin -->
   <link rel="stylesheet" href="lib/css/bootstrap.css?v=124" type="text/css" />
 
   <link rel="stylesheet" href="lib/css/animate.css?v=124" type="text/css" />
@@ -15,7 +21,6 @@
   <link rel="stylesheet" href="lib/vendor/jquery/selectize/selectize.default.css" />
   <link rel="stylesheet" href="lib/css/font.css?v=124" type="text/css" />
   <link rel="stylesheet" href="lib/css/app.css?v=124" type="text/css" />
-
 
     <!-- jQuery -->
     <script src="lib/vendor/jquery/jquery.min.js"></script>
@@ -183,6 +188,7 @@
 </head>
 
 <body ng-controller="AppCtrl">
+dddd
   <div class="app" id="app"
        ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
 </body>
