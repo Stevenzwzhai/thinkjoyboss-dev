@@ -328,7 +328,7 @@ App
 
 
             startServerTest : function(urlId,ip,port,token,rootPath){
-            var defer = $q.defer();
+                 var defer = $q.defer();
 
                 $http.get(SERVER.url.mBridge + "/exeServer",{
                     "params" :{

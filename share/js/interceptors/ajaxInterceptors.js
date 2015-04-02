@@ -48,7 +48,6 @@ App
             //捕获返回异常
             responseError : function(response){
 
-                var defer = $q.defer();
                 var temp = {};
 
                 switch (response.status) {
@@ -73,17 +72,17 @@ App
                         temp.content  = "网络错误";
                 }
 
+//                var sp = {
+//                    content : temp.content,
+//                    title : "error",
+//                    status : response.status,
+//                    type : "danger"
+//                }
+//
+//                $rootScope.httpError = angular.copy(sp);
+                $rootScope.alertError(temp.content);
 
-                var sp = {
-                    content : temp.content,
-                    title : "error",
-                    status : response.status,
-                    type : "danger"
-                }
-
-                $rootScope.httpError = angular.copy(sp);
-
-                return defer.reject(response);
+                return $q.reject(response);
             }
         }
 

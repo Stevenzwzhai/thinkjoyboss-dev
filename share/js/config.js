@@ -73,7 +73,7 @@ App.constant("SERVER", {
 
 
 App.constant("VERSION",{
-    vs : "126"
+    vs : "127"
 });
 
 

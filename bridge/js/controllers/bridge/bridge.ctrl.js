@@ -260,11 +260,11 @@ App
         //服务端测试
         $scope.serverTest = function(){
 
-
             $scope.isServerSubmit = true;
-            BridgeService.startServerTest($scope.note.urlId,$scope.sevFm.ip,$scope.sevFm.port,$scope.sevFm.token,$scope.sevFm.rootPath).then(function(res){
 
 
+            BridgeService.startServerTest($scope.note.urlId,$scope.sevFm.ip,$scope.sevFm.port,$scope.sevFm.token,$scope.sevFm.rootPath)
+                .then(function(res){
                 var newRep = JSON.stringify( JSON.parse(res.responseBody));
                 res.responseBody =  formatJson(newRep);
                 $scope.note.serverTestResult = res;
@@ -273,11 +273,11 @@ App
                 var thisNote = getSelectNote($scope.note);
                 thisNote.serverTestResult = res;
 
-
                 $scope.isServerSubmit = false;
 
-            },function(){
+            },function(err){
                 $scope.isServerSubmit = false;
+
             });
 
         }
