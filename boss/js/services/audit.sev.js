@@ -70,6 +70,44 @@ App
                return defer.promise;
            },
 
+           /**
+            * 获得学校类型
+            * @returns {promise|dd.g.promise|qFactory.Deferred.promise}
+            */
+           getSchoolTypes : function(){
+               var defer =  $q.defer();
+               $http.post(SERVER.url.uc+"/schoolBoss/getAllSchoolTypeNoToken",{})
+                   .success(function(result){
+                       defer.resolve(result);
+                   })
+                   .error(function(err){
+                       defer.reject(err);
+                   });
+               return  defer.promise;
+           },
+
+           /**
+            * 添加学校
+            * @returns {promise|dd.g.promise|qFactory.Deferred.promise}
+            */
+           addSchool : function(schoolName,schoolTypeId,areaId,token){
+               var defer =  $q.defer();
+               $http.post(SERVER.url.uc+"/schoolBoss/addSchoolNoToken?token="+token,{
+                   data: {
+                       "schoolName": schoolName,
+                       "schoolTypeId": schoolTypeId,
+                       "areaId": areaId
+                   }
+               },{headers:{"is-json-data":1}})
+                   .success(function(result){
+                       defer.resolve(result);
+                   })
+                   .error(function(err){
+                       defer.reject(err);
+                   });
+               return  defer.promise;
+           },
+
            audit : function(id,type,status){
                var defer = $q.defer();
                $http.get(SERVER.url.uc + "/school/audit",{

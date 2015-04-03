@@ -25,8 +25,6 @@ App.controller('SingInCtrl', function($window,$scope,$rootScope,$state,Util,Sign
 
 
 
-
-
     $scope.user = {
         username : userName,
         password : "",
@@ -46,12 +44,12 @@ App.controller('SingInCtrl', function($window,$scope,$rootScope,$state,Util,Sign
             .then(function(res){
                 //登录成功
                 if(res.result){
-                    //设置 token
+
+                    //token session中
                     $window.sessionStorage.token = res.token;
+
                     //本地存储登录信息
                     Util.setSgObj("user",res.ucmUser);
-
-
 
                     //用户信息保存到cookie中
                     window.sessionStorage.setItem("user", JSON.stringify(res.ucmUser));
@@ -62,7 +60,6 @@ App.controller('SingInCtrl', function($window,$scope,$rootScope,$state,Util,Sign
                     Util.remove("sopRight");
                     Util.remove("notifyRight");
                     Util.remove("bridgeRight");
-
 
 
                     $state.go("launch");

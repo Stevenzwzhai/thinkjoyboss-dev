@@ -6,7 +6,6 @@ App
 
 
 
-
             getClassMessageInfoByCode : function(classCode,userType,count,queryTime){
                 var defer =  $q.defer();
                $http.post(SERVER.url.message+"/messageBoss/getClassMessages",

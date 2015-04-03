@@ -10,28 +10,26 @@
 
     <div class="row wrapper">
 
-        <div class="col-sm-6">
 
             <form name="schoolForm">
 
-                <div class="input-group">
-                    <input type="search" class="input-sm   form-control" placeholder="例: 西安市*小学"  ng-model="params.schoolName"   />
-              <span class="input-group-btn">
+                <div class="fx-row">
+
+                    <button  type="button" ng-click="create();" class="mr100 btn  m-l  btn-sm  btn-danger btn-addon mr100" ><i class="fa fa-plus"></i>创建学校</button>
+
+                        <input type="search" class="input-sm  fx-col-1  form-control" placeholder="例: 西安市*小学"  ng-model="params.schoolName"   />
+
+                        <button class="mr100 btn btn-sm btn-primary" type="button" ng-click="search();" ng-disabled="isSubmit">
+                            <span ng-show="isSubmit" class="">
+                                     <i class=" fa fa-refresh glyphicon-refresh"  ></i>
+                            </span>
+                            <span class=""  ng-hide="isSubmit">查询</span>
+                        </button>
 
 
-                <button class="btn btn-sm btn-primary" type="button" ng-click="search();" ng-disabled="isSubmit">
-                    <span ng-show="isSubmit" class="">
-                             <i class=" fa fa-refresh glyphicon-refresh"  ></i>
-                    </span>
-                    <span class=""  ng-hide="isSubmit">查询</span>
-                </button>
-
-
-              </span>
                 </div>
 
             </form>
-        </div>
     </div>
 
 

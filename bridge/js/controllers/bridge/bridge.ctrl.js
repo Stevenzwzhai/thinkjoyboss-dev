@@ -73,6 +73,13 @@ App
         }
 
 
+        //加载本地测试结构
+        var testAddress = Util.getLgObj("testAddress");
+        if(testAddress){
+           $scope.sevFm = testAddress;
+        }
+
+
         //监听完成
         $scope.$watch("params.url",function(newV){
             if(newV ==  ""){
@@ -257,11 +264,11 @@ App
         }
 
 
+
         //服务端测试
         $scope.serverTest = function(){
 
             $scope.isServerSubmit = true;
-
 
             BridgeService.startServerTest($scope.note.urlId,$scope.sevFm.ip,$scope.sevFm.port,$scope.sevFm.token,$scope.sevFm.rootPath)
                 .then(function(res){
@@ -272,6 +279,9 @@ App
                 //替换左侧菜单
                 var thisNote = getSelectNote($scope.note);
                 thisNote.serverTestResult = res;
+
+                 //如果执行成功保存到本地中
+                 Util.setLgObj("testAddress",$scope.sevFm);
 
                 $scope.isServerSubmit = false;
 

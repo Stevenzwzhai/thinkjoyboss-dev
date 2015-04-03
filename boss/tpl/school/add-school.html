@@ -1,0 +1,58 @@
+<div class="modal-header">
+    <h3 class="modal-title">创建学校</h3>
+</div>
+
+<div class="wrapper-md" >
+    <tabset class="tab-container" ng-init="steps={percent:20, step1:true, step2:false}">
+        <tab heading="第一步" active="steps.step1" select="steps.percent=30">
+            <p class="m-b">设置学校基本信息</p>
+            <progressbar value="steps.percent" class="progress-xs" type="info"></progressbar>
+
+            <form name="step1" class="form-validation">
+                <p class="m-b">选择学校类型:</p>
+                <select class="form-control" ng-model="fm.schoolType" required>
+                    <option value="">学校类型</option>
+                    <option value="{{schoolType.schoolTypeId}}" ng-repeat=" schoolType in  schoolTypeArray">
+                        {{schoolType.schoolTypeName}}
+                    </option>
+                </select>
+
+                <p class="m-b m-t">选择学校所在地区:</p>
+                <input select-address     ng-model="fm.address"  p="proviceName" c="cityName" a="districtName" d="d"   placeholder="请选择所在地" type="text" class="form-control"  required/>
+
+                <div class="m-t  text-right">
+                    <button type="submit" ng-disabled="step1.$invalid" class="btn btn-primary " ng-click="steps.step2=true">下一步</button>
+                </div>
+            </form>
+
+        </tab>
+        <tab heading="第二步" disabled="step1.$invalid" active="steps.step2" select="steps.percent=60">
+
+            <form name="step2" class="form-validation" >
+
+                <p class="m-b">填写学校重要信息</p>
+                <progressbar value="steps.percent" class="progress-xs" type="info"></progressbar>
+
+                <p class="m-b m-t">学校名称: </p>
+                <input type="text" placeholder="" ng-model="fm.schoolName" class="form-control"  required>
+
+                <div class="m-t  text-right">
+                    <button type="button" class="btn btn-default " ng-click="steps.step1=true">返回修改</button>
+                    <button type="submit" ng-disabled="step2.$invalid" class="btn btn-primary " ng-click="steps.percent=100;addSchool()">
+                         <span ng-show="isAddSchoolSubmit" class=""><i class=" fa fa-refresh glyphicon-refresh"  ></i></span>
+                         <span class=""  ng-hide="isAddSchoolSubmit">完成</span>
+                    </button>
+                </div>
+
+            </form>
+
+
+
+        </tab>
+
+    </tabset>
+</div>
+
+
+
+

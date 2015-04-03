@@ -33,6 +33,14 @@ App
         }
 
 
+
+        //创建学校
+        $scope.create = function(){
+            $rootScope.alertModal("boss/tpl/school/add-school.html","AddSchoolCtrl");
+        }
+
+
+
         //修改学校
         $scope.edit = function(sco){
             //选中

@@ -65,13 +65,15 @@ App
             setLgObj: function (key, value) {
                 return $window.localStorage.setItem(key, JSON.stringify(value));
             },
-
             getLg: function (key) {
                 return $window.localStorage.getItem(key);
             },
 
             setLg: function (key, value) {
                 $window.localStorage.setItem(key, value);
+            },
+            removeLg : function(key){
+                $window.localStorage.removeItem(key);
             }
 
 
