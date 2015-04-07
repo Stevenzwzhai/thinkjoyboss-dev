@@ -43,47 +43,47 @@ App
             //成功返回
             response : function(response){
                 return response;
-            },
+            }
 
             //捕获返回异常
-            responseError : function(response){
-
-                var temp = {};
-
-                switch (response.status) {
-                    case (500):
-                        temp.content  = "服务器错误(500)";
-                        break;
-                    case (401):
-                        temp.content  = "您未登录";
-
-                        break;
-                    case (403):
-                        temp.content  = "您没有权限";
-
-                        break;
-                    case (404):
-                        temp.content  = "没找到该资源(404)";
-                        break;
-                    case (408):
-                        temp.content  = "服务器超时";
-                        break;
-                    default:
-                        temp.content  = "网络错误";
-                }
-
-//                var sp = {
-//                    content : temp.content,
-//                    title : "error",
-//                    status : response.status,
-//                    type : "danger"
+//            responseError : function(response){
+//
+//                var temp = {};
+//
+//                switch (response.status) {
+//                    case (500):
+//                        temp.content  = "服务器错误(500)";
+//                        break;
+//                    case (401):
+//                        temp.content  = "您未登录";
+//
+//                        break;
+//                    case (403):
+//                        temp.content  = "您没有权限";
+//
+//                        break;
+//                    case (404):
+//                        temp.content  = "没找到该资源(404)";
+//                        break;
+//                    case (408):
+//                        temp.content  = "服务器超时";
+//                        break;
+//                    default:
+//                        temp.content  = "网络错误";
 //                }
 //
-//                $rootScope.httpError = angular.copy(sp);
-                $rootScope.alertError(temp.content);
-
-                return $q.reject(response);
-            }
+////                var sp = {
+////                    content : temp.content,
+////                    title : "error",
+////                    status : response.status,
+////                    type : "danger"
+////                }
+////
+////                $rootScope.httpError = angular.copy(sp);
+//                $rootScope.alertError(temp.content);
+//
+//                return $q.reject(response);
+//            }
         }
 
     });

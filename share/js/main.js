@@ -33,7 +33,7 @@ App
         });
 
 
-        //全局提示框
+//        //全局提示框
         $rootScope.$watch("httpError",function(temp){
 
             if(temp){

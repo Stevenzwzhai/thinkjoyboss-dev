@@ -48,7 +48,7 @@ App.constant("SERVER", {
 //          uc  : "http://172.16.130.172:8088",
           message : "http://10.10.68.11:10000/message",
 //          message : "http://10.10.68.12:8080/message",
-            "ucm"  : "http://10.10.68.13:8080/ucm",
+            "ucm"  : "http://172.16.130.53:8080/ucm",
             //线上
             push : "http://10.10.68.13:8080/notify",
             im   : "ws://10.10.68.13:8080/notify/customerIM",
