@@ -22,9 +22,6 @@ App.controller('SingInCtrl', function($window,$q,$scope,$rootScope,$state,Util,S
 
 
 
-
-
-
     $scope.user = {
         username : userName,
         password : "",
@@ -39,7 +36,6 @@ App.controller('SingInCtrl', function($window,$q,$scope,$rootScope,$state,Util,S
         $scope.authError = null;
 
 
-
 //        $q.all({
 //            login : SignInSev.login(user.username,user.password,user.account.typeName),
 //            launch : SignInSev.launch
@@ -50,11 +46,15 @@ App.controller('SingInCtrl', function($window,$q,$scope,$rootScope,$state,Util,S
 //            console.log("back");
 //        });
 
+
+
+
+        var  access_token;
+
         SignInSev.login(user.username,user.password,user.account.typeName)
             //login
             .then(function(res){
-                    //token session中
-                    $window.sessionStorage.token = res.access_token;
+                    access_token  =res.access_token;
                     return SignInSev.launch(res, user);
             },function(err){
                 console.log(err);
@@ -63,15 +63,23 @@ App.controller('SingInCtrl', function($window,$q,$scope,$rootScope,$state,Util,S
 
             //launch
             .then(function(res) {
-                //本地存储登录信息
-                Util.setSgObj("user",res.ucmUser);
-                $rootScope.user = res.ucmUser;
+
+                //存储本次accent_token
+                Util.setLg("accent_token",access_token);
+                $window.sessionStorage.token = access_token;
+
+                //存储本地用户信息
+                Util.setLgObj("user",res);
+
+                //暴露到全局
+                $rootScope.user = res;
 
                 //清理缓存部分
                 Util.remove("bossRight");
                 Util.remove("sopRight");
                 Util.remove("notifyRight");
                 Util.remove("bridgeRight");
+
                 $state.go("launch");
 
             },function(err) {

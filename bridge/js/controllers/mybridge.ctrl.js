@@ -7,5 +7,4 @@ App.controller("MyBridgeCtrl", function ($scope,$rootScope,Promise) {
     $scope.bridgeRight = newRight;
 
 
-
 });

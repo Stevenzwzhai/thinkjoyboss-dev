@@ -14,13 +14,20 @@ App
         //当前登录系统
         $rootScope.currentSys = "";
 
+        //加载本地用户
+        $rootScope.user = Util.getLgObj("user");
+
+
+        //token加入到运行中
+        var accent_token = Util.getLg("accent_token");
+        if(accent_token){
+            $window.sessionStorage.token =  accent_token;
+        }
+
 
         $rootScope.launchApp = function(role){
             $rootScope.currentSys  = role.sysCode;
         }
-
-        //将用户信息从本地读取出来，回填页面
-        $rootScope.user = JSON.parse(window.sessionStorage.getItem('user'));
 
 
         //系统发生变更

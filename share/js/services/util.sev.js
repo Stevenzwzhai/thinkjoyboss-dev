@@ -59,8 +59,14 @@ App
             },
 
             getLgObj: function (key) {
+
                 var obj = $window.localStorage.getItem(key);
-                return  JSON.parse(obj);
+                if(obj){
+                    return  JSON.parse(obj);
+                }
+                else{
+                    return "";
+                }
             },
             setLgObj: function (key, value) {
                 return $window.localStorage.setItem(key, JSON.stringify(value));

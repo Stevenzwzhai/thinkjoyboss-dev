@@ -8,18 +8,14 @@
         <div class="container launch">
 
 
-
             <div class="row text-center" style="margin-top: 150px;">
-
-                <div class="col-md-4 launch-cp" ng-repeat="role in $root.roleList">
-
-                    <a class=" ib animated fadeInUp text-center pointer"      href="{{role.homeUrl}}"   ng-click="$root.launchApp(role)" >
-                        <div class="thumb-lg">
-                            <img ng-src="{{role.icon}}" class="img-circle">
+                <div class="col-md-4 launch-cp" ng-repeat="system in $root.sysList " >
+                    <a class="block animated fadeInUp text-center pointer"      href="{{system.homeUrl}}"   ng-click="$root.launchApp(system)" >
+                        <div class="thumb-lg ovh" style="height: 96px;">
+                            <img ng-src="{{system.icon}}" class="img-circle" />
                         </div>
-                        <p class="h4 m-t m-b">{{role.sysDesc}}</p>
+                        <p class="h4 m-t m-b">{{system.sysDesc}}</p>
                     </a>
-
                 </div>
 
             </div>
