@@ -24,7 +24,7 @@ App.controller('LaunchCtrl', function($scope,$rootScope) {
                     obj.icon = "imgs/logo/mbridge-logo.jpg";
                     break;
                 case   "ucm":
-                    obj.sysDesc = "UCM";
+                    obj.sysDesc = "统一认证授权中心";
                     obj.homeUrl = "#app/ucm/setting";
                     obj.icon = "imgs/logo/default.jpg";
                     break;
