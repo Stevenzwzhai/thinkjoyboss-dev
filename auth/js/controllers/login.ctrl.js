@@ -7,8 +7,7 @@ App.controller('SingInCtrl', function($window,$q,$scope,$rootScope,$state,Util,S
 
     $scope.userTypes = [
         {"typeName" : "ldap", typeDesc : "域账号"},
-        {"typeName" : "uc", typeDesc : "知了"},
-        {"typeName" : "extend", typeDesc : "其他"},
+        {"typeName" : "zhiliao", typeDesc : "知了"}
     ];
 
 

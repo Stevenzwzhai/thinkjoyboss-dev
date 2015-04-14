@@ -38,9 +38,15 @@ App.controller('LaunchCtrl', function($scope,$rootScope) {
                     obj.homeUrl = "#app/notify/sms";
                     obj.icon = "imgs/logo/notify-logo.jpg";
                     break;
+
+
             }
 
+
+            if(obj.homeUrl){
                 sys.push(obj);
+            }
+
         }
 
         return sys;
