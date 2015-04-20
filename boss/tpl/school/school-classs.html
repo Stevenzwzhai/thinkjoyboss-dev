@@ -1,5 +1,5 @@
 <div class="bg-light lter b-b wrapper-md ng-scope">
-    <h1 class="m-n font-thin h3">学校管理</h1>
+    <h1 class="m-n font-thin h3">班级列表</h1>
 </div>
 
 
@@ -17,7 +17,7 @@
 
                     <button  type="button" ng-click="create();" class="mr100 btn  m-l  btn-sm  btn-danger btn-addon mr100" ><i class="fa fa-plus"></i>创建学校</button>
 
-                        <input type="search" class="input-sm  fx-col-1  form-control" placeholder="例: 西安市*小学"  ng-model="params.schoolName"   />
+                        <input type="search" class="input-sm  fx-col-1  form-control" placeholder="例: 班级查询"  ng-model="params.schoolName"   />
 
                         <button class="mr100 btn btn-sm btn-primary" type="button" ng-click="search();" ng-disabled="isSubmit">
                             <span ng-show="isSubmit" class="">
@@ -33,7 +33,7 @@
     </div>
 
 
-    <table-paging     is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="10"  params="params"  url="schoolUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total"   ng-show="posts.length > 0">
+    <table-paging   content-type="json"   is-submit="isSubmit"   refresh="refresh"  pageIndex="1"  pageSize="10"  params="params"  url="classUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total"   ng-show="posts.length > 0">
 
         <div class="table-responsive">
 
@@ -52,7 +52,7 @@
                         <tr ng-repeat="sco in posts">
                             <td>{{sco.schoolId}}</td>
                             <td>
-                                <div ng-hide="sco.edit"><a href="#/app/boss/schoolClass/{{sco.schoolId}}">{{sco.schoolName}}</a></div>
+                                <div ng-hide="sco.edit">{{sco.schoolName}}</div>
                                 <div ng-show="sco.edit"><input type="text"     class="input-sm form-control"  ng-model="sco.schoolName"  name="schoolName"  /></div>
                             </td>
                             <td>{{sco.createDate | date:"yyyy-MM-dd hh:mm:ss"}}</td>

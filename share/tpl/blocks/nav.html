@@ -54,6 +54,8 @@
 </li>
 
 <li class="line dk"></li>
+
+
 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components02.components">xxxxxx</span>
 </li>
@@ -93,9 +95,6 @@
 <li class="line dk"></li>
 </ul>
 <!-- Boss -->
-
-
-
 
 <!-- notify -->
 <ul class="nav" ng-show="$root.currentSys == 'notify'  ">
@@ -172,13 +171,13 @@
 </ul>
 
 
-
 <!-- bridge 部分 -->
 <ul class="nav" ng-show="$root.currentSys == 'mBridge'  ">
 <!-- bridge -->
 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components04.components">xxxxxx</span>
 </li>
+
 <li>
     <a  ui-sref-active="active" class="auto"  ui-sref="app.mbridge.bridge">
         <i class="fa fa-code-fork fa-lg text-primary-dker"></i>
@@ -196,9 +195,6 @@
 <li class="line dk"></li>
 </ul>
 <!-- bridge 部分 -->
-
-
-
 
 
 <!-- 数据分析 -->
@@ -253,27 +249,33 @@
 <!-- 数据分析 -->
 
 
+<!-- ucm -->
+<ul class="nav"  ng-show="$root.currentSys == 'ucm'  ">
+    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+        <span translate="aside.nav.components06.components">xxxxxx</span>
+    </li>
 
-<!--<ul class="nav">-->
-    <!--<li class="line dk hidden-folded"></li>-->
-    <!--<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">-->
-        <!--<span translate="aside.nav.your_stuff.YOUR_STUFF">xxxxxx</span>-->
-    <!--</li>-->
-    <!--<li>-->
-        <!--<a ui-sref="app.page.profile">-->
-            <!--<i class="icon-user icon text-success-lter"></i>-->
-            <!--<b class="badge bg-success pull-right">30%</b>-->
-            <!--<span translate="aside.nav.your_stuff.PROFILE">xxxxxx</span>-->
-        <!--</a>-->
-    <!--</li>-->
-    <!--<li>-->
-        <!--<a ng-click="openDoc();">-->
-            <!--<i class="icon-question icon"></i>-->
-            <!--<span translate="aside.nav.your_stuff.DOCUMENTS">xxxxxx</span>-->
-        <!--</a>-->
-    <!--</li>-->
+    <li>
+        <a href class="auto">
+      <!--<span class="pull-right text-muted">-->
+        <!--<i class="fa fa-fw fa-angle-right text"></i>-->
+        <!--<i class="fa fa-fw fa-angle-down text-active"></i>-->
+      <!--</span>-->
+            <i class="fa fa-pie-chart fa-lg text-primary-dker"></i>
+            <span class="font-bold" translate="aside.nav.components06.systemSetting.title">xxxxx</span>
+        </a>
+        <!--&lt;!&ndash; 报表 &ndash;&gt;-->
+        <!--<ul class="nav nav-sub dk">-->
+            <!--<li ui-sref-active="active">-->
+                <!--<a ui-sref="app.sop.report">-->
+                    <!--<span translate="aside.nav.components03.data_analysis.report">xxxxxx</span>-->
+                <!--</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+    </li>
+</ul>
 
-<!--</ul>-->
+
 
 
 

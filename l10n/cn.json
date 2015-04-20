@@ -121,6 +121,17 @@
             },
 
 
+          "components06":{
+            "components" : "UCM 用户中心",
+
+            "systemSetting" :{
+              "title" : "系统资源配置"
+            }
+
+
+          },
+
+
             "your_stuff" : {
                 "YOUR_STUFF": "BOSS 展示平台",
                 "PROFILE" : "个人信息",

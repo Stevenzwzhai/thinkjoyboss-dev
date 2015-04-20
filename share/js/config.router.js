@@ -95,6 +95,15 @@ App
                       }
                   }
               })
+
+              //学校下班级查询
+              .state("app.boss.schoolClass", {
+                  url: "/schoolClass/:schoolId",
+                  templateUrl: 'boss/tpl/school/school-classs.html?v='+VERSION.vs,
+                  controller: "SchoolClassCtrl"
+              })
+
+
               //班级管理
               .state("app.boss.class",{
                   url : "/class",
@@ -258,9 +267,25 @@ App
                   templateUrl : "bridge/tpl/bridge-setting-system.html?v="+VERSION.vs,
                   controller : "BridgeSettingSystemCtrl"
               })
-
-
               //bridge 路由部分
+
+
+
+              // ucm
+              .state("app.ucm", {
+                  url : "/ucm",
+                  abstract : true,
+                  templateUrl : "ucm/tpl/ucm.html",
+                  controller : "UcmCtrl"
+              })
+
+              //系统资源配置
+              .state("app.ucm.systemResSetting", {
+                  url : "/systemResSetting",
+                  templateUrl : "ucm/tpl/systemResSetting.html?v="+VERSION.vs,
+                  controller : "SystemResSettingCtrl"
+              })
+
 
             //login
               .state("auth", {
@@ -278,6 +303,14 @@ App
                   url : "/login",
                   templateUrl : "auth/tpl/signin.html?v="+VERSION.vs
               });
+
+
+
+
+
+
+
+
 
 
           //login

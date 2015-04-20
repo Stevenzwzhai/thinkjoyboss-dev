@@ -3,9 +3,14 @@ App.controller("userMapCtrl", function ($rootScope,$scope,$window,$log,$q,$timeo
 
     $scope.mapOption = {
         title : {
-            text: '注册用户全国分布图',
+            text: '',
             x:'center'
         },
+
+        option:{
+            backgroundColor : "#fff"
+        },
+
         tooltip : {
             trigger: 'item'
         },

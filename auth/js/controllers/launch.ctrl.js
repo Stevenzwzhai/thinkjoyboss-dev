@@ -25,7 +25,7 @@ App.controller('LaunchCtrl', function($scope,$rootScope) {
                     break;
                 case   "ucm":
                     obj.sysDesc = "统一认证授权中心";
-                    obj.homeUrl = "#app/ucm/setting";
+                    obj.homeUrl = "#app/ucm/systemResSetting";
                     obj.icon = "imgs/logo/default.jpg";
                     break;
                 case "sop":
@@ -38,7 +38,6 @@ App.controller('LaunchCtrl', function($scope,$rootScope) {
                     obj.homeUrl = "#app/notify/sms";
                     obj.icon = "imgs/logo/notify-logo.jpg";
                     break;
-
 
             }
 

@@ -44,7 +44,8 @@ App.constant("SERVER", {
     //测试
     testUrl : {
 //        uc  : "http://10.10.68.11:8080/uc",
-        uc  : "http://10.10.68.11:10000/uc",
+        uc  : "http://10.10.68.11:8000/uc",
+        //uc  : "http://10.10.68.11:10000/uc",
 //          uc  : "http://172.16.130.172:8088",
           message : "http://10.10.68.11:10000/message",
 //          message : "http://10.10.68.12:8080/message",
@@ -56,11 +57,10 @@ App.constant("SERVER", {
 //            mBridge : "http://192.168.1.100:8083/mBridge",
         mBridge : "http://10.10.68.16:8082/mBridge",
         credit : "http://10.10.68.11:8080/credit"
-
     },
     //预发布
     formalUrl : {
-        "ucm"  : "http://10.10.68.13:8080/ucm",
+        "ucm"  : "http://10.10.68.16:8081/ucm",
         uc  : "http://imzhiliao.com:10000/uc",
         message : "http://imzhiliao.com:10000/message",
         push : "http://121.41.61.218:8080/notify",
