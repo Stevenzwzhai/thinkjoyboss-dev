@@ -302,6 +302,10 @@ App
               .state("auth.setting", {
                   url : "/login",
                   templateUrl : "auth/tpl/signin.html?v="+VERSION.vs
+              })
+              .state("auth.resources", {
+                  url : "/resources",
+                  templateUrl : "auth/tpl/resources.html?v="+VERSION.vs
               });
 
 
