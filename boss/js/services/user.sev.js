@@ -7,7 +7,9 @@ App
 
             getUserInfo : function(phone){
                 var defer =  $q.defer();
-                $http.post(SERVER.url.uc+"/userBoss/getUserInfo?token=122",{
+                var token = window.sessionStorage.getItem("token");
+
+                $http.post(SERVER.url.uc+"/userBoss/getUserInfo?token=" + token,{
                        data : {
                            "phone" : phone
                        }
@@ -25,8 +27,9 @@ App
             },
             deletePhone : function(phone){
                 var defer =  $q.defer();
+                var token = window.sessionStorage.getItem("token");
 
-                $http.get(SERVER.url.message+"/message/deleteUserByPhone?token=&phone="+phone)
+                $http.get(SERVER.url.message+"/message/deleteUserByPhone?token=" + token + "&phone="+phone)
                     .success(function(result){
                         defer.resolve(result);
                     })
