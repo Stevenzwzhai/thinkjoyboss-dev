@@ -7,6 +7,21 @@ App
 
         var Util = {
 
+            isEmptyObject : function(model){
+                if (typeof model.rows === "object" && !(model.rows instanceof Array)){
+                    var hasProp = false;
+                    for (var prop in model.rows){
+                        hasProp = true;
+                        break;
+                    }
+                    if (hasProp){
+                        model.rows = [model.rows];
+                    }else{
+                        throw "model.rows is empty object";
+                        return false;
+                    }
+                }
+            },
             caclTotal : function($scope){
                 var size   = parseInt($scope.pageSize);
                 var total  = parseInt($scope.pageTotal);

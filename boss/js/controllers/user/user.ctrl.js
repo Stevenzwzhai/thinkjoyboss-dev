@@ -1,6 +1,6 @@
 App
 
-    .controller("UserCtrl", function ($rootScope,$scope,$window,$log,$q,$timeout,UserService) {
+    .controller("UserCtrl", function ($rootScope,$scope,$window,$log,$q,$timeout,Util,UserService) {
 
 
 
@@ -71,7 +71,11 @@ App
 
             UserService.getUserInfo(phone).then(function(res){
                 if(res.rtnCode == "0000000"){
-                    res = res.bizData;
+
+                    if(Util.isEmptyObject(res.bizData)){
+                        res = res.bizData;
+                    }
+
                 }
                 else if(res.rtnCode == "1000003"){
                     $rootScope.alertError("该用户不存在 或 手机号码错误！");
