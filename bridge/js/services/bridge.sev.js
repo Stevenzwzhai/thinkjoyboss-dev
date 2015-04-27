@@ -56,7 +56,6 @@ App
                 return  defer.promise;
             },
 
-
             addPoto : function (so) {
                 var defer = $q.defer();
 
@@ -135,7 +134,6 @@ App
                 return  defer.promise;
             },
 
-
             addBridge : function(url,sysCode,requestType,urlDesc,owner,requestBodyType){
                 var defer = $q.defer();
 
@@ -192,7 +190,6 @@ App
                 return  defer.promise;
 
             },
-
 
             //更新系统
             updateSystem: function(systemCode,systemName,mockPort){
@@ -305,7 +302,6 @@ App
 
             },
 
-
             //测试服务端请求
             updateBridgeTestReq : function(urlId,urlRequest){
                 var defer = $q.defer();
@@ -325,7 +321,6 @@ App
                 return  defer.promise;
 
             },
-
 
             startServerTest : function(urlId,ip,port,token,rootPath){
                  var defer = $q.defer();
@@ -366,7 +361,5 @@ App
                 return  defer.promise;
 
             }
-
-
         }
     });
