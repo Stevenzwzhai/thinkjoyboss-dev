@@ -173,13 +173,14 @@ App
                 return  defer.promise;
             },
 
-            removeSystem : function(systemCode,systemName,mockPort){
+            removeSystem : function(systemCode,systemName,mockPort,basePath){
                 var defer = $q.defer();
                 var token = window.sessionStorage.getItem("token");
                 $http.post(SERVER.url.mBridge + "/system/delete" + "?token=" + token,{
                     systemCode : systemCode,
                     systemName : systemName,
-                    mockPort : mockPort
+                    mockPort : mockPort,
+                    basePath: basePath
                 })
                     .success(function(data) {
                         defer.resolve(data);
@@ -192,39 +193,30 @@ App
             },
 
             //更新系统
-            updateSystem: function(systemCode,systemName,mockPort){
+            updateSystem: function(systemCode,systemName,basePath,mockPort){
                 var defer = $q.defer();
                 var token = window.sessionStorage.getItem("token");
 
                 var system = {
                     systemCode : systemCode,
                     systemName : systemName,
-                    mockPort : mockPort
+                    mockPort : mockPort,
+                    basePath : basePath
                 };
 
 
                 var st = JSON.stringify(system);
 
 
-                $http({
-                    method: 'POST',
-                    headers:{"is-json-data":1},
-                    url: SERVER.url.mBridge + "/system/update" + "?token=" + token,
-                    data:st
+
+
+                $http.post(SERVER.url.mBridge + "/system/update" + "?token=" + token,system,{headers:{"is-json-data":1}})
+                    .success(function(data) {
+                        defer.resolve(data);
                     })
-                    .success(function(data, status, headers){
-                        console.log(data);
+                    .error(function(err) {
+                        defer.reject(err);
                     });
-
-
-
-//                $http.post(SERVER.url.mBridge + "/system/update" + "?token=" + token,)
-//                    .success(function(data) {
-//                        defer.resolve(data);
-//                    })
-//                    .error(function(err) {
-//                        defer.reject(err);
-//                    });
 
 //
 //                var  temp = $resource(SERVER.url.mBridge + "/system/update?token=" + token,null,{
@@ -246,14 +238,15 @@ App
                 return  defer.promise;
             },
 
-            addSystem : function(systemCode,systemName,mockPort){
+            addSystem : function(systemCode,systemName,mockPort,basePath){
 
                 var defer = $q.defer();
                 var token = window.sessionStorage.getItem("token");
                 $http.post(SERVER.url.mBridge + "/system/add" + "?token=" + token,{
                     systemCode : systemCode,
                     systemName : systemName,
-                    mockPort : mockPort
+                    mockPort : mockPort,
+                    basePath : basePath
                 })
                     .success(function(data) {
                         defer.resolve(data);

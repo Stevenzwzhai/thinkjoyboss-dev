@@ -53,7 +53,8 @@ App
                     fieldValue : "",
                     system : {
                         systemCode  : "",
-                        systemName  : ""
+                        systemName  : "",
+                        basePath : ""
                     }
 
                 }
@@ -143,7 +144,8 @@ App
                 fieldValue : "",
                 system : {
                     systemCode  : "",
-                    systemName  : ""
+                    systemName  : "",
+                    basePath : ""
                 }
             }
         }
@@ -262,7 +264,8 @@ App
                 fieldValue : "",
                 system : {
                     systemCode  : "",
-                    systemName  : ""
+                    systemName  : "",
+                    basePath : ""
                 }
             }
         }
@@ -352,12 +355,17 @@ App
                 $rootScope.alertError("请指定系统编码!");
                 return;
             }
+            else if( $scope.fm.basePath == ""){
+
+                $rootScope.alertError("请指定系统测试基本路径!");
+                return;
+            }
             else if( $scope.fm.mockPort == ""){
                 $rootScope.alertError("请指定测试端口!");
             }
 
             try {
-                BridgeService.addSystem($scope.fm.systemCode,$scope.fm.systemName,$scope.fm.mockPort).then(function(res){
+                BridgeService.addSystem($scope.fm.systemCode,$scope.fm.systemName,$scope.fm.basePath,$scope.fm.mockPort).then(function(res){
                     if(res.result){
                         $rootScope.alertSuccess(res.resultDesc);
                         $scope.severSystemModelRefresh = true;
@@ -381,6 +389,7 @@ App
             $scope.fm = {
                 systemCode : "",
                 systemName : "",
+                basePath : "",
                 mockPort  : ""
             }
         }
@@ -389,7 +398,7 @@ App
         $scope.deleteServerMessage = function(sco){
             var conf =  window.confirm("确定要删除系统?");
             if(conf){
-                BridgeService.removeSystem(sco.systemCode,sco.systemName,sco.mockPort).then(function(res){
+                BridgeService.removeSystem(sco.systemCode,sco.systemName,sco.mockPort,sco.basePath).then(function(res){
                     if(res.result){
                         $rootScope.alertSuccess(res.resultDesc);
                         $scope.severSystemModelRefresh = true;
@@ -415,7 +424,7 @@ App
             //取消选中
             else{
 
-                BridgeService.updateSystem(sco.systemCode,sco.systemName,sco.mockPort).then(function(res){
+                BridgeService.updateSystem(sco.systemCode,sco.systemName,sco.basePath,sco.mockPort).then(function(res){
                     if(res.result){
                         $rootScope.alertSuccess("更新成功");
                     }
