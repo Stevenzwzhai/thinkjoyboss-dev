@@ -10,7 +10,7 @@
             <div class="col-sm-12">
                 <div class="m-b" >
 
-                    <select    class="form-control ib  input-sm  " ng-model="severMessageModelParams.sysCode" style="width: 150px; vertical-align: bottom; display: none;">
+                    <select    class="form-control ib  input-sm  " ng-model="severMessageModelParams.sysCode" style="width: 150px; vertical-align: bottom; ">
                         <option value="">请选择系统</option>
                         <option value="{{system.sysCode}}" ng-repeat=" system in  systems">
                             {{system.sysName}}
@@ -40,14 +40,14 @@
                                 <tr ng-show="isAdd">
 
                                     <td>
-                                        <select ng-model="fm.systemCode" required/>
-                                        <!--<input type="text" class="form-control input-sm" ng-model="fm.systemCode"  placeholder="英文标识唯一" required />-->
+                                        <!--<select ng-model="fm.systemCode" required/>-->
+                                        <input type="text" class="form-control input-sm" ng-model="fm.sysCode"  placeholder="系统标识，如：uc" required readonly />
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control input-sm" ng-model="fm.systemName" placeholder="中文名称" required />
+                                        <input type="text" class="form-control input-sm" ng-model="fm.resName" placeholder="用户登录" required />
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control input-sm" ng-model="fm.mockPort" placeholder="8080" required />
+                                        <input type="text" class="form-control input-sm" ng-model="fm.resValue" placeholder="/user/login" required />
                                     </td>
 
                                     <td>

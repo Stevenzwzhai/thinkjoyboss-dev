@@ -20,6 +20,7 @@
                 <tr>
                     <th>系统标识</th>
                     <th>系统名称</th>
+                    <th>基础请求路径</th>
                     <th>系统端口</th>
                     <th>操作</th>
                 </tr>
@@ -34,6 +35,9 @@
                     </td>
                     <td>
                         <input type="text" class="form-control input-sm" ng-model="fm.systemName" placeholder="中文名称" required />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control input-sm" ng-model="fm.basePath" placeholder="http://localhost:8080/uc" required />
                     </td>
                     <td>
                         <input type="text" class="form-control input-sm" ng-model="fm.mockPort" placeholder="8080" required />
@@ -54,6 +58,14 @@
                     <td>{{system.systemCode}}</td>
 
                     <td>{{system.systemName}}</td>
+
+                    <td>
+
+                        <span ng-if="!system.edit">{{system.basePath}}</span>
+                        <span class="ib" ng-hide="!system.edit">
+                                <input  type="text"    ng-model="system.basePath" class="form-control"  />
+                        </span>
+                    </td>
 
                     <td width="150">
                         <span ng-if="!system.edit">{{system.mockPort}}</span>
