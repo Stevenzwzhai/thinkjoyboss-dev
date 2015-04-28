@@ -74,9 +74,9 @@ App
 
 
         //加载本地测试结构
-        var testAddress = Util.getLgObj("testAddress");
+        var testAddress = Util.getLg("testAddress");
         if(testAddress){
-           $scope.sevFm = testAddress;
+           $scope.sevFm.urlVal = testAddress;
         }
 
 
@@ -269,8 +269,9 @@ App
         $scope.serverTest = function(){
 
             $scope.isServerSubmit = true;
+            var token = $window.sessionStorage.token;
 
-            BridgeService.startServerTest($scope.note.urlId,$scope.sevFm.ip,$scope.sevFm.port,$scope.sevFm.token,$scope.sevFm.rootPath)
+            BridgeService.startServerTest($scope.note.urlId,$scope.sevFm.urlVal,token)
                 .then(function(res){
                 var newRep = JSON.stringify( JSON.parse(res.responseBody));
                 res.responseBody =  formatJson(newRep);
@@ -281,7 +282,7 @@ App
                 thisNote.serverTestResult = res;
 
                  //如果执行成功保存到本地中
-                 Util.setLgObj("testAddress",$scope.sevFm);
+                 Util.setLg("testAddress",$scope.sevFm.urlVal);
 
                 $scope.isServerSubmit = false;
 

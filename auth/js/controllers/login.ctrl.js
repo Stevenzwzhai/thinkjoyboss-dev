@@ -67,6 +67,7 @@ App.controller('SingInCtrl', function($window,$q,$scope,$rootScope,$state,Util,S
                 Util.setLg("accent_token",access_token);
                 $window.sessionStorage.token = access_token;
 
+
                 //存储本地用户信息
                 Util.setLgObj("user",res);
 

@@ -322,16 +322,13 @@ App
 
             },
 
-            startServerTest : function(urlId,ip,port,token,rootPath){
+            startServerTest : function(urlId,urlVal,token){
                  var defer = $q.defer();
-
                 $http.get(SERVER.url.mBridge + "/exeServer",{
                     "params" :{
                         urlId : urlId,
-                        ip : ip,
-                        port : port,
-                        token : token,
-                        rootPath : rootPath
+                        url : urlVal,
+                        token : token
                     }
                 })
                 .success(function(data) {

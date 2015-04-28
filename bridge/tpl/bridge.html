@@ -321,23 +321,12 @@
                                     </div>
                                     <div class="panel-body">
                                         <form role="form"  name="serverTestForm" class="form-inline">
-                                            <div class="form-group">
-                                                <label for="ipaddress" class="sr-only">ip地址</label>
-                                                <input type="text" placeholder="ip地址" id="ipaddress"   ng-model="sevFm.ip" class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="iport" class="sr-only">端口号</label>
-                                                <input type="text" placeholder="端口号" id="iport"   ng-model="sevFm.port"  class="form-control" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="rootPath" class="sr-only">根路径</label>
-                                                <input type="text" placeholder="根路径" id="rootPath"   ng-model="sevFm.rootPath"  class="form-control" />
-                                            </div>
 
                                             <div class="form-group">
-                                                <label for="token" class="sr-only">token</label>
-                                                <input type="text" placeholder="没有token,请先执行login" id="token"   style="width:188px;"  ng-model="sevFm.token"  class="form-control" required>
+                                                <label for="urlVal" class="sr-only">url</label>
+                                                <input type="url" placeholder="http://" id="urlVal"   style="width:500px"  ng-model="sevFm.urlVal"  class="form-control" required>
                                             </div>
+
 
                                                 <span >
 

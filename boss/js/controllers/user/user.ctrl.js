@@ -3,14 +3,12 @@ App
     .controller("UserCtrl", function ($rootScope,$scope,$window,$log,$q,$timeout,Util,UserService) {
 
 
-
         //提交的表单
         $scope.form = {
             phone : "",
             submit   : false,
             token  : ""
         }
-
 
 
         $scope.$watch("form.phone",function(old){
@@ -28,7 +26,6 @@ App
 
 
             if(ques){
-
                 UserService.deletePhone(phone).then(function(result){
                     alert(result.msg);
                     $scope.form.submit = false;
@@ -71,11 +68,12 @@ App
 
             UserService.getUserInfo(phone).then(function(res){
                 if(res.rtnCode == "0000000"){
-
-                    if(Util.isEmptyObject(res.bizData)){
+                    if(res.bizData.userInfo){
                         res = res.bizData;
                     }
-
+                    else{
+                        res = "";
+                    }
                 }
                 else if(res.rtnCode == "1000003"){
                     $rootScope.alertError("该用户不存在 或 手机号码错误！");
