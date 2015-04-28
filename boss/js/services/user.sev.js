@@ -29,7 +29,7 @@ App
                 var defer =  $q.defer();
                 var token = window.sessionStorage.getItem("token");
 
-                $http.get(SERVER.url.message+"/message/deleteUserByPhone?token=" + token + "&phone="+phone)
+                $http.get(SERVER.url.message+"/messageBoss/deleteUserByPhone?token=" + token + "&phone="+phone)
                     .success(function(result){
                         defer.resolve(result);
                     })

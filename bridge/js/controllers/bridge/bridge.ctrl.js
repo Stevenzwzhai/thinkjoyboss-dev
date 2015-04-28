@@ -73,11 +73,7 @@ App
         }
 
 
-        //加载本地测试结构
-        var testAddress = Util.getLg("testAddress");
-        if(testAddress){
-           $scope.sevFm.urlVal = testAddress;
-        }
+
 
 
         //监听完成
@@ -282,7 +278,9 @@ App
                 thisNote.serverTestResult = res;
 
                  //如果执行成功保存到本地中
-                 Util.setLg("testAddress",$scope.sevFm.urlVal);
+                // Util.setLg("testAddress",$scope.sevFm.urlVal);
+
+
 
                 $scope.isServerSubmit = false;
 
@@ -372,7 +370,6 @@ App
             $scope.error  =  "";
 
 
-
             //格式化测试结果json
             $scope.note.serverTestResult.responseBody = formatJson( $scope.note.serverTestResult.responseBody);
 
@@ -381,6 +378,9 @@ App
 
             //协议响应json
             $scope.note.urlResponse = formatJson( $scope.note.urlResponse);
+
+            //添加basePath
+            $scope.sevFm.urlVal =  note.system.basePath + note.urlValue;
 
             $scope.posts.forEach(function(obj,index){
 
