@@ -130,6 +130,12 @@ App
                   controller: "CreditCtrl"
               })
 
+              //查询商品列表
+              .state('app.boss.market.product', {
+                  url:"/product",
+                  templateUrl: "boss/tpl/market/product-list.html?v="+VERSION.vs,
+                  controller: "ProductCtrl"
+              })
 
 
               //boss 部分...............
@@ -303,11 +309,6 @@ App
                   url : "/login",
                   templateUrl : "auth/tpl/signin.html?v="+VERSION.vs
               });
-
-
-
-
-
 
 
 

@@ -1,0 +1,76 @@
+
+
+
+<div class="bg-light lter b-b wrapper-md ng-scope">
+    <h1 class="m-n font-thin h3">商品列表</h1>
+</div>
+
+
+<div class="wrapper-md">
+
+    <div class="panel panel-default">
+
+
+
+        <div class="row wrapper">
+
+
+            <form name="schoolForm">
+
+                <div class="fx-row">
+                    <button  type="button" ng-click="addProduct();" class="mr100 btn  m-l  btn-sm  btn-danger btn-addon mr100" ><i class="fa fa-plus"></i>添加商品</button>
+                </div>
+
+            </form>
+        </div>
+
+
+        <table-paging   is-submit="isSubmit"   refresh="refresh"  content-type="json"  pageIndex="1"  pageSize="10"  params="params"  url="productUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total">
+
+            <div class="table-responsive">
+                <table class=" table table-striped b-t b-light">
+                    <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th>商品类型</th>
+                        <th>所需积分</th>
+                        <th>兑换/库存</th>
+                        <th>图片地址</th>
+                        <th>创建时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr ng-repeat="sco in posts">
+
+                        <td>{{sco.productionName}} </td>
+                        <td>{{sco.productionType}}</td>
+                        <td>{{sco.credit}}</td>
+                        <td>
+                            {{sco.exchangeCount}}/{{sco.count}}
+                        </td>
+                        <td>
+                            <img ng-src="{{sco.smallImage}}"  class="response-img" width="60"/>
+                        </td>
+                        <td>{{sco.createDate | date: 'yyyy-MM-dd'}}</td>
+                        <td>
+                            {{sco.status | productFilterStatus}}
+                        </td>
+                        <td>
+                            暂无
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </table-paging>
+    </div>
+</div>
+
+
+
+
+

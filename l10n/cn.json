@@ -51,6 +51,7 @@
                     "table" : {
                         "TABLE" : "营销管理",
                         "CREDIT" : "兑换记录",
+                        "PRODUCT" : "商品列表",
                     "DATATABLE" : "营销活动"
                 },
                 "form" : {

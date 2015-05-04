@@ -30,13 +30,10 @@ App
 
         $scope.isSubmit = false;
 
-
-
         //显示用户card
         $scope.userCard = function(post){
             $scope.fm.phone = post.exchangePhone;
         }
-
 
 
         //兑换状态

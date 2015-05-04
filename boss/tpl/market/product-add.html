@@ -1,0 +1,166 @@
+<div class="modal-header">
+    <h3 class="modal-title">添加商品</h3>
+</div>
+
+<div class="wrapper-md" >
+    <tabset class="tab-container" ng-init="steps={percent:20, step1:true, step2:false}">
+        <tab heading="第一步" active="steps.step1" select="steps.percent=30">
+            <p class="m-b">商品基本信息</p>
+            <progressbar value="steps.percent" class="progress-xs" type="info"></progressbar>
+
+
+            <form name="step1" class="form-validation">
+                <p class="m-b">商品类型:</p>
+                <select class="form-control" ng-model="fm.productionType" required>
+                    <option value="">请选择商品类型</option>
+                    <option value="{{productType.productTypeId}}" ng-repeat=" productType in  productTypes">
+                        {{productType.productTypeName}}
+                    </option>
+                </select>
+
+                <p class="m-b m-t">商品名称:</p>
+                <input   ng-model="fm.productionName"  placeholder="输入商品名称" type="text" class="form-control"  required/>
+
+                <p class="m-b m-t">商品积分:</p>
+                <input   ng-model="fm.credit"  placeholder="兑换商品所需积分" type="number" class="form-control"  required/>
+
+                <div class="row" style="margin-top: 16px;">
+                    <div class="col-sm-6">
+                        <label>商品库存</label>
+                        <input type="number" class="form-control" placeholder="库存数量" name="count" ng-model="fm.count" required >
+                    </div>
+                    <div class="col-sm-6">
+                        <label>商品排序</label>
+                        <input type="number" class="form-control" name="sortno" placeholder="排序1-n" required ng-model="fm.sortno" required>
+                    </div>
+                </div>
+
+                <div class="m-t  text-right">
+                    <button type="submit" ng-disabled="step1.$invalid" class="btn btn-primary " ng-click="steps.step2=true">下一步</button>
+                </div>
+            </form>
+
+        </tab>
+        <!--<tab heading="第二步" disabled="step1.$invalid" active="steps.step2" select="steps.percent=30">-->
+        <tab heading="第二步" select="steps.percent=30">
+
+            <form name="step2" class="form-validation" >
+
+                <p class="m-b">商品详情</p>
+                <progressbar value="steps.percent" class="progress-xs" type="info"></progressbar>
+
+
+
+                <p class="m-b m-t">商品介绍: </p>
+                <div>
+
+                    <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="addObj(fm.comment.productInfo);"><i class="fa fa-plus"></i>添加</button>
+
+
+                    <!-- 商品介绍 -->
+                    <div class="row" style="margin-top: 16px;" ng-repeat=" productInfo in fm.comment.productInfo">
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="标签" name="count" ng-model="productInfo.key" required />
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" name="sortno" placeholder="值"  ng-model="productInfo.value" required />
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="removeObj('id',productInfo,fm.comment.productInfo);"><i class="fa fa-trash-o"></i>删除</button>
+                        </div>
+                    </div>
+
+
+                    <!-- 截止时间 -->
+                    <p class="m-b m-t">截止时间: </p>
+
+                    <div style="">
+                        <p class="input-group">
+                           <input type="date"  placeholder="输入时间" ng-model="fm.comment.time" class="form-control" required />
+                        </p>
+                    </div>
+
+
+                    <!--标签 -->
+                    <p class="m-b m-t">HOT标签: </p>
+                        <div style="margin-top: 16px;">
+                            <label class="i-checks">
+                            <input type="checkbox" ng-model="hotLabel"><i></i>使用标签
+                            </label>
+                        </div>
+
+                    <div class="row" style="margin-top: 16px;"  ng-if="hotLabel">
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" placeholder="用户专享"  ng-model="fm.comment.label.name" required >
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" placeholder="知了用户专享】京东购物卡-京东e卡"  ng-model="fm.comment.label.value" required>
+                        </div>
+                    </div>
+                    <!-- 商品描述 -->
+                    <p class="m-b m-t">商品描述: </p>
+                    <input type="text" class="form-control" placeholder="商品描述"  ng-model="fm.comment.productDesc" required >
+
+
+                    <!-- 兑换流程 -->
+                    <div>
+                        <p class="m-b m-t">兑换流程: </p>
+                        <textarea   class="form-control" ng-model="fm.comment.exchange" placeholder="输入兑换流程,以逗号分隔" required> </textarea>
+                    </div>
+
+
+                    <!-- 使用方式 -->
+                    <div ng-if="fm.productionType == '3' ">
+                        <p class="m-b m-t">使用方式: </p>
+                        <textarea   class="form-control" ng-model="fm.comment.usechange" placeholder="输入使用方式,以逗号分隔" required> </textarea>
+                    </div>
+
+
+                </div>
+
+
+                <div class="m-t  text-right">
+                    <button type="button" class="btn btn-default " ng-click="steps.step1=true">返回修改</button>
+                    <button type="submit" ng-disabled="step2.$invalid" class="btn btn-primary " ng-click="steps.percent=100;addSchool()">
+                        <span ng-show="isAddSchoolSubmit" class=""><i class=" fa fa-refresh glyphicon-refresh"  ></i></span>
+                        <span class=""  ng-hide="isAddSchoolSubmit">完成</span>
+                    </button>
+                </div>
+
+            </form>
+
+
+
+        </tab>
+
+        <tab heading="第三步" select="steps.percent=40">
+
+            <form name="step3" class="form-validation" >
+                <p class="m-b">商品图片</p>
+                <progressbar value="steps.percent" class="progress-xs" type="info"></progressbar>
+
+                <p class="m-b m-t">商品小图: </p>
+                <div class="b-a b-2x b-dashed wrapper-lg bg-white text-center m-b" nv-file-over="" over-class="b-info" uploader="uploader">
+                    Base drop zone
+                </div>
+
+                <div class="m-t  text-right">
+                    <button type="button" class="btn btn-default " ng-click="steps.step3=true">返回修改</button>
+                    <button type="submit" ng-disabled="step3.$invalid" class="btn btn-primary " ng-click="steps.percent=100;addSchool()">
+                        <span ng-show="isAddSchoolSubmit" class=""><i class=" fa fa-refresh glyphicon-refresh"  ></i></span>
+                        <span class=""  ng-hide="isAddSchoolSubmit">完成</span>
+                    </button>
+                </div>
+
+            </form>
+
+
+
+        </tab>
+
+    </tabset>
+</div>
+
+
+
+

@@ -215,6 +215,7 @@ App
 
 
 
+
       $scope.$watch('app.settings', function(newVal,oldVal){
 
         if( $scope.app.settings.asideDock  &&  $scope.app.settings.asideFixed ){
@@ -253,6 +254,20 @@ App
           // Checks for iOs, Android, Blackberry, Opera Mini, and Windows mobile devices
           return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
       }
+
+
+        //数组删除
+        Array.prototype.remove = function (dx) {
+            if (isNaN(dx) || dx > this.length) {
+                return false;
+            }
+            for (var i = 0, n = 0; i < this.length; i++) {
+                if (this[i] != this[dx]) {
+                    this[n++] = this[i];
+                }
+            }
+            this.length -= 1;
+        };
 
 
 
