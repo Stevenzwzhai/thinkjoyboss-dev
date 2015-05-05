@@ -63,8 +63,8 @@ App
             productionName : "",
             count : "",
             sortno : "",
-            limitNumber : "",
-            restrictType : "",
+            limitNumber : 0,
+            restrictType : 5,
             startTime : "",
             endTime : "",
             smallImage  : "",
@@ -114,19 +114,24 @@ App
         $scope.publishProduct = function(){
 
             //序列号comment
-            $scope.fm.comment = JSON.stringify($scope.fm.comment);
+            //$scope.fm.comment = JSON.stringify($scope.fm.comment);
+            $scope.fm.productionType = parseInt($scope.fm.productionType);
             $scope.fm.startTime = new Date($scope.fm.startTime).getTime();
+
             $scope.fm.endTime = new Date($scope.fm.endTime).getTime();
             console.log($scope.fm);
 
-            CreditService.addProduct($scope.fm)
-                .success(function(res){
-                    console.log(res);
-                        $rootScope.alertInfo(res.msg);
 
-            })
-                .error(function(){
-                    $rootScope.alertError("服务器错误!");
+            CreditService.addProduct($scope.fm).then(function(res){
+                if(res.rtnCode == "0000000"){
+                    $rootScope.alertSuccess("","添加完成!");
+                }
+                else {
+                    $rootScope.alertError("",res.msg);
+                }
+
+            },function(err){
+                $rootScope.alertError("服务器错误!");
             });
 
         }

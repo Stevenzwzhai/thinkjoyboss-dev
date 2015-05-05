@@ -1,10 +1,10 @@
 App
 
-    .factory("UploadSev", function (Upload,$window) {
+    .factory("UploadSev", function (Upload,SERVER) {
         return {
             upload : function(file){
                 return  Upload.upload({
-                    url: "http://10.10.68.11:10000/file/upload/savefile.shtml", // upload.php script, node.js route, or servlet url
+                    url:  SERVER.url.file+"/upload/savefile.shtml", // upload.php script, node.js route, or servlet url
                     method: 'POST',
                     file: file,
                     headers: {'is-mutile-data': "1"},

@@ -24,8 +24,15 @@ App
                 return  defer.promise;
             },
 
-            addProduct : function(data){
+            addProduct : function(dt){
                 var defer =  $q.defer();
+                var data = {
+                    "style": "",
+                    "data": dt,
+                    "clientInfo": {}
+                }
+
+
                 $http.post(SERVER.url.credit+"/boss/addProduction",data,
                     {headers:{"is-json-data":1}})
                     .success(function(result){

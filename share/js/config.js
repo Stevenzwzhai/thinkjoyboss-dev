@@ -57,7 +57,7 @@ App.constant("SERVER", {
 //            mBridge : "http://172.16.130.99:8083/mBridge",
         mBridge : "http://10.10.68.16:8082/mBridge",
         credit : "http://10.10.68.11:8080/credit",
-        file : ""
+        file : "http://10.10.68.11:10000/file"
     },
     //预发布
     formalUrl : {
@@ -69,7 +69,7 @@ App.constant("SERVER", {
         sop  : "http://121.41.61.218:9003",
         mBridge : "http://10.10.68.16:8082/mBridge",
         credit : "http://imzhiliao.com:10000/credit",
-        file : ""
+        file : "http://imzhiliao.com:10000/file"
     }
 });
 
