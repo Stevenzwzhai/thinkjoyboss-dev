@@ -55,8 +55,6 @@ App
                                 controller : "AuditClassCtrl"
                             }
                         }
-
-
                     })
 
                     //审核科目

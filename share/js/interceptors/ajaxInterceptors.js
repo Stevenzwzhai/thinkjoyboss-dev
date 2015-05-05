@@ -9,7 +9,11 @@ App
             'request' : function(config ){
 
                 if(config.method == "POST"){
-                    if(!config.headers['is-json-data'] ){
+                    if(config.headers['is-mutile-data']){
+                        delete config.headers['is-mutile-data'];
+                        //config.headers['Content-Type'] = "multipart/form-data";
+                    }
+                    else if(!config.headers['is-json-data'] ){
                         config.headers['Content-Type'] = "application/x-www-form-urlencoded;charset=utf-8";
                         config.transformRequest = function(obj) {
                             var str = [];
@@ -17,7 +21,8 @@ App
                                 str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
                             return str.join("&");
                         }
-                    } else {
+                    }
+                    else {
                         delete config.headers['is-json-data'];
                         config.headers['Content-Type'] = "application/json; charset=utf-8";
                     }

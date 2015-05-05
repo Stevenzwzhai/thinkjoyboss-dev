@@ -34,7 +34,7 @@ App
         $scope.isSubmit = false;
     })
 
-    .controller("ProductAddCtrl", function ($rootScope, $scope, Util,ConstantProductType) {
+    .controller("ProductAddCtrl", function ($rootScope, $scope, UploadSev,CreditService,$http,Util,ConstantProductType) {
 
         console.log("add product....");
 
@@ -57,6 +57,7 @@ App
         };
 
 
+
         $scope.fm = {
             productionType : "",
             productionName : "",
@@ -72,10 +73,67 @@ App
             comment : {
                 productInfo : [],
                 productImage : [],
-                time : "2015-05-06"
+                time : ""
             }
         }
 
+        //上传图片
+        $scope.uploadPic = function (files,$event,type) {
+            if (files && files.length) {
+                for (var i = 0; i < files.length; i++) {
+                    var temp = files[i];
+                    UploadSev.upload(temp).progress(function (evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                        console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+                    }).success(function (data, status, headers, config) {
+                        if(data.code == "200"){
+
+                            if(type == "small"){
+                                $scope.fm.smallImage = data.data.url;
+                            }
+                            else if(type== "medium"){
+                                $scope.fm.mediumImage = data.data.url;
+                            }
+                            else if(type== "big"){
+                                $scope.fm.bigImage = data.data.url;
+                            }
+                            else if(type == "info"){
+                                $scope.fm.comment.productImage.push(data.data.url);
+                            }
+                        }
+                        else{
+                            alert(data.code);
+                        }
+                    });
+                }
+            }
+        };
+
+
+        //发布实物
+        $scope.publishProduct = function(){
+
+            //序列号comment
+            $scope.fm.comment = JSON.stringify($scope.fm.comment);
+            $scope.fm.startTime = new Date($scope.fm.startTime).getTime();
+            $scope.fm.endTime = new Date($scope.fm.endTime).getTime();
+            console.log($scope.fm);
+
+            CreditService.addProduct($scope.fm)
+                .success(function(res){
+                    console.log(res);
+                        $rootScope.alertInfo(res.msg);
+
+            })
+                .error(function(){
+                    $rootScope.alertError("服务器错误!");
+            });
+
+        }
+
+
+
+        $scope.reloadFile = "";
         $scope.hotLabel = false;
 
 
@@ -108,8 +166,6 @@ App
                 }
             }
         }
-
-
 
         //删除数组指定的字段
 

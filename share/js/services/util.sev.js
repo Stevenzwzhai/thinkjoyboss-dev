@@ -20,6 +20,7 @@ App
             return uuid;
         },
 
+
             isEmptyObject : function(model){
                 if (typeof model.rows === "object" && !(model.rows instanceof Array)){
                     var hasProp = false;

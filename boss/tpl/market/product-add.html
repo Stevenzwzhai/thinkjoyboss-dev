@@ -41,21 +41,17 @@
             </form>
 
         </tab>
-        <!--<tab heading="第二步" disabled="step1.$invalid" active="steps.step2" select="steps.percent=30">-->
-        <tab heading="第二步" select="steps.percent=30">
+        <tab heading="第二步" disabled="step1.$invalid" active="steps.step2" select="steps.percent=40">
 
-            <form name="step2" class="form-validation" >
+            <form name="step2" class="form-validation"  >
 
                 <p class="m-b">商品详情</p>
                 <progressbar value="steps.percent" class="progress-xs" type="info"></progressbar>
 
 
-
                 <p class="m-b m-t">商品介绍: </p>
                 <div>
-
                     <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="addObj(fm.comment.productInfo);"><i class="fa fa-plus"></i>添加</button>
-
 
                     <!-- 商品介绍 -->
                     <div class="row" style="margin-top: 16px;" ng-repeat=" productInfo in fm.comment.productInfo">
@@ -72,11 +68,20 @@
 
 
                     <!-- 截止时间 -->
+
+                    <p class="m-b m-t">开始时间: </p>
+
+                    <div style="">
+                        <p class="input-group">
+                            <input type="date"  placeholder="输入开始时间" ng-model="fm.startTime" class="form-control" required />
+                        </p>
+                    </div>
+
                     <p class="m-b m-t">截止时间: </p>
 
                     <div style="">
                         <p class="input-group">
-                           <input type="date"  placeholder="输入时间" ng-model="fm.comment.time" class="form-control" required />
+                           <input type="date"  placeholder="输入截止时间" ng-model="fm.endTime" class="form-control" required />
                         </p>
                     </div>
 
@@ -121,32 +126,62 @@
 
                 <div class="m-t  text-right">
                     <button type="button" class="btn btn-default " ng-click="steps.step1=true">返回修改</button>
-                    <button type="submit" ng-disabled="step2.$invalid" class="btn btn-primary " ng-click="steps.percent=100;addSchool()">
+                    <button type="submit" ng-disabled="step2.$invalid" class="btn btn-primary "  ng-click="steps.step3=true;" >
                         <span ng-show="isAddSchoolSubmit" class=""><i class=" fa fa-refresh glyphicon-refresh"  ></i></span>
-                        <span class=""  ng-hide="isAddSchoolSubmit">完成</span>
+                        <span class=""  ng-hide="isAddSchoolSubmit">下一步</span>
                     </button>
                 </div>
 
             </form>
 
 
-
         </tab>
 
-        <tab heading="第三步" select="steps.percent=40">
-
+        <tab heading="第三步"  disabled="step2.$invalid" active="steps.step3"  select="steps.percent=70">
             <form name="step3" class="form-validation" >
                 <p class="m-b">商品图片</p>
                 <progressbar value="steps.percent" class="progress-xs" type="info"></progressbar>
 
-                <p class="m-b m-t">商品小图: </p>
-                <div class="b-a b-2x b-dashed wrapper-lg bg-white text-center m-b" nv-file-over="" over-class="b-info" uploader="uploader">
-                    Base drop zone
-                </div>
+
+                <section>
+                    <p class="m-b m-t">商品小图: </p>
+                    <button  class="btn btn-primary btn-sm"     ngf-select     ngf-change="uploadPic($files,$event,'small')">上传小图</button>
+                    <img ng-src="{{fm.smallImage}}"  ng-model="fm.smallImage"  width="60" height="60" required />
+                </section>
+
+                <section>
+                    <p class="m-b m-t">商品中图: </p>
+                    <button  class="btn btn-primary btn-sm"    ngf-select     ngf-change="uploadPic($files,$event,'medium')">上传中图</button>
+                    <img ng-src="{{fm.mediumImage}}"  ng-model="fm.mediumImage"   width="60" height="60"  required/>
+                </section>
+
+                <section>
+                    <p class="m-b m-t">商品大图: </p>
+                    <button  class="btn btn-primary btn-sm"    ngf-select     ngf-change="uploadPic($files,$event,'big')">上传大图</button>
+                    <img ng-src="{{fm.bigImage}}"  ng-model="fm.bigImage"  width="60" height="60" required />
+                </section>
+
+                <section>
+                    <p class="m-b m-t">商品详情图片: </p>
+                    <button  class="btn btn-success btn-sm"    ngf-select     ngf-change="uploadPic($files,$event,'info')">上传详情图</button>
+                    <div ng-repeat="proImg in fm.comment.productImage">
+                        <img  ng-model="proImg"  ng-src="{{proImg}}" width="60" height="60"  required/>
+                    </div>
+                </section>
+
+                <!--<section>-->
+                    <!--<p class="m-b m-t">商品中图: </p>-->
+                    <!--<input type="file"  name="productSmall"  name="productSmall" />-->
+                <!--</section>-->
+
+                <!--<input type="file" name="file" ng-model="reloadFile" ng-file-change="uploadPic($files)" />-->
+
+                <!--<input type="file" class="btnAddStory"  name="file"  id="file"/>-->
+                <!--<button type="button" ng-click="continueFileUpload(document.getElementById('file'));">点我</button>-->
 
                 <div class="m-t  text-right">
                     <button type="button" class="btn btn-default " ng-click="steps.step3=true">返回修改</button>
-                    <button type="submit" ng-disabled="step3.$invalid" class="btn btn-primary " ng-click="steps.percent=100;addSchool()">
+                    <button type="submit" ng-disabled="step3.$invalid" class="btn btn-primary " ng-click="steps.percent=100;publishProduct()">
                         <span ng-show="isAddSchoolSubmit" class=""><i class=" fa fa-refresh glyphicon-refresh"  ></i></span>
                         <span class=""  ng-hide="isAddSchoolSubmit">完成</span>
                     </button>

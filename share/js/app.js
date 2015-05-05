@@ -17,5 +17,6 @@ var App = angular.module('app', [
     'oc.lazyLoad',
     'pascalprecht.translate',
     'luegg.directives',
-    "infinite-scroll"
+    "infinite-scroll",
+    "ngFileUpload"
 ]);
