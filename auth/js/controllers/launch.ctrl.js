@@ -38,9 +38,12 @@ App.controller('LaunchCtrl', function($scope,$rootScope) {
                     obj.homeUrl = "#app/notify/sms";
                     obj.icon = "imgs/logo/notify-logo.jpg";
                     break;
-
+                case "foot":
+                    obj.sysDesc = "足迹";
+                    obj.homeUrl = "http://115.29.184.78:5601";
+                    obj.icon = "imgs/logo/foot-logo.jpg";
+                    break;
             }
-
 
             if(obj.homeUrl){
                 sys.push(obj);

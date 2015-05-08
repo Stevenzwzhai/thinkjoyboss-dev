@@ -311,9 +311,6 @@ App
               });
 
 
-
-
-
           //login
           $urlRouterProvider.otherwise('/auth/login');
 

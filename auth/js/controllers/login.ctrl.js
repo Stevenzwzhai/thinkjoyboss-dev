@@ -12,12 +12,21 @@ App.controller('SingInCtrl', function($window,$q,$scope,$rootScope,$state,Util,S
 
 
 
+
+
+
+
     //判断localstorage
     var tempUser = Util.getSgObj("user");
     var userName= "";
     if(tempUser){
         userName = tempUser.accountName;
     }
+
+
+    //读出系统环境
+    $rootScope.setting.env  = false;
+    Util.setLg("env",0);
 
 
 
