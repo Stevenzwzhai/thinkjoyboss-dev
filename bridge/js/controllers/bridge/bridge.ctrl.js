@@ -95,7 +95,6 @@ App
                 var str = message.substring(first+4,second);
                 console.log(str);
 
-
         }
 
 

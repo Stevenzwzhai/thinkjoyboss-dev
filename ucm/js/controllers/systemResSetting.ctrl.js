@@ -27,9 +27,9 @@ App.controller("SystemResSettingCtrl",function($rootScope, $scope, Promise, SERV
     $scope.systemResourceSubmit = false;
 
     //监听完成
-    $scope.$watch("systemResourceParams.schoolName",function(newV){
-        if(newV == ""){
-            $scope.refresh = true;
+    $scope.$watch("systemResourceParams.sysId",function(val){
+        if(val){
+            $scope.systemResourceRefresh = true;
         }
     });
 
@@ -44,9 +44,9 @@ App.controller("SystemResSettingCtrl",function($rootScope, $scope, Promise, SERV
         $scope.fm.resourceName = "";
         $scope.fm.resourceValue = "";
         $scope.fm.sysId = "";
+        $scope.isAdd = false;
 
     }
-
 
 
 
@@ -69,7 +69,6 @@ App.controller("SystemResSettingCtrl",function($rootScope, $scope, Promise, SERV
             if(res.operStatus){
                 $rootScope.alertSuccess(res.operDesc);
                 $scope.systemResourceRefresh = true;
-                $scope.resetFm();
             }
             else{
                 $rootScope.alertError(res.operDesc);
@@ -87,13 +86,39 @@ App.controller("SystemResSettingCtrl",function($rootScope, $scope, Promise, SERV
         }
         //取消选中
         else{
-            AuditService.updateSchool(sco.id,sco.schoolName).then(function(res){
-                $rootScope.alertSuccess(res.msg);
+            systemResService.updateResource(sco).then(function(res){
+                if(res.operStatus){
+                    $rootScope.alertSuccess(res.operDesc);
+                    $scope.systemResourceRefresh = true;
+                }
+                else{
+                    $rootScope.alertError(res.operDesc);
+                }
                 sco.edit  =false;
 
             }).then(function(){
-
                 sco.edit  =false;
+            });
+        }
+
+
+
+    }
+
+    $scope.delete = function(resource){
+        var ques=window.confirm("确定要删除  "+resource.resourceName+"  吗？");
+        if(ques){
+            //数据修改
+            systemResService.removeResource(resource).then(function(res){
+                if(res.operStatus){
+                    $rootScope.alertSuccess(res.operDesc);
+                    $scope.systemResourceRefresh = true;
+                }
+                else{
+                    $rootScope.alertError(res.operDesc);
+                }
+
+            }).then(function(){
             });
         }
 

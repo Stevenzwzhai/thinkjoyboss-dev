@@ -52,8 +52,12 @@
                         <tr ng-repeat="sco in posts">
                             <td>{{sco.schoolId}}</td>
                             <td>
-                                <div ng-hide="sco.edit"><a href="#/app/boss/schoolClass/{{sco.schoolId}}">{{sco.schoolName}}</a></div>
-                                <div ng-show="sco.edit"><input type="text"     class="input-sm form-control"  ng-model="sco.schoolName"  name="schoolName"  /></div>
+                                <div ng-hide="sco.edit">
+                                    <a href="#/app/boss/schoolClass/{{sco.schoolId}}">{{sco.schoolName}}</a>
+                                </div>
+                                <div ng-show="sco.edit">
+                                    <input type="text"     class="input-sm form-control"  ng-model="sco.schoolName"  name="schoolName"  />
+                                </div>
                             </td>
                             <td>{{sco.createDate | date:"yyyy-MM-dd hh:mm:ss"}}</td>
                             <td>{{sco.lastModDate | date:"yyyy-MM-dd hh:mm:ss"}}</td>

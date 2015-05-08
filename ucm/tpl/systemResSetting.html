@@ -10,8 +10,8 @@
             <div class="col-sm-12">
                 <div class="m-b" >
 
-                    <select    class="form-control ib  input-sm  " ng-model="severMessageModelParams.sysCode" style="width: 150px; vertical-align: bottom; ">
-                        <option value="">请选择系统</option>
+                    <select    class="form-control ib  input-sm  " ng-model="systemResourceParams.sysId" style="width: 150px; vertical-align: bottom; ">
+                        <option value="0">请选择系统</option>
                         <option value="{{system.id}}" ng-repeat=" system in  systems">
                             {{system.sysName}}
                         </option>
@@ -68,14 +68,28 @@
                                 </tr>
 
                                 <tr ng-repeat="resource in systemResourcePosts">
-                                    <td>{{resource.sysCode}}</td>
+                                    <td>
+                                        {{::resource.sysCode}}
+                                    </td>
 
                                     <td>
-                                        {{resource.resourceName}}
+                                        <div ng-hide="resource.edit">
+                                            {{::resource.resourceName}}
+                                        </div>
+                                        <div ng-show="resource.edit">
+                                            <input type="text"     class="input-sm form-control"  ng-model="resource.resourceName"  name="resourceName"  />
+                                        </div>
 
                                     </td>
 
-                                    <td>{{resource.resourceValue}}</td>
+                                    <td>
+                                        <div ng-hide="resource.edit">
+                                            {{::resource.resourceValue}}
+                                        </div>
+                                        <div ng-show="resource.edit">
+                                            <input type="text"     class="input-sm form-control"  ng-model="resource.resourceValue"  name="resourceValue"  />
+                                        </div>
+                                    </td>
 
                                     <td>
                                         <a href  ui-toggle-class  ng-click="edit(resource)">
