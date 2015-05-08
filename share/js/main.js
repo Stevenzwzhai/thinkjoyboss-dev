@@ -136,7 +136,7 @@ App
       //应用设置参数
       $scope.app = {
         name: '云服务',
-        version: '0.0.3',
+        version: VERSION.vs,
         // for chart colors
         color: {
           primary: '#7266ba',
