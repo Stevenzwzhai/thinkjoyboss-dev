@@ -1,16 +1,16 @@
 App
 
-    .controller("UserCtrl", function ($rootScope,$scope,$window,$log,$q,$timeout,Util,UserService) {
+    .controller("UserCtrl", function ($rootScope,$scope,$stateParams, $state, $window,$log,$q,$timeout,Util,UserService,CreditService) {
 
-
+        console.log($stateParams.phone);
         //提交的表单
         $scope.form = {
-            phone : "",
+            phone : $stateParams.phone,
             submit   : false,
             token  : ""
         }
 
-
+        $scope.bizData="";
         $scope.$watch("form.phone",function(old){
                 if(!old){
                     $scope.res = "";
@@ -58,14 +58,15 @@ App
 
         }
 
+        $scope.creadte=function(){
 
+        }
 
 
         $scope.seachUser = function(){
 
             $scope.form.submit = true;
             var phone = $scope.form.phone.trim();
-
             UserService.getUserInfo(phone).then(function(res){
                 if(res.rtnCode == "0000000"){
                     if(res.bizData.userInfo){
@@ -88,6 +89,33 @@ App
                 $scope.form.submit = false;
             });
 
+
+
+
+
+            CreditService.queryCreditByPhone(phone).then(function(res){
+
+                if(res.rtnCode == "0000000"){
+                    //console.log(res.bizData);
+                    $scope.bizData=res.bizData;
+                    //console.log( $scope.form.phone.trim());
+                    $scope.form.phone =phone;
+
+                }
+                else{
+                    $rootScope.alertError(res.msg);
+                }
+
+            },function(err){
+                $rootScope.alertError("server error！");
+
+
+            })
+
         }
 
+
+        if(form.phone){
+            $scope.seachUser();
+        }
     });

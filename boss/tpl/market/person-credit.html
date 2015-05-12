@@ -10,33 +10,7 @@
 
 <div class="wrapper-md">
 
-
-
-
     <div class="panel panel-default">
-
-        <div class="row wrapper">
-
-
-                <div class="fx-row">
-                    <span ng-click="searchPhone();" class="mr100 btn  m-l  btn-sm  btn-danger btn-addon mr100" ng-show="isBack">
-                        <a  class="fa-plus" href="index.html#/app/boss/user/{{params.data.phone}}"  >返回</a>
-                    </span>
-                    <input type="search" class="input-sm  fx-col-1  form-control" placeholder="手机号"  ng-model="params.data.phone"  value="{{userPhone}}" />
-
-                    <button class="mr100 btn btn-sm btn-primary" type="button" ng-click="searchPhone();" ng-disabled="isSubmit">
-                            <span ng-show="isSubmit" class="">
-                                     <i class=" fa fa-refresh glyphicon-refresh"  ></i>
-                            </span>
-                        <span class=""  ng-hide="isSubmit">兑换查询</span>
-                    </button>
-
-                </div>
-
-        </div>
-
-
-
         <table-paging   is-submit="isSubmit"   refresh="refresh"  content-type="json"  pageIndex="1"  pageSize="10"  params="params"  url="creditUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total">
 
             <div class="table-responsive">
@@ -63,7 +37,7 @@
                         <td>{{sco.exchangeCert}}</td>
                         <td>{{sco.exchangeDate | date: 'yyyy-MM-dd'}}</td>
                         <td>
-                               {{sco.orderNumber}}
+                            {{sco.orderNumber}}
                         </td>
                         <td>
                             {{sco.status | creditFilterStatus}}

@@ -112,7 +112,7 @@ App
 
               })
               .state("app.boss.user", {
-                  url: "/user",
+                  url: "/user/:phone",
                   templateUrl: "boss/tpl/user/userManager.html?v="+VERSION.vs,
                   controller: "UserCtrl as test"
               })
@@ -125,7 +125,7 @@ App
 
               //查询兑换记录
               .state('app.boss.market.credit', {
-                  url:"/credit",
+                  url:"/credit/:phone",
                   templateUrl: "boss/tpl/market/credit.html?v="+VERSION.vs,
                   controller: "CreditCtrl"
               })

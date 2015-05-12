@@ -3,10 +3,12 @@
  */
 App
 
-    .controller("CreditCtrl", function ($rootScope, $scope, $state, $window, $log, $q, $timeout, Util, SERVER,CreditService) {
+    .controller("CreditCtrl", function ($rootScope, $scope,$stateParams, $state, $window, $log, $q, $timeout, Util, SERVER,CreditService) {
+
+
 
         console.log("CreditCtrl....");
-
+        //$scope.btn-danger="";
         //用户反馈地址
         $scope.creditUrl = SERVER.url.credit + "/boss/queryExchangeProductionList";
 
@@ -15,12 +17,11 @@ App
 
         //刷新列表
         $scope.refresh = false;
-
         //参数
         $scope.params = {
             style : "",
             clientInfo : {},
-            data : {
+            data : {phone :  $stateParams.phone
             }
         };
 
@@ -28,14 +29,26 @@ App
             phone : ""
         }
 
-        $scope.isSubmit = false;
+
+
 
         //显示用户card
         $scope.userCard = function(post){
             $scope.fm.phone = post.exchangePhone;
         }
 
+        //筛选手机号
+        $scope.searchPhone=function(){
+            $scope.refresh = true;
+        }
+        $scope.isSubmit = false;
+        $scope.isBack = false;
 
+        if($scope.params.data.phone){
+            $scope.isBack = true;
+            //$scope.btn-danger="btn-danger";
+            //console.log('ok');
+        }
         //兑换状态
         $scope.changeStatus = function(sco){
 
