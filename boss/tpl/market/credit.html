@@ -16,12 +16,12 @@
     <div class="panel panel-default">
 
         <div class="row wrapper">
-
-
                 <div class="fx-row">
-                    <span ng-click="searchPhone();" class="mr100 btn  m-l  btn-sm  btn-danger btn-addon mr100" ng-show="isBack">
-                        <a  class="fa-plus" href="index.html#/app/boss/user/{{params.data.phone}}"  >返回</a>
-                    </span>
+
+                    <a  type="button" href="#/app/boss/user/{{params.data.phone}}"  ng-show="isBack"  class="mr100 btn  m-l  btn-sm  btn-success btn-addon mr100" >
+                       返回
+                    </a>
+
                     <input type="search" class="input-sm  fx-col-1  form-control" placeholder="手机号"  ng-model="params.data.phone"  value="{{userPhone}}" />
 
                     <button class="mr100 btn btn-sm btn-primary" type="button" ng-click="searchPhone();" ng-disabled="isSubmit">
