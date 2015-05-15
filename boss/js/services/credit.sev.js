@@ -12,7 +12,6 @@ App
                     "style": "",
                     "data": {
                         "phone": phone
-
                     },
                     "clientInfo": {}
                 }
@@ -67,6 +66,28 @@ App
                         defer.reject(err);
                     });
                 return  defer.promise;
+            },
+
+            updateCredit : function(phone,credit){
+                var defer = $q.defer();
+                var data={
+                    "style": "",
+                    "data": {
+                        "phone": phone,
+                        "credit": credit
+                    },
+                    "clientInfo": {}
+                }
+                $http.post(SERVER.url.credit+"/boss/updateUserCredit", data,
+                    {headers:{"is-json-data":1}})
+                    .success(function (result) {
+                        defer.resolve(result);
+                    })
+                    .error(function (err) {
+                        defer.reject(err);
+                    });
+
+                return defer.promise;
             }
 
         }

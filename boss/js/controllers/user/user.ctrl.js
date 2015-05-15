@@ -1,7 +1,9 @@
 App
 
-    .controller("UserCtrl", function ($rootScope,$scope,$stateParams, $state, $window,$log,$q,$timeout,Util,UserService,CreditService) {
+    .controller("UserCtrl", function ($rootScope,$scope,$stateParams, $state, $window,$log,$q,$timeout,$filter,Util,UserService,CreditService) {
 
+        var newCre=0;
+        $scope.edit=false;
         console.log($stateParams.phone);
         //提交的表单
         $scope.form = {
@@ -96,6 +98,7 @@ App
             CreditService.queryCreditByPhone(phone).then(function(res){
 
                 if(res.rtnCode == "0000000"){
+
                     //console.log(res.bizData);
                     $scope.bizData=res.bizData;
                     //console.log( $scope.form.phone.trim());
@@ -115,7 +118,30 @@ App
         }
 
 
-        if(form.phone){
+        if($stateParams.phone){
             $scope.seachUser();
         }
+
+        //修改积分
+        $scope.editCre = function(){
+            //选中
+            if(! $scope.edit){
+                $scope.edit  = true;
+
+            }
+            //取消选中
+            else{
+                //console.log($scope.bizData);
+                CreditService.updateCredit($scope.form.phone,$scope.bizData).then(function(result){
+                    //$rootScope.alertSuccess(res.msg);
+                    $scope.edit  =false;
+
+                }).then(function(){
+                    $scope.edit  =false;
+                });
+            }
+
+
+        }
+
     });

@@ -61,9 +61,24 @@
                     <span class="ib userJob">
                         {{res | userType}}
                     </span>
-                    <a class="userBizData " href="index.html#/app/boss/market/credit/{{form.phone}}">
-                        {{bizData}}
-                    </a>
+
+
+                    <span ng-hide="edit">
+                        <a class="userBizData " href="index.html#/app/boss/market/credit/{{form.phone}}">
+                            {{bizData}}
+                        </a>
+                    </span>
+                    <span ng-show="edit">
+                        <input type="text"   class="ib userName"  ng-model="bizData" />
+                    </span>
+
+                    <span class="ib userName">
+                        <a href  ui-toggle-class  ng-click="editCre()">
+                            <i class="fa fa-floppy-o text-primary  text-active ">保存</i>
+                            <i class="fa fa-pencil-square-o text-primary  text"></i>
+                        </a>
+                        <!--<button class="btn btn-sm btn-primary" ng-click="editCre(cre)"></button>-->
+                    </span>
                 </div>
 
                 <div class="userManagerBottom">
