@@ -28,7 +28,6 @@ App
                return  defer.promise;
            },
 
-
            //获得用户创建的科目
            getUserSubject: function (data) {
                data.areaId = data.areaId || "";
