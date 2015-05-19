@@ -132,6 +132,14 @@ App
             return moment(date).fromNow();
         }
     })
+    .filter("userTest",function(){
+        return function(res) {
+
+            if (!res) {
+                return "";
+            }
+        }
+    })
     .filter("SCEformat", function($sce) {
         return function(url) {
             return $sce.trustAsResourceUrl(url);

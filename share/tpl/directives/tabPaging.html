@@ -9,14 +9,24 @@
         <div class="col-sm-12 ">
             <nav>
                 <ul class="pager">
-                    <li class="previous col-sm-4 text-left"  >
+                    <!--Ê×Ò³-->
+                    <li class="previous col-sm-2 text-left first"  >
+                        <button href="#" class="ib" ng-disabled="pageIndex <= 1"   > {{firstName}}</button>
+                    </li>
+
+                    <li class="previous col-sm-2 text-left"  >
                         <button href="#" class="ib" ng-disabled="pageIndex <= 1"   > &larr; {{preName}}</button>
                     </li>
                     <li class="col-sm-4 text-center">
                         <span class="pageShow">{{pageIndex}}/{{pageTotal}}</span>
                     </li>
-                    <li class="next col-sm-4 text-right"    >
+                    <li class="next col-sm-2 text-right"    >
                         <button href="#"   ng-disabled="pageIndex >= pageTotal">{{nextName}} &rarr;</button>
+                    </li>
+
+                    <!--Î²Ò³-->
+                    <li class="next col-sm-2 text-right last"    >
+                        <button href="#"   ng-disabled="pageIndex >= pageTotal">{{lastName}}</button>
                     </li>
 
                 </ul>

@@ -1,6 +1,6 @@
 App
 
-    .controller("AddSchoolCtrl", function ($rootScope, $scope, Util, $modalInstance,AuditService,SERVER) {
+    .controller("AddSchoolCtrl", function ($rootScope, $scope,  $modalInstance,Util,AuditService,SERVER) {
 
         console.log("add school....");
 

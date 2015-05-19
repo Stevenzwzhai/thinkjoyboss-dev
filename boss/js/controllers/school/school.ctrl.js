@@ -40,7 +40,6 @@ App
         }
 
 
-
         //修改学校
         $scope.edit = function(sco){
             //选中

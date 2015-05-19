@@ -2,6 +2,7 @@ App
 
     .controller("UserCtrl", function ($rootScope,$scope,$stateParams, $state, $window,$log,$q,$timeout,$filter,Util,UserService,CreditService) {
 
+
         var newCre=0;
         $scope.edit=false;
         console.log($stateParams.phone);
@@ -11,8 +12,11 @@ App
             submit   : false,
             token  : ""
         }
-
-        $scope.bizData="";
+        $scope.userName="";
+        $scope.userType="";
+        $scope.bizData=""
+        $scope.userAdd="";
+        $scope.userSex="";
         $scope.$watch("form.phone",function(old){
                 if(!old){
                     $scope.res = "";
@@ -69,9 +73,15 @@ App
             $scope.form.submit = true;
             var phone = $scope.form.phone.trim();
             UserService.getUserInfo(phone).then(function(res){
+
                 if(res.rtnCode == "0000000"){
                     if(res.bizData.userInfo){
                         res = res.bizData;
+                        $scope.userType=res.userInfo.userType;
+                        $scope.userName=res.userInfo.userName;
+                        $scope.userAdd=res.userInfo.address;
+                        $scope.userSex=res.userInfo.sex;
+                        //console.log($scope.userType);
                     }
                     else{
                         res = "";
@@ -122,25 +132,38 @@ App
         }
 
         //修改积分
+
+        $scope.upDataCredit=function(){
+
+            $rootScope.alertModal("boss/tpl/user/upDataCredit.html","UpDataCredit");
+            console.log('ok');
+
+        }
+
+
+
         $scope.editCre = function(){
             //选中
             if(! $scope.edit){
-                $scope.edit  = true;
+                    $scope.edit  = true;
 
             }
             //取消选中
             else{
-                //console.log($scope.bizData);
-                CreditService.updateCredit($scope.form.phone,$scope.bizData).then(function(result){
-                    //$rootScope.alertSuccess(res.msg);
+
+                $scope.edit  =false;
+
+                UserService.updateUserInfo($scope.form.phone).then(function(result){
                     $scope.edit  =false;
 
                 }).then(function(){
                     $scope.edit  =false;
                 });
+                //console.log($scope.edit);
             }
 
 
         }
+
 
     });

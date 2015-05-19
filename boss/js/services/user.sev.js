@@ -25,6 +25,25 @@ App
 
                 return  defer.promise;
             },
+            updateUserInfo : function(phone){
+                var defer =  $q.defer();
+                var token = window.sessionStorage.getItem("token");
+
+                $http.post(SERVER.url.uc+"/userBoss/updateUser?token=" + token,{
+                    data : {
+                        "phone" : phone
+                    }
+                },{headers:{"is-json-data":1}})
+                    .success(function(result){
+                        defer.resolve(result);
+                    })
+                    .error(function(err){
+                        console.error("user error");
+                        defer.reject(err);
+                    });
+
+                return  defer.promise;
+            },
             deletePhone : function(phone){
                 var defer =  $q.defer();
                 var token = window.sessionStorage.getItem("token");

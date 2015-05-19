@@ -68,13 +68,14 @@ App
                 return  defer.promise;
             },
 
-            updateCredit : function(phone,credit){
+            updateCredit : function(phone,credit,reason){
                 var defer = $q.defer();
                 var data={
                     "style": "",
                     "data": {
                         "phone": phone,
-                        "credit": credit
+                        "credit": credit,
+                        "reason" :reason
                     },
                     "clientInfo": {}
                 }

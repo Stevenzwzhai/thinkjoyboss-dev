@@ -22,6 +22,8 @@ App
                 scope.pageSize =   element.attr("pageSize");
                 scope.preName =   element.attr("preName") || "上一页";
                 scope.nextName =   element.attr("nextName") || "下一页";
+                scope.firstName = element.attr("firstName") || "首页";
+                scope.lastName = element.attr("lastName") || "尾页";
 
                 if(scope.preName == "num")
                     scope.preName = "";
@@ -136,6 +138,12 @@ App
 
                 var $page = element.find(".pager");
 
+                //首页
+                $page.find(".first > button").click(function(){
+                    Util.calcPage(scope,"first");
+                    loadList();
+                });
+
                 //上一页
                 $page.find(".previous > button").click(function(){
                     Util.calcPage(scope,"prev");
@@ -149,7 +157,11 @@ App
 
                 });
 
-
+                //尾页
+                $page.find(".last > button").click(function(){
+                    Util.calcPage(scope,"last");
+                    loadList();
+                });
 
             }
         }

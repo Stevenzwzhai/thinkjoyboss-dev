@@ -65,6 +65,12 @@ App
                         index = 1;
                     }
                 }
+                else if(opear == "first"){
+                    index = 1;
+                }
+                else if(opear == "last"){
+                    index = total;
+                }
                 $scope.pageIndex = index;
             },
 

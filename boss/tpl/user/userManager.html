@@ -58,30 +58,134 @@
                         {{res.userInfo.userName}}
                     </span>
 
-                    <span class="ib userJob">
-                        {{res | userType}}
-                    </span>
-
-
-                    <span ng-hide="edit">
-                        <a class="userBizData " href="index.html#/app/boss/market/credit/{{form.phone}}">
-                            {{bizData}}
-                        </a>
-                    </span>
-                    <span ng-show="edit">
-                        <input type="text"   class="ib userName"  ng-model="bizData" />
-                    </span>
-
-                    <span class="ib userName">
-                        <a href  ui-toggle-class  ng-click="editCre()">
-                            <i class="fa fa-floppy-o text-primary  text-active ">保存</i>
-                            <i class="fa fa-pencil-square-o text-primary  text"></i>
-                        </a>
-                        <!--<button class="btn btn-sm btn-primary" ng-click="editCre(cre)"></button>-->
-                    </span>
                 </div>
 
                 <div class="userManagerBottom">
+
+                    <!-- 个人信息 -->
+                    <section   ng-init="isCollapsedUser=true;" ng-show="res">
+                        <button class="btn btn-sm btn-primary" ng-click="isCollapsedUser = !isCollapsedUser">个人信息&nbsp;&nbsp;<span class="badge"></span></button>
+                        <hr>
+                        <div collapse="isCollapsedUser">
+
+                            <div class="panel panel-default">
+                                <div class="table-responsive ">
+
+                                    <table class="table table-striped b-t b-light ">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                用户名
+                                            </th>
+                                            <th>
+                                                职位
+                                            </th>
+                                            <th>
+                                                性别
+                                            </th>
+                                            <th>
+                                                手机号
+                                            </th>
+                                            <th>
+                                                积分
+                                            </th>
+                                            <th>
+                                                修改
+                                            </th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <span >
+                                                    <a class=" " href="javascript:void(0);">
+                                                        {{res.userInfo.userName}}
+                                                    </a>
+                                                 </span>
+                                                 <span ng-show=false>
+                                                    <input type="text"   class=" input-sm form-control"  ng-model="res.userInfo.userName"/>
+                                                 </span>
+                                            </td>
+                                            <td>
+                                                <span >
+                                                    <a class=" " href="javascript:void(0);">
+                                                        {{res|userType}}
+                                                    </a>
+                                                 </span>
+                                                 <span ng-show=false>
+                                                     <select  class="form-control"  ng-model="res.userInfo.userType">
+                                                         <option value="0">老师&家长</option>
+                                                         <option value="1">老师</option>
+                                                         <option value="2">家长</option>
+                                                     </select>
+                                                    <!--<input type="text"   class="ib userName" ng-model="res | userType" size="9";/>-->
+                                                 </span>
+                                            </td>
+                                            <td>
+                                                <span >
+                                                    <a class=" " href="javascript:void(0);">
+                                                        {{res.userInfo.sex}}
+                                                    </a>
+                                                 </span>
+                                                 <span ng-show=false>
+                                                    <select  class="form-control">
+                                                        <option value="0" selected="selected">男</option>
+                                                        <option value="1">女</option>
+                                                    </select>
+                                                 </span>
+                                            </td>
+                                            <td>
+                                                <span ng-hide="edit">
+                                                    <a class=" " href="javascript:void(0);">
+                                                        {{form.phone}}
+                                                    </a>
+                                                 </span>
+                                                 <span ng-show="edit">
+                                                    <input type="text"   class=" input-sm form-control" ng-model="form.phone"/>
+                                                 </span>
+                                            </td>
+
+                                            <!--<td>-->
+                                                <!--<span ng-hide="edit">-->
+                                                    <!--<a class=" " href="javascript:void(0);">-->
+                                                        <!--{{res.userInfo.address}}-->
+                                                    <!--</a>-->
+                                                 <!--</span>-->
+                                                 <!--<span ng-show="edit">-->
+                                                    <!--<input type="text"   class=" input-sm form-control" ng-model="res.userInfo.address" />-->
+                                                 <!--</span>-->
+                                            <!--</td>-->
+                                            <td>
+                                                 <span ng-hide="edit">
+                                                    <a class="label bg-warning" href="index.html#/app/boss/market/credit/{{form.phone}}">
+                                                        {{bizData}}
+                                                    </a>
+                                                 </span>
+                                                <span ng-show="edit">
+                                                    <a class="label bg-primary" href="javascript:void(0);" ng-click="upDataCredit();">
+                                                        {{bizData}}
+                                                    </a>
+                                                 </span>
+                                            </td>
+                                            <td>
+                                                <a href  ui-toggle-class  ng-click="editCre()">
+                                                    <i class="fa fa-floppy-o text-primary  text-active ">保存</i>
+                                                    <i class="fa fa-pencil-square-o text-primary  text"></i>
+                                                </a>
+                                            </td>
+
+
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
 
                     <!-- 孩子信息 -->
                     <section   ng-if="res.childInfo.length > 0"   ng-init="isCollapsedChild=true;">
@@ -282,8 +386,9 @@
 
                 </div>
 
-
             </section>
 </section>
 
 </div>
+
+
