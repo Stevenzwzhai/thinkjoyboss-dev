@@ -123,6 +123,7 @@ App
                 };
             }
             var modalInstance = $modal.open(option);
+
             return modalInstance;
         }
 

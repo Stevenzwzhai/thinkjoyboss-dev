@@ -1,23 +1,13 @@
-
-
-
 <div class="bg-light lter b-b wrapper-md ng-scope">
     <h1 class="m-n font-thin h3">兑换记录</h1>
 </div>
 
 
 
-
 <div class="wrapper-md">
-
-
-
-
     <div class="panel panel-default">
-
         <div class="row wrapper">
                 <div class="fx-row">
-
                     <a  type="button" href="#/app/boss/user/{{params.data.phone}}"  ng-show="isBack"  class="mr100 btn  m-l  btn-sm  btn-success btn-addon mr100" >
                        返回
                     </a>
@@ -34,9 +24,6 @@
                 </div>
 
         </div>
-
-
-
         <table-paging   is-submit="isSubmit"   refresh="refresh"  content-type="json"  pageIndex="1"  pageSize="10"  params="params"  url="creditUrl"  results="posts"  resultsName="bizData.pageList"  total="bizData.total">
 
             <div class="table-responsive">

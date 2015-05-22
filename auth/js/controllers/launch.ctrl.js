@@ -43,6 +43,11 @@ App.controller('LaunchCtrl', function($scope,$rootScope) {
                     obj.homeUrl = "http://115.29.184.78:5601";
                     obj.icon = "imgs/logo/foot-logo.jpg";
                     break;
+                case "spool":
+                    obj.sysDesc = "SPool";
+                    obj.homeUrl = "http://imzhiliao.com:10000";
+                    obj.icon = "imgs/logo/spool-logo.png";
+                    break;
             }
 
             if(obj.homeUrl){

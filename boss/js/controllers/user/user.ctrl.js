@@ -121,7 +121,6 @@ App
             },function(err){
                 $rootScope.alertError("server error！");
 
-
             })
 
         }
@@ -134,10 +133,15 @@ App
         //修改积分
 
         $scope.upDataCredit=function(){
+            Util.setSg("pn",$scope.form.phone);
+            $rootScope.alertModal("boss/tpl/user/upDataCredit.html","UpDataCredit").result
+                      .then(function (obj) {
+                    $scope.bizData +=obj.newData;
+                }, function () {
+                                //$log.info('Modal dismissed at: ' + new Date());
+                            });
 
-            $rootScope.alertModal("boss/tpl/user/upDataCredit.html","UpDataCredit");
             console.log('ok');
-
         }
 
 
