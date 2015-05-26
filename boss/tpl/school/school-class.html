@@ -15,7 +15,7 @@
 
                 <div class="fx-row">
 
-                    <button  type="button" ng-click="create();" class="mr100 btn  m-l  btn-sm  btn-danger btn-addon mr100" ><i class="fa fa-plus"></i>创建学校</button>
+                    <!--<button  type="button" ng-click="create();" class="mr100 btn  m-l  btn-sm  btn-danger btn-addon mr100" ><i class="fa fa-plus"></i>创建学校</button>-->
 
                         <input type="search" class="input-sm  fx-col-1  form-control" placeholder="例: 班级查询"  ng-model="params.schoolName"   />
 
@@ -37,7 +37,7 @@
 
         <div class="table-responsive">
 
-            <table class="table table-striped b-t b-light">
+            <table class="table table-striped b-t b-light" >
                 <thead>
                 <tr>
                     <th>学校编号</th>
@@ -74,8 +74,35 @@
 
     </table-paging>
 
+    <!--班级列表-->
+
+            <table class="table table-hover table-audit" ng-if="results.length > 0">
+                <thead>
+                <tr>
+                    <th>班级码</th>
+                    <th>班级名称</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="res in results">
+                    <td>{{res.classId}}</td>
+                    <td>
+                        <div>
+                            <a  href="index.html#/app/boss/class/{{res.classId}}/{{fm.schoolId}}" >{{res.className}}</a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
 
 
+    <nav ng-if="pageTotal > 1">
+        <ul class="pager">
+            <li class="previous"  ><button href="#" class="ib" ng-disabled="pageIndex <= 1"  ng-click="prev();" >&larr; 上一页</button></li>
+            <li class="next"    ><button href="#" ng-click="next();"  ng-disabled="pageIndex >= pageTotal">下一页 &rarr;</button></li>
+        </ul>
+    </nav>
 
 
 

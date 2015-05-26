@@ -1,8 +1,9 @@
 App
 
-    .controller("ClassCtrl", function ($rootScope, $scope,$state, $window, $log, $q, $timeout, ClassService,Util, SERVER) {
+    .controller("ClassCtrl", function ($rootScope, $scope,$state,$stateParams,$window, $log, $q, $timeout, ClassService,Util, SERVER) {
 
         console.log("class....");
+        $scope.schoolId=$stateParams.schoolId ;
 
         //班级信息
         $scope.classMsgPosts = [];
@@ -22,7 +23,7 @@ App
 
         //form
         $scope.fm = {
-            classCode : "",
+            classCode : $stateParams.classId,
             userType : "-1",
             queryTime : 0
         }
@@ -41,6 +42,7 @@ App
             }
 
         });
+
 
         //查询班级信息
         var loadClassMg = function(classCode,type,pageSize,queryTime){
@@ -109,6 +111,12 @@ App
         }
 
 
+
+        if($stateParams.classId){
+            $scope.searchClass(true);
+            console.log("0k");
+        }
+
         //load more
         $scope.loadMore = function(){
 
@@ -126,5 +134,7 @@ App
 
         }
 
+
+       // console.log($scope.schoolNum);
 
     });

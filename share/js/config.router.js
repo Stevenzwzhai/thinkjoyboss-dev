@@ -98,14 +98,14 @@ App
               //学校下班级查询
               .state("app.boss.schoolClass", {
                   url: "/schoolClass/:schoolId",
-                  templateUrl: 'boss/tpl/school/school-classs.html?v='+VERSION.vs,
+                  templateUrl: 'boss/tpl/school/school-class.html?v='+VERSION.vs,
                   controller: "SchoolClassCtrl"
               })
 
 
               //班级管理
               .state("app.boss.class",{
-                  url : "/class",
+                  url : "/class/:classId/:schoolId",
                   templateUrl : "boss/tpl/class/class.html?v="+VERSION.vs,
                   controller : "ClassCtrl"
 

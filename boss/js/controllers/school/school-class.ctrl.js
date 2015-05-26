@@ -4,6 +4,33 @@ App
 
         console.log("schoolClass....");
 
+       // $scope.$parent.$parent.$parent.isSchool = false;
+
+
+        $scope.fm = {
+            address: "",
+            school: "",
+            schoolId : parseInt($stateParams.schoolId)
+
+        }
+        //console.log(parseInt($stateParams.schoolId));
+        $scope.isFirst = true;
+        //分页数据
+        $scope.pageIndex = 1;
+        $scope.pageSize = 8;
+
+
+        //是否显示新信息
+        $scope.isMsgShow = false;
+
+        //省数据
+        $scope.provices = [];
+
+
+
+
+
+        //
         var schoolId = parseInt($stateParams.schoolId);
 
         //学校地址
@@ -39,35 +66,69 @@ App
         }
 
 
+        //查找班级
+        var loadList = function (data,isFirst) {
 
-        //创建学校
-        $scope.create = function(){
-            $rootScope.alertModal("boss/tpl/school/add-school.html","AddSchoolCtrl");
+            AuditService.getUserClass(data).then(function (res) {
+                if(res.rtnCode != "0000000"){
+                    alert(res.msg);
+                }
+                else{
+
+                    if(isFirst){
+                        $scope.pageTotal  = res.bizData.total;
+                        Util.caclTotal($scope);
+                        isFirst = false;
+                    }
+                    $scope.results = res.bizData.pageList;
+                }
+
+            }, function (err) {
+                $rootScope.alertError("网络出错!");
+            });
         }
 
 
 
-        //修改学校
-        $scope.edit = function(sco){
-            //选中
-            if(!sco.edit){
-                sco.edit  = true;
+        //接受来自audit的事件
+        $scope.$on("audit-child",function(event,data){
+            console.log("子id : ",data);
 
+            loadList(getParams(),data.isFirst);
+        });
+
+        var getParams = function(){
+            return  {
+                schoolId :  $scope.fm.schoolId,
+                pageIndex : $scope.pageIndex-1,
+                pageSize  :  $scope.pageSize,
+                status    :  ""
             }
-            //取消选中
-            else{
-               AuditService.updateSchool(sco.id,sco.schoolName).then(function(res){
-                   $rootScope.alertSuccess(res.msg);
-                   sco.edit  =false;
-
-               }).then(function(){
-
-                   sco.edit  =false;
-               });
-            }
-
-
         }
+
+        //分页
+        $scope.next = function(){
+            Util.calcPage($scope,"next");
+            var params = getParams();
+            loadList(params);
+        }
+
+
+
+        $scope.prev = function(){
+            Util.calcPage($scope,"prev");
+            var params = getParams();
+            loadList(params)
+        }
+        var getParams = function(){
+            return  {
+                schoolId :  $scope.fm.schoolId,
+                pageIndex : $scope.pageIndex-1,
+                pageSize  :  $scope.pageSize,
+                status    :  ""
+            }
+        }
+        loadList(getParams(),true);
 
 
 

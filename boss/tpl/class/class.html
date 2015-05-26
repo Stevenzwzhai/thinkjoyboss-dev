@@ -8,10 +8,18 @@
     <section>
         <form role="form" class="form-horizontal ng-pristine ng-invalid ng-invalid-required" novalidate="" name="form">
             <div class="form-group">
+                <div class="col-md-4 mb15">
+                    <span ng-show="schoolId">
+                        <a  type="button" href="#/app/boss/schoolClass/{{schoolId}}"    class="mr100 btn  m-l  btn-sm  btn-success btn-addon text-left col-md-" >
+                            返回
+                        </a>
+                    </span>
 
+                    <span ng-hide="schoolId">
+                        <label for="classNum" class="col-md-4  control-label text-left" >班级码</label>
+                    </span>
 
-                <label for="classNum" class="col-md-2  mb15 control-label text-left">班级码</label>
-
+                </div>
                 <div class="col-md-4 mb15">
                     <input type="text" class="input-sm form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" id="classNum" placeholder="输入 班级码" ng-model="fm.classCode"  required="">
                 </div>
@@ -29,6 +37,7 @@
 
 
                 </div>
+
             </div>
 
             <div class="form-group">
