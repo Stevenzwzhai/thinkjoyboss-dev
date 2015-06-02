@@ -52,7 +52,6 @@ App
             loadList(params)
         }
 
-
         var getParams = function(){
            return  {
                 areaId : $scope.$parent.fm.areaId,
@@ -62,7 +61,6 @@ App
                 status    :  ""
             }
         }
-
 
         //默认数据
        loadList(getParams(),true);

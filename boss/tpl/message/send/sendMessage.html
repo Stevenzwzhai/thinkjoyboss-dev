@@ -1,0 +1,236 @@
+<div class="bg-light lter b-b wrapper-md ng-scope">
+    <h1 class="m-n font-thin h3">发布消息</h1>
+</div>
+
+
+
+<div class="wrapper-md ">
+
+    <script type="text/ng-template" id="customTemplate.html">
+        <a>
+            <img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/{{match.model.flag}}" width="16">
+            <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+        </a>
+    </script>
+
+
+            <tabset class="tab-container" ng-init="steps={percent:20, step1:true, step2:false}">
+                <tab heading="第一步" active="steps.step1" select="steps.percent=30">
+                    <p class="m-b">选择发布对象</p>
+                    <progressbar value="steps.percent" class="progress-xs" type="info"></progressbar>
+                    <form name="step1" class="form-validation">
+                        <p class="m-b">发布对象:</p>
+                        <select class="form-control" ng-model="fm.userType" required>
+                            <option value="">选择发布对象:</option>
+                            <option value="{{sendUser.type}}" ng-repeat=" sendUser in  sendUserTypes">
+                                {{sendUser.content}}
+                            </option>
+                        </select>
+
+
+                        <div ng-if="fm.userType == '0'">
+                            <p class="m-b m-t">选择学校:</p>
+                            <div class="pos-rel fx-row">
+                                <input type="text"   placeholder="输入学校名称..."  ng-model="fm.schoolName" class="fx-col-1 form-control" />
+                                <button type="button"  class="btn btn-primary" ng-click="searchSchool();">查询</button>
+
+                                <ul class="dropdown-menu autoSearch" role="menu" ng-show="isopen">
+                                    <li ng-repeat="sc in schools"><a href="javascript:void(0);" ng-click="selectSchool(sc);">{{sc.schoolName}}</a></li>
+                                </ul>
+
+
+                            </div>
+
+                            <div ng-if="fm.schoolId">
+                                <p class="m-b m-t">选择班级:</p>
+                                <p ng-if="classList.length <=0">
+                                   <button class="btn btn-primary" type="button">没有班级!!</button>
+                                </p>
+                                <ul class="float-list">
+                                    <li ng-repeat="class in classList">
+                                        <label class="checkbox i-checks ">
+                                            <input type="checkbox" name="classCode"   classId="{{class.classId}}"     class="ng-valid ng-dirty ng-valid-parse ng-touched"><i></i>
+                                            {{class.className}}
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div ng-if="fm.userType == '1'">
+                            <p class="m-b m-t">用户手机号码:</p>
+                            <textarea ng-model="fm.receiversUser" placeholder="输入用户手机号码,已逗号分隔" class="form-control"  required></textarea>
+                        </div>
+
+
+                        <p class="m-b m-t">商品积分:</p>
+                        <input   ng-model="fm.credit"  placeholder="兑换商品所需积分" type="number" class="form-control"  required/>
+
+
+
+                        <div class="m-t  text-right">
+                            <button type="submit" ng-disabled="step1.$invalid" class="btn btn-primary " ng-click="steps.step2=true">下一步</button>
+                        </div>
+                    </form>
+
+                </tab>
+                <tab heading="第二步" disabled="step1.$invalid" active="steps.step2" select="steps.percent=40">
+
+                    <form name="step2" class="form-validation"  >
+
+                        <p class="m-b">商品详情</p>
+                        <progressbar value="steps.percent" class="progress-xs" type="info"></progressbar>
+
+
+                        <p class="m-b m-t">商品介绍: </p>
+                        <div>
+                            <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="addObj(fm.comment.productInfo);"><i class="fa fa-plus"></i>添加</button>
+
+                            <!-- 商品介绍 -->
+                            <div class="row" style="margin-top: 16px;" ng-repeat=" productInfo in fm.comment.productInfo">
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" placeholder="标签" name="count" ng-model="productInfo.key" required />
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="sortno" placeholder="值"  ng-model="productInfo.value" required />
+                                </div>
+                                <div class="col-sm-4">
+                                    <button class="btn m-b-xs btn-sm btn-danger btn-addon" ng-click="removeObj('id',productInfo,fm.comment.productInfo);"><i class="fa fa-trash-o"></i>删除</button>
+                                </div>
+                            </div>
+
+
+                            <!-- 截止时间 -->
+
+                            <p class="m-b m-t">开始时间: </p>
+
+                            <div style="">
+                                <p class="input-group">
+                                    <input type="date"  placeholder="输入开始时间" ng-model="fm.startTime" class="form-control" required />
+                                </p>
+                            </div>
+
+                            <p class="m-b m-t">截止时间: </p>
+
+                            <div style="">
+                                <p class="input-group">
+                                    <input type="date"  placeholder="输入截止时间" ng-model="fm.endTime" class="form-control" required />
+                                </p>
+                            </div>
+
+
+                            <!--标签 -->
+                            <p class="m-b m-t">HOT标签: </p>
+                            <div style="margin-top: 16px;">
+                                <label class="i-checks">
+                                    <input type="checkbox" ng-model="hotLabel"><i></i>使用标签
+                                </label>
+                            </div>
+
+                            <div class="row" style="margin-top: 16px;"  ng-if="hotLabel">
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" placeholder="用户专享"  ng-model="fm.comment.label.name" required >
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" placeholder="知了用户专享】京东购物卡-京东e卡"  ng-model="fm.comment.label.value" required>
+                                </div>
+                            </div>
+                            <!-- 商品描述 -->
+                            <p class="m-b m-t">商品描述: </p>
+                            <input type="text" class="form-control" placeholder="商品描述"  ng-model="fm.comment.productDesc" required >
+
+
+                            <!-- 兑换流程 -->
+                            <div>
+                                <p class="m-b m-t">兑换流程: </p>
+                                <textarea   class="form-control" ng-model="fm.comment.exchange" placeholder="输入兑换流程,以逗号分隔" required> </textarea>
+                            </div>
+
+
+                            <!-- 使用方式 -->
+                            <div ng-if="fm.productionType == '3' ">
+                                <p class="m-b m-t">使用方式: </p>
+                                <textarea   class="form-control" ng-model="fm.comment.usechange" placeholder="输入使用方式,以逗号分隔" required> </textarea>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="m-t  text-right">
+                            <button type="button" class="btn btn-default " ng-click="steps.step1=true">返回修改</button>
+                            <button type="submit" ng-disabled="step2.$invalid" class="btn btn-primary "  ng-click="steps.step3=true;" >
+                                <span ng-show="isAddSchoolSubmit" class=""><i class=" fa fa-refresh glyphicon-refresh"  ></i></span>
+                                <span class=""  ng-hide="isAddSchoolSubmit">下一步</span>
+                            </button>
+                        </div>
+
+                    </form>
+
+
+                </tab>
+
+                <tab heading="第三步"  disabled="step2.$invalid" active="steps.step3"  select="steps.percent=70">
+                    <form name="step3" class="form-validation" >
+                        <p class="m-b">商品图片</p>
+                        <progressbar value="steps.percent" class="progress-xs" type="info"></progressbar>
+
+
+                        <section>
+                            <p class="m-b m-t">商品小图: </p>
+                            <button  class="btn btn-primary btn-sm"     ngf-select     ngf-change="uploadPic($files,$event,'small')">上传小图</button>
+                            <img ng-src="{{fm.smallImage}}"  ng-model="fm.smallImage"  width="60" height="60" required />
+                        </section>
+
+                        <section>
+                            <p class="m-b m-t">商品中图: </p>
+                            <button  class="btn btn-primary btn-sm"    ngf-select     ngf-change="uploadPic($files,$event,'medium')">上传中图</button>
+                            <img ng-src="{{fm.mediumImage}}"  ng-model="fm.mediumImage"   width="60" height="60"  required/>
+                        </section>
+
+                        <section>
+                            <p class="m-b m-t">商品大图: </p>
+                            <button  class="btn btn-primary btn-sm"    ngf-select     ngf-change="uploadPic($files,$event,'big')">上传大图</button>
+                            <img ng-src="{{fm.bigImage}}"  ng-model="fm.bigImage"  width="60" height="60" required />
+                        </section>
+
+                        <section>
+                            <p class="m-b m-t">商品详情图片: </p>
+                            <button  class="btn btn-success btn-sm"    ngf-select     ngf-change="uploadPic($files,$event,'info')">上传详情图</button>
+                            <div ng-repeat="proImg in fm.comment.productImage">
+                                <img  ng-model="proImg"  ng-src="{{proImg}}" width="60" height="60"  required/>
+                            </div>
+                        </section>
+
+                        <!--<section>-->
+                        <!--<p class="m-b m-t">商品中图: </p>-->
+                        <!--<input type="file"  name="productSmall"  name="productSmall" />-->
+                        <!--</section>-->
+
+                        <!--<input type="file" name="file" ng-model="reloadFile" ng-file-change="uploadPic($files)" />-->
+
+                        <!--<input type="file" class="btnAddStory"  name="file"  id="file"/>-->
+                        <!--<button type="button" ng-click="continueFileUpload(document.getElementById('file'));">点我</button>-->
+
+                        <div class="m-t  text-right">
+                            <button type="button" class="btn btn-default " ng-click="steps.step3=true">返回修改</button>
+                            <button type="submit" ng-disabled="step3.$invalid" class="btn btn-primary " ng-click="steps.percent=100;publishProduct()">
+                                <span ng-show="isAddSchoolSubmit" class=""><i class=" fa fa-refresh glyphicon-refresh"  ></i></span>
+                                <span class=""  ng-hide="isAddSchoolSubmit">完成</span>
+                            </button>
+                        </div>
+
+                    </form>
+
+
+
+                </tab>
+
+            </tabset>
+
+
+
+
+
+</div>

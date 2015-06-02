@@ -30,8 +30,17 @@
                     "title" : "工单管理",
 
                     "audit_mg" :  "审核内容"
+                },
+
+
+                "message" :{
+                    "title" : "消息管理",
+                    "sendMessage" : "发布消息"
+
                 }
             },
+
+
 
             "components02" : {
                 "components" : "BOSS 提供一站服务",

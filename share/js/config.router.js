@@ -116,6 +116,22 @@ App
                   controller: "UserCtrl as test"
               })
 
+              .state("app.boss.message", {
+                  url: "/message",
+                  abstract : true
+              })
+
+              .state("app.boss.message.sendMsg", {
+                  url: "/sendMsg",
+                  views : {
+                      "@app.boss" : {
+                          templateUrl : "boss/tpl/message/send/sendMessage.html?v="+VERSION.vs,
+                          controller: "SendMessageCtrl"
+
+                      }
+                  }
+              })
+
 
               .state('app.boss.market', {
                   url:"/market",

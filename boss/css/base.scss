@@ -235,4 +235,38 @@
   left: 2px;
 }
 
+ul,li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
+.float-list{
+  clear: both;
+  overflow: hidden;
+  li{
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 10px;
+
+  }
+}
+
+
+//.autoSearch{
+//  .dropdown-menu{
+//    height: 200px;
+//    overflow: auto;
+//    z-index: 999;
+//  }
+//}
+
+.autoSearch{
+  display: block;
+  height: 200px;
+  overflow-y: auto;
+}
+
+.pos-rel{
+  position: relative;
+}

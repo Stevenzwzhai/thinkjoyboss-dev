@@ -32,7 +32,6 @@ App
 
 
 
-
 //常量配置
 App.constant("SERVER", {
     url : {
@@ -44,7 +43,9 @@ App.constant("SERVER", {
     //测试
     testUrl : {
 //        uc  : "http://10.10.68.11:8080/uc",
-        uc  : "http://10.10.68.11:10000/uc",
+//        uc  : "http://10.10.68.11:10000/uc",
+        uc  : "http://10.10.68.11:8808/uc",
+        //uc  : "http://10.10.68.11:10000/uc",
         //uc  : "http://10.10.68.11:10000/uc",
 //          uc  : "http://172.16.130.172:8088",
           message : "http://10.10.68.11:10000/message",
@@ -76,7 +77,7 @@ App.constant("SERVER", {
 
 
 App.constant("VERSION",{
-    vs : "137"
+    vs : "139"
 });
 
 
