@@ -140,9 +140,10 @@ App
                 }, function () {
                                 //$log.info('Modal dismissed at: ' + new Date());
                             });
-
             console.log('ok');
         }
+
+
 
 
 
@@ -154,7 +155,6 @@ App
             }
             //取消选中
             else{
-
                 $scope.edit  =false;
                 UserService.updateUserInfo($scope.form.phone).then(function(result){
                     $scope.edit  =false;

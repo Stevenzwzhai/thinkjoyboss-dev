@@ -57,7 +57,6 @@ App
         };
 
 
-
         $scope.fm = {
             productionType : "",
             productionName : "",
@@ -76,6 +75,7 @@ App
                 time : ""
             }
         }
+
 
         //上传图片
         $scope.uploadPic = function (files,$event,type) {
@@ -108,6 +108,8 @@ App
                 }
             }
         };
+
+
 
 
         //发布实物

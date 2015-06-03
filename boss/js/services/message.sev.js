@@ -15,14 +15,14 @@ App
                    "clientInfo": {},
                    "data" :obj
                };
-               $http.post(SERVER.url.message + "/message/sendMessage", data
+               $http.post(SERVER.url.message + "/message/sendMessage?token=c1de48a7-9e9e-4b33-9b8f-a6a04ba6b3a0", data
                ,{headers : {"is-json-data":1}})
                    .success(function (result) {
-                       defer.resolve(result);
+                        defer.resolve(result);
                    })
                    .error(function (err) {
-                       console.error("class getList error");
-                       defer.reject(err);
+                           console.error("class getList error");
+                            defer.reject(err);
                    });
                return  defer.promise;
            }
