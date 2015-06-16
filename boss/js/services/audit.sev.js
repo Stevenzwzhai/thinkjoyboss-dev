@@ -56,7 +56,7 @@ App
 
 
                var defer = $q.defer();
-               $http.get(SERVER.url.uc+"/school/getUserCustomSchool", {
+               $http.get(SERVER.url.uc+"/schoolBoss/searchSchoolByAreaId", {
                    params: data
                })
                    .success(function (res) {
