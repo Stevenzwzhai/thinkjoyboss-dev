@@ -115,6 +115,9 @@ App
             },
             removeLg : function(key){
                 $window.localStorage.removeItem(key);
+            },
+            getMaxPageSize : function(){
+                return 9999;
             }
 
 

@@ -38,10 +38,10 @@ App
                         if( config.headers['Content-Type'] == "application/json"){
                             config.params =   config.params || {};
                             config.params.token = $window.sessionStorage.token;
+
                         }
                     }
                 }
-
                 return config ;
             },
 

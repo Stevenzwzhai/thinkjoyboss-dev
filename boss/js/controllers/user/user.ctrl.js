@@ -17,6 +17,8 @@ App
         $scope.bizData=""
         $scope.userAdd="";
         $scope.userSex="";
+
+
         $scope.$watch("form.phone",function(old){
                 if(!old){
                     $scope.res = "";
@@ -66,7 +68,6 @@ App
         $scope.creadte=function(){
 
         }
-
 
         $scope.seachUser = function(){
 
@@ -131,7 +132,6 @@ App
         }
 
         //修改积分
-
         $scope.upDataCredit=function(){
             Util.setSg("pn",$scope.form.phone);
             $rootScope.alertModal("boss/tpl/user/upDataCredit.html","UpDataCredit").result
@@ -140,9 +140,10 @@ App
                 }, function () {
                                 //$log.info('Modal dismissed at: ' + new Date());
                             });
-
             console.log('ok');
         }
+
+
 
 
 
@@ -154,9 +155,7 @@ App
             }
             //取消选中
             else{
-
                 $scope.edit  =false;
-
                 UserService.updateUserInfo($scope.form.phone).then(function(result){
                     $scope.edit  =false;
 

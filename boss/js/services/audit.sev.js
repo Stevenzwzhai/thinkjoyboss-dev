@@ -28,6 +28,39 @@ App
                return  defer.promise;
            },
 
+
+           getSchoolByName : function(data){
+               var defer  =  $q.defer();
+               $http.get(SERVER.url.uc + "/schoolBoss/searchSchoolByName", {
+                   params: data
+               })
+                   .success(function (result) {
+                       defer.resolve(result);
+                   })
+                   .error(function (err) {
+                       defer.reject(err);
+                   });
+
+               return defer.promise;
+           },
+
+           getClassByName : function(data){
+               var defer  =  $q.defer();
+               $http.post(SERVER.url.uc + "/schoolBoss/getClassesBySchoolIdNoToken",
+                    data
+               ,{headers : {"is-json-data":"1"}})
+                   .success(function (result) {
+                       defer.resolve(result);
+                   })
+                   .error(function (err) {
+                       defer.reject(err);
+                   });
+
+               return defer.promise;
+
+
+           },
+
            //获得用户创建的科目
            getUserSubject: function (data) {
                data.areaId = data.areaId || "";

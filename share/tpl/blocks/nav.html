@@ -54,8 +54,36 @@
     </ul>
 </li>
 
-<li class="line dk"></li>
 
+    <!-- 消息管理 -->
+    <li ng-class="{active:$state.includes('app.table')}">
+        <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+
+
+            <i class="glyphicon glyphicon-credit-card text-primary-dker"></i>
+            <span translate="aside.nav.components01.message.title">xxxxxx</span>
+        </a>
+        <ul class="nav nav-sub dk">
+
+            <li ui-sref-active="active">
+                <a ui-sref="app.boss.message.sendMsg">
+                    <span translate="aside.nav.components01.message.sendMessage">xxxxxx</span>
+                </a>
+            </li>
+
+            <!--<li ui-sref-active="active">-->
+            <!--<a ui-sref="app.table.datatable">-->
+            <!--<span translate="aside.nav.components02.table.DATATABLE">xxxxxx</span>-->
+            <!--</a>-->
+            <!--</li>-->
+
+        </ul>
+    </li>
+    <li class="line dk"></li>
 
 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
     <span translate="aside.nav.components02.components">xxxxxx</span>
@@ -98,7 +126,9 @@
 
     </ul>
 </li>
-<li class="line dk"></li>
+
+
+
 </ul>
 <!-- Boss -->
 
