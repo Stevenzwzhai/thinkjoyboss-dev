@@ -19,25 +19,26 @@ App
 
         //change
         //$scope.ph="例: 西安市*小学";
-        //$scope.model=$scope.fm.address;
+        //$scope.model=$scope.params.schoolName;
         $rootScope.$watch("change",function(newVal,oldVal){
 
 
             if(newVal){
                 if (!$scope.chg) {
+                    //$scope.ph="请选择所在地";
+                    //$scope.model=$scope.params.address;
                     $scope.chg = true;
-                    //loadList(getParams(),true);
-                    //$scope.results = res.bizData.pageList;
-                    $scope.ph="请选择所在地";
-                    $scope.model=$scope.fm.address;
+
+
                 }
             }
 
             else{
+                //$scope.ph="例: 西安市*小学";
+                //$scope.model=$scope.fm.address;
                 $scope.chg = false;
                 $scope.search();
-                $scope.ph="例: 西安市*小学";
-                $scope.model=$scope.params.schoolName;
+
             }
 
 
@@ -289,24 +290,6 @@ App
                 status    :  ""
             }
         }
-
-
-        //默认数据
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

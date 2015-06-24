@@ -2,7 +2,7 @@
 
 App
   .config(
-    [        '$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
+    [   '$controllerProvider', '$compileProvider', '$filterProvider', '$provide',
     function ($controllerProvider,   $compileProvider,   $filterProvider,   $provide) {
         // lazy controller, directive and service
         app.controller = $controllerProvider.register;
