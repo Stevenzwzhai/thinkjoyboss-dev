@@ -3,10 +3,8 @@ App
     .controller("SchoolCtrl", function ($rootScope, $scope, $state, $window, $log, $q, $timeout, AuditService, Util, SERVER) {
 
         console.log("school....");
+        console.log($scope.pageSize);
 
-        $scope.params = {
-            schoolName: ""
-        };
         $scope.fm = {
             areaId: "",
             address: "",
@@ -14,7 +12,10 @@ App
             schoolId : ""
 
         };
+        $scope.params = {
+                schoolName: ""
 
+            }
 
 
         //change
@@ -28,7 +29,8 @@ App
                     //$scope.ph="请选择所在地";
                     //$scope.model=$scope.params.address;
                     $scope.chg = true;
-
+                    $scope.params=$scope.fm;
+                    $scope.schoolUrl = SERVER.url.uc + "/schoolBoss/searchSchoolByAreaId";
 
                 }
             }
@@ -38,6 +40,11 @@ App
                 //$scope.model=$scope.fm.address;
                 $scope.chg = false;
                 $scope.search();
+                $scope.schoolUrl = SERVER.url.uc + "/schoolBoss/searchSchoolByName";
+                $scope.params = {
+                    schoolName: ""
+
+                }
 
             }
 
@@ -198,99 +205,17 @@ App
             console.log($item);
         }
 
-        //审核
-        $scope.auditContent = function (id, type,status) {
-            AuditService.audit(id, type,status).then(function (res) {
 
-                if(res.rtnCode == "0000000"){
-                    //向子$scope 传递事件告诉可以刷新列表了
-                    $scope.$broadcast("audit-child", {areaId: $scope.fm.areaId, schoolId: $scope.fm.school == "" ?  "" : $scope.fm.school.schoolId});
-                }
-                else{
-                    alert(res.msg);
+
+        $scope.$watch("fm.address",function(newV){
+            if(newV){
+                if($scope.fm.areaId){
+                    $scope.refresh = true;
+                    console.log('aaa');
+                    console.log($scope.fm.areaId);
                 }
 
-            }, function (err) {
-                $rootScope.alertError("服务器连接失败!");
-            });
-        }
-
-
-        //跳转页面
-        $scope.auditJumpPage = function(num){
-            var temp;
-            if(num == '0'){
-                temp = "school";
             }
-            else if(num == "1"){
-                temp = "class";
-            }
-            else if(num == "2"){
-                temp = "subject";
-            }
-            $state.go("app.boss.audit."+temp);
-        }
 
-
-
-        //查询学校
-        var loadList = function (data,isFirst) {
-            var  areaId = data.areaId || "";
-
-            //查询全部学校
-            AuditService.getSchool(data).then(function (res) {
-                if(res.rtnCode != "0000000"){
-                    alert(res.msg);
-                }
-                else{
-                    if(isFirst){
-                        $scope.pageTotal  = res.bizData.total;
-                        Util.caclTotal($scope);
-                        isFirst = false;
-                    }
-                    $scope.posts = res.bizData.pageList;
-                }
-
-            }, function (err) {
-                $rootScope.alertError("服务器连接失败!");
-            });
-
-        }
-
-        //接受来自audit的事件
-        $scope.$on("audit-child",function(event,data){
-            console.log("子id : ",data);
-            //默认数据
-            if($scope.fm.address){
-
-                loadList(getParams(),data.isFirst);
-            }
         });
-
-        //分页
-        $scope.next = function(){
-            Util.calcPage($scope,"next");
-            var params = getParams();
-            loadList(params)
-        }
-
-        $scope.prev = function(){
-            Util.calcPage($scope,"prev");
-            var params = getParams();
-            loadList(params)
-        }
-
-
-        var getParams = function(){
-            return  {
-                areaId : $scope.fm.areaId,
-                schoolId : $scope.fm.schoolId,
-                pageIndex : $scope.pageIndex-1,
-                pageSize  :  $scope.pageSize,
-                status    :  ""
-            }
-        }
-
-
-
     });

@@ -2,7 +2,7 @@
  * Created by abjia on 14-12-28.
  */
 
-App.directive('selectAddress', function($http, $q, $compile,BaseService) {
+App.directive('selectAddress', function($http, $q, $compile, $rootScope,BaseService) {
     var cityURL, delay, templateURL;
 
     delay = $q.defer();
@@ -127,7 +127,9 @@ App.directive('selectAddress', function($http, $q, $compile,BaseService) {
                     return scope.d = null;
                 };
                 scope.submit = function() {
-                    return popup.hide();
+
+                   return popup.hide();
+
                 };
                 scope.$watch('p', function(newV) {
                     var v, _i, _len, _results;
