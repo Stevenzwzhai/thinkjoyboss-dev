@@ -198,12 +198,11 @@ App
         }
 
 
-
+        //根据区域查询学校
         $scope.$watch("fm.address",function(newV){
             if(newV){
                 if($scope.fm.areaId){
                     $scope.refresh = true;
-                    console.log('aaa');
                     console.log($scope.fm.areaId);
                 }
 
