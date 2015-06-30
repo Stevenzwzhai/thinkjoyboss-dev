@@ -26,7 +26,7 @@ App
 
             if(newVal){
                 if (!$scope.chg) {
-                   
+
                     $scope.chg = true;
                     $scope.params=$scope.fm;
                     $scope.schoolUrl = SERVER.url.uc + "/schoolBoss/searchSchoolByAreaId";
