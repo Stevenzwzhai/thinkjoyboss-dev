@@ -18,9 +18,7 @@ App
             }
 
 
-        //change
-        //$scope.ph="例: 西安市*小学";
-        //$scope.model=$scope.params.schoolName;
+       
         $rootScope.$watch("change",function(newVal,oldVal){
 
 
