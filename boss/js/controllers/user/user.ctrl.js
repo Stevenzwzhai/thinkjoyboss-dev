@@ -25,6 +25,7 @@ App
                 }
         });
 
+
         $scope.delUser = function(){
             $scope.form.submit = true;
             var phone = $scope.form.phone.trim();
