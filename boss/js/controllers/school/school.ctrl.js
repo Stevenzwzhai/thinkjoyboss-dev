@@ -26,8 +26,7 @@ App
 
             if(newVal){
                 if (!$scope.chg) {
-                    //$scope.ph="请选择所在地";
-                    //$scope.model=$scope.params.address;
+                   
                     $scope.chg = true;
                     $scope.params=$scope.fm;
                     $scope.schoolUrl = SERVER.url.uc + "/schoolBoss/searchSchoolByAreaId";
@@ -36,8 +35,7 @@ App
             }
 
             else{
-                //$scope.ph="例: 西安市*小学";
-                //$scope.model=$scope.fm.address;
+
                 $scope.chg = false;
                 $scope.search();
                 $scope.schoolUrl = SERVER.url.uc + "/schoolBoss/searchSchoolByName";
@@ -50,10 +48,6 @@ App
 
 
         });
-
-
-
-
 
         //学校地址
         $scope.schoolUrl = SERVER.url.uc + "/schoolBoss/searchSchoolByName";
